@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fibich Player</title>
+    <meta
+      name="description"
+      content="Fibich Player is a simple placeholder landing page for a focused music listening app."
+    >
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #121316;
+        --panel: #1c1f24;
+        --panel-strong: #252932;
+        --text: #f5f2eb;
+        --muted: #b8b1a5;
+        --accent: #e8b44d;
+        --accent-2: #74b6b0;
+        --line: rgba(245, 242, 235, 0.13);
+        --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at 20% 0%, rgba(232, 180, 77, 0.16), transparent 34rem),
+          linear-gradient(145deg, #121316 0%, #191a1c 42%, #171f21 100%);
+        color: var(--text);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        min-height: 100vh;
+        overflow: hidden;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 24px 0;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .mark {
+        display: grid;
+        width: 36px;
+        height: 36px;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+      }
+
+      .mark::before {
+        width: 13px;
+        height: 18px;
+        border-radius: 2px 8px 8px 2px;
+        background: var(--accent);
+        content: "";
+        clip-path: polygon(0 0, 100% 50%, 0 100%);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.78fr);
+        align-items: center;
+        gap: 56px;
+        width: min(1120px, calc(100% - 32px));
+        min-height: calc(100vh - 84px);
+        margin: 0 auto;
+        padding: 36px 0 72px;
+      }
+
+      .eyebrow {
+        width: fit-content;
+        margin-bottom: 22px;
+        padding: 8px 12px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--accent-2);
+        font-size: 0.82rem;
+        font-weight: 700;
+      }
+
+      h1 {
+        max-width: 760px;
+        margin: 0;
+        font-size: clamp(3.2rem, 8vw, 6.8rem);
+        line-height: 0.9;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        max-width: 620px;
+        margin: 28px 0 0;
+        color: var(--muted);
+        font-size: clamp(1.05rem, 2vw, 1.3rem);
+        line-height: 1.65;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 34px;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 48px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        padding: 0 18px;
+        font-weight: 800;
+      }
+
+      .button.primary {
+        background: var(--accent);
+        color: #19130a;
+      }
+
+      .button.secondary {
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text);
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 52px;
+        max-width: 650px;
+      }
+
+      .stat {
+        border-top: 1px solid var(--line);
+        padding-top: 16px;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.55rem;
+      }
+
+      .stat span {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .player {
+        position: relative;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: linear-gradient(180deg, var(--panel-strong), var(--panel));
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .art {
+        aspect-ratio: 1;
+        background:
+          linear-gradient(135deg, rgba(116, 182, 176, 0.8), transparent 42%),
+          linear-gradient(45deg, transparent 48%, rgba(232, 180, 77, 0.95) 48% 53%, transparent 53%),
+          repeating-linear-gradient(
+            90deg,
+            rgba(245, 242, 235, 0.15) 0 1px,
+            transparent 1px 18px
+          ),
+          #20242b;
+      }
+
+      .player-body {
+        padding: 26px;
+      }
+
+      .track-label {
+        margin: 0 0 8px;
+        color: var(--accent-2);
+        font-size: 0.78rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .track-title {
+        margin: 0;
+        font-size: 1.4rem;
+      }
+
+      .track-meta {
+        margin: 8px 0 22px;
+        color: var(--muted);
+      }
+
+      .progress {
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.11);
+        overflow: hidden;
+      }
+
+      .progress span {
+        display: block;
+        width: 46%;
+        height: 100%;
+        border-radius: inherit;
+        background: var(--accent);
+      }
+
+      .controls {
+        display: grid;
+        grid-template-columns: repeat(3, 44px);
+        justify-content: center;
+        gap: 12px;
+        margin-top: 22px;
+      }
+
+      .control {
+        display: grid;
+        width: 44px;
+        height: 44px;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text);
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        width: min(1120px, calc(100% - 32px));
+        margin: -34px auto 72px;
+      }
+
+      .feature {
+        min-height: 150px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(28, 31, 36, 0.72);
+        padding: 22px;
+      }
+
+      .feature h2 {
+        margin: 0 0 10px;
+        font-size: 1.05rem;
+      }
+
+      .feature p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      @media (max-width: 860px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 36px;
+          min-height: auto;
+          padding-top: 24px;
+        }
+
+        .player {
+          max-width: 460px;
+        }
+
+        .features {
+          grid-template-columns: 1fr;
+          margin-top: 0;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .stats {
+          grid-template-columns: 1fr;
+        }
+
+        .actions {
+          flex-direction: column;
+        }
+
+        .button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="#">
+          <span class="mark" aria-hidden="true"></span>
+          <span>Fibich Player</span>
+        </a>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#preview">Preview</a>
+          <a href="mailto:hello@fibich.app">Contact</a>
+        </div>
+      </nav>
+
+      <section class="hero" id="preview">
+        <div>
+          <p class="eyebrow">Placeholder landing page</p>
+          <h1>Fibich Player</h1>
+          <p class="lead">
+            A quiet, focused music player concept for listening, collecting, and returning
+            to the tracks that matter. This page is ready for real copy, screenshots, and
+            download links whenever the product is.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="#">Get Early Access</a>
+            <a class="button secondary" href="#features">View Features</a>
+          </div>
+          <div class="stats" aria-label="Placeholder product metrics">
+            <div class="stat">
+              <strong>24-bit</strong>
+              <span>Audio placeholder</span>
+            </div>
+            <div class="stat">
+              <strong>3 min</strong>
+              <span>Setup placeholder</span>
+            </div>
+            <div class="stat">
+              <strong>2026</strong>
+              <span>Launch placeholder</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="player" aria-label="Fibich Player mockup">
+          <div class="art" aria-hidden="true"></div>
+          <div class="player-body">
+            <p class="track-label">Now playing</p>
+            <h2 class="track-title">Nocturne Placeholder</h2>
+            <p class="track-meta">Fibich Demo Collection</p>
+            <div class="progress" aria-hidden="true"><span></span></div>
+            <div class="controls" aria-label="Player controls">
+              <span class="control" aria-label="Previous">‹</span>
+              <span class="control" aria-label="Play">▶</span>
+              <span class="control" aria-label="Next">›</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="features" id="features" aria-label="Placeholder features">
+        <article class="feature">
+          <h2>Clean Library</h2>
+          <p>Placeholder copy for organizing albums, playlists, artists, and favorite listens.</p>
+        </article>
+        <article class="feature">
+          <h2>Focused Playback</h2>
+          <p>Placeholder copy for queue controls, repeat modes, and a calm listening screen.</p>
+        </article>
+        <article class="feature">
+          <h2>Made For Growth</h2>
+          <p>Placeholder copy for future apps, sync, releases, and product updates.</p>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
