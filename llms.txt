@@ -1,0 +1,18 @@
+# Fibich
+
+> Fibich is a simple, powerful music player for macOS focused on organizing a music library and returning to favorite tracks.
+
+Fibich is currently in development and is not yet available to download.
+
+## Official pages
+
+- Website: https://fibich.app/
+- Product screenshot: https://fibich.app/assets/fibich-player-screenshot.png
+- Creator: Antonin Charvat, https://www.linkedin.com/in/antonincharvat/
+
+## Product facts
+
+- Product name: Fibich
+- Category: Music player
+- Supported platform: macOS
+- Availability: In development

@@ -3,11 +3,62 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fibich Player</title>
+    <title>Fibich - Music Player for macOS</title>
     <meta
       name="description"
-      content="Fibich Player is a simple placeholder landing page for a focused music listening app."
+      content="Fibich is a simple, powerful music player for macOS focused on organizing your library and returning to your favorite tracks."
     >
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#f7f8f5">
+    <link rel="canonical" href="https://fibich.app/">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Fibich">
+    <meta property="og:title" content="Fibich - Music Player for macOS">
+    <meta
+      property="og:description"
+      content="A simple, powerful macOS music player focused on your library and favorite tracks."
+    >
+    <meta property="og:url" content="https://fibich.app/">
+    <meta
+      property="og:image"
+      content="https://fibich.app/assets/fibich-player-screenshot.png"
+    >
+    <meta property="og:image:width" content="4064">
+    <meta property="og:image:height" content="2324">
+    <meta property="og:image:alt" content="Fibich music player interface on macOS">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Fibich - Music Player for macOS">
+    <meta
+      name="twitter:description"
+      content="A simple, powerful macOS music player focused on your library and favorite tracks."
+    >
+    <meta
+      name="twitter:image"
+      content="https://fibich.app/assets/fibich-player-screenshot.png"
+    >
+    <meta name="twitter:image:alt" content="Fibich music player interface on macOS">
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Fibich",
+        "url": "https://fibich.app/",
+        "description": "Fibich is a simple, powerful music player for macOS focused on organizing your library and returning to your favorite tracks.",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "macOS",
+        "image": "https://fibich.app/assets/fibich-player-screenshot.png",
+        "screenshot": "https://fibich.app/assets/fibich-player-screenshot.png",
+        "creator": {
+          "@type": "Person",
+          "name": "Antonin Charvat",
+          "url": "https://www.linkedin.com/in/antonincharvat/"
+        }
+      }
+    </script>
     <style>
       :root {
         color-scheme: light;
@@ -145,6 +196,13 @@
         line-height: 1.65;
       }
 
+      .product-label {
+        margin: 0 0 16px;
+        color: var(--accent-2);
+        font-size: 0.9rem;
+        font-weight: 800;
+      }
+
       .platforms {
         display: flex;
         flex-wrap: wrap;
@@ -208,6 +266,17 @@
         font-size: 0.95rem;
       }
 
+      .product-facts {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 20px;
+        margin: 24px auto 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-weight: 650;
+      }
+
       .copyright {
         margin: 10px auto 0;
         color: var(--muted);
@@ -254,29 +323,41 @@
 
       <section class="hero" id="preview">
         <div class="headline">
+          <p class="product-label">Music player for macOS</p>
           <h1>Music. Organized.</h1>
           <p class="lead">
-            Fibich is a simple yet powerful music player focused on the library and returning to your favorite tracks without the interface getting in the way.
+            Fibich is a simple yet powerful macOS music player focused on organizing your
+            library and returning to your favorite tracks without the interface getting
+            in the way.
           </p>
         </div>
 
-        <div class="platforms" aria-label="Placeholder product controls">
+        <div class="platforms" aria-label="Fibich availability">
           <button class="platform primary" type="button" disabled title="Coming soon">
             Download for Mac
           </button>
         </div>
 
-        <div class="showcase" aria-label="Fibich Player app preview">
+        <div class="showcase" aria-label="Fibich app preview">
           <div class="screenshot-frame">
             <img
               class="app-screenshot"
               src="assets/fibich-player-screenshot.png"
-              alt="Fibich Player app screenshot"
+              alt="Fibich music player interface showing a music library on macOS"
+              width="4064"
+              height="2324"
+              loading="eager"
+              fetchpriority="high"
             >
           </div>
         </div>
 
-        <p class="footer-note">Fibich is currently in the development. More information coming soon.</p>
+        <div class="product-facts" aria-label="Product information">
+          <span>Built for macOS</span>
+          <span>Library-focused</span>
+          <span>Currently in development</span>
+        </div>
+        <p class="footer-note">Fibich is currently in development. More information is coming soon.</p>
         <p class="copyright">
           (C) 2026
           <a
