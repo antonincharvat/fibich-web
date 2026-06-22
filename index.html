@@ -266,6 +266,54 @@
         font-size: 0.95rem;
       }
 
+      .newsletter {
+        width: min(640px, 100%);
+        margin: 56px auto 0;
+      }
+
+      .newsletter-form {
+        min-width: 0;
+        overflow: hidden;
+        border-radius: 18px;
+      }
+
+      .newsletter-form iframe {
+        display: block;
+        width: 100%;
+        height: 720px;
+        border: 0;
+      }
+
+      .newsletter-privacy {
+        margin: 10px auto 0;
+        color: var(--muted);
+        font-size: 0.82rem;
+        line-height: 1.5;
+        text-align: center;
+      }
+
+      .newsletter-privacy a {
+        text-decoration: underline;
+        text-decoration-color: rgba(102, 112, 120, 0.45);
+        text-underline-offset: 3px;
+      }
+
+      .legal-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 18px;
+        margin: 14px auto 0;
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      .legal-links a {
+        text-decoration: underline;
+        text-decoration-color: rgba(102, 112, 120, 0.45);
+        text-underline-offset: 3px;
+      }
+
       .product-facts {
         display: flex;
         flex-wrap: wrap;
@@ -306,6 +354,14 @@
         .app-screenshot {
           border-radius: 10px;
         }
+
+        .newsletter-form {
+          border-radius: 12px;
+        }
+
+        .newsletter-form iframe {
+          height: 820px;
+        }
       }
     </style>
   </head>
@@ -317,6 +373,7 @@
         </a>
         <div class="nav-links">
           <a href="#preview">Preview</a>
+          <a href="#newsletter">Updates</a>
           <span id="email">Contact</span>
         </div>
       </nav>
@@ -357,6 +414,24 @@
           <span>Library-focused</span>
           <span>Currently in development</span>
         </div>
+
+        <section class="newsletter" id="newsletter" aria-label="Newsletter signup">
+          <div class="newsletter-form">
+            <iframe
+              src="https://dc5487c9.sibforms.com/v2/serve/MUIFANX9JIfFFimehA1vUdJGCl4xhDaWfWFfV5o-1p5Xe_8rPDe8guaRwGTqXvxp3XiHzJJR5Jy7HJIOhZp1n_T5JIkqkjf3bTdFiOvV1IVxjMUCWLWsheMYTUu9NpAp7a5VisRY5FB7CNbZ9udPrzEio4vGbsJrgVocwa7lpRI1pxw-lQCD78wGPRnl_AZS6vdzME46ClHMQIhHsA=="
+              title="Subscribe to Fibich updates"
+              scrolling="no"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <p class="newsletter-privacy">
+            See how your information is used in the
+            <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Notice</a>.
+          </p>
+        </section>
+
         <p class="footer-note">Fibich is currently in development. More information is coming soon.</p>
         <p class="copyright">
           (C) 2026
@@ -366,6 +441,9 @@
             rel="noopener noreferrer"
           >Antonin Charvat</a>
         </p>
+        <div class="legal-links">
+          <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Notice</a>
+        </div>
       </section>
     </main>
 
