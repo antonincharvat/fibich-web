@@ -266,6 +266,106 @@
         font-size: 0.95rem;
       }
 
+      .features {
+        width: min(1080px, 100%);
+        margin: 72px auto 0;
+        text-align: left;
+      }
+
+      .section-heading {
+        max-width: 720px;
+        margin: 0 auto 34px;
+        text-align: center;
+      }
+
+      .section-heading h2 {
+        margin: 0;
+        font-size: clamp(2.1rem, 5vw, 4rem);
+        line-height: 1;
+        letter-spacing: 0;
+      }
+
+      .section-heading p {
+        margin: 16px auto 0;
+        color: var(--muted);
+        font-size: clamp(1rem, 1.8vw, 1.14rem);
+        line-height: 1.65;
+      }
+
+      .section-heading .product-label {
+        margin: 0 0 16px;
+        color: var(--accent-2);
+        font-size: 0.9rem;
+        line-height: 1.2;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .feature-card {
+        border: 1px solid rgba(28, 32, 38, 0.11);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.78);
+        padding: clamp(20px, 3vw, 28px);
+        box-shadow: 0 14px 40px rgba(28, 32, 38, 0.07);
+      }
+
+      .feature-card h3 {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 14px;
+        font-size: 1.05rem;
+        line-height: 1.25;
+      }
+
+      .feature-card h3::before {
+        flex: 0 0 auto;
+        width: 10px;
+        height: 10px;
+        border-radius: 3px;
+        background: var(--accent);
+        content: "";
+      }
+
+      .feature-card:nth-child(2n) h3::before {
+        background: var(--accent-2);
+      }
+
+      .feature-card:nth-child(3n) h3::before {
+        background: var(--accent-3);
+      }
+
+      .feature-card ul {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .feature-card li {
+        position: relative;
+        padding-left: 18px;
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.55;
+      }
+
+      .feature-card li::before {
+        position: absolute;
+        top: 0.68em;
+        left: 0;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(102, 112, 120, 0.55);
+        content: "";
+      }
+
       .newsletter {
         width: min(640px, 100%);
         margin: 56px auto 0;
@@ -314,17 +414,6 @@
         text-underline-offset: 3px;
       }
 
-      .product-facts {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 8px 20px;
-        margin: 24px auto 0;
-        color: var(--muted);
-        font-size: 0.9rem;
-        font-weight: 650;
-      }
-
       .copyright {
         margin: 10px auto 0;
         color: var(--muted);
@@ -344,6 +433,14 @@
           border-radius: 14px;
           padding: 6px;
         }
+
+        .features {
+          margin-top: 52px;
+        }
+
+        .feature-grid {
+          grid-template-columns: 1fr;
+        }
       }
 
       @media (max-width: 480px) {
@@ -362,6 +459,10 @@
         .newsletter-form iframe {
           height: 820px;
         }
+
+        .feature-card {
+          padding: 18px;
+        }
       }
     </style>
   </head>
@@ -373,6 +474,7 @@
         </a>
         <div class="nav-links">
           <a href="#preview">Preview</a>
+          <a href="#features">Features</a>
           <a href="#newsletter">Updates</a>
           <span id="email">Contact</span>
         </div>
@@ -409,11 +511,79 @@
           </div>
         </div>
 
-        <div class="product-facts" aria-label="Product information">
-          <span>Built for macOS</span>
-          <span>Library-focused</span>
-          <span>Currently in development</span>
-        </div>
+        <section class="features" id="features" aria-labelledby="features-title">
+          <div class="section-heading">
+            <p class="product-label">Current feature set</p>
+            <h2 id="features-title">Made for serious local libraries.</h2>
+            <p>
+              Fibich combines wide format support, durable playlists, library
+              organization, metadata tools, and macOS playback integration in one native
+              player.
+            </p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card">
+              <h3>Native macOS player</h3>
+              <ul>
+                <li>Split layout for library browsing, playlists, artwork, details, and playback controls.</li>
+                <li>Built for local music libraries on macOS.</li>
+              </ul>
+            </article>
+
+            <article class="feature-card">
+              <h3>Broad audio support</h3>
+              <ul>
+                <li>Plays FLAC, WAV, AIFF, ALAC/M4A, MP3, Opus, Ogg, WavPack, APE, Musepack, TTA, Shorten, DSD, and more.</li>
+                <li>Supports tracker modules such as XM, IT, MOD, and S3M.</li>
+                <li>Shows CUE sheets as virtual tracks with segment playback and badges.</li>
+              </ul>
+            </article>
+
+            <article class="feature-card">
+              <h3>Library management</h3>
+              <ul>
+                <li>Add persistent library folders.</li>
+                <li>Automatically scan folders and keep the catalog in sync.</li>
+                <li>Search, sort, browse folder trees, and rescan on demand.</li>
+                <li>Send selected folders or tracks to the active/new playlist.</li>
+              </ul>
+            </article>
+
+            <article class="feature-card">
+              <h3>Playlist workflow</h3>
+              <ul>
+                <li>Use multiple playlist tabs with rename and drag-reorder support.</li>
+                <li>Restore playlists, tabs, columns, pane sizes, and scroll positions.</li>
+                <li>Drop external files or folders into playlists without adding library roots.</li>
+                <li>Customize columns and view track, folder, duration, and selection totals.</li>
+              </ul>
+            </article>
+
+            <article class="feature-card">
+              <h3>Playback controls</h3>
+              <ul>
+                <li>Play, pause, stop, skip, seek, mute, and adjust volume.</li>
+                <li>Stop after the current track.</li>
+                <li>Toggle total or remaining time in the scrubber.</li>
+                <li>Use macOS media keys and Now Playing controls.</li>
+                <li>Resume the last session and playback position on launch.</li>
+                <li>Control playback from the menu bar popover.</li>
+              </ul>
+            </article>
+
+            <article class="feature-card">
+              <h3>Metadata and artwork</h3>
+              <ul>
+                <li>View selectable track metadata and detailed audio properties.</li>
+                <li>Show embedded artwork or common cover images from album folders.</li>
+                <li>Edit tags, lyrics, ratings, identifiers, and custom fields.</li>
+                <li>Batch edit selected tracks while preserving untouched values.</li>
+                <li>Validate numeric fields and custom metadata keys.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
 
         <section class="newsletter" id="newsletter" aria-label="Newsletter signup">
           <div class="newsletter-form">
