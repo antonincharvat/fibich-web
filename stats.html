@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Fibich Visit Stats</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f8f5;
+        --ink: #1c2026;
+        --muted: #667078;
+        --line: #dfe4e1;
+        --surface: #ffffff;
+        --surface-2: #eef3f1;
+        --accent: #d95c3b;
+        --accent-2: #2f8c84;
+        --accent-3: #f1bd45;
+        --danger: #b73d3d;
+        --shadow: 0 24px 70px rgba(28, 32, 38, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.5;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .shell {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 56px;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding-bottom: 28px;
+      }
+
+      .brand {
+        font-weight: 800;
+        letter-spacing: 0;
+        text-decoration: none;
+      }
+
+      .updated {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 20px;
+        align-items: end;
+        margin-bottom: 24px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2rem, 5vw, 4.2rem);
+        line-height: 0.96;
+        letter-spacing: 0;
+      }
+
+      .lede {
+        max-width: 620px;
+        margin: 14px 0 0;
+        color: var(--muted);
+      }
+
+      .controls {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+      }
+
+      label {
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+
+      select,
+      button {
+        border: 1px solid var(--line);
+        background: var(--surface);
+        color: var(--ink);
+        border-radius: 8px;
+        font: inherit;
+        font-weight: 800;
+        min-height: 42px;
+      }
+
+      select {
+        padding: 0 34px 0 12px;
+      }
+
+      button {
+        cursor: pointer;
+        padding: 0 14px;
+      }
+
+      button:hover {
+        border-color: var(--accent);
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+
+      .metric {
+        min-height: 120px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+        padding: 18px;
+        box-shadow: var(--shadow);
+      }
+
+      .metric-label {
+        margin: 0 0 8px;
+        color: var(--muted);
+        font-size: 0.86rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .metric-value {
+        margin: 0;
+        font-size: clamp(2rem, 5vw, 3.6rem);
+        line-height: 1;
+        font-weight: 900;
+      }
+
+      .metric-note {
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .panel + .panel {
+        margin-top: 18px;
+      }
+
+      .panel-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 18px 20px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 1rem;
+      }
+
+      .status {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .chart {
+        display: grid;
+        grid-template-columns: repeat(var(--days), minmax(28px, 1fr));
+        gap: 8px;
+        align-items: end;
+        min-height: 260px;
+        padding: 24px 20px 18px;
+        background: linear-gradient(180deg, var(--surface), var(--surface-2));
+      }
+
+      .bar-wrap {
+        display: grid;
+        grid-template-rows: 1fr auto auto;
+        gap: 8px;
+        min-width: 0;
+        min-height: 220px;
+      }
+
+      .bar-track {
+        display: flex;
+        align-items: end;
+        min-height: 170px;
+        border-radius: 6px;
+        background: rgba(47, 140, 132, 0.08);
+        overflow: hidden;
+      }
+
+      .bar {
+        width: 100%;
+        min-height: 2px;
+        border-radius: 6px 6px 0 0;
+        background: linear-gradient(180deg, var(--accent), var(--accent-3));
+      }
+
+      .bar-count,
+      .bar-date {
+        overflow: hidden;
+        text-align: center;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .bar-count {
+        font-weight: 900;
+      }
+
+      .bar-date {
+        color: var(--muted);
+        font-size: 0.78rem;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 13px 20px;
+        border-top: 1px solid var(--line);
+        text-align: left;
+      }
+
+      th {
+        color: var(--muted);
+        font-size: 0.82rem;
+        text-transform: uppercase;
+      }
+
+      td:last-child,
+      th:last-child {
+        text-align: right;
+      }
+
+      .count {
+        font-weight: 900;
+      }
+
+      .raw-link {
+        color: var(--accent-2);
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .raw-link:hover {
+        text-decoration: underline;
+      }
+
+      .error {
+        margin: 0;
+        padding: 16px 20px;
+        border-top: 1px solid rgba(183, 61, 61, 0.25);
+        background: rgba(183, 61, 61, 0.08);
+        color: var(--danger);
+        font-weight: 700;
+      }
+
+      @media (max-width: 860px) {
+        .hero,
+        .topbar {
+          grid-template-columns: 1fr;
+          align-items: start;
+        }
+
+        .metrics {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .controls {
+          justify-content: flex-start;
+        }
+
+        .chart {
+          overflow-x: auto;
+          grid-template-columns: repeat(var(--days), 44px);
+        }
+      }
+
+      @media (max-width: 560px) {
+        .metrics {
+          grid-template-columns: 1fr;
+        }
+
+        th,
+        td {
+          padding: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <div class="topbar">
+        <a class="brand" href="/">Fibich</a>
+        <div class="updated" id="updated">Loading stats...</div>
+      </div>
+
+      <section class="hero">
+        <div>
+          <h1>Visit Stats</h1>
+          <p class="lede">
+            CounterAPI totals for the public Fibich counters. This page is unlisted and not included in the sitemap.
+          </p>
+        </div>
+        <div class="controls">
+          <label for="range">Range</label>
+          <select id="range">
+            <option value="7">7 days</option>
+            <option value="14" selected>14 days</option>
+            <option value="30">30 days</option>
+          </select>
+          <button type="button" id="refresh">Refresh</button>
+        </div>
+      </section>
+
+      <section class="metrics" aria-label="Visit summary">
+        <div class="metric">
+          <p class="metric-label">Total</p>
+          <p class="metric-value" id="total">-</p>
+          <p class="metric-note">Lifetime visits</p>
+        </div>
+        <div class="metric">
+          <p class="metric-label">Today</p>
+          <p class="metric-value" id="today">-</p>
+          <p class="metric-note" id="today-date">Current Prague day</p>
+        </div>
+        <div class="metric">
+          <p class="metric-label">Range Total</p>
+          <p class="metric-value" id="range-total">-</p>
+          <p class="metric-note" id="range-note">Last 14 days</p>
+        </div>
+        <div class="metric">
+          <p class="metric-label">Best Day</p>
+          <p class="metric-value" id="best-day">-</p>
+          <p class="metric-note" id="best-day-date">No visits yet</p>
+        </div>
+      </section>
+
+      <section class="panel" aria-label="Daily chart">
+        <div class="panel-head">
+          <h2>Daily Visits</h2>
+          <span class="status" id="chart-status">Loading...</span>
+        </div>
+        <div class="chart" id="chart"></div>
+        <p class="error" id="error" hidden></p>
+      </section>
+
+      <section class="panel" aria-label="Daily table">
+        <div class="panel-head">
+          <h2>Raw Counters</h2>
+          <a class="raw-link" id="total-link" href="#" target="_blank" rel="noopener noreferrer">Open total counter</a>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Counter</th>
+              <th>Visits</th>
+              <th>Raw</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <script>
+      const namespace = "antonincharvat";
+      const counterName = "fibich";
+      const apiBase = "https://api.counterapi.dev/v1";
+
+      const elements = {
+        range: document.getElementById("range"),
+        refresh: document.getElementById("refresh"),
+        updated: document.getElementById("updated"),
+        total: document.getElementById("total"),
+        today: document.getElementById("today"),
+        todayDate: document.getElementById("today-date"),
+        rangeTotal: document.getElementById("range-total"),
+        rangeNote: document.getElementById("range-note"),
+        bestDay: document.getElementById("best-day"),
+        bestDayDate: document.getElementById("best-day-date"),
+        chart: document.getElementById("chart"),
+        chartStatus: document.getElementById("chart-status"),
+        rows: document.getElementById("rows"),
+        error: document.getElementById("error"),
+        totalLink: document.getElementById("total-link"),
+      };
+
+      const counterUrl = (name) => {
+        return `${apiBase}/${encodeURIComponent(namespace)}/${encodeURIComponent(name)}/`;
+      };
+
+      const formatPragueDay = (date) => {
+        if (window.Intl && typeof window.Intl.DateTimeFormat === "function") {
+          return new Intl.DateTimeFormat("sv-SE", {
+            timeZone: "Europe/Prague",
+          }).format(date);
+        }
+
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+
+        return `${year}-${month}-${day}`;
+      };
+
+      const recentDays = (count) => {
+        const today = formatPragueDay(new Date());
+        const base = new Date(`${today}T12:00:00`);
+
+        return Array.from({ length: count }, (_, index) => {
+          const date = new Date(base);
+          date.setDate(base.getDate() - (count - index - 1));
+
+          return formatPragueDay(date);
+        });
+      };
+
+      const getCounter = async (name) => {
+        const response = await fetch(counterUrl(name), {
+          method: "GET",
+          cache: "no-store",
+        });
+
+        if (response.status === 400 || response.status === 404) {
+          return { name, count: 0, missing: true };
+        }
+
+        if (!response.ok) {
+          throw new Error(`CounterAPI returned ${response.status} for ${name}`);
+        }
+
+        return response.json();
+      };
+
+      const renderChart = (days) => {
+        const max = Math.max(1, ...days.map((day) => day.count));
+
+        elements.chart.style.setProperty("--days", days.length);
+        elements.chart.replaceChildren(
+          ...days.map((day) => {
+            const wrap = document.createElement("div");
+            const track = document.createElement("div");
+            const bar = document.createElement("div");
+            const count = document.createElement("div");
+            const date = document.createElement("div");
+
+            wrap.className = "bar-wrap";
+            track.className = "bar-track";
+            bar.className = "bar";
+            count.className = "bar-count";
+            date.className = "bar-date";
+
+            bar.style.height = `${Math.max(2, (day.count / max) * 100)}%`;
+            count.textContent = day.count;
+            date.textContent = day.date.slice(5);
+
+            track.title = `${day.date}: ${day.count}`;
+            track.append(bar);
+            wrap.append(track, count, date);
+
+            return wrap;
+          })
+        );
+      };
+
+      const renderRows = (days) => {
+        elements.rows.replaceChildren(
+          ...days.slice().reverse().map((day) => {
+            const row = document.createElement("tr");
+            const date = document.createElement("td");
+            const counter = document.createElement("td");
+            const visits = document.createElement("td");
+            const raw = document.createElement("td");
+            const link = document.createElement("a");
+
+            date.textContent = day.date;
+            counter.textContent = day.counter;
+            visits.className = "count";
+            visits.textContent = day.count;
+            link.className = "raw-link";
+            link.href = counterUrl(day.counter);
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            link.textContent = "Open";
+            raw.append(link);
+            row.append(date, counter, visits, raw);
+
+            return row;
+          })
+        );
+      };
+
+      const loadStats = async () => {
+        const range = Number(elements.range.value);
+        const dates = recentDays(range);
+        const today = dates[dates.length - 1];
+
+        elements.error.hidden = true;
+        elements.chartStatus.textContent = "Loading...";
+        elements.refresh.disabled = true;
+        elements.totalLink.href = counterUrl(counterName);
+
+        try {
+          const [total, ...dailyCounters] = await Promise.all([
+            getCounter(counterName),
+            ...dates.map((date) => getCounter(`${counterName}-${date}`)),
+          ]);
+
+          const days = dates.map((date, index) => ({
+            date,
+            counter: `${counterName}-${date}`,
+            count: Number(dailyCounters[index].count) || 0,
+          }));
+          const rangeTotal = days.reduce((sum, day) => sum + day.count, 0);
+          const best = days.reduce((winner, day) => {
+            return day.count > winner.count ? day : winner;
+          }, days[0]);
+
+          elements.total.textContent = Number(total.count) || 0;
+          elements.today.textContent = days[days.length - 1].count;
+          elements.todayDate.textContent = today;
+          elements.rangeTotal.textContent = rangeTotal;
+          elements.rangeNote.textContent = `Last ${range} days`;
+          elements.bestDay.textContent = best.count;
+          elements.bestDayDate.textContent = best.date;
+          elements.updated.textContent = `Updated ${new Date().toLocaleString()}`;
+          elements.chartStatus.textContent = `${range} days`;
+
+          renderChart(days);
+          renderRows(days);
+        } catch (error) {
+          elements.chartStatus.textContent = "Could not load";
+          elements.error.hidden = false;
+          elements.error.textContent =
+            "Could not read CounterAPI from this browser. Use the raw links below, or try refreshing.";
+          elements.updated.textContent = "Stats unavailable";
+          renderChart(dates.map((date) => ({
+            date,
+            counter: `${counterName}-${date}`,
+            count: 0,
+          })));
+          renderRows(dates.map((date) => ({
+            date,
+            counter: `${counterName}-${date}`,
+            count: "-",
+          })));
+        } finally {
+          elements.refresh.disabled = false;
+        }
+      };
+
+      elements.range.addEventListener("change", loadStats);
+      elements.refresh.addEventListener("click", loadStats);
+      loadStats();
+    </script>
+  </body>
+</html>
