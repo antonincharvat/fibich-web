@@ -52,7 +52,7 @@
   const encodedNamespace = encodeURIComponent(namespace);
   const increment = (name) => {
     const encodedName = encodeURIComponent(name);
-    const url = `https://api.counterapi.dev/v1/${encodedNamespace}/${encodedName}/up/`;
+    const url = `https://api.counterapi.dev/v1/${encodedNamespace}/${encodedName}/up`;
 
     if (typeof window.fetch === "function") {
       return window.fetch(url, {
