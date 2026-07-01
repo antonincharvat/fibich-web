@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Making the Playlist More Personal - Fibich</title>
+    <meta
+      name="description"
+      content="Fibich adds configurable playlist metadata columns, draggable ordering, reusable drag handling, and Show in Finder."
+    >
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#f7f8f5">
+    <link
+      rel="canonical"
+      href="https://fibich.app/blog/making-the-playlist-more-personal.html"
+    >
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Fibich">
+    <meta property="og:title" content="Making the Playlist More Personal">
+    <meta
+      property="og:description"
+      content="Fibich adds configurable playlist metadata columns, draggable ordering, reusable drag handling, and Show in Finder."
+    >
+    <meta
+      property="og:url"
+      content="https://fibich.app/blog/making-the-playlist-more-personal.html"
+    >
+    <meta
+      property="og:image"
+      content="https://fibich.app/assets/fibich_reorderPlaylists.png"
+    >
+    <meta property="og:image:width" content="1611">
+    <meta property="og:image:height" content="555">
+    <meta
+      property="og:image:alt"
+      content="Fibich playlist header with draggable metadata columns"
+    >
+    <meta property="article:published_time" content="2025-12-25">
+    <meta property="article:author" content="Antonin Charvat">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Making the Playlist More Personal">
+    <meta
+      name="twitter:description"
+      content="Fibich adds configurable playlist metadata columns, draggable ordering, reusable drag handling, and Show in Finder."
+    >
+    <meta
+      name="twitter:image"
+      content="https://fibich.app/assets/fibich_reorderPlaylists.png"
+    >
+    <meta
+      name="twitter:image:alt"
+      content="Fibich playlist header with draggable metadata columns"
+    >
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Making the Playlist More Personal",
+        "datePublished": "2025-12-25",
+        "url": "https://fibich.app/blog/making-the-playlist-more-personal.html",
+        "description": "Fibich adds configurable playlist metadata columns, draggable ordering, reusable drag handling, and Show in Finder.",
+        "image": "https://fibich.app/assets/fibich_reorderPlaylists.png",
+        "author": {
+          "@type": "Person",
+          "name": "Antonin Charvat",
+          "url": "https://www.linkedin.com/in/antonincharvat/"
+        },
+        "publisher": {
+          "@type": "Person",
+          "name": "Antonin Charvat",
+          "url": "https://www.linkedin.com/in/antonincharvat/"
+        }
+      }
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f8f5;
+        --ink: #1c2026;
+        --muted: #667078;
+        --line: #dde2e0;
+        --surface: #ffffff;
+        --accent: #d95c3b;
+        --accent-2: #2f8c84;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background:
+          linear-gradient(180deg, rgba(47, 140, 132, 0.11), transparent 270px),
+          var(--bg);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        min-height: 100vh;
+        overflow: hidden;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        width: min(1080px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 24px 0 10px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.35rem;
+        font-weight: 850;
+        letter-spacing: 0;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        color: var(--muted);
+        font-size: 0.93rem;
+        font-weight: 650;
+      }
+
+      .nav-links a[aria-current="page"] {
+        color: var(--ink);
+      }
+
+      .article-shell {
+        width: min(900px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 58px 0 86px;
+      }
+
+      .eyebrow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 12px;
+        margin: 0 0 16px;
+        color: var(--accent-2);
+        font-size: 0.9rem;
+        font-weight: 800;
+      }
+
+      h1 {
+        max-width: 820px;
+        margin: 0;
+        font-size: clamp(3rem, 7vw, 5.8rem);
+        line-height: 0.96;
+        letter-spacing: 0;
+      }
+
+      .intro {
+        max-width: 740px;
+        margin: 24px 0 0;
+        color: var(--muted);
+        font-size: clamp(1.06rem, 2vw, 1.22rem);
+        line-height: 1.65;
+      }
+
+      .article-body {
+        max-width: 740px;
+        margin-top: 46px;
+      }
+
+      .article-image {
+        width: min(640px, 100%);
+        margin: 38px 0 0;
+      }
+
+      .article-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 1px solid rgba(28, 32, 38, 0.12);
+        border-radius: 8px;
+        background: var(--surface);
+        box-shadow: 0 18px 48px rgba(28, 32, 38, 0.1);
+      }
+
+      .article-body p {
+        margin: 0 0 22px;
+        color: var(--ink);
+        font-size: 1.08rem;
+        line-height: 1.78;
+      }
+
+      .article-body p:first-child {
+        font-size: 1.18rem;
+        line-height: 1.72;
+      }
+
+      .article-footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 12px 22px;
+        margin-top: 54px;
+        border-top: 1px solid var(--line);
+        padding-top: 22px;
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      .article-footer a,
+      .back-link {
+        text-decoration: underline;
+        text-decoration-color: rgba(102, 112, 120, 0.45);
+        text-underline-offset: 3px;
+      }
+
+      .back-link {
+        display: inline-flex;
+        margin-top: 18px;
+        color: var(--accent);
+        font-size: 0.92rem;
+        font-weight: 750;
+        text-decoration-color: rgba(217, 92, 59, 0.55);
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+      }
+
+      @media (max-width: 760px) {
+        .nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 12px 16px;
+          font-size: 0.88rem;
+        }
+
+        .article-shell {
+          padding-top: 42px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <nav class="nav" aria-label="Article navigation">
+        <a class="brand" href="/">Fibich</a>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="/#features">Features</a>
+          <a href="/blog.html" aria-current="page">Blog</a>
+          <a href="/#newsletter">Updates</a>
+          <span id="email">Contact</span>
+        </div>
+      </nav>
+
+      <article class="article-shell">
+        <header>
+          <p class="eyebrow">
+            <time datetime="2025-12-25">December 25, 2025</time>
+            <span>Development</span>
+          </p>
+          <h1>Making the Playlist More Personal</h1>
+          <p class="intro">
+            Playlist metadata columns become configurable and draggable while Fibich stays
+            close to local files.
+          </p>
+        </header>
+
+        <figure class="article-image">
+          <img
+            src="/assets/fibich_reorderPlaylists.png"
+            alt="Fibich playlist header with draggable metadata columns"
+            width="1611"
+            height="555"
+            loading="lazy"
+          >
+        </figure>
+
+        <div class="article-body">
+          <p>
+            This week I worked on one of the parts of Fibich that looks simple, but has a
+            lot of hidden decisions behind it: what information the playlist should show,
+            and how much control the user should have over it.
+          </p>
+          <p>
+            The playlist header has been changing from a fixed row of labels into
+            something more dynamic. Instead of hardcoding every visible column, the header
+            items now come from configuration. That gives Fibich a better path toward
+            showing different metadata fields over time: title, artist, album, duration,
+            and eventually more audio or file-related properties.
+          </p>
+          <p>
+            The useful part is not only that the app can show metadata. It is that the
+            playlist can start becoming adjustable.
+          </p>
+          <p>
+            This week also adds drag and drop reordering for playlist header metadata
+            items. In other words, the user can begin shaping the playlist layout around
+            what matters most to them. Someone comparing album versions may care about
+            album and duration. Someone organizing a folder of loose files may care more
+            about title and artist. Later, format, sample rate, or other hi-fi details may
+            deserve a place too.
+          </p>
+          <p>
+            The code obstacle here was keeping this interaction reusable. Dragging
+            playlist columns is not the only drag behavior Fibich will need. So after the
+            first version worked, I pulled the drag handling into a more general draggable
+            element abstraction. That keeps the playlist header cleaner and gives the app
+            a reusable pattern for similar interactions later.
+          </p>
+          <p>There was also a practical Finder feature added this week: Show in Finder.</p>
+          <p>
+            That one feels especially right for Fibich. A local music player should never
+            hide the fact that the music lives on disk. If a track is in the library or
+            playlist, the user should be able to jump back to the original file quickly.
+            Maybe they want to inspect the folder, rename something, compare files, or fix
+            artwork and metadata outside the app.
+          </p>
+          <p>
+            Adding Show in Finder also touched the library generation code. That makes
+            sense: to reveal a file, Fibich has to keep reliable track of where it came
+            from. The app cannot treat path information as a side detail. For a file-based
+            music player, the connection between a library item and its real location is
+            part of the product.
+          </p>
+          <p>So this week's work has two sides.</p>
+          <p>
+            On the surface, the playlist is becoming more flexible: configurable metadata
+            columns, draggable ordering, better header components.
+          </p>
+          <p>
+            Underneath, Fibich is getting more careful about reusable interaction code and
+            file identity.
+          </p>
+          <p>
+            That combination matters. A good macOS music player should give the user
+            control without making the interface feel complicated. It should also stay
+            close to the file system, because local music collections are not abstract
+            catalogs. They are folders, albums, files, tags, and years of personal
+            organization.
+          </p>
+          <p>
+            Today the playlist feels a little less fixed, and the app feels a little more
+            connected to the Mac around it.
+          </p>
+          <p>That is a good direction.</p>
+        </div>
+
+        <a class="back-link" href="/blog.html">Back to all posts</a>
+
+        <footer class="article-footer">
+          <span>
+            (C) 2026
+            <a
+              href="https://www.linkedin.com/in/antonincharvat/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Antonin Charvat</a>
+          </span>
+          <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Notice</a>
+          </div>
+        </footer>
+      </article>
+    </main>
+
+    <script>
+      const user = "antonincharvat";
+      const domain = "gmail";
+      const dotCom = ".com";
+      const address = `${user}@${domain}${dotCom}`;
+      const email = document.getElementById("email");
+      const link = document.createElement("a");
+
+      link.href = `mailto:${address}`;
+      link.textContent = "Contact";
+      email.replaceChildren(link);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Editing the Music, Not Just Playing It - Fibich</title>
+    <meta
+      name="description"
+      content="Fibich gains metadata editing with drafts, validation, read/write storage, tests, and a more focused sheet-based editor."
+    >
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#f7f8f5">
+    <link
+      rel="canonical"
+      href="https://fibich.app/blog/editing-the-music-not-just-playing-it.html"
+    >
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Fibich">
+    <meta property="og:title" content="Editing the Music, Not Just Playing It">
+    <meta
+      property="og:description"
+      content="Fibich gains metadata editing with drafts, validation, read/write storage, tests, and a more focused sheet-based editor."
+    >
+    <meta
+      property="og:url"
+      content="https://fibich.app/blog/editing-the-music-not-just-playing-it.html"
+    >
+    <meta
+      property="og:image"
+      content="https://fibich.app/assets/fibich_metadataEditor.png"
+    >
+    <meta property="og:image:width" content="1974">
+    <meta property="og:image:height" content="1330">
+    <meta
+      property="og:image:alt"
+      content="Fibich metadata editor sheet for editing track tags"
+    >
+    <meta property="article:published_time" content="2026-05-19">
+    <meta property="article:author" content="Antonin Charvat">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Editing the Music, Not Just Playing It">
+    <meta
+      name="twitter:description"
+      content="Fibich gains metadata editing with drafts, validation, read/write storage, tests, and a more focused sheet-based editor."
+    >
+    <meta
+      name="twitter:image"
+      content="https://fibich.app/assets/fibich_metadataEditor.png"
+    >
+    <meta
+      name="twitter:image:alt"
+      content="Fibich metadata editor sheet for editing track tags"
+    >
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Editing the Music, Not Just Playing It",
+        "datePublished": "2026-05-19",
+        "url": "https://fibich.app/blog/editing-the-music-not-just-playing-it.html",
+        "description": "Fibich gains metadata editing with drafts, validation, read/write storage, tests, and a more focused sheet-based editor.",
+        "image": "https://fibich.app/assets/fibich_metadataEditor.png",
+        "author": {
+          "@type": "Person",
+          "name": "Antonin Charvat",
+          "url": "https://www.linkedin.com/in/antonincharvat/"
+        },
+        "publisher": {
+          "@type": "Person",
+          "name": "Antonin Charvat",
+          "url": "https://www.linkedin.com/in/antonincharvat/"
+        }
+      }
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f8f5;
+        --ink: #1c2026;
+        --muted: #667078;
+        --line: #dde2e0;
+        --surface: #ffffff;
+        --accent: #d95c3b;
+        --accent-2: #2f8c84;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background:
+          linear-gradient(180deg, rgba(47, 140, 132, 0.11), transparent 270px),
+          var(--bg);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        min-height: 100vh;
+        overflow: hidden;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        width: min(1080px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 24px 0 10px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.35rem;
+        font-weight: 850;
+        letter-spacing: 0;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        color: var(--muted);
+        font-size: 0.93rem;
+        font-weight: 650;
+      }
+
+      .nav-links a[aria-current="page"] {
+        color: var(--ink);
+      }
+
+      .article-shell {
+        width: min(900px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 58px 0 86px;
+      }
+
+      .eyebrow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 12px;
+        margin: 0 0 16px;
+        color: var(--accent-2);
+        font-size: 0.9rem;
+        font-weight: 800;
+      }
+
+      h1 {
+        max-width: 820px;
+        margin: 0;
+        font-size: clamp(3rem, 7vw, 5.8rem);
+        line-height: 0.96;
+        letter-spacing: 0;
+      }
+
+      .intro {
+        max-width: 740px;
+        margin: 24px 0 0;
+        color: var(--muted);
+        font-size: clamp(1.06rem, 2vw, 1.22rem);
+        line-height: 1.65;
+      }
+
+      .article-body {
+        max-width: 740px;
+        margin-top: 46px;
+      }
+
+      .article-image {
+        width: min(640px, 100%);
+        margin: 38px 0 0;
+      }
+
+      .article-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 1px solid rgba(28, 32, 38, 0.12);
+        border-radius: 8px;
+        background: var(--surface);
+        box-shadow: 0 18px 48px rgba(28, 32, 38, 0.1);
+      }
+
+      .article-body p {
+        margin: 0 0 22px;
+        color: var(--ink);
+        font-size: 1.08rem;
+        line-height: 1.78;
+      }
+
+      .article-body p:first-child {
+        font-size: 1.18rem;
+        line-height: 1.72;
+      }
+
+      .article-footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 12px 22px;
+        margin-top: 54px;
+        border-top: 1px solid var(--line);
+        padding-top: 22px;
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      .article-footer a,
+      .back-link {
+        text-decoration: underline;
+        text-decoration-color: rgba(102, 112, 120, 0.45);
+        text-underline-offset: 3px;
+      }
+
+      .back-link {
+        display: inline-flex;
+        margin-top: 18px;
+        color: var(--accent);
+        font-size: 0.92rem;
+        font-weight: 750;
+        text-decoration-color: rgba(217, 92, 59, 0.55);
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+      }
+
+      @media (max-width: 760px) {
+        .nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 12px 16px;
+          font-size: 0.88rem;
+        }
+
+        .article-shell {
+          padding-top: 42px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <nav class="nav" aria-label="Article navigation">
+        <a class="brand" href="/">Fibich</a>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="/#features">Features</a>
+          <a href="/blog.html" aria-current="page">Blog</a>
+          <a href="/#newsletter">Updates</a>
+          <span id="email">Contact</span>
+        </div>
+      </nav>
+
+      <article class="article-shell">
+        <header>
+          <p class="eyebrow">
+            <time datetime="2026-05-19">May 19, 2026</time>
+            <span>Development</span>
+          </p>
+          <h1>Editing the Music, Not Just Playing It</h1>
+          <p class="intro">
+            Metadata editing brings Fibich closer to being a serious local music library
+            tool.
+          </p>
+        </header>
+
+        <figure class="article-image">
+          <img
+            src="/assets/fibich_metadataEditor.png"
+            alt="Fibich metadata editor sheet for editing track tags"
+            width="1974"
+            height="1330"
+            loading="lazy"
+          >
+        </figure>
+
+        <div class="article-body">
+          <p>
+            Fibich has been quiet for a while, but today it moves into a much more
+            serious part of local music management: metadata editing.
+          </p>
+          <p>
+            Until now, metadata has mostly been something the app reads and displays. That
+            is already useful, because a music library becomes much easier to understand
+            when tracks show real titles, artists, albums, durations, and other details
+            instead of bare filenames.
+          </p>
+          <p>
+            But for a local hi-fi collection, reading metadata is only half of the story.
+            Tags are often incomplete, inconsistent, or just wrong. A downloaded album may
+            have missing track numbers. A live recording may have no album artist. Older
+            files may carry strange values. Sometimes the user simply wants to clean up
+            their own library.
+          </p>
+          <p>So this week Fibich gains a metadata editor.</p>
+          <p>
+            This is a bigger step than it first appears, because editing metadata touches
+            the actual audio file. A mistake here is more serious than a wrong label in
+            the interface. The app needs a draft state, validation, saving logic, and a
+            clear boundary between what the user is currently editing and what has
+            actually been written back to the file.
+          </p>
+          <p>
+            That is why I added a dedicated metadata edit draft and an audio metadata
+            store. The draft lets the interface work with temporary changes safely. The
+            store gives the app a clearer place for the real read/write work. Keeping
+            those apart matters: the UI can be flexible, but writing tags needs to be
+            deliberate.
+          </p>
+          <p>
+            There is also numeric validation now. Some metadata fields are not free text
+            in practice. Track number, disc number, year, BPM, and similar values need to
+            behave like numbers. Without validation, it is too easy to save something that
+            looks fine in a text field but becomes messy as real file metadata.
+          </p>
+          <p>
+            Additional metadata fields can now be added and removed too. This is important
+            because music tags are not one-size-fits-all. A simple pop album and a
+            carefully archived classical recording may need different fields. Fibich
+            should not assume that only a tiny fixed set of metadata matters.
+          </p>
+          <p>
+            I also added a test target and the first unit tests around metadata editing.
+            That felt necessary right away. Once the app starts changing audio file
+            metadata, I want more confidence that drafts, validation, and saving behavior
+            stay predictable. This is one of those areas where tests are not decoration.
+            They are a safety rail.
+          </p>
+          <p>
+            The editor UI changed during the work as well. It now presents as a sheet,
+            which feels more natural on macOS for this kind of focused editing task. When
+            adding a new metadata row, the view also scrolls to it automatically, which
+            keeps the interaction from feeling clumsy.
+          </p>
+          <p>
+            One more quiet but meaningful step arrived this week: localization support,
+            starting with English and Spanish. That may seem separate from metadata, but
+            it belongs to the same kind of maturity. Once the app has more dialogs,
+            labels, validation messages, and editing flows, text needs to be organized
+            properly instead of scattered everywhere.
+          </p>
+          <p>
+            This week's progress makes Fibich feel less like only a player and more like
+            a library tool.
+          </p>
+          <p>
+            It can play local audio files, organize them into playlists, and now begin
+            helping the user improve the information stored inside the music itself.
+          </p>
+          <p>
+            For a local macOS music player, that matters. A well-kept music library is
+            not just files on disk. It is files plus meaningful metadata, and Fibich is
+            starting to treat that metadata as something the user can actually work with.
+          </p>
+        </div>
+
+        <a class="back-link" href="/blog.html">Back to all posts</a>
+
+        <footer class="article-footer">
+          <span>
+            (C) 2026
+            <a
+              href="https://www.linkedin.com/in/antonincharvat/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Antonin Charvat</a>
+          </span>
+          <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Notice</a>
+          </div>
+        </footer>
+      </article>
+    </main>
+
+    <script>
+      const user = "antonincharvat";
+      const domain = "gmail";
+      const dotCom = ".com";
+      const address = `${user}@${domain}${dotCom}`;
+      const email = document.getElementById("email");
+      const link = document.createElement("a");
+
+      link.href = `mailto:${address}`;
+      link.textContent = "Contact";
+      email.replaceChildren(link);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog - Fibich</title>
+    <meta
+      name="description"
+      content="Development notes, release updates, and behind-the-scenes writing for Fibich, a macOS music player."
+    >
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#f7f8f5">
+    <link rel="canonical" href="https://fibich.app/blog.html">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Fibich">
+    <meta property="og:title" content="Blog - Fibich">
+    <meta
+      property="og:description"
+      content="Development notes, release updates, and behind-the-scenes writing for Fibich."
+    >
+    <meta property="og:url" content="https://fibich.app/blog.html">
+    <meta
+      property="og:image"
+      content="https://fibich.app/assets/fibich-player-screenshot.png"
+    >
+    <meta property="og:image:alt" content="Fibich music player interface on macOS">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog - Fibich">
+    <meta
+      name="twitter:description"
+      content="Development notes, release updates, and behind-the-scenes writing for Fibich."
+    >
+    <meta
+      name="twitter:image"
+      content="https://fibich.app/assets/fibich-player-screenshot.png"
+    >
+    <meta name="twitter:image:alt" content="Fibich music player interface on macOS">
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Fibich Blog",
+        "url": "https://fibich.app/blog.html",
+        "description": "Development notes, release updates, and behind-the-scenes writing for Fibich.",
+        "publisher": {
+          "@type": "Person",
+          "name": "Antonin Charvat",
+          "url": "https://www.linkedin.com/in/antonincharvat/"
+        }
+      }
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f8f5;
+        --ink: #1c2026;
+        --muted: #667078;
+        --line: #dde2e0;
+        --surface: #ffffff;
+        --surface-2: #eef3f1;
+        --accent: #d95c3b;
+        --accent-2: #2f8c84;
+        --accent-3: #f1bd45;
+        --shadow: 0 24px 70px rgba(28, 32, 38, 0.11);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background:
+          linear-gradient(180deg, rgba(47, 140, 132, 0.11), transparent 270px),
+          var(--bg);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        min-height: 100vh;
+        overflow: hidden;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        width: min(1080px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 24px 0 10px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.35rem;
+        font-weight: 850;
+        letter-spacing: 0;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        color: var(--muted);
+        font-size: 0.93rem;
+        font-weight: 650;
+      }
+
+      .nav-links a[aria-current="page"] {
+        color: var(--ink);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+        gap: clamp(28px, 5vw, 58px);
+        align-items: center;
+        width: min(1080px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 58px 0 46px;
+      }
+
+      .product-label {
+        margin: 0 0 16px;
+        color: var(--accent-2);
+        font-size: 0.9rem;
+        font-weight: 800;
+      }
+
+      h1 {
+        max-width: 650px;
+        margin: 0;
+        font-size: clamp(3rem, 7vw, 6.2rem);
+        line-height: 0.94;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        max-width: 620px;
+        margin: 24px 0 0;
+        color: var(--muted);
+        font-size: clamp(1.06rem, 2vw, 1.22rem);
+        line-height: 1.65;
+      }
+
+      .hero-image {
+        border: 1px solid rgba(28, 32, 38, 0.12);
+        border-radius: 18px;
+        background: var(--surface);
+        padding: 8px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .hero-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+      }
+
+      .content {
+        width: min(900px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 24px 0 86px;
+      }
+
+      .section-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        border-top: 1px solid var(--line);
+        padding-top: 30px;
+      }
+
+      .section-title h2 {
+        margin: 0;
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+        line-height: 1;
+      }
+
+      .section-title a {
+        color: var(--accent);
+        font-size: 0.92rem;
+        font-weight: 750;
+      }
+
+      .post-list {
+        display: grid;
+        gap: 14px;
+        margin-top: 22px;
+      }
+
+      .post-card {
+        display: grid;
+        gap: 12px;
+        border: 1px solid rgba(28, 32, 38, 0.11);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.78);
+        padding: clamp(20px, 4vw, 30px);
+        box-shadow: 0 14px 40px rgba(28, 32, 38, 0.07);
+      }
+
+      .post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 12px;
+        color: var(--accent-2);
+        font-size: 0.82rem;
+        font-weight: 800;
+      }
+
+      .post-card h3 {
+        margin: 0;
+        font-size: clamp(1.45rem, 3vw, 2rem);
+        line-height: 1.12;
+      }
+
+      .post-card p {
+        max-width: 680px;
+        margin: 0;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.65;
+      }
+
+      .post-card h3 a {
+        text-decoration: underline;
+        text-decoration-color: transparent;
+        text-underline-offset: 5px;
+        transition: text-decoration-color 160ms ease;
+      }
+
+      .post-card h3 a:hover {
+        text-decoration-color: rgba(217, 92, 59, 0.55);
+      }
+
+      .read-more {
+        color: var(--accent);
+        font-size: 0.92rem;
+        font-weight: 750;
+      }
+
+      .footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 12px 22px;
+        margin-top: 46px;
+        border-top: 1px solid var(--line);
+        padding-top: 22px;
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      .footer a {
+        text-decoration: underline;
+        text-decoration-color: rgba(102, 112, 120, 0.45);
+        text-underline-offset: 3px;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+      }
+
+      @media (max-width: 760px) {
+        .nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 12px 16px;
+          font-size: 0.88rem;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+          padding-top: 42px;
+        }
+
+        .section-title {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-image {
+          border-radius: 14px;
+          padding: 6px;
+        }
+
+        .hero-image img {
+          border-radius: 10px;
+        }
+
+        .post-card {
+          padding: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <nav class="nav" aria-label="Blog navigation">
+        <a class="brand" href="/">Fibich</a>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="/#features">Features</a>
+          <a href="/blog.html" aria-current="page">Blog</a>
+          <a href="/#newsletter">Updates</a>
+          <span id="email">Contact</span>
+        </div>
+      </nav>
+
+      <section class="hero" aria-labelledby="blog-title">
+        <div>
+          <p class="product-label">Fibich blog</p>
+          <h1 id="blog-title">Notes from the build.</h1>
+          <p class="lead">
+            Development updates, release notes, and the occasional deeper look at
+            building a local music player for macOS.
+          </p>
+        </div>
+
+        <div class="hero-image" aria-label="Fibich app preview">
+          <img
+            src="assets/fibich-player-screenshot.png"
+            alt="Fibich music player interface showing a music library on macOS"
+            width="4064"
+            height="2324"
+            loading="eager"
+            fetchpriority="high"
+          >
+        </div>
+      </section>
+
+      <section class="content" aria-labelledby="latest-title">
+        <div class="section-title">
+          <h2 id="latest-title">Latest</h2>
+          <a href="/#newsletter">Get updates</a>
+        </div>
+
+        <div class="post-list">
+          <article class="post-card">
+            <div class="post-meta">
+              <time datetime="2026-05-19">May 19, 2026</time>
+              <span>Development</span>
+            </div>
+            <h3>
+              <a href="/blog/editing-the-music-not-just-playing-it.html">
+                Editing the Music, Not Just Playing It
+              </a>
+            </h3>
+            <p>
+              Fibich gains metadata editing with drafts, validation, read/write storage,
+              tests, and a more focused sheet-based editor.
+            </p>
+            <a class="read-more" href="/blog/editing-the-music-not-just-playing-it.html">
+              Read the post
+            </a>
+          </article>
+
+          <article class="post-card">
+            <div class="post-meta">
+              <time datetime="2026-01-04">January 4, 2026</time>
+              <span>Development</span>
+            </div>
+            <h3>
+              <a href="/blog/making-playlists-stay.html">
+                Making Playlists Stay
+              </a>
+            </h3>
+            <p>
+              Fibich adds SwiftData-backed playlist persistence so names, order,
+              selection, and playlist items can survive beyond one session.
+            </p>
+            <a class="read-more" href="/blog/making-playlists-stay.html">
+              Read the post
+            </a>
+          </article>
+
+          <article class="post-card">
+            <div class="post-meta">
+              <time datetime="2025-12-25">December 25, 2025</time>
+              <span>Development</span>
+            </div>
+            <h3>
+              <a href="/blog/making-the-playlist-more-personal.html">
+                Making the Playlist More Personal
+              </a>
+            </h3>
+            <p>
+              Playlist metadata columns become configurable and draggable, while Show in
+              Finder keeps Fibich connected to local files.
+            </p>
+            <a class="read-more" href="/blog/making-the-playlist-more-personal.html">
+              Read the post
+            </a>
+          </article>
+
+          <article class="post-card">
+            <div class="post-meta">
+              <time datetime="2025-12-15">December 15, 2025</time>
+              <span>Development</span>
+            </div>
+            <h3>
+              <a href="/blog/from-drag-and-drop-to-now-playing.html">
+                From Drag and Drop to Now Playing
+              </a>
+            </h3>
+            <p>
+              Drag and drop, broader file support, visible durations, and macOS Now
+              Playing integration make Fibich feel more native.
+            </p>
+            <a class="read-more" href="/blog/from-drag-and-drop-to-now-playing.html">
+              Read the post
+            </a>
+          </article>
+
+          <article class="post-card">
+            <div class="post-meta">
+              <time datetime="2025-12-07">December 7, 2025</time>
+              <span>Development</span>
+            </div>
+            <h3>
+              <a href="/blog/more-than-one-playlist.html">
+                More Than One Playlist
+              </a>
+            </h3>
+            <p>
+              Multiple playlist tabs turn Fibich from one listening queue into a small
+              workspace for different sessions.
+            </p>
+            <a class="read-more" href="/blog/more-than-one-playlist.html">
+              Read the post
+            </a>
+          </article>
+
+          <article class="post-card">
+            <div class="post-meta">
+              <time datetime="2025-12-04">December 4, 2025</time>
+              <span>Development</span>
+            </div>
+            <h3>
+              <a href="/blog/opening-music-the-mac-way.html">
+                Opening Music the Mac Way
+              </a>
+            </h3>
+            <p>
+              Fibich starts accepting music files opened from macOS, making Finder part
+              of the listening flow.
+            </p>
+            <a class="read-more" href="/blog/opening-music-the-mac-way.html">
+              Read the post
+            </a>
+          </article>
+
+          <article class="post-card">
+            <div class="post-meta">
+              <time datetime="2025-11-26">November 26, 2025</time>
+              <span>Development</span>
+            </div>
+            <h3>
+              <a href="/blog/making-the-playlist-easier-to-read.html">
+                Making the Playlist Easier to Read
+              </a>
+            </h3>
+            <p>
+              Playlist columns become resizable and persistent, making the listening
+              queue clearer and more comfortable to use.
+            </p>
+            <a class="read-more" href="/blog/making-the-playlist-easier-to-read.html">
+              Read the post
+            </a>
+          </article>
+
+          <article class="post-card">
+            <div class="post-meta">
+              <time datetime="2025-11-25">November 25, 2025</time>
+              <span>Development</span>
+            </div>
+            <h3>
+              <a href="/blog/finding-music-once-the-library-grows.html">
+                Finding Music Once the Library Grows
+              </a>
+            </h3>
+            <p>
+              Search and sorting arrive in the library browser, making larger local
+              music collections easier to narrow down.
+            </p>
+            <a class="read-more" href="/blog/finding-music-once-the-library-grows.html">
+              Read the post
+            </a>
+          </article>
+
+          <article class="post-card">
+            <div class="post-meta">
+              <time datetime="2025-11-19">November 19, 2025</time>
+              <span>Development</span>
+            </div>
+            <h3>
+              <a href="/blog/cleaning-the-engine-room.html">
+                Cleaning the Engine Room
+              </a>
+            </h3>
+            <p>
+              Fibich gets a cleaner foundation with SFBAudioEngine via Swift Package
+              Manager and a refactor around library loading.
+            </p>
+            <a class="read-more" href="/blog/cleaning-the-engine-room.html">
+              Read the post
+            </a>
+          </article>
+
+          <article class="post-card">
+            <div class="post-meta">
+              <time datetime="2024-01-03">January 3, 2024</time>
+              <span>Development</span>
+            </div>
+            <h3>
+              <a href="/blog/making-the-library-remember.html">
+                Making the Library Remember
+              </a>
+            </h3>
+            <p>
+              Fibich is moving again, this time toward stronger persistence, clearer
+              metadata, and a library that can remember its shape.
+            </p>
+            <a class="read-more" href="/blog/making-the-library-remember.html">
+              Read the post
+            </a>
+          </article>
+
+          <article class="post-card">
+            <div class="post-meta">
+              <time datetime="2023-07-19">July 19, 2023</time>
+              <span>Development</span>
+            </div>
+            <h3>
+              <a href="/blog/the-playlist-starts-to-matter.html">
+                The Playlist Starts to Matter
+              </a>
+            </h3>
+            <p>
+              Fibich is starting to feel less like a player for single tracks and more
+              like a place to build a listening session.
+            </p>
+            <a class="read-more" href="/blog/the-playlist-starts-to-matter.html">
+              Read the post
+            </a>
+          </article>
+
+          <article class="post-card">
+            <div class="post-meta">
+              <time datetime="2023-06-30">June 30, 2023</time>
+              <span>Development</span>
+            </div>
+            <h3>
+              <a href="/blog/from-empty-window-to-first-playback.html">
+                From Empty Window to First Playback
+              </a>
+            </h3>
+            <p>
+              Fibich crossed an important line: basic playback, progress, seeking, and
+              volume control are now part of the app.
+            </p>
+            <a class="read-more" href="/blog/from-empty-window-to-first-playback.html">
+              Read the post
+            </a>
+          </article>
+
+          <article class="post-card">
+            <div class="post-meta">
+              <time datetime="2023-06-09">June 9, 2023</time>
+              <span>Development</span>
+            </div>
+            <h3>
+              <a href="/blog/why-build-another-macos-music-player.html">
+                Why Build Another macOS Music Player?
+              </a>
+            </h3>
+            <p>
+              Today I started building Fibich: a native macOS music player for people
+              who still care about their own music files.
+            </p>
+            <a class="read-more" href="/blog/why-build-another-macos-music-player.html">
+              Read the post
+            </a>
+          </article>
+        </div>
+
+        <footer class="footer">
+          <span>
+            (C) 2026
+            <a
+              href="https://www.linkedin.com/in/antonincharvat/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Antonin Charvat</a>
+          </span>
+          <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Notice</a>
+          </div>
+        </footer>
+      </section>
+    </main>
+
+    <script>
+      const user = "antonincharvat";
+      const domain = "gmail";
+      const dotCom = ".com";
+      const address = `${user}@${domain}${dotCom}`;
+      const email = document.getElementById("email");
+      const link = document.createElement("a");
+
+      link.href = `mailto:${address}`;
+      link.textContent = "Contact";
+      email.replaceChildren(link);
+    </script>
+  </body>
+</html>

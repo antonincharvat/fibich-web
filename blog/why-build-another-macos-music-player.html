@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Why Build Another macOS Music Player? - Fibich</title>
+    <meta
+      name="description"
+      content="Today I started building Fibich, a native macOS music player for people who still care about their own music files."
+    >
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#f7f8f5">
+    <link
+      rel="canonical"
+      href="https://fibich.app/blog/why-build-another-macos-music-player.html"
+    >
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Fibich">
+    <meta property="og:title" content="Why Build Another macOS Music Player?">
+    <meta
+      property="og:description"
+      content="Today I started building Fibich, a native macOS music player for people who still care about their own music files."
+    >
+    <meta
+      property="og:url"
+      content="https://fibich.app/blog/why-build-another-macos-music-player.html"
+    >
+    <meta property="article:published_time" content="2023-06-09">
+    <meta property="article:author" content="Antonin Charvat">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Why Build Another macOS Music Player?">
+    <meta
+      name="twitter:description"
+      content="Today I started building Fibich, a native macOS music player for people who still care about their own music files."
+    >
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Why Build Another macOS Music Player?",
+        "datePublished": "2023-06-09",
+        "url": "https://fibich.app/blog/why-build-another-macos-music-player.html",
+        "description": "Today I started building Fibich, a native macOS music player for people who still care about their own music files.",
+        "author": {
+          "@type": "Person",
+          "name": "Antonin Charvat",
+          "url": "https://www.linkedin.com/in/antonincharvat/"
+        },
+        "publisher": {
+          "@type": "Person",
+          "name": "Antonin Charvat",
+          "url": "https://www.linkedin.com/in/antonincharvat/"
+        }
+      }
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f8f5;
+        --ink: #1c2026;
+        --muted: #667078;
+        --line: #dde2e0;
+        --surface: #ffffff;
+        --accent: #d95c3b;
+        --accent-2: #2f8c84;
+        --shadow: 0 24px 70px rgba(28, 32, 38, 0.11);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background:
+          linear-gradient(180deg, rgba(47, 140, 132, 0.11), transparent 270px),
+          var(--bg);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        min-height: 100vh;
+        overflow: hidden;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        width: min(1080px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 24px 0 10px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.35rem;
+        font-weight: 850;
+        letter-spacing: 0;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        color: var(--muted);
+        font-size: 0.93rem;
+        font-weight: 650;
+      }
+
+      .nav-links a[aria-current="page"] {
+        color: var(--ink);
+      }
+
+      .article-shell {
+        width: min(900px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 58px 0 86px;
+      }
+
+      .eyebrow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 12px;
+        margin: 0 0 16px;
+        color: var(--accent-2);
+        font-size: 0.9rem;
+        font-weight: 800;
+      }
+
+      h1 {
+        max-width: 820px;
+        margin: 0;
+        font-size: clamp(3rem, 7vw, 5.8rem);
+        line-height: 0.96;
+        letter-spacing: 0;
+      }
+
+      .intro {
+        max-width: 740px;
+        margin: 24px 0 0;
+        color: var(--muted);
+        font-size: clamp(1.06rem, 2vw, 1.22rem);
+        line-height: 1.65;
+      }
+
+      .article-body {
+        margin-top: 46px;
+        max-width: 740px;
+      }
+
+      .article-body p {
+        margin: 0 0 22px;
+        color: var(--ink);
+        font-size: 1.08rem;
+        line-height: 1.78;
+      }
+
+      .article-body p:first-child {
+        font-size: 1.18rem;
+        line-height: 1.72;
+      }
+
+      .article-footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 12px 22px;
+        margin-top: 54px;
+        border-top: 1px solid var(--line);
+        padding-top: 22px;
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      .article-footer a,
+      .back-link {
+        text-decoration: underline;
+        text-decoration-color: rgba(102, 112, 120, 0.45);
+        text-underline-offset: 3px;
+      }
+
+      .back-link {
+        display: inline-flex;
+        margin-top: 18px;
+        color: var(--accent);
+        font-size: 0.92rem;
+        font-weight: 750;
+        text-decoration-color: rgba(217, 92, 59, 0.55);
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+      }
+
+      @media (max-width: 760px) {
+        .nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 12px 16px;
+          font-size: 0.88rem;
+        }
+
+        .article-shell {
+          padding-top: 42px;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <nav class="nav" aria-label="Article navigation">
+        <a class="brand" href="/">Fibich</a>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="/#features">Features</a>
+          <a href="/blog.html" aria-current="page">Blog</a>
+          <a href="/#newsletter">Updates</a>
+          <span id="email">Contact</span>
+        </div>
+      </nav>
+
+      <article class="article-shell">
+        <header>
+          <p class="eyebrow">
+            <time datetime="2023-06-09">June 9, 2023</time>
+            <span>Development</span>
+          </p>
+          <h1>Why Build Another macOS Music Player?</h1>
+          <p class="intro">
+            Today I started building Fibich: a native macOS music player for people who
+            still care about their own music files.
+          </p>
+        </header>
+
+        <div class="article-body">
+          <p>Today I started building Fibich.</p>
+          <p>
+            The idea is simple, but it has been sitting in my head for a while: a native
+            macOS music player for people who still care about their own music files.
+          </p>
+          <p>
+            Most music apps today are built around streaming, subscriptions,
+            recommendations, and catalogs that live somewhere else. That is useful, of
+            course. But it does not fully serve the listener who has a carefully collected
+            local music library, lossless albums, unusual audio formats, archived
+            releases, live recordings, and folders arranged with intention.
+          </p>
+          <p>Fibich started from that place.</p>
+          <p>
+            The goal is not to build just another player with a play button and a
+            playlist. I want Fibich to become a focused hi-fi audio player for Mac: one
+            that can handle local music libraries, support a wide range of audio formats,
+            keep playlists durable, expose metadata clearly, and feel like a proper
+            native macOS app.
+          </p>
+          <p>
+            Right now, the project is still at the beginning. There is a codebase, an app
+            skeleton, and the first pieces of the foundation. But even at this stage, the
+            direction matters. If Fibich is going to be useful, it needs to respect the
+            way people actually store and listen to music.
+          </p>
+          <p>That means more than playback.</p>
+          <p>
+            A serious local music player needs to understand folders, tracks, albums,
+            artists, metadata, file formats, and playlists that should still be there
+            tomorrow. It needs to work well with macOS, not against it. It should feel
+            comfortable next to Finder, media keys, system playback controls, and the
+            habits Mac users already have.
+          </p>
+          <p>
+            It also needs to care about the less glamorous parts of music collections.
+            Tags are not always clean. Files move. Albums may come with artwork, CUE
+            sheets, or inconsistent metadata. Some collections are small and tidy; others
+            are large, old, and full of strange little details. A good player should not
+            fall apart the moment a library becomes real.
+          </p>
+          <p>
+            That is the long-term ambition for Fibich: wide format support, durable
+            playlists, library organization, metadata tools, and macOS playback
+            integration in one native player.
+          </p>
+          <p>
+            I do not expect all of that to appear at once. The first step is simply to
+            give the project a shape and start moving. From here, I want to build in
+            public notes: what changed, what problem appeared, what became easier, what
+            still feels rough, and how each step brings Fibich closer to being a reliable
+            music player for local hi-fi collections.
+          </p>
+          <p>Today is mostly the starting line.</p>
+          <p>
+            But it is an important one. Fibich now exists, and the goal is clear: build a
+            Mac music player that treats your own music library as the main event.
+          </p>
+        </div>
+
+        <a class="back-link" href="/blog.html">Back to all posts</a>
+
+        <footer class="article-footer">
+          <span>
+            (C) 2026
+            <a
+              href="https://www.linkedin.com/in/antonincharvat/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Antonin Charvat</a>
+          </span>
+          <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Notice</a>
+          </div>
+        </footer>
+      </article>
+    </main>
+
+    <script>
+      const user = "antonincharvat";
+      const domain = "gmail";
+      const dotCom = ".com";
+      const address = `${user}@${domain}${dotCom}`;
+      const email = document.getElementById("email");
+      const link = document.createElement("a");
+
+      link.href = `mailto:${address}`;
+      link.textContent = "Contact";
+      email.replaceChildren(link);
+    </script>
+  </body>
+</html>

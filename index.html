@@ -107,6 +107,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: 18px;
         width: min(1180px, calc(100% - 32px));
         margin: 0 auto;
         padding: 24px 0 10px;
@@ -421,8 +422,16 @@
       }
 
       @media (max-width: 740px) {
+        .nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
         .nav-links {
-          display: none;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 12px 16px;
+          font-size: 0.88rem;
         }
 
         .hero {
@@ -475,6 +484,7 @@
         <div class="nav-links">
           <a href="#preview">Preview</a>
           <a href="#features">Features</a>
+          <a href="/blog.html">Blog</a>
           <a href="#newsletter">Updates</a>
           <span id="email">Contact</span>
         </div>
@@ -612,6 +622,7 @@
           >Antonin Charvat</a>
         </p>
         <div class="legal-links">
+          <a href="/blog.html">Blog</a>
           <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Notice</a>
         </div>
       </section>

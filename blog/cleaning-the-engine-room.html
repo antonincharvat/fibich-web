@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cleaning the Engine Room - Fibich</title>
+    <meta
+      name="description"
+      content="Fibich moves SFBAudioEngine into Swift Package Manager and refactors library loading for a cleaner foundation."
+    >
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#f7f8f5">
+    <link
+      rel="canonical"
+      href="https://fibich.app/blog/cleaning-the-engine-room.html"
+    >
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Fibich">
+    <meta property="og:title" content="Cleaning the Engine Room">
+    <meta
+      property="og:description"
+      content="Fibich moves SFBAudioEngine into Swift Package Manager and refactors library loading for a cleaner foundation."
+    >
+    <meta
+      property="og:url"
+      content="https://fibich.app/blog/cleaning-the-engine-room.html"
+    >
+    <meta property="article:published_time" content="2025-11-19">
+    <meta property="article:author" content="Antonin Charvat">
+    <meta
+      property="og:image"
+      content="https://fibich.app/assets/fibich_loading.png"
+    >
+    <meta property="og:image:width" content="564">
+    <meta property="og:image:height" content="486">
+    <meta property="og:image:alt" content="Early Fibich library loading interface">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cleaning the Engine Room">
+    <meta
+      name="twitter:description"
+      content="Fibich moves SFBAudioEngine into Swift Package Manager and refactors library loading for a cleaner foundation."
+    >
+    <meta
+      name="twitter:image"
+      content="https://fibich.app/assets/fibich_loading.png"
+    >
+    <meta name="twitter:image:alt" content="Early Fibich library loading interface">
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Cleaning the Engine Room",
+        "datePublished": "2025-11-19",
+        "url": "https://fibich.app/blog/cleaning-the-engine-room.html",
+        "description": "Fibich moves SFBAudioEngine into Swift Package Manager and refactors library loading for a cleaner foundation.",
+        "image": "https://fibich.app/assets/fibich_loading.png",
+        "author": {
+          "@type": "Person",
+          "name": "Antonin Charvat",
+          "url": "https://www.linkedin.com/in/antonincharvat/"
+        },
+        "publisher": {
+          "@type": "Person",
+          "name": "Antonin Charvat",
+          "url": "https://www.linkedin.com/in/antonincharvat/"
+        }
+      }
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f8f5;
+        --ink: #1c2026;
+        --muted: #667078;
+        --line: #dde2e0;
+        --surface: #ffffff;
+        --accent: #d95c3b;
+        --accent-2: #2f8c84;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background:
+          linear-gradient(180deg, rgba(47, 140, 132, 0.11), transparent 270px),
+          var(--bg);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        min-height: 100vh;
+        overflow: hidden;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        width: min(1080px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 24px 0 10px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.35rem;
+        font-weight: 850;
+        letter-spacing: 0;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        color: var(--muted);
+        font-size: 0.93rem;
+        font-weight: 650;
+      }
+
+      .nav-links a[aria-current="page"] {
+        color: var(--ink);
+      }
+
+      .article-shell {
+        width: min(900px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 58px 0 86px;
+      }
+
+      .eyebrow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 12px;
+        margin: 0 0 16px;
+        color: var(--accent-2);
+        font-size: 0.9rem;
+        font-weight: 800;
+      }
+
+      h1 {
+        max-width: 820px;
+        margin: 0;
+        font-size: clamp(3rem, 7vw, 5.8rem);
+        line-height: 0.96;
+        letter-spacing: 0;
+      }
+
+      .intro {
+        max-width: 740px;
+        margin: 24px 0 0;
+        color: var(--muted);
+        font-size: clamp(1.06rem, 2vw, 1.22rem);
+        line-height: 1.65;
+      }
+
+      .article-body {
+        max-width: 740px;
+        margin-top: 46px;
+      }
+
+      .article-image {
+        width: min(520px, 100%);
+        margin: 38px 0 0;
+      }
+
+      .article-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 1px solid rgba(28, 32, 38, 0.12);
+        border-radius: 8px;
+        background: var(--surface);
+        box-shadow: 0 18px 48px rgba(28, 32, 38, 0.1);
+      }
+
+      .article-body p {
+        margin: 0 0 22px;
+        color: var(--ink);
+        font-size: 1.08rem;
+        line-height: 1.78;
+      }
+
+      .article-body p:first-child {
+        font-size: 1.18rem;
+        line-height: 1.72;
+      }
+
+      .article-footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 12px 22px;
+        margin-top: 54px;
+        border-top: 1px solid var(--line);
+        padding-top: 22px;
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      .article-footer a,
+      .back-link {
+        text-decoration: underline;
+        text-decoration-color: rgba(102, 112, 120, 0.45);
+        text-underline-offset: 3px;
+      }
+
+      .back-link {
+        display: inline-flex;
+        margin-top: 18px;
+        color: var(--accent);
+        font-size: 0.92rem;
+        font-weight: 750;
+        text-decoration-color: rgba(217, 92, 59, 0.55);
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+      }
+
+      @media (max-width: 760px) {
+        .nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 12px 16px;
+          font-size: 0.88rem;
+        }
+
+        .article-shell {
+          padding-top: 42px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <nav class="nav" aria-label="Article navigation">
+        <a class="brand" href="/">Fibich</a>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="/#features">Features</a>
+          <a href="/blog.html" aria-current="page">Blog</a>
+          <a href="/#newsletter">Updates</a>
+          <span id="email">Contact</span>
+        </div>
+      </nav>
+
+      <article class="article-shell">
+        <header>
+          <p class="eyebrow">
+            <time datetime="2025-11-19">November 19, 2025</time>
+            <span>Development</span>
+          </p>
+          <h1>Cleaning the Engine Room</h1>
+          <p class="intro">
+            Today's update is not about a shiny new button. It is about making Fibich
+            easier to build on.
+          </p>
+        </header>
+
+        <figure class="article-image">
+          <img
+            src="/assets/fibich_loading.png"
+            alt="Early Fibich library loading interface"
+            width="564"
+            height="486"
+            loading="lazy"
+          >
+        </figure>
+
+        <div class="article-body">
+          <p>
+            Today's update is not about a shiny new button. It is about making Fibich
+            easier to build on.
+          </p>
+          <p>
+            Recently I picked the project back up and started by dealing with some
+            technical weight that had quietly accumulated. The biggest change is that the
+            audio engine dependencies are no longer embedded directly in the project as
+            bundled frameworks. Fibich now uses the SFBAudioEngine package through Swift
+            Package Manager.
+          </p>
+          <p>That sounds like housekeeping, but it matters a lot.</p>
+          <p>
+            A hi-fi audio player depends heavily on its playback layer. Support for
+            formats like FLAC and other lossless or less common audio files should not
+            rely on a pile of manually stored binary frameworks inside the app repository.
+            That approach works for a prototype, but it becomes awkward over time: the
+            project gets heavier, updates are harder, and the build setup becomes easier
+            to break.
+          </p>
+          <p>
+            Moving this into package management makes the app cleaner and more
+            maintainable. It is the kind of change users may never notice directly, but it
+            gives the project better footing for wide audio format support later.
+          </p>
+          <p>The other big piece today is a refactor around library loading.</p>
+          <p>
+            Fibich needs to scan folders, read audio files, generate library items, and
+            persist the result. Earlier versions had too much of that logic gathered in
+            one central place. That made the code harder to reason about, especially
+            because library generation is not instant. It touches the file system, reads
+            metadata, and may need to process a lot of tracks.
+          </p>
+          <p>
+            So today I started separating those responsibilities more clearly. There is
+            now a dedicated path for generating the library, fetching stored items, and
+            coordinating persistence. Some of the work has also moved toward Swift's
+            async/await model, which is a better fit for operations that take time.
+          </p>
+          <p>The practical goal is simple: Fibich should not feel stuck while it is thinking.</p>
+          <p>
+            Scanning a music library is very different from updating a label on screen.
+            The app needs to do real work, but the interface should remain calm and
+            responsive. This becomes especially important for larger local music
+            collections, where hundreds or thousands of audio files may be involved.
+          </p>
+          <p>
+            There is also a new intermediate model for library items while they are being
+            created. That helps keep unfinished file-scanning data separate from the
+            stable items the app eventually stores and displays. It is a small
+            architectural detail, but it solves a real problem: not every piece of data is
+            ready at the same time, and the app should not pretend it is.
+          </p>
+          <p>
+            This is the kind of progress that feels quiet, but important. Fibich is
+            becoming less of a prototype and more of an application with parts that know
+            their jobs: playback, library generation, persistence, player state, and
+            interface.
+          </p>
+          <p>
+            There is still plenty to do. The library needs better browsing, sorting, and
+            filtering. Playlists need to become more capable. Metadata still deserves much
+            deeper tools. But today's work clears the path for those features to be built
+            without fighting the foundation every time.
+          </p>
+          <p>A good music player should feel simple on the surface.</p>
+          <p>Underneath, Fibich now has a cleaner engine room.</p>
+        </div>
+
+        <a class="back-link" href="/blog.html">Back to all posts</a>
+
+        <footer class="article-footer">
+          <span>
+            (C) 2026
+            <a
+              href="https://www.linkedin.com/in/antonincharvat/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Antonin Charvat</a>
+          </span>
+          <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Notice</a>
+          </div>
+        </footer>
+      </article>
+    </main>
+
+    <script>
+      const user = "antonincharvat";
+      const domain = "gmail";
+      const dotCom = ".com";
+      const address = `${user}@${domain}${dotCom}`;
+      const email = document.getElementById("email");
+      const link = document.createElement("a");
+
+      link.href = `mailto:${address}`;
+      link.textContent = "Contact";
+      email.replaceChildren(link);
+    </script>
+  </body>
+</html>

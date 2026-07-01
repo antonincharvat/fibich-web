@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>From Drag and Drop to Now Playing - Fibich</title>
+    <meta
+      name="description"
+      content="Fibich adds drag and drop, broader file support, playlist durations, and macOS Now Playing integration."
+    >
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#f7f8f5">
+    <link
+      rel="canonical"
+      href="https://fibich.app/blog/from-drag-and-drop-to-now-playing.html"
+    >
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Fibich">
+    <meta property="og:title" content="From Drag and Drop to Now Playing">
+    <meta
+      property="og:description"
+      content="Fibich adds drag and drop, broader file support, playlist durations, and macOS Now Playing integration."
+    >
+    <meta
+      property="og:url"
+      content="https://fibich.app/blog/from-drag-and-drop-to-now-playing.html"
+    >
+    <meta property="article:published_time" content="2025-12-15">
+    <meta property="article:author" content="Antonin Charvat">
+    <meta
+      property="og:image"
+      content="https://fibich.app/assets/fibich_nowPlaying.png"
+    >
+    <meta property="og:image:width" content="1264">
+    <meta property="og:image:height" content="530">
+    <meta property="og:image:alt" content="Fibich Now Playing integration on macOS">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="From Drag and Drop to Now Playing">
+    <meta
+      name="twitter:description"
+      content="Fibich adds drag and drop, broader file support, playlist durations, and macOS Now Playing integration."
+    >
+    <meta
+      name="twitter:image"
+      content="https://fibich.app/assets/fibich_nowPlaying.png"
+    >
+    <meta name="twitter:image:alt" content="Fibich Now Playing integration on macOS">
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "From Drag and Drop to Now Playing",
+        "datePublished": "2025-12-15",
+        "url": "https://fibich.app/blog/from-drag-and-drop-to-now-playing.html",
+        "description": "Fibich adds drag and drop, broader file support, playlist durations, and macOS Now Playing integration.",
+        "image": "https://fibich.app/assets/fibich_nowPlaying.png",
+        "author": {
+          "@type": "Person",
+          "name": "Antonin Charvat",
+          "url": "https://www.linkedin.com/in/antonincharvat/"
+        },
+        "publisher": {
+          "@type": "Person",
+          "name": "Antonin Charvat",
+          "url": "https://www.linkedin.com/in/antonincharvat/"
+        }
+      }
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f8f5;
+        --ink: #1c2026;
+        --muted: #667078;
+        --line: #dde2e0;
+        --surface: #ffffff;
+        --accent: #d95c3b;
+        --accent-2: #2f8c84;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background:
+          linear-gradient(180deg, rgba(47, 140, 132, 0.11), transparent 270px),
+          var(--bg);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        min-height: 100vh;
+        overflow: hidden;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        width: min(1080px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 24px 0 10px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.35rem;
+        font-weight: 850;
+        letter-spacing: 0;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        color: var(--muted);
+        font-size: 0.93rem;
+        font-weight: 650;
+      }
+
+      .nav-links a[aria-current="page"] {
+        color: var(--ink);
+      }
+
+      .article-shell {
+        width: min(900px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 58px 0 86px;
+      }
+
+      .eyebrow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 12px;
+        margin: 0 0 16px;
+        color: var(--accent-2);
+        font-size: 0.9rem;
+        font-weight: 800;
+      }
+
+      h1 {
+        max-width: 820px;
+        margin: 0;
+        font-size: clamp(3rem, 7vw, 5.8rem);
+        line-height: 0.96;
+        letter-spacing: 0;
+      }
+
+      .intro {
+        max-width: 740px;
+        margin: 24px 0 0;
+        color: var(--muted);
+        font-size: clamp(1.06rem, 2vw, 1.22rem);
+        line-height: 1.65;
+      }
+
+      .article-body {
+        max-width: 740px;
+        margin-top: 46px;
+      }
+
+      .article-image {
+        width: min(640px, 100%);
+        margin: 38px 0 0;
+      }
+
+      .article-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 1px solid rgba(28, 32, 38, 0.12);
+        border-radius: 8px;
+        background: var(--surface);
+        box-shadow: 0 18px 48px rgba(28, 32, 38, 0.1);
+      }
+
+      .article-body p {
+        margin: 0 0 22px;
+        color: var(--ink);
+        font-size: 1.08rem;
+        line-height: 1.78;
+      }
+
+      .article-body p:first-child {
+        font-size: 1.18rem;
+        line-height: 1.72;
+      }
+
+      .article-footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 12px 22px;
+        margin-top: 54px;
+        border-top: 1px solid var(--line);
+        padding-top: 22px;
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      .article-footer a,
+      .back-link {
+        text-decoration: underline;
+        text-decoration-color: rgba(102, 112, 120, 0.45);
+        text-underline-offset: 3px;
+      }
+
+      .back-link {
+        display: inline-flex;
+        margin-top: 18px;
+        color: var(--accent);
+        font-size: 0.92rem;
+        font-weight: 750;
+        text-decoration-color: rgba(217, 92, 59, 0.55);
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+      }
+
+      @media (max-width: 760px) {
+        .nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 12px 16px;
+          font-size: 0.88rem;
+        }
+
+        .article-shell {
+          padding-top: 42px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <nav class="nav" aria-label="Article navigation">
+        <a class="brand" href="/">Fibich</a>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="/#features">Features</a>
+          <a href="/blog.html" aria-current="page">Blog</a>
+          <a href="/#newsletter">Updates</a>
+          <span id="email">Contact</span>
+        </div>
+      </nav>
+
+      <article class="article-shell">
+        <header>
+          <p class="eyebrow">
+            <time datetime="2025-12-15">December 15, 2025</time>
+            <span>Development</span>
+          </p>
+          <h1>From Drag and Drop to Now Playing</h1>
+          <p class="intro">
+            Fibich becomes easier to feed with music and a little more at home on macOS.
+          </p>
+        </header>
+
+        <figure class="article-image">
+          <img
+            src="/assets/fibich_nowPlaying.png"
+            alt="Fibich Now Playing integration on macOS"
+            width="1264"
+            height="530"
+            loading="lazy"
+          >
+        </figure>
+
+        <div class="article-body">
+          <p>
+            This week Fibich became easier to feed with music, and a little more at home
+            on macOS.
+          </p>
+          <p>
+            The first part was drag and drop. Audio files can now be dragged directly into
+            the app and added to the playlist flow. That feels obvious for a Mac music
+            player, but it still needs careful wiring: Fibich has to receive file
+            references from the system, decide whether they are supported, turn them into
+            playable tracks, and add them without disturbing the current playlist state.
+          </p>
+          <p>
+            I also expanded the file types Fibich declares support for. This matters
+            because the app is meant for real local hi-fi collections, not only the safest
+            mainstream formats. A serious music library may contain FLAC, WAV, AIFF,
+            ALAC, MP3, Ogg Vorbis, WavPack, tracker modules, and other less common audio
+            files. The app needs to be open to that variety from the beginning.
+          </p>
+          <p>
+            There was also a small but useful playlist improvement: track duration is now
+            visible. Duration sounds like a basic metadata field, but it changes how
+            readable a playlist feels. Without it, the queue is just a list of names. With
+            it, the user gets a better sense of the listening session: short tracks, long
+            pieces, full albums, live recordings, and total flow.
+          </p>
+          <p>
+            The more interesting macOS integration came today: command center and now
+            playing information.
+          </p>
+          <p>
+            Fibich can now start talking to the system about what is playing. This means
+            the app is no longer only updating its own window. It can expose current track
+            information to macOS and respond to system-level playback controls. That is an
+            important step toward feeling native.
+          </p>
+          <p>
+            The code behind this needed a clean place to live, so I added separate
+            utilities for now playing information and command center handling. This keeps
+            the player view model from becoming the place where every system integration
+            detail gets dumped. The player still coordinates playback, but macOS-specific
+            behavior now has a clearer boundary.
+          </p>
+          <p>
+            That separation matters because playback state is already busy. The app has to
+            know what track is selected, what is playing, where the timeline is, what the
+            playlist contains, and how user actions should affect all of it. Adding system
+            media controls directly into that same pile would work for a moment, then
+            become painful.
+          </p>
+          <p>
+            This week's progress connects three important parts of Fibich: file input,
+            playlist readability, and macOS playback integration.
+          </p>
+          <p>
+            You can drag music in. You can see more useful information in the playlist.
+            And the system can begin to understand what Fibich is playing.
+          </p>
+          <p>
+            That is exactly the kind of direction I want for the app: a native macOS hi-fi
+            player that respects local files, supports many audio formats, and behaves
+            like it belongs on the desktop.
+          </p>
+        </div>
+
+        <a class="back-link" href="/blog.html">Back to all posts</a>
+
+        <footer class="article-footer">
+          <span>
+            (C) 2026
+            <a
+              href="https://www.linkedin.com/in/antonincharvat/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Antonin Charvat</a>
+          </span>
+          <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Notice</a>
+          </div>
+        </footer>
+      </article>
+    </main>
+
+    <script>
+      const user = "antonincharvat";
+      const domain = "gmail";
+      const dotCom = ".com";
+      const address = `${user}@${domain}${dotCom}`;
+      const email = document.getElementById("email");
+      const link = document.createElement("a");
+
+      link.href = `mailto:${address}`;
+      link.textContent = "Contact";
+      email.replaceChildren(link);
+    </script>
+  </body>
+</html>
