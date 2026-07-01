@@ -91,6 +91,30 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://fibich.app/blog/keeping-the-library-alive.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://fibich.app/blog/making-fibich-feel-like-a-daily-player.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://fibich.app/blog/making-large-playlists-behave.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://fibich.app/blog/handling-the-messy-edges-of-real-music-libraries.html</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://fibich.app/privacy.html</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>yearly</changefreq>
