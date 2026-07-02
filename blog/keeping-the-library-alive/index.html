@@ -239,6 +239,15 @@
         line-height: 1.72;
       }
 
+      .article-body a {
+        color: var(--accent);
+        font-weight: 750;
+        text-decoration: underline;
+        text-decoration-color: rgba(217, 92, 59, 0.45);
+        text-underline-offset: 3px;
+        text-decoration-thickness: 1px;
+      }
+
       .article-cta {
         display: flex;
         flex-wrap: wrap;
@@ -375,9 +384,11 @@
           </p>
           <p>
             That is a big shift for a local music player. A real music folder is not
-            frozen. Albums get added, files move, tags are corrected, folders are renamed,
-            and sometimes tracks disappear. If Fibich wants to be a reliable macOS music
-            library, it cannot only scan once and hope nothing changes.
+            frozen. Albums get added, files move,
+            <a href="/blog/editing-the-music-not-just-playing-it/">tags are corrected</a>,
+            folders are renamed, and sometimes tracks disappear. If Fibich wants to be a
+            reliable macOS music library, it cannot only scan once and hope nothing
+            changes.
           </p>
           <p>Before getting there, I cleaned up some related pieces.</p>
           <p>
@@ -413,8 +424,8 @@
             differently from ordinary tagged audio formats, so the app now handles them
             more carefully: they can be added to the library, metadata loading is safer,
             and editing is disabled where it does not make sense. This is one of those
-            format-support details that matters if Fibich is going to welcome more than
-            the usual MP3/FLAC world.
+            <a href="/blog/messy-real-music-libraries/">format-support details</a> that
+            matters if Fibich is going to welcome more than the usual MP3/FLAC world.
           </p>
           <p>The larger internal change was the library store revamp.</p>
           <p>

@@ -239,6 +239,15 @@
         line-height: 1.72;
       }
 
+      .article-body a {
+        color: var(--accent);
+        font-weight: 750;
+        text-decoration: underline;
+        text-decoration-color: rgba(217, 92, 59, 0.45);
+        text-underline-offset: 3px;
+        text-decoration-thickness: 1px;
+      }
+
       .article-cta {
         display: flex;
         flex-wrap: wrap;
@@ -371,10 +380,11 @@
         <div class="article-body">
           <p>This week was about comfort.</p>
           <p>
-            After the recent work on live library syncing, Fibich needed a round of
-            changes that make the app nicer to use every day: better controls, settings,
-            menu bar playback, album artwork, and fewer delays when the library or
-            playlist gets large.
+            After the recent work on
+            <a href="/blog/keeping-the-library-alive/">live library syncing</a>, Fibich
+            needed a round of changes that make the app nicer to use every day: better
+            controls, settings, menu bar playback, album artwork, and fewer delays when
+            the library or playlist gets large.
           </p>
           <p>
             The first visible change is the redesigned HUD and search controls. The player
@@ -384,9 +394,10 @@
             easy to read quickly, because they are touched constantly.
           </p>
           <p>
-            The library search controls also moved into their own component. Search is
-            becoming important enough that it deserves proper structure rather than being
-            just a field attached to the bottom of a view.
+            The library search controls also moved into their own component.
+            <a href="/blog/finding-music-once-the-library-grows/">Search is becoming
+            important enough</a> that it deserves proper structure rather than being just
+            a field attached to the bottom of a view.
           </p>
           <p>
             Fibich also now has a menu bar extra. This is a very macOS kind of feature,
@@ -420,9 +431,10 @@
           <p>
             Playlist selection and navigation needed optimization. Metadata and audio
             properties could display with delays. HUD volume and timeline updates needed
-            to be calmer with large playlists. Library browser search also needed tuning.
-            These are not glamorous problems, but they are exactly the problems that
-            appear when an app starts meeting real music collections instead of toy data.
+            to be calmer with <a href="/blog/making-large-playlists-behave/">large
+            playlists</a>. Library browser search also needed tuning. These are not
+            glamorous problems, but they are exactly the problems that appear when an app
+            starts meeting real music collections instead of toy data.
           </p>
           <p>
             One code-level lesson here is that playback state updates are contagious. If

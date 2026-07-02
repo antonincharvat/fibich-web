@@ -245,6 +245,15 @@
         line-height: 1.72;
       }
 
+      .article-body a {
+        color: var(--accent);
+        font-weight: 750;
+        text-decoration: underline;
+        text-decoration-color: rgba(217, 92, 59, 0.45);
+        text-underline-offset: 3px;
+        text-decoration-thickness: 1px;
+      }
+
       .article-cta {
         display: flex;
         flex-wrap: wrap;
@@ -384,8 +393,9 @@
             The playlist header has been changing from a fixed row of labels into
             something more dynamic. Instead of hardcoding every visible column, the header
             items now come from configuration. That gives Fibich a better path toward
-            showing different metadata fields over time: title, artist, album, duration,
-            and eventually more audio or file-related properties.
+            showing <a href="/blog/editing-the-music-not-just-playing-it/">different
+            metadata fields</a> over time: title, artist, album, duration, and eventually
+            more audio or file-related properties.
           </p>
           <p>
             The useful part is not only that the app can show metadata. It is that the
@@ -410,9 +420,10 @@
           <p>
             That one feels especially right for Fibich. A local music player should never
             hide the fact that the music lives on disk. If a track is in the library or
-            playlist, the user should be able to jump back to the original file quickly.
-            Maybe they want to inspect the folder, rename something, compare files, or fix
-            artwork and metadata outside the app.
+            playlist, the user should be able to
+            <a href="/blog/opening-music-the-mac-way/">jump back to the original file</a>
+            quickly. Maybe they want to inspect the folder, rename something, compare
+            files, or fix artwork and metadata outside the app.
           </p>
           <p>
             Adding Show in Finder also touched the library generation code. That makes

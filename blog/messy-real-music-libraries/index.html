@@ -242,6 +242,15 @@
         line-height: 1.72;
       }
 
+      .article-body a {
+        color: var(--accent);
+        font-weight: 750;
+        text-decoration: underline;
+        text-decoration-color: rgba(217, 92, 59, 0.45);
+        text-underline-offset: 3px;
+        text-decoration-thickness: 1px;
+      }
+
       .article-cta {
         display: flex;
         flex-wrap: wrap;
@@ -378,11 +387,11 @@
           </p>
           <p>
             The obvious features are already there in some form: playback, playlists,
-            metadata, library sync, search, artwork, settings, and macOS controls. But
-            real local music libraries are full of less obvious situations. Albums arrive
-            as folders. Tracks come from outside the main library. MP3 files have strange
-            tags. Some albums are stored as one long audio file with a CUE sheet beside
-            it.
+            metadata, <a href="/blog/keeping-the-library-alive/">library sync</a>,
+            search, artwork, settings, and macOS controls. But real local music libraries
+            are full of less obvious situations. Albums arrive as folders. Tracks come
+            from outside the main library. MP3 files have strange tags. Some albums are
+            stored as one long audio file with a CUE sheet beside it.
           </p>
           <p>This week was about those edges.</p>
           <p>
@@ -398,7 +407,7 @@
             Sometimes a user drags in a folder from elsewhere, tests a few files, or
             builds a temporary listening list from music that has not been formally added
             to the library. If that playlist disappears after restarting the app, the
-            experience feels fragile.
+            <a href="/blog/making-playlists-stay/">experience feels fragile</a>.
           </p>
           <p>
             There was also work on album sorting. Playlist albums now sort by metadata

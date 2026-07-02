@@ -239,6 +239,15 @@
         line-height: 1.72;
       }
 
+      .article-body a {
+        color: var(--accent);
+        font-weight: 750;
+        text-decoration: underline;
+        text-decoration-color: rgba(217, 92, 59, 0.45);
+        text-underline-offset: 3px;
+        text-decoration-thickness: 1px;
+      }
+
       .article-cta {
         display: flex;
         flex-wrap: wrap;
@@ -371,7 +380,9 @@
         <div class="article-body">
           <p>This week was mostly about scale.</p>
           <p>
-            Fibich already has playlists, metadata editing, live library sync, artwork,
+            Fibich already has playlists,
+            <a href="/blog/editing-the-music-not-just-playing-it/">metadata editing</a>,
+            <a href="/blog/keeping-the-library-alive/">live library sync</a>, artwork,
             search, and macOS playback integration. But once those pieces exist together,
             a new kind of problem appears: the app has to stay calm when the music
             collection is large.
@@ -421,8 +432,9 @@
           <p>
             Search needed attention too. Slow typing in the library search could freeze
             the interface, so the library browser gained a search index and better list
-            projection tests. Search should feel instant, especially when it is used to
-            navigate a large local music collection.
+            projection tests. <a href="/blog/finding-music-once-the-library-grows/">Search
+            should feel instant</a>, especially when it is used to navigate a large local
+            music collection.
           </p>
           <p>
             Layout got some care as well. Narrow window sizes exposed clipping problems in
@@ -435,7 +447,8 @@
             When files move on disk, Fibich now works harder to preserve track identity,
             refresh playlist grouping, avoid “missing path” ghosts, and repair stale or
             duplicate catalog records from older versions. This is exactly the kind of
-            edge case that separates a simple file browser from a durable music library.
+            <a href="/blog/messy-real-music-libraries/">edge case</a> that separates a
+            simple file browser from a durable music library.
           </p>
           <p>A user should be able to reorganize folders without the app losing its mind.</p>
           <p>

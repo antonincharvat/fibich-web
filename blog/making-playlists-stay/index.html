@@ -242,6 +242,15 @@
         line-height: 1.72;
       }
 
+      .article-body a {
+        color: var(--accent);
+        font-weight: 750;
+        text-decoration: underline;
+        text-decoration-color: rgba(217, 92, 59, 0.45);
+        text-underline-offset: 3px;
+        text-decoration-thickness: 1px;
+      }
+
       .article-cta {
         display: flex;
         flex-wrap: wrap;
@@ -376,11 +385,12 @@
             Today Fibich crosses an important line for playlists: they can now persist.
           </p>
           <p>
-            Recently, the app gained multiple playlists, playlist tabs, renaming,
-            adjustable headers, and better playlist interaction. That made the playlist
-            area feel much more useful, but there was still a missing piece. If a
-            playlist disappears when the app closes, it is not really a playlist yet. It
-            is only a temporary queue.
+            Recently, the app gained
+            <a href="/blog/more-than-one-playlist/">multiple playlists</a>, playlist tabs,
+            renaming, adjustable headers, and better playlist interaction. That made the
+            playlist area feel much more useful, but there was still a missing piece. If a
+            playlist disappears when the app closes, it is not really a playlist yet. It is
+            only a temporary queue.
           </p>
           <p>So today's work focuses on making playlists durable with SwiftData.</p>
           <p>
@@ -393,9 +403,11 @@
           <p>
             A playlist is not the same thing as the library. The library represents the
             music collection. A playlist represents a user's chosen listening context. It
-            may contain tracks from the library, files opened from Finder, or tracks added
-            by drag and drop. The app needs to preserve that distinction without losing
-            track of what each playlist item points to.
+            may contain tracks from the library,
+            <a href="/blog/opening-music-the-mac-way/">files opened from Finder</a>, or
+            tracks added by <a href="/blog/from-drag-and-drop-to-now-playing/">drag and
+            drop</a>. The app needs to preserve that distinction without losing track of
+            what each playlist item points to.
           </p>
           <p>
             That led to a new playlist persistence layer, separate fetchers, persistence

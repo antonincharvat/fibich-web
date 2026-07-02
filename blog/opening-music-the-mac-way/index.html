@@ -238,6 +238,15 @@
         line-height: 1.72;
       }
 
+      .article-body a {
+        color: var(--accent);
+        font-weight: 750;
+        text-decoration: underline;
+        text-decoration-color: rgba(217, 92, 59, 0.45);
+        text-underline-offset: 3px;
+        text-decoration-thickness: 1px;
+      }
+
       .article-cta {
         display: flex;
         flex-wrap: wrap;
@@ -422,8 +431,9 @@
           <p>
             This is the kind of feature that makes Fibich feel more native. Finder can be
             part of the listening flow. The playlist can be edited more freely. The app is
-            beginning to accept music from outside its own library path, which is
-            important for real-world use.
+            beginning to accept
+            <a href="/blog/messy-real-music-libraries/">music from outside its own library
+            path</a>, which is important for real-world use.
           </p>
           <p>Sometimes you want a carefully organized library.</p>
           <p>Sometimes you just want to open a folder, pick a few tracks, and listen.</p>

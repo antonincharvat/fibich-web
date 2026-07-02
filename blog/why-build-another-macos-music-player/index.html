@@ -211,6 +211,15 @@
         line-height: 1.72;
       }
 
+      .article-body a {
+        color: var(--accent);
+        font-weight: 750;
+        text-decoration: underline;
+        text-decoration-color: rgba(217, 92, 59, 0.45);
+        text-underline-offset: 3px;
+        text-decoration-thickness: 1px;
+      }
+
       .article-cta {
         display: flex;
         flex-wrap: wrap;
@@ -349,8 +358,9 @@
             The goal is not to build just another player with a play button and a
             playlist. I want Fibich to become a focused hi-fi audio player for Mac: one
             that can handle local music libraries, support a wide range of audio formats,
-            keep playlists durable, expose metadata clearly, and feel like a proper
-            native macOS app.
+            <a href="/blog/making-playlists-stay/">keep playlists durable</a>,
+            <a href="/blog/editing-the-music-not-just-playing-it/">expose metadata clearly</a>,
+            and feel like a proper native macOS app.
           </p>
           <p>
             Right now, the project is still at the beginning. There is a codebase, an app
@@ -368,10 +378,11 @@
           </p>
           <p>
             It also needs to care about the less glamorous parts of music collections.
-            Tags are not always clean. Files move. Albums may come with artwork, CUE
-            sheets, or inconsistent metadata. Some collections are small and tidy; others
-            are large, old, and full of strange little details. A good player should not
-            fall apart the moment a library becomes real.
+            Tags are not always clean. Files move. Albums may come with artwork,
+            <a href="/blog/messy-real-music-libraries/">CUE sheets</a>, or inconsistent
+            metadata. Some collections are small and tidy; others are large, old, and full
+            of strange little details. A good player should not fall apart the moment a
+            library becomes real.
           </p>
           <p>
             That is the long-term ambition for Fibich: wide format support, durable

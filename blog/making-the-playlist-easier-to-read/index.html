@@ -238,6 +238,15 @@
         line-height: 1.72;
       }
 
+      .article-body a {
+        color: var(--accent);
+        font-weight: 750;
+        text-decoration: underline;
+        text-decoration-color: rgba(217, 92, 59, 0.45);
+        text-underline-offset: 3px;
+        text-decoration-thickness: 1px;
+      }
+
       .article-cta {
         display: flex;
         flex-wrap: wrap;
@@ -407,8 +416,10 @@
           <p>
             A playlist row is not just a library row in another place. It has a different
             role. It represents playback order, selection, future queue actions, and
-            eventually more advanced behavior like reordering or multiple playlist
-            management. The code needs to leave space for that.
+            eventually more advanced behavior like
+            <a href="/blog/making-the-playlist-more-personal/">reordering</a> or
+            <a href="/blog/more-than-one-playlist/">multiple playlist management</a>.
+            The code needs to leave space for that.
           </p>
           <p>
             There is also a new structure around parent folder information, which helps

@@ -238,6 +238,15 @@
         line-height: 1.72;
       }
 
+      .article-body a {
+        color: var(--accent);
+        font-weight: 750;
+        text-decoration: underline;
+        text-decoration-color: rgba(217, 92, 59, 0.45);
+        text-underline-offset: 3px;
+        text-decoration-thickness: 1px;
+      }
+
       .article-cta {
         display: flex;
         flex-wrap: wrap;
@@ -419,8 +428,8 @@
             There is also some ongoing work around refreshing the current library after
             changes. Once the app can update stored library items, the interface needs to
             reflect those changes cleanly. That means the browser cannot be only a passive
-            view. It has to stay connected to the persistence layer without becoming
-            tangled with it.
+            view. It has to <a href="/blog/keeping-the-library-alive/">stay connected to
+            the persistence layer</a> without becoming tangled with it.
           </p>
           <p>
             This is the balance I am trying to keep right now: add useful features, but

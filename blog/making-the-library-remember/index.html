@@ -238,6 +238,15 @@
         line-height: 1.72;
       }
 
+      .article-body a {
+        color: var(--accent);
+        font-weight: 750;
+        text-decoration: underline;
+        text-decoration-color: rgba(217, 92, 59, 0.45);
+        text-underline-offset: 3px;
+        text-decoration-thickness: 1px;
+      }
+
       .article-cta {
         display: flex;
         flex-wrap: wrap;
@@ -419,9 +428,11 @@
           </p>
           <p>
             This is still early work. The app does not yet have every library feature I
-            want. Playlists still need to become more durable. Metadata editing will need
-            much more attention. Large collections will eventually bring performance
-            questions. And audio files in the real world are rarely as neat as test data.
+            want. Playlists still need to become more durable.
+            <a href="/blog/editing-the-music-not-just-playing-it/">Metadata editing</a>
+            will need much more attention. Large collections will eventually bring
+            performance questions. And audio files in the real world are rarely as neat as
+            test data.
           </p>
           <p>
             But today's progress moves Fibich toward the kind of player I want it to

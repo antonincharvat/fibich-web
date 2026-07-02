@@ -238,6 +238,15 @@
         line-height: 1.72;
       }
 
+      .article-body a {
+        color: var(--accent);
+        font-weight: 750;
+        text-decoration: underline;
+        text-decoration-color: rgba(217, 92, 59, 0.45);
+        text-underline-offset: 3px;
+        text-decoration-thickness: 1px;
+      }
+
       .article-cta {
         display: flex;
         flex-wrap: wrap;
@@ -382,15 +391,17 @@
             I also expanded the file types Fibich declares support for. This matters
             because the app is meant for real local hi-fi collections, not only the safest
             mainstream formats. A serious music library may contain FLAC, WAV, AIFF,
-            ALAC, MP3, Ogg Vorbis, WavPack, tracker modules, and other less common audio
-            files. The app needs to be open to that variety from the beginning.
+            ALAC, MP3, Ogg Vorbis, WavPack, tracker modules, and
+            <a href="/blog/messy-real-music-libraries/">other less common audio files</a>.
+            The app needs to be open to that variety from the beginning.
           </p>
           <p>
             There was also a small but useful playlist improvement: track duration is now
             visible. Duration sounds like a basic metadata field, but it changes how
-            readable a playlist feels. Without it, the queue is just a list of names. With
-            it, the user gets a better sense of the listening session: short tracks, long
-            pieces, full albums, live recordings, and total flow.
+            <a href="/blog/making-the-playlist-easier-to-read/">readable a playlist
+            feels</a>. Without it, the queue is just a list of names. With it, the user
+            gets a better sense of the listening session: short tracks, long pieces, full
+            albums, live recordings, and total flow.
           </p>
           <p>
             The more interesting macOS integration came today: command center and now
