@@ -177,6 +177,36 @@
         line-height: 1.65;
       }
 
+      .article-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 12px;
+        margin: 18px 0 0;
+        color: var(--muted);
+        font-size: 0.94rem;
+        font-weight: 700;
+      }
+
+      .article-meta strong {
+        color: var(--ink);
+        font-weight: 850;
+      }
+
+      .article-meta .read-time {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .article-meta .read-time::before {
+        content: "";
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--accent-2);
+      }
+
       .article-body {
         max-width: 740px;
         margin-top: 46px;
@@ -321,6 +351,10 @@
           <p class="intro">
             Filesystem observation and reconciliation start turning Fibich's library into
             a living connection to disk.
+          </p>
+          <p class="article-meta">
+            <span><strong>By Antonin Charvat</strong>, creator of Fibich</span>
+            <span class="read-time">4 min read</span>
           </p>
         </header>
 
