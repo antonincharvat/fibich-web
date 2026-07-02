@@ -12,6 +12,12 @@
     <meta name="theme-color" content="#f7f8f5">
     <link rel="canonical" href="https://fibich.app/blog/">
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Fibich Blog RSS Feed"
+      href="https://fibich.app/rss.xml"
+    >
 
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Fibich">
@@ -201,6 +207,12 @@
         font-weight: 750;
       }
 
+      .section-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 18px;
+      }
+
       .post-list {
         display: grid;
         gap: 14px;
@@ -375,7 +387,10 @@
       <section class="content" aria-labelledby="latest-title">
         <div class="section-title">
           <h2 id="latest-title">Latest</h2>
-          <a href="/#newsletter">Get updates</a>
+          <div class="section-links">
+            <a href="/rss.xml">RSS</a>
+            <a href="/#newsletter">Get updates</a>
+          </div>
         </div>
 
         <p class="blog-intro">

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Fibich Blog</title>
+    <link>https://fibich.app/blog/</link>
+    <atom:link href="https://fibich.app/rss.xml" rel="self" type="application/rss+xml"/>
+    <description>Development notes, release updates, and behind-the-scenes writing for Fibich, a macOS music player.</description>
+    <language>en</language>
+    <lastBuildDate>Thu, 02 Jul 2026 00:00:00 +0200</lastBuildDate>
+    <ttl>1440</ttl>
+    <image>
+      <url>https://fibich.app/assets/fibich-player-screenshot.png</url>
+      <title>Fibich Blog</title>
+      <link>https://fibich.app/blog/</link>
+    </image>
+
+    <item>
+      <title>Handling the Messy Edges of Real Music Libraries</title>
+      <link>https://fibich.app/blog/messy-real-music-libraries/</link>
+      <guid isPermaLink="true">https://fibich.app/blog/messy-real-music-libraries/</guid>
+      <pubDate>Mon, 29 Jun 2026 00:00:00 +0200</pubDate>
+      <dc:creator>Antonin Charvat</dc:creator>
+      <description>Fibich improves folder drops, external playlist tracks, album sorting, MP3 edge cases, CUE sheet playback, and queueing from the library.</description>
+    </item>
+    <item>
+      <title>Making Large Playlists Behave</title>
+      <link>https://fibich.app/blog/making-large-playlists-behave/</link>
+      <guid isPermaLink="true">https://fibich.app/blog/making-large-playlists-behave/</guid>
+      <pubDate>Mon, 22 Jun 2026 00:00:00 +0200</pubDate>
+      <dc:creator>Antonin Charvat</dc:creator>
+      <description>Fibich improves playlist scale, metadata synchronization, search, presentation snapshots, layout, and realtime track move handling.</description>
+    </item>
+    <item>
+      <title>Making Fibich Feel Like a Daily Player</title>
+      <link>https://fibich.app/blog/making-fibich-feel-like-a-daily-player/</link>
+      <guid isPermaLink="true">https://fibich.app/blog/making-fibich-feel-like-a-daily-player/</guid>
+      <pubDate>Wed, 10 Jun 2026 00:00:00 +0200</pubDate>
+      <dc:creator>Antonin Charvat</dc:creator>
+      <description>Fibich gets cleaner controls, a menu bar player, settings, artwork loading, performance tuning, and better metadata text repair.</description>
+    </item>
+    <item>
+      <title>Keeping the Library Alive</title>
+      <link>https://fibich.app/blog/keeping-the-library-alive/</link>
+      <guid isPermaLink="true">https://fibich.app/blog/keeping-the-library-alive/</guid>
+      <pubDate>Sat, 30 May 2026 00:00:00 +0200</pubDate>
+      <dc:creator>Antonin Charvat</dc:creator>
+      <description>Fibich starts watching library folders, reconciling file changes, and keeping the music catalog connected to disk.</description>
+    </item>
+    <item>
+      <title>Editing the Music, Not Just Playing It</title>
+      <link>https://fibich.app/blog/editing-the-music-not-just-playing-it/</link>
+      <guid isPermaLink="true">https://fibich.app/blog/editing-the-music-not-just-playing-it/</guid>
+      <pubDate>Tue, 19 May 2026 00:00:00 +0200</pubDate>
+      <dc:creator>Antonin Charvat</dc:creator>
+      <description>Fibich gains metadata editing with drafts, validation, read/write storage, tests, and a more focused sheet-based editor.</description>
+    </item>
+    <item>
+      <title>Making Playlists Stay</title>
+      <link>https://fibich.app/blog/making-playlists-stay/</link>
+      <guid isPermaLink="true">https://fibich.app/blog/making-playlists-stay/</guid>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0100</pubDate>
+      <dc:creator>Antonin Charvat</dc:creator>
+      <description>Fibich adds SwiftData-backed playlist persistence so multiple playlists can survive beyond the current session.</description>
+    </item>
+    <item>
+      <title>Making the Playlist More Personal</title>
+      <link>https://fibich.app/blog/making-the-playlist-more-personal/</link>
+      <guid isPermaLink="true">https://fibich.app/blog/making-the-playlist-more-personal/</guid>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0100</pubDate>
+      <dc:creator>Antonin Charvat</dc:creator>
+      <description>Fibich adds configurable playlist metadata columns, draggable ordering, reusable drag handling, and Show in Finder.</description>
+    </item>
+    <item>
+      <title>From Drag and Drop to Now Playing</title>
+      <link>https://fibich.app/blog/from-drag-and-drop-to-now-playing/</link>
+      <guid isPermaLink="true">https://fibich.app/blog/from-drag-and-drop-to-now-playing/</guid>
+      <pubDate>Mon, 15 Dec 2025 00:00:00 +0100</pubDate>
+      <dc:creator>Antonin Charvat</dc:creator>
+      <description>Fibich adds drag and drop, broader file support, playlist durations, and macOS Now Playing integration.</description>
+    </item>
+    <item>
+      <title>More Than One Playlist</title>
+      <link>https://fibich.app/blog/more-than-one-playlist/</link>
+      <guid isPermaLink="true">https://fibich.app/blog/more-than-one-playlist/</guid>
+      <pubDate>Sun, 07 Dec 2025 00:00:00 +0100</pubDate>
+      <dc:creator>Antonin Charvat</dc:creator>
+      <description>Fibich adds multiple playlist tabs, playlist renaming, and better playlist switching behavior.</description>
+    </item>
+    <item>
+      <title>Opening Music the Mac Way</title>
+      <link>https://fibich.app/blog/opening-music-the-mac-way/</link>
+      <guid isPermaLink="true">https://fibich.app/blog/opening-music-the-mac-way/</guid>
+      <pubDate>Thu, 04 Dec 2025 00:00:00 +0100</pubDate>
+      <dc:creator>Antonin Charvat</dc:creator>
+      <description>Fibich starts accepting music files opened from macOS and improves playlist selection and removal.</description>
+    </item>
+    <item>
+      <title>Making the Playlist Easier to Read</title>
+      <link>https://fibich.app/blog/making-the-playlist-easier-to-read/</link>
+      <guid isPermaLink="true">https://fibich.app/blog/making-the-playlist-easier-to-read/</guid>
+      <pubDate>Wed, 26 Nov 2025 00:00:00 +0100</pubDate>
+      <dc:creator>Antonin Charvat</dc:creator>
+      <description>Fibich adds resizable, persistent playlist columns and separates playlist sorting from library browsing.</description>
+    </item>
+    <item>
+      <title>Finding Music Once the Library Grows</title>
+      <link>https://fibich.app/blog/finding-music-once-the-library-grows/</link>
+      <guid isPermaLink="true">https://fibich.app/blog/finding-music-once-the-library-grows/</guid>
+      <pubDate>Tue, 25 Nov 2025 00:00:00 +0100</pubDate>
+      <dc:creator>Antonin Charvat</dc:creator>
+      <description>Fibich adds full-text library filtering and basic sorting so larger local music collections become easier to navigate.</description>
+    </item>
+    <item>
+      <title>Cleaning the Engine Room</title>
+      <link>https://fibich.app/blog/cleaning-the-engine-room/</link>
+      <guid isPermaLink="true">https://fibich.app/blog/cleaning-the-engine-room/</guid>
+      <pubDate>Wed, 19 Nov 2025 00:00:00 +0100</pubDate>
+      <dc:creator>Antonin Charvat</dc:creator>
+      <description>Fibich moves SFBAudioEngine into Swift Package Manager and refactors library loading for a cleaner foundation.</description>
+    </item>
+    <item>
+      <title>Making the Library Remember</title>
+      <link>https://fibich.app/blog/making-the-library-remember/</link>
+      <guid isPermaLink="true">https://fibich.app/blog/making-the-library-remember/</guid>
+      <pubDate>Wed, 03 Jan 2024 00:00:00 +0100</pubDate>
+      <dc:creator>Antonin Charvat</dc:creator>
+      <description>Fibich moves toward stronger persistence, clearer metadata, and a local music library that can remember its shape.</description>
+    </item>
+    <item>
+      <title>The Playlist Starts to Matter</title>
+      <link>https://fibich.app/blog/the-playlist-starts-to-matter/</link>
+      <guid isPermaLink="true">https://fibich.app/blog/the-playlist-starts-to-matter/</guid>
+      <pubDate>Wed, 19 Jul 2023 00:00:00 +0200</pubDate>
+      <dc:creator>Antonin Charvat</dc:creator>
+      <description>Fibich adds its first playlist implementation, beginning the shift from single-track playback toward longer listening sessions.</description>
+    </item>
+    <item>
+      <title>From Empty Window to First Playback</title>
+      <link>https://fibich.app/blog/from-empty-window-to-first-playback/</link>
+      <guid isPermaLink="true">https://fibich.app/blog/from-empty-window-to-first-playback/</guid>
+      <pubDate>Fri, 30 Jun 2023 00:00:00 +0200</pubDate>
+      <dc:creator>Antonin Charvat</dc:creator>
+      <description>Fibich reaches its first playback milestone with basic audio playback, track progress, seeking, and volume control.</description>
+    </item>
+    <item>
+      <title>Why Build Another macOS Music Player?</title>
+      <link>https://fibich.app/blog/why-build-another-macos-music-player/</link>
+      <guid isPermaLink="true">https://fibich.app/blog/why-build-another-macos-music-player/</guid>
+      <pubDate>Fri, 09 Jun 2023 00:00:00 +0200</pubDate>
+      <dc:creator>Antonin Charvat</dc:creator>
+      <description>Today I started building Fibich, a native macOS music player for people who still care about their own music files.</description>
+    </item>
+  </channel>
+</rss>
