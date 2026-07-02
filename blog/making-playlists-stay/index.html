@@ -3,67 +3,64 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Making the Playlist More Personal - Fibich</title>
+    <title>Making Playlists Stay - Fibich</title>
     <meta
       name="description"
-      content="Fibich adds configurable playlist metadata columns, draggable ordering, reusable drag handling, and Show in Finder."
+      content="Fibich adds SwiftData-backed playlist persistence so multiple playlists can survive beyond the current session."
     >
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="theme-color" content="#f7f8f5">
     <link
       rel="canonical"
-      href="https://fibich.app/blog/making-the-playlist-more-personal.html"
+      href="https://fibich.app/blog/making-playlists-stay/"
     >
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Fibich">
-    <meta property="og:title" content="Making the Playlist More Personal">
+    <meta property="og:title" content="Making Playlists Stay">
     <meta
       property="og:description"
-      content="Fibich adds configurable playlist metadata columns, draggable ordering, reusable drag handling, and Show in Finder."
+      content="Fibich adds SwiftData-backed playlist persistence so multiple playlists can survive beyond the current session."
     >
     <meta
       property="og:url"
-      content="https://fibich.app/blog/making-the-playlist-more-personal.html"
+      content="https://fibich.app/blog/making-playlists-stay/"
     >
-    <meta
-      property="og:image"
-      content="https://fibich.app/assets/fibich_reorderPlaylists.png"
-    >
-    <meta property="og:image:width" content="1611">
-    <meta property="og:image:height" content="555">
+    <meta property="og:image" content="https://fibich.app/assets/fibich_playlists.png">
+    <meta property="og:image:width" content="1036">
+    <meta property="og:image:height" content="682">
     <meta
       property="og:image:alt"
-      content="Fibich playlist header with draggable metadata columns"
+      content="Fibich playlist tabs with multiple playlists"
     >
-    <meta property="article:published_time" content="2025-12-25">
+    <meta property="article:published_time" content="2026-01-04">
     <meta property="article:author" content="Antonin Charvat">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Making the Playlist More Personal">
+    <meta name="twitter:title" content="Making Playlists Stay">
     <meta
       name="twitter:description"
-      content="Fibich adds configurable playlist metadata columns, draggable ordering, reusable drag handling, and Show in Finder."
+      content="Fibich adds SwiftData-backed playlist persistence so multiple playlists can survive beyond the current session."
     >
     <meta
       name="twitter:image"
-      content="https://fibich.app/assets/fibich_reorderPlaylists.png"
+      content="https://fibich.app/assets/fibich_playlists.png"
     >
     <meta
       name="twitter:image:alt"
-      content="Fibich playlist header with draggable metadata columns"
+      content="Fibich playlist tabs with multiple playlists"
     >
 
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        "headline": "Making the Playlist More Personal",
-        "datePublished": "2025-12-25",
-        "url": "https://fibich.app/blog/making-the-playlist-more-personal.html",
-        "description": "Fibich adds configurable playlist metadata columns, draggable ordering, reusable drag handling, and Show in Finder.",
-        "image": "https://fibich.app/assets/fibich_reorderPlaylists.png",
+        "headline": "Making Playlists Stay",
+        "datePublished": "2026-01-04",
+        "url": "https://fibich.app/blog/making-playlists-stay/",
+        "description": "Fibich adds SwiftData-backed playlist persistence so multiple playlists can survive beyond the current session.",
+        "image": "https://fibich.app/assets/fibich_playlists.png",
         "author": {
           "@type": "Person",
           "name": "Antonin Charvat",
@@ -269,7 +266,7 @@
         <div class="nav-links">
           <a href="/">Home</a>
           <a href="/#features">Features</a>
-          <a href="/blog.html" aria-current="page">Blog</a>
+          <a href="/blog/" aria-current="page">Blog</a>
           <a href="/#newsletter">Updates</a>
           <span id="email">Contact</span>
         </div>
@@ -278,97 +275,91 @@
       <article class="article-shell">
         <header>
           <p class="eyebrow">
-            <time datetime="2025-12-25">December 25, 2025</time>
+            <time datetime="2026-01-04">January 4, 2026</time>
             <span>Development</span>
           </p>
-          <h1>Making the Playlist More Personal</h1>
+          <h1>Making Playlists Stay</h1>
           <p class="intro">
-            Playlist metadata columns become configurable and draggable while Fibich stays
-            close to local files.
+            Multiple playlists become durable with SwiftData-backed persistence and
+            stable identity.
           </p>
         </header>
 
         <figure class="article-image">
           <img
-            src="/assets/fibich_reorderPlaylists.png"
-            alt="Fibich playlist header with draggable metadata columns"
-            width="1611"
-            height="555"
+            src="/assets/fibich_playlists.png"
+            alt="Fibich playlist tabs with multiple playlists"
+            width="1036"
+            height="682"
             loading="lazy"
           >
         </figure>
 
         <div class="article-body">
           <p>
-            This week I worked on one of the parts of Fibich that looks simple, but has a
-            lot of hidden decisions behind it: what information the playlist should show,
-            and how much control the user should have over it.
+            Today Fibich crosses an important line for playlists: they can now persist.
           </p>
           <p>
-            The playlist header has been changing from a fixed row of labels into
-            something more dynamic. Instead of hardcoding every visible column, the header
-            items now come from configuration. That gives Fibich a better path toward
-            showing different metadata fields over time: title, artist, album, duration,
-            and eventually more audio or file-related properties.
+            Recently, the app gained multiple playlists, playlist tabs, renaming,
+            adjustable headers, and better playlist interaction. That made the playlist
+            area feel much more useful, but there was still a missing piece. If a
+            playlist disappears when the app closes, it is not really a playlist yet. It
+            is only a temporary queue.
+          </p>
+          <p>So today's work focuses on making playlists durable with SwiftData.</p>
+          <p>
+            This touches more than just saving an array of tracks. Fibich now needs to
+            remember playlist names, playlist items, playlist order, the selected
+            playlist, and enough identity information to connect stored playlist entries
+            back to real library items and files. That is where the code becomes more
+            delicate.
           </p>
           <p>
-            The useful part is not only that the app can show metadata. It is that the
-            playlist can start becoming adjustable.
+            A playlist is not the same thing as the library. The library represents the
+            music collection. A playlist represents a user's chosen listening context. It
+            may contain tracks from the library, files opened from Finder, or tracks added
+            by drag and drop. The app needs to preserve that distinction without losing
+            track of what each playlist item points to.
           </p>
           <p>
-            This week also adds drag and drop reordering for playlist header metadata
-            items. In other words, the user can begin shaping the playlist layout around
-            what matters most to them. Someone comparing album versions may care about
-            album and duration. Someone organizing a folder of loose files may care more
-            about title and artist. Later, format, sample rate, or other hi-fi details may
-            deserve a place too.
+            That led to a new playlist persistence layer, separate fetchers, persistence
+            coordination, and a small store for playlist ordering. There is also a draft
+            model now, which helps keep the data being prepared separate from the stored
+            model. This is useful because saving something too early, or in the wrong
+            shape, can create awkward bugs later.
+          </p>
+          <p>One of the main obstacles is identity.</p>
+          <p>
+            If a user creates several playlists, renames them, switches between them, and
+            later reopens the app, Fibich needs to know which playlist is which. If two
+            items have the same title, that is not enough. If a track moves in the UI, the
+            app needs to know whether it is the same item in a new position or a different
+            item entirely. Durable playlists require stable identifiers, not just visible
+            text.
           </p>
           <p>
-            The code obstacle here was keeping this interaction reusable. Dragging
-            playlist columns is not the only drag behavior Fibich will need. So after the
-            first version worked, I pulled the drag handling into a more general draggable
-            element abstraction. That keeps the playlist header cleaner and gives the app
-            a reusable pattern for similar interactions later.
-          </p>
-          <p>There was also a practical Finder feature added this week: Show in Finder.</p>
-          <p>
-            That one feels especially right for Fibich. A local music player should never
-            hide the fact that the music lives on disk. If a track is in the library or
-            playlist, the user should be able to jump back to the original file quickly.
-            Maybe they want to inspect the folder, rename something, compare files, or fix
-            artwork and metadata outside the app.
+            The interface also gets a small but important addition: an add-tab view for
+            playlists. That makes the playlist section feel more complete. The user can
+            create new listening spaces instead of only working with what already exists.
           </p>
           <p>
-            Adding Show in Finder also touched the library generation code. That makes
-            sense: to reveal a file, Fibich has to keep reliable track of where it came
-            from. The app cannot treat path information as a side detail. For a file-based
-            music player, the connection between a library item and its real location is
-            part of the product.
-          </p>
-          <p>So this week's work has two sides.</p>
-          <p>
-            On the surface, the playlist is becoming more flexible: configurable metadata
-            columns, draggable ordering, better header components.
+            This is the kind of update that changes the app's trust level. A temporary
+            queue is useful for quick listening. A persisted playlist is something the
+            user can invest in. They can build an album sequence, a test list, a mood, or
+            a long listening session and expect it to still be there next time.
           </p>
           <p>
-            Underneath, Fibich is getting more careful about reusable interaction code and
-            file identity.
+            That expectation is basic for a serious music player, but getting it right
+            takes care.
           </p>
           <p>
-            That combination matters. A good macOS music player should give the user
-            control without making the interface feel complicated. It should also stay
-            close to the file system, because local music collections are not abstract
-            catalogs. They are folders, albums, files, tags, and years of personal
-            organization.
+            Today Fibich feels closer to becoming a real home for local music listening:
+            not only playback, not only library browsing, but durable playlists that can
+            survive beyond the current session.
           </p>
-          <p>
-            Today the playlist feels a little less fixed, and the app feels a little more
-            connected to the Mac around it.
-          </p>
-          <p>That is a good direction.</p>
         </div>
 
-        <a class="back-link" href="/blog.html">Back to all posts</a>
+        <a class="back-link" href="/blog/">Back to all posts</a>
 
         <footer class="article-footer">
           <span>

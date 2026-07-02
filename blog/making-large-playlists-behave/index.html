@@ -3,61 +3,61 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Making Fibich Feel Like a Daily Player - Fibich</title>
+    <title>Making Large Playlists Behave - Fibich</title>
     <meta
       name="description"
-      content="Fibich gets cleaner controls, a menu bar player, settings, artwork loading, performance tuning, and better metadata text repair."
+      content="Fibich improves playlist scale, metadata synchronization, search, presentation snapshots, layout, and realtime track move handling."
     >
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="theme-color" content="#f7f8f5">
     <link
       rel="canonical"
-      href="https://fibich.app/blog/making-fibich-feel-like-a-daily-player.html"
+      href="https://fibich.app/blog/making-large-playlists-behave/"
     >
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Fibich">
-    <meta property="og:title" content="Making Fibich Feel Like a Daily Player">
+    <meta property="og:title" content="Making Large Playlists Behave">
     <meta
       property="og:description"
-      content="Fibich gets cleaner controls, a menu bar player, settings, artwork loading, performance tuning, and better metadata text repair."
+      content="Fibich improves playlist scale, metadata synchronization, search, presentation snapshots, layout, and realtime track move handling."
     >
     <meta
       property="og:url"
-      content="https://fibich.app/blog/making-fibich-feel-like-a-daily-player.html"
+      content="https://fibich.app/blog/making-large-playlists-behave/"
     >
-    <meta property="og:image" content="https://fibich.app/assets/fibich_artwork.png">
-    <meta property="og:image:width" content="1966">
-    <meta property="og:image:height" content="1300">
+    <meta property="og:image" content="https://fibich.app/assets/fibich_large.png">
+    <meta property="og:image:width" content="4064">
+    <meta property="og:image:height" content="2324">
     <meta
       property="og:image:alt"
-      content="Fibich interface showing album artwork"
+      content="Fibich interface with a large playlist"
     >
-    <meta property="article:published_time" content="2026-06-10">
+    <meta property="article:published_time" content="2026-06-22">
     <meta property="article:author" content="Antonin Charvat">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Making Fibich Feel Like a Daily Player">
+    <meta name="twitter:title" content="Making Large Playlists Behave">
     <meta
       name="twitter:description"
-      content="Fibich gets cleaner controls, a menu bar player, settings, artwork loading, performance tuning, and better metadata text repair."
+      content="Fibich improves playlist scale, metadata synchronization, search, presentation snapshots, layout, and realtime track move handling."
     >
     <meta
       name="twitter:image"
-      content="https://fibich.app/assets/fibich_artwork.png"
+      content="https://fibich.app/assets/fibich_large.png"
     >
-    <meta name="twitter:image:alt" content="Fibich interface showing album artwork">
+    <meta name="twitter:image:alt" content="Fibich interface with a large playlist">
 
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        "headline": "Making Fibich Feel Like a Daily Player",
-        "datePublished": "2026-06-10",
-        "url": "https://fibich.app/blog/making-fibich-feel-like-a-daily-player.html",
-        "description": "Fibich gets cleaner controls, a menu bar player, settings, artwork loading, performance tuning, and better metadata text repair.",
-        "image": "https://fibich.app/assets/fibich_artwork.png",
+        "headline": "Making Large Playlists Behave",
+        "datePublished": "2026-06-22",
+        "url": "https://fibich.app/blog/making-large-playlists-behave/",
+        "description": "Fibich improves playlist scale, metadata synchronization, search, presentation snapshots, layout, and realtime track move handling.",
+        "image": "https://fibich.app/assets/fibich_large.png",
         "author": {
           "@type": "Person",
           "name": "Antonin Charvat",
@@ -263,7 +263,7 @@
         <div class="nav-links">
           <a href="/">Home</a>
           <a href="/#features">Features</a>
-          <a href="/blog.html" aria-current="page">Blog</a>
+          <a href="/blog/" aria-current="page">Blog</a>
           <a href="/#newsletter">Updates</a>
           <span id="email">Contact</span>
         </div>
@@ -272,110 +272,114 @@
       <article class="article-shell">
         <header>
           <p class="eyebrow">
-            <time datetime="2026-06-10">June 10, 2026</time>
+            <time datetime="2026-06-22">June 22, 2026</time>
             <span>Development</span>
           </p>
-          <h1>Making Fibich Feel Like a Daily Player</h1>
+          <h1>Making Large Playlists Behave</h1>
           <p class="intro">
-            Better controls, settings, menu bar playback, artwork, and performance tuning
-            make Fibich more comfortable for ordinary listening.
+            Fibich becomes calmer under scale, with better playlist synchronization,
+            search, layout, and realtime move handling.
           </p>
         </header>
 
         <figure class="article-image">
           <img
-            src="/assets/fibich_artwork.png"
-            alt="Fibich interface showing album artwork"
-            width="1966"
-            height="1300"
+            src="/assets/fibich_large.png"
+            alt="Fibich interface with a large playlist"
+            width="4064"
+            height="2324"
             loading="lazy"
           >
         </figure>
 
         <div class="article-body">
-          <p>This week was about comfort.</p>
+          <p>This week was mostly about scale.</p>
           <p>
-            After the recent work on live library syncing, Fibich needed a round of
-            changes that make the app nicer to use every day: better controls, settings,
-            menu bar playback, album artwork, and fewer delays when the library or
-            playlist gets large.
+            Fibich already has playlists, metadata editing, live library sync, artwork,
+            search, and macOS playback integration. But once those pieces exist together,
+            a new kind of problem appears: the app has to stay calm when the music
+            collection is large.
+          </p>
+          <p>A small playlist can hide many design mistakes. A large playlist cannot.</p>
+          <p>
+            The first area I worked on was playlist metadata loading and edit persistence.
+            When metadata changes, the app needs to update what the user sees without
+            losing the connection between the playlist item, the library track, and the
+            file on disk. That sounds straightforward, but it is easy for one part of the
+            app to update while another part still shows old data.
           </p>
           <p>
-            The first visible change is the redesigned HUD and search controls. The player
-            controls are now split into clearer pieces: transport controls, timeline
-            scrubber, volume control, and dedicated HUD buttons. That may sound like
-            internal cleanup, but it helps the interface too. Playback controls should be
-            easy to read quickly, because they are touched constantly.
+            So the playlist and metadata flow needed a stronger connection. Editing tags
+            should not leave the playlist stale. Loading metadata should not block basic
+            interaction. The user should be able to edit, return to the playlist, and
+            trust that the visible information is still synchronized.
+          </p>
+          <p>After that came performance work around playback state.</p>
+          <p>
+            The problem was that too many parts of the interface were reacting to changes
+            that did not belong to them. Playback state, selection state, timeline
+            updates, metadata loading, artwork, and playlist rendering can easily become
+            tangled. If one track starts playing and the whole playlist behaves like it
+            needs to refresh, the app starts feeling heavy.
           </p>
           <p>
-            The library search controls also moved into their own component. Search is
-            becoming important enough that it deserves proper structure rather than being
-            just a field attached to the bottom of a view.
+            This week I began isolating those concerns more clearly. Playlist playback
+            state, selection state, scroll requests, table sections, and presentation
+            snapshots are now more separate concepts. That gives the app a better chance
+            of updating only what actually changed.
           </p>
           <p>
-            Fibich also now has a menu bar extra. This is a very macOS kind of feature,
-            and it fits the app well. If music is already playing, the user should not
-            always need the main window in front. A small menu bar playback view gives
-            access to basic playback and volume without breaking focus.
+            A large part of this work was about switching between big playlists. If two
+            playlists contain many tracks, changing tabs should not feel like the app is
+            rebuilding the world from scratch. The playlist now has a more focused
+            presentation snapshot, which helps separate the stored playlist data from the
+            shape needed for display.
           </p>
           <p>
-            Settings started taking shape too. There is now a general settings section,
-            playback volume persistence, and separate playback and library settings areas.
-            This is another sign that the app is growing beyond a prototype. Preferences
-            matter once the user can reasonably expect Fibich to remember how they like to
-            listen.
+            There were also smaller usability improvements with the same theme. Playlist
+            scroll positions now persist across launches, so the app can remember where
+            the user was. Cmd+A now selects all items in the library or playlist, which is
+            basic desktop behavior but important for a Mac app. The player view model also
+            went through refactoring to keep the growing responsibilities under control.
           </p>
           <p>
-            A few playback controls were added as well: playlist navigation,
-            stop-after-current, and automatic scrolling to keep the playing track visible.
-            These are small listening-flow features, but they make a difference. When a
-            playlist is long, losing the current track is annoying. When an album is
-            ending, stop-after-current can be exactly what you want. These are the kinds
-            of controls that make a music player feel attentive.
+            Search needed attention too. Slow typing in the library search could freeze
+            the interface, so the library browser gained a search index and better list
+            projection tests. Search should feel instant, especially when it is used to
+            navigate a large local music collection.
           </p>
           <p>
-            Album artwork loading arrived this week too, but carefully: artwork is loaded
-            on demand. That matters because cover images can become expensive if the app
-            tries to load everything immediately. A large local music library might
-            contain thousands of albums, and artwork should make the player feel richer,
-            not slower.
+            Layout got some care as well. Narrow window sizes exposed clipping problems in
+            the playlist and player area. That kind of bug matters because a music player
+            may live beside other apps, not always in a wide full-screen layout. Fibich
+            needs to adapt without making the playlist unreadable.
           </p>
-          <p>Performance became a theme almost immediately.</p>
+          <p>The biggest reliability fix this week was around realtime track moves.</p>
           <p>
-            Playlist selection and navigation needed optimization. Metadata and audio
-            properties could display with delays. HUD volume and timeline updates needed
-            to be calmer with large playlists. Library browser search also needed tuning.
-            These are not glamorous problems, but they are exactly the problems that
-            appear when an app starts meeting real music collections instead of toy data.
+            When files move on disk, Fibich now works harder to preserve track identity,
+            refresh playlist grouping, avoid “missing path” ghosts, and repair stale or
+            duplicate catalog records from older versions. This is exactly the kind of
+            edge case that separates a simple file browser from a durable music library.
           </p>
+          <p>A user should be able to reorganize folders without the app losing its mind.</p>
           <p>
-            One code-level lesson here is that playback state updates are contagious. If
-            the timeline moves every fraction of a second, or volume changes trigger too
-            much view work, unrelated parts of the app can end up refreshing more than
-            they should. Splitting the HUD timeline and volume controls into their own
-            view models helps keep frequent updates contained.
-          </p>
-          <p>Today also brings an improvement to metadata text repair for diacritics.</p>
-          <p>
-            That one matters to me because music libraries are full of names that should
-            be written correctly. Czech, Spanish, French, German, and many other languages
-            rely on characters that can be damaged by bad encoding or old tags. If Fibich
-            can repair some of that text, the library feels more respectful and less
-            messy.
+            That is the deeper goal of this week’s work: make Fibich more resilient. Large
+            playlists should switch quickly. Metadata edits should stay synchronized.
+            Search should not freeze. Layout should hold together. Moved files should not
+            break the library.
           </p>
           <p>
-            So this week’s work is not one single headline feature. It is a layer of
-            daily-use improvements: cleaner controls, a menu bar player, settings,
-            artwork, better scrolling, better performance, and more careful metadata text.
+            None of this is as visible as adding a new button, but it changes how
+            trustworthy the app feels.
           </p>
           <p>
-            A music player does not become good only by supporting more formats. It
-            becomes good by feeling steady during ordinary listening.
+            A hi-fi music player is not only about audio quality or format support. It
+            also has to respect the size and messiness of real music collections.
           </p>
-          <p>That is what Fibich is moving toward now.</p>
+          <p>This week, Fibich became better at that.</p>
         </div>
 
-        <a class="back-link" href="/blog.html">Back to all posts</a>
+        <a class="back-link" href="/blog/">Back to all posts</a>
 
         <footer class="article-footer">
           <span>

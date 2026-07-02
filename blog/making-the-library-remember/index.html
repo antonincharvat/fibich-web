@@ -3,60 +3,60 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Finding Music Once the Library Grows - Fibich</title>
+    <title>Making the Library Remember - Fibich</title>
     <meta
       name="description"
-      content="Fibich adds full-text library filtering and basic sorting so larger local music collections become easier to navigate."
+      content="Fibich moves toward stronger persistence, clearer metadata, and a local music library that can remember its shape."
     >
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="theme-color" content="#f7f8f5">
     <link
       rel="canonical"
-      href="https://fibich.app/blog/finding-music-once-the-library-grows.html"
+      href="https://fibich.app/blog/making-the-library-remember/"
     >
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Fibich">
-    <meta property="og:title" content="Finding Music Once the Library Grows">
+    <meta property="og:title" content="Making the Library Remember">
     <meta
       property="og:description"
-      content="Fibich adds full-text library filtering and basic sorting so larger local music collections become easier to navigate."
+      content="Fibich moves toward stronger persistence, clearer metadata, and a local music library that can remember its shape."
     >
     <meta
       property="og:url"
-      content="https://fibich.app/blog/finding-music-once-the-library-grows.html"
+      content="https://fibich.app/blog/making-the-library-remember/"
     >
-    <meta property="article:published_time" content="2025-11-25">
+    <meta property="article:published_time" content="2024-01-03">
     <meta property="article:author" content="Antonin Charvat">
     <meta
       property="og:image"
-      content="https://fibich.app/assets/fibich_search.png"
+      content="https://fibich.app/assets/fibich_libconfig.png"
     >
-    <meta property="og:image:width" content="1455">
-    <meta property="og:image:height" content="996">
-    <meta property="og:image:alt" content="Early Fibich library search interface">
+    <meta property="og:image:width" content="2130">
+    <meta property="og:image:height" content="1284">
+    <meta property="og:image:alt" content="Early Fibich library configuration interface">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Finding Music Once the Library Grows">
+    <meta name="twitter:title" content="Making the Library Remember">
     <meta
       name="twitter:description"
-      content="Fibich adds full-text library filtering and basic sorting so larger local music collections become easier to navigate."
+      content="Fibich moves toward stronger persistence, clearer metadata, and a local music library that can remember its shape."
     >
     <meta
       name="twitter:image"
-      content="https://fibich.app/assets/fibich_search.png"
+      content="https://fibich.app/assets/fibich_libconfig.png"
     >
-    <meta name="twitter:image:alt" content="Early Fibich library search interface">
+    <meta name="twitter:image:alt" content="Early Fibich library configuration interface">
 
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        "headline": "Finding Music Once the Library Grows",
-        "datePublished": "2025-11-25",
-        "url": "https://fibich.app/blog/finding-music-once-the-library-grows.html",
-        "description": "Fibich adds full-text library filtering and basic sorting so larger local music collections become easier to navigate.",
-        "image": "https://fibich.app/assets/fibich_search.png",
+        "headline": "Making the Library Remember",
+        "datePublished": "2024-01-03",
+        "url": "https://fibich.app/blog/making-the-library-remember/",
+        "description": "Fibich moves toward stronger persistence, clearer metadata, and a local music library that can remember its shape.",
+        "image": "https://fibich.app/assets/fibich_libconfig.png",
         "author": {
           "@type": "Person",
           "name": "Antonin Charvat",
@@ -262,7 +262,7 @@
         <div class="nav-links">
           <a href="/">Home</a>
           <a href="/#features">Features</a>
-          <a href="/blog.html" aria-current="page">Blog</a>
+          <a href="/blog/" aria-current="page">Blog</a>
           <a href="/#newsletter">Updates</a>
           <span id="email">Contact</span>
         </div>
@@ -271,98 +271,93 @@
       <article class="article-shell">
         <header>
           <p class="eyebrow">
-            <time datetime="2025-11-25">November 25, 2025</time>
+            <time datetime="2024-01-03">January 3, 2024</time>
             <span>Development</span>
           </p>
-          <h1>Finding Music Once the Library Grows</h1>
+          <h1>Making the Library Remember</h1>
           <p class="intro">
-            Search and sorting arrive in the library browser, making larger local music
-            collections easier to navigate.
+            Fibich is moving again, with a stronger foundation for remembering the user's
+            music library.
           </p>
         </header>
 
         <figure class="article-image">
           <img
-            src="/assets/fibich_search.png"
-            alt="Early Fibich library search interface"
-            width="1455"
-            height="996"
+            src="/assets/fibich_libconfig.png"
+            alt="Early Fibich library configuration interface"
+            width="2130"
+            height="1284"
             loading="lazy"
           >
         </figure>
 
         <div class="article-body">
+          <p>Today Fibich is moving again.</p>
           <p>
-            Today Fibich gets a feature that sounds ordinary until the library starts to
-            become real: search.
+            The project has been quiet for a while, mostly because other work needed
+            attention and this app had to stay aside for a bit. That pause was useful in
+            its own way. Coming back to Fibich now makes the next priority clearer:
+            before adding more visible features, the app needs a stronger foundation for
+            remembering the user's music library.
           </p>
           <p>
-            The library browser now has full-text filtering, along with basic sorting
-            controls. This is one of those updates where the visible result is simple:
-            type into a search field, narrow the library, change the order. But
-            underneath, it touches an important question for the app: how should Fibich
-            behave once the user's music collection is no longer small?
+            A music player becomes much more useful once it can remember the shape of your
+            library. Not only what is playing right now, but where your music lives, how
+            tracks are represented, what metadata belongs to them, and how the app should
+            rebuild that picture when it opens again.
           </p>
           <p>
-            A local hi-fi library can grow quickly. A few FLAC albums become a few
-            hundred tracks. Then come live recordings, archived releases, different
-            masters, folders sorted by artist, folders sorted by label, maybe classical
-            albums where filenames begin with movement numbers, or compilations where the
-            usual artist-album structure becomes less tidy.
+            Recently, I have been working on the foundation for that. Fibich now has its
+            first deeper persistence layer, using SwiftData, and the library model has
+            been reshaped around it. That is a fairly technical sentence, but the
+            user-facing goal is simple: the app should become more durable.
           </p>
           <p>
-            At that point, browsing alone is not enough. The app needs to help the user
-            get back to a specific album, artist, or track without forcing them to
-            manually open every folder.
+            A local music library is not temporary. People spend years building these
+            collections. Lossless albums, FLAC files, archived releases, live recordings,
+            carefully named folders, and unusual formats often carry a personal history. A
+            hi-fi audio player for macOS should treat that library as something stable and
+            valuable, not as a list that disappears whenever the app restarts.
+          </p>
+          <p>Metadata is also starting to become a more central part of Fibich.</p>
+          <p>
+            This matters because filenames are never enough. A real music collection needs
+            track titles, artists, albums, durations, formats, and eventually much more.
+            Metadata is what turns a folder of audio files into a browsable music library.
+            It is also what makes playlists readable, search useful, and album
+            organization possible.
           </p>
           <p>
-            Today's work adds a search field directly to the library browser. It also
-            adds a small sorting model, currently just ascending and descending, so the
-            library can start to respond to different browsing habits. This is not a huge
-            feature on paper, but it begins to make the library feel interactive rather
-            than static.
-          </p>
-          <p>The main obstacle is that Fibich's library is not just a flat list.</p>
-          <p>
-            The browser is built around expandable items, so filtering has to work with
-            structure. A simple list of tracks would be easier: take all rows, compare
-            text, hide what does not match. But a music library usually has hierarchy. If
-            a matching track belongs inside an album or folder, the app still needs to
-            keep enough context for the result to make sense. Search should not make the
-            library feel broken just because the matching item is nested.
+            Today's work introduces a clearer place for metadata in the app and begins
+            separating the responsibilities inside the codebase. The library browser,
+            playlist, player, file access, and data coordination are starting to become
+            more distinct from each other. The benefit should be felt later as Fibich
+            grows: new features will have a stronger foundation instead of everything
+            being tied to one fragile center.
           </p>
           <p>
-            Sorting has its own small traps too. Music filenames often start with numbers:
-            01, 02, 10, and so on. If those are treated only as plain text, the order can
-            feel wrong. So I have started adding small helpers for reading leading numbers
-            from strings. It is a tiny code-level detail, but it points toward a larger
-            goal: Fibich should sort music in a way that feels natural for albums, not
-            just alphabetically convenient for a computer.
+            There is also a small but meaningful shift in the interface. The library
+            browser is becoming its own part of the app, and the metadata view is
+            beginning to appear as a real companion to playback. That makes Fibich feel
+            more like a music library tool, not only a player window.
           </p>
           <p>
-            There is also some ongoing work around refreshing the current library after
-            changes. Once the app can update stored library items, the interface needs to
-            reflect those changes cleanly. That means the browser cannot be only a passive
-            view. It has to stay connected to the persistence layer without becoming
-            tangled with it.
+            This is still early work. The app does not yet have every library feature I
+            want. Playlists still need to become more durable. Metadata editing will need
+            much more attention. Large collections will eventually bring performance
+            questions. And audio files in the real world are rarely as neat as test data.
           </p>
           <p>
-            This is the balance I am trying to keep right now: add useful features, but
-            keep the structure clean enough that the next feature does not become painful.
+            But today's progress moves Fibich toward the kind of player I want it to
+            become: a native macOS music player that can organize local audio files,
+            preserve library state, show useful metadata, and give hi-fi listeners a
+            reliable home for their own collections.
           </p>
-          <p>
-            Today, the result is practical. The library is easier to scan, easier to
-            narrow down, and a little closer to how a real macOS music player should
-            behave when handling a serious local audio collection.
-          </p>
-          <p>Search is not glamorous.</p>
-          <p>
-            But once your music library is large enough, it becomes one of the features
-            that decides whether the app feels calm or frustrating.
-          </p>
+          <p>Playback made Fibich feel alive.</p>
+          <p>Persistence and metadata are what can make it feel trustworthy.</p>
         </div>
 
-        <a class="back-link" href="/blog.html">Back to all posts</a>
+        <a class="back-link" href="/blog/">Back to all posts</a>
 
         <footer class="article-footer">
           <span>

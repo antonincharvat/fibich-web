@@ -3,61 +3,67 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Keeping the Library Alive - Fibich</title>
+    <title>Editing the Music, Not Just Playing It - Fibich</title>
     <meta
       name="description"
-      content="Fibich starts watching library folders, reconciling file changes, and keeping the music catalog connected to disk."
+      content="Fibich gains metadata editing with drafts, validation, read/write storage, tests, and a more focused sheet-based editor."
     >
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="theme-color" content="#f7f8f5">
     <link
       rel="canonical"
-      href="https://fibich.app/blog/keeping-the-library-alive.html"
+      href="https://fibich.app/blog/editing-the-music-not-just-playing-it/"
     >
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Fibich">
-    <meta property="og:title" content="Keeping the Library Alive">
+    <meta property="og:title" content="Editing the Music, Not Just Playing It">
     <meta
       property="og:description"
-      content="Fibich starts watching library folders, reconciling file changes, and keeping the music catalog connected to disk."
+      content="Fibich gains metadata editing with drafts, validation, read/write storage, tests, and a more focused sheet-based editor."
     >
     <meta
       property="og:url"
-      content="https://fibich.app/blog/keeping-the-library-alive.html"
+      content="https://fibich.app/blog/editing-the-music-not-just-playing-it/"
     >
-    <meta property="og:image" content="https://fibich.app/assets/fibich_audioProps.png">
-    <meta property="og:image:width" content="1602">
-    <meta property="og:image:height" content="962">
+    <meta
+      property="og:image"
+      content="https://fibich.app/assets/fibich_metadataEditor.png"
+    >
+    <meta property="og:image:width" content="1974">
+    <meta property="og:image:height" content="1330">
     <meta
       property="og:image:alt"
-      content="Fibich audio file properties view"
+      content="Fibich metadata editor sheet for editing track tags"
     >
-    <meta property="article:published_time" content="2026-05-30">
+    <meta property="article:published_time" content="2026-05-19">
     <meta property="article:author" content="Antonin Charvat">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Keeping the Library Alive">
+    <meta name="twitter:title" content="Editing the Music, Not Just Playing It">
     <meta
       name="twitter:description"
-      content="Fibich starts watching library folders, reconciling file changes, and keeping the music catalog connected to disk."
+      content="Fibich gains metadata editing with drafts, validation, read/write storage, tests, and a more focused sheet-based editor."
     >
     <meta
       name="twitter:image"
-      content="https://fibich.app/assets/fibich_audioProps.png"
+      content="https://fibich.app/assets/fibich_metadataEditor.png"
     >
-    <meta name="twitter:image:alt" content="Fibich audio file properties view">
+    <meta
+      name="twitter:image:alt"
+      content="Fibich metadata editor sheet for editing track tags"
+    >
 
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        "headline": "Keeping the Library Alive",
-        "datePublished": "2026-05-30",
-        "url": "https://fibich.app/blog/keeping-the-library-alive.html",
-        "description": "Fibich starts watching library folders, reconciling file changes, and keeping the music catalog connected to disk.",
-        "image": "https://fibich.app/assets/fibich_audioProps.png",
+        "headline": "Editing the Music, Not Just Playing It",
+        "datePublished": "2026-05-19",
+        "url": "https://fibich.app/blog/editing-the-music-not-just-playing-it/",
+        "description": "Fibich gains metadata editing with drafts, validation, read/write storage, tests, and a more focused sheet-based editor.",
+        "image": "https://fibich.app/assets/fibich_metadataEditor.png",
         "author": {
           "@type": "Person",
           "name": "Antonin Charvat",
@@ -263,7 +269,7 @@
         <div class="nav-links">
           <a href="/">Home</a>
           <a href="/#features">Features</a>
-          <a href="/blog.html" aria-current="page">Blog</a>
+          <a href="/blog/" aria-current="page">Blog</a>
           <a href="/#newsletter">Updates</a>
           <span id="email">Contact</span>
         </div>
@@ -272,126 +278,107 @@
       <article class="article-shell">
         <header>
           <p class="eyebrow">
-            <time datetime="2026-05-30">May 30, 2026</time>
+            <time datetime="2026-05-19">May 19, 2026</time>
             <span>Development</span>
           </p>
-          <h1>Keeping the Library Alive</h1>
+          <h1>Editing the Music, Not Just Playing It</h1>
           <p class="intro">
-            Filesystem observation and reconciliation start turning Fibich's library into
-            a living connection to disk.
+            Metadata editing brings Fibich closer to being a serious local music library
+            tool.
           </p>
         </header>
 
         <figure class="article-image">
           <img
-            src="/assets/fibich_audioProps.png"
-            alt="Fibich audio file properties view"
-            width="1602"
-            height="962"
+            src="/assets/fibich_metadataEditor.png"
+            alt="Fibich metadata editor sheet for editing track tags"
+            width="1974"
+            height="1330"
             loading="lazy"
           >
         </figure>
 
         <div class="article-body">
           <p>
-            This week Fibich moved from “the library can be generated” toward something
-            more useful: the library can start reacting when music files change on disk.
+            Fibich has been quiet for a while, but today it moves into a much more
+            serious part of local music management: metadata editing.
           </p>
           <p>
-            That is a big shift for a local music player. A real music folder is not
-            frozen. Albums get added, files move, tags are corrected, folders are renamed,
-            and sometimes tracks disappear. If Fibich wants to be a reliable macOS music
-            library, it cannot only scan once and hope nothing changes.
-          </p>
-          <p>Before getting there, I cleaned up some related pieces.</p>
-          <p>
-            The app now has its first proper icon, which is a small but satisfying step.
-            Fibich is starting to feel less like a development window and more like an
-            actual Mac app.
+            Until now, metadata has mostly been something the app reads and displays. That
+            is already useful, because a music library becomes much easier to understand
+            when tracks show real titles, artists, albums, durations, and other details
+            instead of bare filenames.
           </p>
           <p>
-            The name Fibich comes from Zdeněk Fibich, the Czech composer. The app icon is
-            also based on his resemblance, which gives the project a small connection to
-            Czech musical history.
+            But for a local hi-fi collection, reading metadata is only half of the story.
+            Tags are often incomplete, inconsistent, or just wrong. A downloaded album may
+            have missing track numbers. A live recording may have no album artist. Older
+            files may carry strange values. Sometimes the user simply wants to clean up
+            their own library.
+          </p>
+          <p>So this week Fibich gains a metadata editor.</p>
+          <p>
+            This is a bigger step than it first appears, because editing metadata touches
+            the actual audio file. A mistake here is more serious than a wrong label in
+            the interface. The app needs a draft state, validation, saving logic, and a
+            clear boundary between what the user is currently editing and what has
+            actually been written back to the file.
           </p>
           <p>
-            There is a personal reason for the name too: I have a real love for Fibich’s
-            music. Using his name is not only a branding choice, but also a small tribute.
-            It feels right for a music player built with care for local collections,
-            listening habits, and the emotional weight music can carry.
+            That is why I added a dedicated metadata edit draft and an audio metadata
+            store. The draft lets the interface work with temporary changes safely. The
+            store gives the app a clearer place for the real read/write work. Keeping
+            those apart matters: the UI can be flexible, but writing tags needs to be
+            deliberate.
           </p>
           <p>
-            I like that the name does not sound like a generic software product. It gives
-            the player a bit of character, while still keeping the focus on music.
+            There is also numeric validation now. Some metadata fields are not free text
+            in practice. Track number, disc number, year, BPM, and similar values need to
+            behave like numbers. Without validation, it is too easy to save something that
+            looks fine in a text field but becomes messy as real file metadata.
           </p>
           <p>
-            I also added an audio file properties view. Metadata tells us musical
-            information: title, artist, album, track number. File properties tell another
-            part of the story: format, duration, technical details, and what kind of audio
-            file the app is really dealing with. For a hi-fi player, both views matter.
-            Sometimes you want to know the album title; sometimes you want to know what
-            kind of file you are playing.
+            Additional metadata fields can now be added and removed too. This is important
+            because music tags are not one-size-fits-all. A simple pop album and a
+            carefully archived classical recording may need different fields. Fibich
+            should not assume that only a tiny fixed set of metadata matters.
           </p>
           <p>
-            There was also a specific fix around tracker modules. These files behave
-            differently from ordinary tagged audio formats, so the app now handles them
-            more carefully: they can be added to the library, metadata loading is safer,
-            and editing is disabled where it does not make sense. This is one of those
-            format-support details that matters if Fibich is going to welcome more than
-            the usual MP3/FLAC world.
-          </p>
-          <p>The larger internal change was the library store revamp.</p>
-          <p>
-            Earlier, the stored library shape was too close to the tree shown in the
-            interface. That is convenient at first, but it becomes awkward once the app
-            needs to update individual tracks, rebuild parts of the tree, and keep
-            playlists connected to the same underlying music. So the library storage has
-            been flattened around library tracks, while a separate projection step builds
-            the expandable browser tree.
+            I also added a test target and the first unit tests around metadata editing.
+            That felt necessary right away. Once the app starts changing audio file
+            metadata, I want more confidence that drafts, validation, and saving behavior
+            stay predictable. This is one of those areas where tests are not decoration.
+            They are a safety rail.
           </p>
           <p>
-            That separation is important. Storage wants stable records. The UI wants
-            hierarchy. Those are not the same problem.
-          </p>
-          <p>Once the library had a cleaner shape, realtime sync became possible.</p>
-          <p>
-            Today’s work adds filesystem observation, debouncing, change filtering,
-            reconciliation, and a small sync activity bar. In plain English: Fibich can
-            watch the selected library location, notice changes, wait briefly so it does
-            not overreact to noisy file events, decide what actually matters, and then
-            update the library.
-          </p>
-          <p>The hard part is avoiding chaos.</p>
-          <p>
-            File systems do not politely say, “one album was renamed.” They emit events.
-            Sometimes several. Sometimes too many. Sometimes a save operation looks like a
-            delete and recreate. The app has to turn that stream into useful library
-            changes without breaking playlists or making the interface flicker.
+            The editor UI changed during the work as well. It now presents as a sheet,
+            which feels more natural on macOS for this kind of focused editing task. When
+            adding a new metadata row, the view also scrolls to it automatically, which
+            keeps the interaction from feeling clumsy.
           </p>
           <p>
-            That is why this update introduces a few separate pieces: a filesystem
-            observer, a debouncer, a reconciliation planner, and change application logic.
-            Each part has a smaller job, which keeps the feature easier to reason about.
+            One more quiet but meaningful step arrived this week: localization support,
+            starting with English and Spanish. That may seem separate from metadata, but
+            it belongs to the same kind of maturity. Once the app has more dialogs,
+            labels, validation messages, and editing flows, text needs to be organized
+            properly instead of scattered everywhere.
           </p>
           <p>
-            There are more tests now too, especially around the library catalog pipeline,
-            path change handling, playlists, and metadata behavior. Realtime sync is
-            exactly the kind of feature where tests matter, because the happy path is only
-            part of the story. Moving, deleting, renaming, and regenerating tracks can
-            create subtle bugs if identity is not handled carefully.
-          </p>
-          <p>The result is a major step for Fibich’s library.</p>
-          <p>
-            It is no longer just a snapshot of a folder from one moment in time. It is
-            beginning to behave like a living connection to the user’s music collection.
+            This week's progress makes Fibich feel less like only a player and more like
+            a library tool.
           </p>
           <p>
-            For a native macOS hi-fi player, that feels essential. Local libraries change.
-            Fibich should notice.
+            It can play local audio files, organize them into playlists, and now begin
+            helping the user improve the information stored inside the music itself.
+          </p>
+          <p>
+            For a local macOS music player, that matters. A well-kept music library is
+            not just files on disk. It is files plus meaningful metadata, and Fibich is
+            starting to treat that metadata as something the user can actually work with.
           </p>
         </div>
 
-        <a class="back-link" href="/blog.html">Back to all posts</a>
+        <a class="back-link" href="/blog/">Back to all posts</a>
 
         <footer class="article-footer">
           <span>

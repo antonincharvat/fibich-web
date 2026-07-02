@@ -3,60 +3,60 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Making the Playlist Easier to Read - Fibich</title>
+    <title>From Drag and Drop to Now Playing - Fibich</title>
     <meta
       name="description"
-      content="Fibich adds resizable, persistent playlist columns and separates playlist sorting from library browsing."
+      content="Fibich adds drag and drop, broader file support, playlist durations, and macOS Now Playing integration."
     >
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="theme-color" content="#f7f8f5">
     <link
       rel="canonical"
-      href="https://fibich.app/blog/making-the-playlist-easier-to-read.html"
+      href="https://fibich.app/blog/from-drag-and-drop-to-now-playing/"
     >
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Fibich">
-    <meta property="og:title" content="Making the Playlist Easier to Read">
+    <meta property="og:title" content="From Drag and Drop to Now Playing">
     <meta
       property="og:description"
-      content="Fibich adds resizable, persistent playlist columns and separates playlist sorting from library browsing."
+      content="Fibich adds drag and drop, broader file support, playlist durations, and macOS Now Playing integration."
     >
     <meta
       property="og:url"
-      content="https://fibich.app/blog/making-the-playlist-easier-to-read.html"
+      content="https://fibich.app/blog/from-drag-and-drop-to-now-playing/"
     >
-    <meta property="article:published_time" content="2025-11-26">
+    <meta property="article:published_time" content="2025-12-15">
     <meta property="article:author" content="Antonin Charvat">
     <meta
       property="og:image"
-      content="https://fibich.app/assets/fibich_playlistHeader.png"
+      content="https://fibich.app/assets/fibich_nowPlaying.png"
     >
-    <meta property="og:image:width" content="1958">
-    <meta property="og:image:height" content="412">
-    <meta property="og:image:alt" content="Early Fibich resizable playlist header">
+    <meta property="og:image:width" content="1264">
+    <meta property="og:image:height" content="530">
+    <meta property="og:image:alt" content="Fibich Now Playing integration on macOS">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Making the Playlist Easier to Read">
+    <meta name="twitter:title" content="From Drag and Drop to Now Playing">
     <meta
       name="twitter:description"
-      content="Fibich adds resizable, persistent playlist columns and separates playlist sorting from library browsing."
+      content="Fibich adds drag and drop, broader file support, playlist durations, and macOS Now Playing integration."
     >
     <meta
       name="twitter:image"
-      content="https://fibich.app/assets/fibich_playlistHeader.png"
+      content="https://fibich.app/assets/fibich_nowPlaying.png"
     >
-    <meta name="twitter:image:alt" content="Early Fibich resizable playlist header">
+    <meta name="twitter:image:alt" content="Fibich Now Playing integration on macOS">
 
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        "headline": "Making the Playlist Easier to Read",
-        "datePublished": "2025-11-26",
-        "url": "https://fibich.app/blog/making-the-playlist-easier-to-read.html",
-        "description": "Fibich adds resizable, persistent playlist columns and separates playlist sorting from library browsing.",
-        "image": "https://fibich.app/assets/fibich_playlistHeader.png",
+        "headline": "From Drag and Drop to Now Playing",
+        "datePublished": "2025-12-15",
+        "url": "https://fibich.app/blog/from-drag-and-drop-to-now-playing/",
+        "description": "Fibich adds drag and drop, broader file support, playlist durations, and macOS Now Playing integration.",
+        "image": "https://fibich.app/assets/fibich_nowPlaying.png",
         "author": {
           "@type": "Person",
           "name": "Antonin Charvat",
@@ -262,7 +262,7 @@
         <div class="nav-links">
           <a href="/">Home</a>
           <a href="/#features">Features</a>
-          <a href="/blog.html" aria-current="page">Blog</a>
+          <a href="/blog/" aria-current="page">Blog</a>
           <a href="/#newsletter">Updates</a>
           <span id="email">Contact</span>
         </div>
@@ -271,90 +271,91 @@
       <article class="article-shell">
         <header>
           <p class="eyebrow">
-            <time datetime="2025-11-26">November 26, 2025</time>
+            <time datetime="2025-12-15">December 15, 2025</time>
             <span>Development</span>
           </p>
-          <h1>Making the Playlist Easier to Read</h1>
+          <h1>From Drag and Drop to Now Playing</h1>
           <p class="intro">
-            Playlist columns become resizable and persistent, making the listening queue
-            clearer and more comfortable to use.
+            Fibich becomes easier to feed with music and a little more at home on macOS.
           </p>
         </header>
 
         <figure class="article-image">
           <img
-            src="/assets/fibich_playlistHeader.png"
-            alt="Early Fibich resizable playlist header"
-            width="1958"
-            height="412"
+            src="/assets/fibich_nowPlaying.png"
+            alt="Fibich Now Playing integration on macOS"
+            width="1264"
+            height="530"
             loading="lazy"
           >
         </figure>
 
         <div class="article-body">
           <p>
-            Today I spent time on one of those features that looks small from the outside,
-            but changes how the whole app feels during use: the playlist header.
+            This week Fibich became easier to feed with music, and a little more at home
+            on macOS.
           </p>
           <p>
-            Fibich already has a playlist, but a playlist only becomes comfortable once it
-            can carry real information clearly. Track names alone are not enough. A useful
-            music player needs room for title, artist, album, duration, maybe
-            format-related details later, and the user should not feel trapped by whatever
-            column width the app happens to choose.
+            The first part was drag and drop. Audio files can now be dragged directly into
+            the app and added to the playlist flow. That feels obvious for a Mac music
+            player, but it still needs careful wiring: Fibich has to receive file
+            references from the system, decide whether they are supported, turn them into
+            playable tracks, and add them without disturbing the current playlist state.
           </p>
           <p>
-            So today the playlist header starts becoming more flexible. It now has
-            slidable dividers, which means the visible columns can be resized. Even
-            better, those values are persisted, so the app can remember the layout instead
-            of resetting it every time.
+            I also expanded the file types Fibich declares support for. This matters
+            because the app is meant for real local hi-fi collections, not only the safest
+            mainstream formats. A serious music library may contain FLAC, WAV, AIFF,
+            ALAC, MP3, Ogg Vorbis, WavPack, tracker modules, and other less common audio
+            files. The app needs to be open to that variety from the beginning.
           </p>
           <p>
-            This is a small promise, but an important one: if the user adjusts the
-            interface, Fibich should respect that choice.
+            There was also a small but useful playlist improvement: track duration is now
+            visible. Duration sounds like a basic metadata field, but it changes how
+            readable a playlist feels. Without it, the queue is just a list of names. With
+            it, the user gets a better sense of the listening session: short tracks, long
+            pieces, full albums, live recordings, and total flow.
           </p>
           <p>
-            There was also a bit of cleanup around playlist sorting. Some of the sorting
-            work started in the library browser, but the playlist has different needs. A
-            library browser is hierarchical; a playlist is more like an ordered listening
-            queue. Reusing the same ideas too directly would make the code convenient for
-            a moment and awkward later.
+            The more interesting macOS integration came today: command center and now
+            playing information.
           </p>
           <p>
-            So today's work separates the concepts a little more clearly. The library
-            expandable list is now treated as its own thing, and playlist sorting has room
-            to grow in the direction the playlist actually needs. This is one of those
-            code-level obstacles that appears only after a feature starts becoming real:
-            the first version can share too much, because everything looks similar early
-            on. Later, the differences become obvious.
+            Fibich can now start talking to the system about what is playing. This means
+            the app is no longer only updating its own window. It can expose current track
+            information to macOS and respond to system-level playback controls. That is an
+            important step toward feeling native.
           </p>
           <p>
-            A playlist row is not just a library row in another place. It has a different
-            role. It represents playback order, selection, future queue actions, and
-            eventually more advanced behavior like reordering or multiple playlist
-            management. The code needs to leave space for that.
+            The code behind this needed a clean place to live, so I added separate
+            utilities for now playing information and command center handling. This keeps
+            the player view model from becoming the place where every system integration
+            detail gets dumped. The player still coordinates playback, but macOS-specific
+            behavior now has a clearer boundary.
           </p>
           <p>
-            There is also a new structure around parent folder information, which helps
-            keep library items understandable without forcing every view to know too much
-            about how the library is arranged. That matters because Fibich keeps moving
-            between two views of music: the library as stored on disk, and the playlist as
-            chosen for listening.
-          </p>
-          <p>The result today is not dramatic, but it is very practical.</p>
-          <p>
-            The playlist is becoming more readable. The columns can breathe. The app
-            remembers user adjustments. And the code is a little less confused about the
-            difference between browsing a music library and managing a listening queue.
+            That separation matters because playback state is already busy. The app has to
+            know what track is selected, what is playing, where the timeline is, what the
+            playlist contains, and how user actions should affect all of it. Adding system
+            media controls directly into that same pile would work for a moment, then
+            become painful.
           </p>
           <p>
-            This is the kind of progress I want Fibich to keep making: not only adding
-            features, but making the everyday music-listening flow feel calmer and more
-            deliberate.
+            This week's progress connects three important parts of Fibich: file input,
+            playlist readability, and macOS playback integration.
+          </p>
+          <p>
+            You can drag music in. You can see more useful information in the playlist.
+            And the system can begin to understand what Fibich is playing.
+          </p>
+          <p>
+            That is exactly the kind of direction I want for the app: a native macOS hi-fi
+            player that respects local files, supports many audio formats, and behaves
+            like it belongs on the desktop.
           </p>
         </div>
 
-        <a class="back-link" href="/blog.html">Back to all posts</a>
+        <a class="back-link" href="/blog/">Back to all posts</a>
 
         <footer class="article-footer">
           <span>

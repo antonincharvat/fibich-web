@@ -3,60 +3,47 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cleaning the Engine Room - Fibich</title>
+    <title>Why Build Another macOS Music Player? - Fibich</title>
     <meta
       name="description"
-      content="Fibich moves SFBAudioEngine into Swift Package Manager and refactors library loading for a cleaner foundation."
+      content="Today I started building Fibich, a native macOS music player for people who still care about their own music files."
     >
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="theme-color" content="#f7f8f5">
     <link
       rel="canonical"
-      href="https://fibich.app/blog/cleaning-the-engine-room.html"
+      href="https://fibich.app/blog/why-build-another-macos-music-player/"
     >
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Fibich">
-    <meta property="og:title" content="Cleaning the Engine Room">
+    <meta property="og:title" content="Why Build Another macOS Music Player?">
     <meta
       property="og:description"
-      content="Fibich moves SFBAudioEngine into Swift Package Manager and refactors library loading for a cleaner foundation."
+      content="Today I started building Fibich, a native macOS music player for people who still care about their own music files."
     >
     <meta
       property="og:url"
-      content="https://fibich.app/blog/cleaning-the-engine-room.html"
+      content="https://fibich.app/blog/why-build-another-macos-music-player/"
     >
-    <meta property="article:published_time" content="2025-11-19">
+    <meta property="article:published_time" content="2023-06-09">
     <meta property="article:author" content="Antonin Charvat">
-    <meta
-      property="og:image"
-      content="https://fibich.app/assets/fibich_loading.png"
-    >
-    <meta property="og:image:width" content="564">
-    <meta property="og:image:height" content="486">
-    <meta property="og:image:alt" content="Early Fibich library loading interface">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Cleaning the Engine Room">
+    <meta name="twitter:title" content="Why Build Another macOS Music Player?">
     <meta
       name="twitter:description"
-      content="Fibich moves SFBAudioEngine into Swift Package Manager and refactors library loading for a cleaner foundation."
+      content="Today I started building Fibich, a native macOS music player for people who still care about their own music files."
     >
-    <meta
-      name="twitter:image"
-      content="https://fibich.app/assets/fibich_loading.png"
-    >
-    <meta name="twitter:image:alt" content="Early Fibich library loading interface">
 
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        "headline": "Cleaning the Engine Room",
-        "datePublished": "2025-11-19",
-        "url": "https://fibich.app/blog/cleaning-the-engine-room.html",
-        "description": "Fibich moves SFBAudioEngine into Swift Package Manager and refactors library loading for a cleaner foundation.",
-        "image": "https://fibich.app/assets/fibich_loading.png",
+        "headline": "Why Build Another macOS Music Player?",
+        "datePublished": "2023-06-09",
+        "url": "https://fibich.app/blog/why-build-another-macos-music-player/",
+        "description": "Today I started building Fibich, a native macOS music player for people who still care about their own music files.",
         "author": {
           "@type": "Person",
           "name": "Antonin Charvat",
@@ -79,6 +66,7 @@
         --surface: #ffffff;
         --accent: #d95c3b;
         --accent-2: #2f8c84;
+        --shadow: 0 24px 70px rgba(28, 32, 38, 0.11);
       }
 
       * {
@@ -171,23 +159,8 @@
       }
 
       .article-body {
-        max-width: 740px;
         margin-top: 46px;
-      }
-
-      .article-image {
-        width: min(520px, 100%);
-        margin: 38px 0 0;
-      }
-
-      .article-image img {
-        display: block;
-        width: 100%;
-        height: auto;
-        border: 1px solid rgba(28, 32, 38, 0.12);
-        border-radius: 8px;
-        background: var(--surface);
-        box-shadow: 0 18px 48px rgba(28, 32, 38, 0.1);
+        max-width: 740px;
       }
 
       .article-body p {
@@ -253,6 +226,7 @@
           padding-top: 42px;
         }
       }
+
     </style>
   </head>
   <body>
@@ -262,7 +236,7 @@
         <div class="nav-links">
           <a href="/">Home</a>
           <a href="/#features">Features</a>
-          <a href="/blog.html" aria-current="page">Blog</a>
+          <a href="/blog/" aria-current="page">Blog</a>
           <a href="/#newsletter">Updates</a>
           <span id="email">Contact</span>
         </div>
@@ -271,97 +245,78 @@
       <article class="article-shell">
         <header>
           <p class="eyebrow">
-            <time datetime="2025-11-19">November 19, 2025</time>
+            <time datetime="2023-06-09">June 9, 2023</time>
             <span>Development</span>
           </p>
-          <h1>Cleaning the Engine Room</h1>
+          <h1>Why Build Another macOS Music Player?</h1>
           <p class="intro">
-            Today's update is not about a shiny new button. It is about making Fibich
-            easier to build on.
+            Today I started building Fibich: a native macOS music player for people who
+            still care about their own music files.
           </p>
         </header>
 
-        <figure class="article-image">
-          <img
-            src="/assets/fibich_loading.png"
-            alt="Early Fibich library loading interface"
-            width="564"
-            height="486"
-            loading="lazy"
-          >
-        </figure>
-
         <div class="article-body">
+          <p>Today I started building Fibich.</p>
           <p>
-            Today's update is not about a shiny new button. It is about making Fibich
-            easier to build on.
+            The idea is simple, but it has been sitting in my head for a while: a native
+            macOS music player for people who still care about their own music files.
           </p>
           <p>
-            Recently I picked the project back up and started by dealing with some
-            technical weight that had quietly accumulated. The biggest change is that the
-            audio engine dependencies are no longer embedded directly in the project as
-            bundled frameworks. Fibich now uses the SFBAudioEngine package through Swift
-            Package Manager.
+            Most music apps today are built around streaming, subscriptions,
+            recommendations, and catalogs that live somewhere else. That is useful, of
+            course. But it does not fully serve the listener who has a carefully collected
+            local music library, lossless albums, unusual audio formats, archived
+            releases, live recordings, and folders arranged with intention.
           </p>
-          <p>That sounds like housekeeping, but it matters a lot.</p>
+          <p>Fibich started from that place.</p>
           <p>
-            A hi-fi audio player depends heavily on its playback layer. Support for
-            formats like FLAC and other lossless or less common audio files should not
-            rely on a pile of manually stored binary frameworks inside the app repository.
-            That approach works for a prototype, but it becomes awkward over time: the
-            project gets heavier, updates are harder, and the build setup becomes easier
-            to break.
-          </p>
-          <p>
-            Moving this into package management makes the app cleaner and more
-            maintainable. It is the kind of change users may never notice directly, but it
-            gives the project better footing for wide audio format support later.
-          </p>
-          <p>The other big piece today is a refactor around library loading.</p>
-          <p>
-            Fibich needs to scan folders, read audio files, generate library items, and
-            persist the result. Earlier versions had too much of that logic gathered in
-            one central place. That made the code harder to reason about, especially
-            because library generation is not instant. It touches the file system, reads
-            metadata, and may need to process a lot of tracks.
+            The goal is not to build just another player with a play button and a
+            playlist. I want Fibich to become a focused hi-fi audio player for Mac: one
+            that can handle local music libraries, support a wide range of audio formats,
+            keep playlists durable, expose metadata clearly, and feel like a proper
+            native macOS app.
           </p>
           <p>
-            So today I started separating those responsibilities more clearly. There is
-            now a dedicated path for generating the library, fetching stored items, and
-            coordinating persistence. Some of the work has also moved toward Swift's
-            async/await model, which is a better fit for operations that take time.
+            Right now, the project is still at the beginning. There is a codebase, an app
+            skeleton, and the first pieces of the foundation. But even at this stage, the
+            direction matters. If Fibich is going to be useful, it needs to respect the
+            way people actually store and listen to music.
           </p>
-          <p>The practical goal is simple: Fibich should not feel stuck while it is thinking.</p>
+          <p>That means more than playback.</p>
           <p>
-            Scanning a music library is very different from updating a label on screen.
-            The app needs to do real work, but the interface should remain calm and
-            responsive. This becomes especially important for larger local music
-            collections, where hundreds or thousands of audio files may be involved.
-          </p>
-          <p>
-            There is also a new intermediate model for library items while they are being
-            created. That helps keep unfinished file-scanning data separate from the
-            stable items the app eventually stores and displays. It is a small
-            architectural detail, but it solves a real problem: not every piece of data is
-            ready at the same time, and the app should not pretend it is.
+            A serious local music player needs to understand folders, tracks, albums,
+            artists, metadata, file formats, and playlists that should still be there
+            tomorrow. It needs to work well with macOS, not against it. It should feel
+            comfortable next to Finder, media keys, system playback controls, and the
+            habits Mac users already have.
           </p>
           <p>
-            This is the kind of progress that feels quiet, but important. Fibich is
-            becoming less of a prototype and more of an application with parts that know
-            their jobs: playback, library generation, persistence, player state, and
-            interface.
+            It also needs to care about the less glamorous parts of music collections.
+            Tags are not always clean. Files move. Albums may come with artwork, CUE
+            sheets, or inconsistent metadata. Some collections are small and tidy; others
+            are large, old, and full of strange little details. A good player should not
+            fall apart the moment a library becomes real.
           </p>
           <p>
-            There is still plenty to do. The library needs better browsing, sorting, and
-            filtering. Playlists need to become more capable. Metadata still deserves much
-            deeper tools. But today's work clears the path for those features to be built
-            without fighting the foundation every time.
+            That is the long-term ambition for Fibich: wide format support, durable
+            playlists, library organization, metadata tools, and macOS playback
+            integration in one native player.
           </p>
-          <p>A good music player should feel simple on the surface.</p>
-          <p>Underneath, Fibich now has a cleaner engine room.</p>
+          <p>
+            I do not expect all of that to appear at once. The first step is simply to
+            give the project a shape and start moving. From here, I want to build in
+            public notes: what changed, what problem appeared, what became easier, what
+            still feels rough, and how each step brings Fibich closer to being a reliable
+            music player for local hi-fi collections.
+          </p>
+          <p>Today is mostly the starting line.</p>
+          <p>
+            But it is an important one. Fibich now exists, and the goal is clear: build a
+            Mac music player that treats your own music library as the main event.
+          </p>
         </div>
 
-        <a class="back-link" href="/blog.html">Back to all posts</a>
+        <a class="back-link" href="/blog/">Back to all posts</a>
 
         <footer class="article-footer">
           <span>

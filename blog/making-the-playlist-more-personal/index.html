@@ -3,60 +3,67 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>More Than One Playlist - Fibich</title>
+    <title>Making the Playlist More Personal - Fibich</title>
     <meta
       name="description"
-      content="Fibich adds multiple playlist tabs, playlist renaming, and better playlist switching behavior."
+      content="Fibich adds configurable playlist metadata columns, draggable ordering, reusable drag handling, and Show in Finder."
     >
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="theme-color" content="#f7f8f5">
     <link
       rel="canonical"
-      href="https://fibich.app/blog/more-than-one-playlist.html"
+      href="https://fibich.app/blog/making-the-playlist-more-personal/"
     >
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Fibich">
-    <meta property="og:title" content="More Than One Playlist">
+    <meta property="og:title" content="Making the Playlist More Personal">
     <meta
       property="og:description"
-      content="Fibich adds multiple playlist tabs, playlist renaming, and better playlist switching behavior."
+      content="Fibich adds configurable playlist metadata columns, draggable ordering, reusable drag handling, and Show in Finder."
     >
     <meta
       property="og:url"
-      content="https://fibich.app/blog/more-than-one-playlist.html"
+      content="https://fibich.app/blog/making-the-playlist-more-personal/"
     >
-    <meta property="article:published_time" content="2025-12-07">
-    <meta property="article:author" content="Antonin Charvat">
     <meta
       property="og:image"
-      content="https://fibich.app/assets/fibich_playlists.png"
+      content="https://fibich.app/assets/fibich_reorderPlaylists.png"
     >
-    <meta property="og:image:width" content="1036">
-    <meta property="og:image:height" content="682">
-    <meta property="og:image:alt" content="Fibich playlist tabs interface">
+    <meta property="og:image:width" content="1611">
+    <meta property="og:image:height" content="555">
+    <meta
+      property="og:image:alt"
+      content="Fibich playlist header with draggable metadata columns"
+    >
+    <meta property="article:published_time" content="2025-12-25">
+    <meta property="article:author" content="Antonin Charvat">
+
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="More Than One Playlist">
+    <meta name="twitter:title" content="Making the Playlist More Personal">
     <meta
       name="twitter:description"
-      content="Fibich adds multiple playlist tabs, playlist renaming, and better playlist switching behavior."
+      content="Fibich adds configurable playlist metadata columns, draggable ordering, reusable drag handling, and Show in Finder."
     >
     <meta
       name="twitter:image"
-      content="https://fibich.app/assets/fibich_playlists.png"
+      content="https://fibich.app/assets/fibich_reorderPlaylists.png"
     >
-    <meta name="twitter:image:alt" content="Fibich playlist tabs interface">
+    <meta
+      name="twitter:image:alt"
+      content="Fibich playlist header with draggable metadata columns"
+    >
 
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        "headline": "More Than One Playlist",
-        "datePublished": "2025-12-07",
-        "url": "https://fibich.app/blog/more-than-one-playlist.html",
-        "description": "Fibich adds multiple playlist tabs, playlist renaming, and better playlist switching behavior.",
-        "image": "https://fibich.app/assets/fibich_playlists.png",
+        "headline": "Making the Playlist More Personal",
+        "datePublished": "2025-12-25",
+        "url": "https://fibich.app/blog/making-the-playlist-more-personal/",
+        "description": "Fibich adds configurable playlist metadata columns, draggable ordering, reusable drag handling, and Show in Finder.",
+        "image": "https://fibich.app/assets/fibich_reorderPlaylists.png",
         "author": {
           "@type": "Person",
           "name": "Antonin Charvat",
@@ -262,7 +269,7 @@
         <div class="nav-links">
           <a href="/">Home</a>
           <a href="/#features">Features</a>
-          <a href="/blog.html" aria-current="page">Blog</a>
+          <a href="/blog/" aria-current="page">Blog</a>
           <a href="/#newsletter">Updates</a>
           <span id="email">Contact</span>
         </div>
@@ -271,88 +278,97 @@
       <article class="article-shell">
         <header>
           <p class="eyebrow">
-            <time datetime="2025-12-07">December 7, 2025</time>
+            <time datetime="2025-12-25">December 25, 2025</time>
             <span>Development</span>
           </p>
-          <h1>More Than One Playlist</h1>
+          <h1>Making the Playlist More Personal</h1>
           <p class="intro">
-            Multiple playlist tabs turn Fibich from one listening queue into a small
-            workspace for different sessions.
+            Playlist metadata columns become configurable and draggable while Fibich stays
+            close to local files.
           </p>
         </header>
 
         <figure class="article-image">
           <img
-            src="/assets/fibich_playlists.png"
-            alt="Fibich playlist tabs interface"
-            width="1036"
-            height="682"
+            src="/assets/fibich_reorderPlaylists.png"
+            alt="Fibich playlist header with draggable metadata columns"
+            width="1611"
+            height="555"
             loading="lazy"
           >
         </figure>
 
         <div class="article-body">
           <p>
-            Today Fibich gets a feature that changes the playlist from a single queue into
-            a small workspace: multiple playlists.
+            This week I worked on one of the parts of Fibich that looks simple, but has a
+            lot of hidden decisions behind it: what information the playlist should show,
+            and how much control the user should have over it.
           </p>
           <p>
-            Until now, the playlist has mostly behaved like one current listening list.
-            That is useful, but it is limiting. Real listening is rarely that linear.
-            Sometimes you want one playlist for an album run, another for testing new
-            files, another for a late-night selection, another for tracks opened from
-            Finder. A local music player should not force all of that into one place.
-          </p>
-          <p>The new playlist tab section starts solving that.</p>
-          <p>
-            There is now a playlist model, a tab view for switching between playlists, and
-            a dedicated area for managing them visually. The important part is not only
-            that more playlists can exist. It is that the app now has a structure where
-            each playlist can become its own object with its own name, items, and state.
+            The playlist header has been changing from a fixed row of labels into
+            something more dynamic. Instead of hardcoding every visible column, the header
+            items now come from configuration. That gives Fibich a better path toward
+            showing different metadata fields over time: title, artist, album, duration,
+            and eventually more audio or file-related properties.
           </p>
           <p>
-            Today also adds playlist renaming. This is small, but it makes the feature
-            feel personal. "Playlist 1" is a placeholder. A named playlist is something
-            the user can recognize and come back to.
+            The useful part is not only that the app can show metadata. It is that the
+            playlist can start becoming adjustable.
           </p>
           <p>
-            There was a UI challenge here too. Playlist tabs need to feel compact,
-            clickable, and native enough without taking over the whole player. The first
-            version introduces a custom tab shape and an inline input field for renaming.
-            It is still early, but the direction is clear: playlists should be easy to
-            create, switch, and understand at a glance.
+            This week also adds drag and drop reordering for playlist header metadata
+            items. In other words, the user can begin shaping the playlist layout around
+            what matters most to them. Someone comparing album versions may care about
+            album and duration. Someone organizing a folder of loose files may care more
+            about title and artist. Later, format, sample rate, or other hi-fi details may
+            deserve a place too.
           </p>
           <p>
-            A small bug appeared around switching playlists as well: the view wanted to
-            jump back to the top automatically when changing playlists. That kind of
-            behavior can sound harmless, but in a music app it quickly becomes annoying.
-            If a playlist is long, position matters. The user should not feel punished for
-            switching context.
+            The code obstacle here was keeping this interaction reusable. Dragging
+            playlist columns is not the only drag behavior Fibich will need. So after the
+            first version worked, I pulled the drag handling into a more general draggable
+            element abstraction. That keeps the playlist header cleaner and gives the app
+            a reusable pattern for similar interactions later.
+          </p>
+          <p>There was also a practical Finder feature added this week: Show in Finder.</p>
+          <p>
+            That one feels especially right for Fibich. A local music player should never
+            hide the fact that the music lives on disk. If a track is in the library or
+            playlist, the user should be able to jump back to the original file quickly.
+            Maybe they want to inspect the folder, rename something, compare files, or fix
+            artwork and metadata outside the app.
           </p>
           <p>
-            So today includes a first fix for that scroll behavior. It is a tiny detail,
-            but it belongs to the same larger idea: Fibich should remember enough of what
-            the user is doing to feel steady.
+            Adding Show in Finder also touched the library generation code. That makes
+            sense: to reveal a file, Fibich has to keep reliable track of where it came
+            from. The app cannot treat path information as a side detail. For a file-based
+            music player, the connection between a library item and its real location is
+            part of the product.
+          </p>
+          <p>So this week's work has two sides.</p>
+          <p>
+            On the surface, the playlist is becoming more flexible: configurable metadata
+            columns, draggable ordering, better header components.
           </p>
           <p>
-            On the code side, this is another step away from "one player, one list"
-            thinking. The player now has to care about the selected playlist, the playlist
-            collection, tab interactions, rename state, and how all of that connects to
-            playback. That adds complexity, but it is the right kind of complexity because
-            it matches how people actually use music.
+            Underneath, Fibich is getting more careful about reusable interaction code and
+            file identity.
           </p>
           <p>
-            The result today is that Fibich feels less like a simple queue and more like a
-            place where different listening sessions can coexist.
+            That combination matters. A good macOS music player should give the user
+            control without making the interface feel complicated. It should also stay
+            close to the file system, because local music collections are not abstract
+            catalogs. They are folders, albums, files, tags, and years of personal
+            organization.
           </p>
           <p>
-            That is a meaningful step toward durable playlists and better library
-            organization. A hi-fi music player should not only play files well. It should
-            help keep listening contexts organized without getting in the way.
+            Today the playlist feels a little less fixed, and the app feels a little more
+            connected to the Mac around it.
           </p>
+          <p>That is a good direction.</p>
         </div>
 
-        <a class="back-link" href="/blog.html">Back to all posts</a>
+        <a class="back-link" href="/blog/">Back to all posts</a>
 
         <footer class="article-footer">
           <span>

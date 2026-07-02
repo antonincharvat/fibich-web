@@ -3,60 +3,60 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>From Empty Window to First Playback - Fibich</title>
+    <title>Cleaning the Engine Room - Fibich</title>
     <meta
       name="description"
-      content="Fibich reaches its first playback milestone with basic audio playback, track progress, seeking, and volume control."
+      content="Fibich moves SFBAudioEngine into Swift Package Manager and refactors library loading for a cleaner foundation."
     >
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="theme-color" content="#f7f8f5">
     <link
       rel="canonical"
-      href="https://fibich.app/blog/from-empty-window-to-first-playback.html"
+      href="https://fibich.app/blog/cleaning-the-engine-room/"
     >
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Fibich">
-    <meta property="og:title" content="From Empty Window to First Playback">
+    <meta property="og:title" content="Cleaning the Engine Room">
     <meta
       property="og:description"
-      content="Fibich reaches its first playback milestone with basic audio playback, track progress, seeking, and volume control."
+      content="Fibich moves SFBAudioEngine into Swift Package Manager and refactors library loading for a cleaner foundation."
     >
     <meta
       property="og:url"
-      content="https://fibich.app/blog/from-empty-window-to-first-playback.html"
+      content="https://fibich.app/blog/cleaning-the-engine-room/"
     >
-    <meta property="article:published_time" content="2023-06-30">
+    <meta property="article:published_time" content="2025-11-19">
     <meta property="article:author" content="Antonin Charvat">
     <meta
       property="og:image"
-      content="https://fibich.app/assets/fibich_hud.png"
+      content="https://fibich.app/assets/fibich_loading.png"
     >
-    <meta property="og:image:width" content="597">
-    <meta property="og:image:height" content="453">
-    <meta property="og:image:alt" content="Early Fibich playback HUD interface">
+    <meta property="og:image:width" content="564">
+    <meta property="og:image:height" content="486">
+    <meta property="og:image:alt" content="Early Fibich library loading interface">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="From Empty Window to First Playback">
+    <meta name="twitter:title" content="Cleaning the Engine Room">
     <meta
       name="twitter:description"
-      content="Fibich reaches its first playback milestone with basic audio playback, track progress, seeking, and volume control."
+      content="Fibich moves SFBAudioEngine into Swift Package Manager and refactors library loading for a cleaner foundation."
     >
     <meta
       name="twitter:image"
-      content="https://fibich.app/assets/fibich_hud.png"
+      content="https://fibich.app/assets/fibich_loading.png"
     >
-    <meta name="twitter:image:alt" content="Early Fibich playback HUD interface">
+    <meta name="twitter:image:alt" content="Early Fibich library loading interface">
 
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        "headline": "From Empty Window to First Playback",
-        "datePublished": "2023-06-30",
-        "url": "https://fibich.app/blog/from-empty-window-to-first-playback.html",
-        "description": "Fibich reaches its first playback milestone with basic audio playback, track progress, seeking, and volume control.",
-        "image": "https://fibich.app/assets/fibich_hud.png",
+        "headline": "Cleaning the Engine Room",
+        "datePublished": "2025-11-19",
+        "url": "https://fibich.app/blog/cleaning-the-engine-room/",
+        "description": "Fibich moves SFBAudioEngine into Swift Package Manager and refactors library loading for a cleaner foundation.",
+        "image": "https://fibich.app/assets/fibich_loading.png",
         "author": {
           "@type": "Person",
           "name": "Antonin Charvat",
@@ -79,7 +79,6 @@
         --surface: #ffffff;
         --accent: #d95c3b;
         --accent-2: #2f8c84;
-        --shadow: 0 24px 70px rgba(28, 32, 38, 0.11);
       }
 
       * {
@@ -172,8 +171,8 @@
       }
 
       .article-body {
-        margin-top: 46px;
         max-width: 740px;
+        margin-top: 46px;
       }
 
       .article-image {
@@ -254,7 +253,6 @@
           padding-top: 42px;
         }
       }
-
     </style>
   </head>
   <body>
@@ -264,7 +262,7 @@
         <div class="nav-links">
           <a href="/">Home</a>
           <a href="/#features">Features</a>
-          <a href="/blog.html" aria-current="page">Blog</a>
+          <a href="/blog/" aria-current="page">Blog</a>
           <a href="/#newsletter">Updates</a>
           <span id="email">Contact</span>
         </div>
@@ -273,83 +271,97 @@
       <article class="article-shell">
         <header>
           <p class="eyebrow">
-            <time datetime="2023-06-30">June 30, 2023</time>
+            <time datetime="2025-11-19">November 19, 2025</time>
             <span>Development</span>
           </p>
-          <h1>From Empty Window to First Playback</h1>
+          <h1>Cleaning the Engine Room</h1>
           <p class="intro">
-            Today Fibich crossed an important line: it can play music.
+            Today's update is not about a shiny new button. It is about making Fibich
+            easier to build on.
           </p>
         </header>
 
         <figure class="article-image">
           <img
-            src="/assets/fibich_hud.png"
-            alt="Early Fibich playback HUD interface"
-            width="597"
-            height="453"
+            src="/assets/fibich_loading.png"
+            alt="Early Fibich library loading interface"
+            width="564"
+            height="486"
             loading="lazy"
           >
         </figure>
 
         <div class="article-body">
-          <p>Today Fibich crossed an important line: it can play music.</p>
           <p>
-            That sounds like the most obvious thing a music player should do, but getting
-            there changes the whole feeling of the project. Until now, Fibich has mostly
-            been a shape: a native macOS window, the beginning of a player interface, and
-            the first ideas around how a local music library should be represented. Now
-            there is sound coming out of it.
+            Today's update is not about a shiny new button. It is about making Fibich
+            easier to build on.
           </p>
           <p>
-            Recently, I started building the first real structure around the app. Albums,
-            artists, tracks, and library items are now becoming the basic vocabulary
-            Fibich uses to understand a music collection. That matters because the goal is
-            not to create a tiny utility that opens one audio file and forgets about it.
-            The goal is a proper macOS music player for local libraries, lossless albums,
-            carefully stored folders, and collections that deserve a bit more respect.
+            Recently I picked the project back up and started by dealing with some
+            technical weight that had quietly accumulated. The biggest change is that the
+            audio engine dependencies are no longer embedded directly in the project as
+            bundled frameworks. Fibich now uses the SFBAudioEngine package through Swift
+            Package Manager.
+          </p>
+          <p>That sounds like housekeeping, but it matters a lot.</p>
+          <p>
+            A hi-fi audio player depends heavily on its playback layer. Support for
+            formats like FLAC and other lossless or less common audio files should not
+            rely on a pile of manually stored binary frameworks inside the app repository.
+            That approach works for a prototype, but it becomes awkward over time: the
+            project gets heavier, updates are harder, and the build setup becomes easier
+            to break.
           </p>
           <p>
-            The library setup is also starting to take shape. Fibich can now be pointed
-            toward a music location, generate a simple library, and let tracks become part
-            of the player experience. It is still early, but this is the beginning of
-            something important: the app is starting to connect files on disk with a
-            music-focused interface.
+            Moving this into package management makes the app cleaner and more
+            maintainable. It is the kind of change users may never notice directly, but it
+            gives the project better footing for wide audio format support later.
           </p>
-          <p>Today's bigger step is playback itself.</p>
+          <p>The other big piece today is a refactor around library loading.</p>
           <p>
-            Fibich now has basic audio playback, track progress, seeking, and volume
-            control. These are small words for features that make a large difference. A
-            progress bar tells you the app knows where it is in the track. Seeking means
-            you can move through the music instead of just waiting. Volume control makes
-            the player feel immediate, like something you can actually use rather than
-            just look at.
+            Fibich needs to scan folders, read audio files, generate library items, and
+            persist the result. Earlier versions had too much of that logic gathered in
+            one central place. That made the code harder to reason about, especially
+            because library generation is not instant. It touches the file system, reads
+            metadata, and may need to process a lot of tracks.
           </p>
           <p>
-            This is still a rough first version, but it is the first version that feels
-            alive.
+            So today I started separating those responsibilities more clearly. There is
+            now a dedicated path for generating the library, fetching stored items, and
+            coordinating persistence. Some of the work has also moved toward Swift's
+            async/await model, which is a better fit for operations that take time.
+          </p>
+          <p>The practical goal is simple: Fibich should not feel stuck while it is thinking.</p>
+          <p>
+            Scanning a music library is very different from updating a label on screen.
+            The app needs to do real work, but the interface should remain calm and
+            responsive. This becomes especially important for larger local music
+            collections, where hundreds or thousands of audio files may be involved.
           </p>
           <p>
-            There is a lot ahead. Playlists need to become more durable. Metadata will
-            need proper attention. The library will need to handle real collections, not
-            only clean test folders. macOS integration will matter too: media keys, now
-            playing information, Finder workflows, and all the small details that make an
-            app feel native rather than merely present on the desktop.
-          </p>
-          <p>But today, the center is there.</p>
-          <p>
-            Fibich is beginning to become what it is meant to be: a native hi-fi audio
-            player for macOS, focused on local music files, wide format support, library
-            organization, and a listening experience that respects the user's own
-            collection.
+            There is also a new intermediate model for library items while they are being
+            created. That helps keep unfinished file-scanning data separate from the
+            stable items the app eventually stores and displays. It is a small
+            architectural detail, but it solves a real problem: not every piece of data is
+            ready at the same time, and the app should not pretend it is.
           </p>
           <p>
-            The first sound is not the destination. But it is the point where the project
-            starts to feel real.
+            This is the kind of progress that feels quiet, but important. Fibich is
+            becoming less of a prototype and more of an application with parts that know
+            their jobs: playback, library generation, persistence, player state, and
+            interface.
           </p>
+          <p>
+            There is still plenty to do. The library needs better browsing, sorting, and
+            filtering. Playlists need to become more capable. Metadata still deserves much
+            deeper tools. But today's work clears the path for those features to be built
+            without fighting the foundation every time.
+          </p>
+          <p>A good music player should feel simple on the surface.</p>
+          <p>Underneath, Fibich now has a cleaner engine room.</p>
         </div>
 
-        <a class="back-link" href="/blog.html">Back to all posts</a>
+        <a class="back-link" href="/blog/">Back to all posts</a>
 
         <footer class="article-footer">
           <span>

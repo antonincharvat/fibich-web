@@ -10,7 +10,7 @@
     >
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="theme-color" content="#f7f8f5">
-    <link rel="canonical" href="https://fibich.app/blog.html">
+    <link rel="canonical" href="https://fibich.app/blog/">
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
     <meta property="og:type" content="website">
@@ -20,7 +20,7 @@
       property="og:description"
       content="Development notes, release updates, and behind-the-scenes writing for Fibich."
     >
-    <meta property="og:url" content="https://fibich.app/blog.html">
+    <meta property="og:url" content="https://fibich.app/blog/">
     <meta
       property="og:image"
       content="https://fibich.app/assets/fibich-player-screenshot.png"
@@ -44,7 +44,7 @@
         "@context": "https://schema.org",
         "@type": "Blog",
         "name": "Fibich Blog",
-        "url": "https://fibich.app/blog.html",
+        "url": "https://fibich.app/blog/",
         "description": "Development notes, release updates, and behind-the-scenes writing for Fibich.",
         "publisher": {
           "@type": "Person",
@@ -143,10 +143,10 @@
       }
 
       h1 {
-        max-width: 650px;
+        max-width: 720px;
         margin: 0;
-        font-size: clamp(3rem, 7vw, 6.2rem);
-        line-height: 0.94;
+        font-size: 4rem;
+        line-height: 1.05;
         letter-spacing: 0;
       }
 
@@ -205,6 +205,14 @@
         display: grid;
         gap: 14px;
         margin-top: 22px;
+      }
+
+      .blog-intro {
+        max-width: 760px;
+        margin: 18px 0 0;
+        color: var(--muted);
+        font-size: 1.02rem;
+        line-height: 1.7;
       }
 
       .post-card {
@@ -299,6 +307,10 @@
           padding-top: 42px;
         }
 
+        h1 {
+          font-size: 3rem;
+        }
+
         .section-title {
           align-items: flex-start;
           flex-direction: column;
@@ -306,6 +318,10 @@
       }
 
       @media (max-width: 480px) {
+        h1 {
+          font-size: 2.35rem;
+        }
+
         .hero-image {
           border-radius: 14px;
           padding: 6px;
@@ -328,7 +344,7 @@
         <div class="nav-links">
           <a href="/">Home</a>
           <a href="/#features">Features</a>
-          <a href="/blog.html" aria-current="page">Blog</a>
+          <a href="/blog/" aria-current="page">Blog</a>
           <a href="/#newsletter">Updates</a>
           <span id="email">Contact</span>
         </div>
@@ -337,7 +353,7 @@
       <section class="hero" aria-labelledby="blog-title">
         <div>
           <p class="product-label">Fibich blog</p>
-          <h1 id="blog-title">Notes from the build.</h1>
+          <h1 id="blog-title">Fibich Blog — Building a macOS Music Player for Local Libraries</h1>
           <p class="lead">
             Development updates, release notes, and the occasional deeper look at
             building a local music player for macOS.
@@ -346,7 +362,7 @@
 
         <div class="hero-image" aria-label="Fibich app preview">
           <img
-            src="assets/fibich-player-screenshot.png"
+            src="/assets/fibich-player-screenshot.png"
             alt="Fibich music player interface showing a music library on macOS"
             width="4064"
             height="2324"
@@ -362,6 +378,14 @@
           <a href="/#newsletter">Get updates</a>
         </div>
 
+        <p class="blog-intro">
+          Follow the development of Fibich, a macOS music player for people who
+          manage a local music library and care about lossless audio. These posts
+          cover playback and library work for a FLAC player, metadata editor,
+          CUE sheets, DSD support, and the everyday details of building a focused
+          app for personal music collections.
+        </p>
+
         <div class="post-list">
           <article class="post-card">
             <div class="post-meta">
@@ -369,7 +393,7 @@
               <span>Development</span>
             </div>
             <h3>
-              <a href="/blog/handling-the-messy-edges-of-real-music-libraries.html">
+              <a href="/blog/messy-real-music-libraries/">
                 Handling the Messy Edges of Real Music Libraries
               </a>
             </h3>
@@ -379,7 +403,7 @@
             </p>
             <a
               class="read-more"
-              href="/blog/handling-the-messy-edges-of-real-music-libraries.html"
+              href="/blog/messy-real-music-libraries/"
             >
               Read the post
             </a>
@@ -391,7 +415,7 @@
               <span>Development</span>
             </div>
             <h3>
-              <a href="/blog/making-large-playlists-behave.html">
+              <a href="/blog/making-large-playlists-behave/">
                 Making Large Playlists Behave
               </a>
             </h3>
@@ -399,7 +423,7 @@
               Fibich improves playlist scale, metadata synchronization, search,
               presentation snapshots, layout, and realtime track move handling.
             </p>
-            <a class="read-more" href="/blog/making-large-playlists-behave.html">
+            <a class="read-more" href="/blog/making-large-playlists-behave/">
               Read the post
             </a>
           </article>
@@ -410,7 +434,7 @@
               <span>Development</span>
             </div>
             <h3>
-              <a href="/blog/making-fibich-feel-like-a-daily-player.html">
+              <a href="/blog/making-fibich-feel-like-a-daily-player/">
                 Making Fibich Feel Like a Daily Player
               </a>
             </h3>
@@ -418,7 +442,7 @@
               Fibich gets cleaner controls, a menu bar player, settings, artwork loading,
               performance tuning, and better metadata text repair.
             </p>
-            <a class="read-more" href="/blog/making-fibich-feel-like-a-daily-player.html">
+            <a class="read-more" href="/blog/making-fibich-feel-like-a-daily-player/">
               Read the post
             </a>
           </article>
@@ -429,7 +453,7 @@
               <span>Development</span>
             </div>
             <h3>
-              <a href="/blog/keeping-the-library-alive.html">
+              <a href="/blog/keeping-the-library-alive/">
                 Keeping the Library Alive
               </a>
             </h3>
@@ -437,7 +461,7 @@
               Fibich starts watching library folders, reconciling file changes, and
               keeping the music catalog connected to disk.
             </p>
-            <a class="read-more" href="/blog/keeping-the-library-alive.html">
+            <a class="read-more" href="/blog/keeping-the-library-alive/">
               Read the post
             </a>
           </article>
@@ -448,7 +472,7 @@
               <span>Development</span>
             </div>
             <h3>
-              <a href="/blog/editing-the-music-not-just-playing-it.html">
+              <a href="/blog/editing-the-music-not-just-playing-it/">
                 Editing the Music, Not Just Playing It
               </a>
             </h3>
@@ -456,7 +480,7 @@
               Fibich gains metadata editing with drafts, validation, read/write storage,
               tests, and a more focused sheet-based editor.
             </p>
-            <a class="read-more" href="/blog/editing-the-music-not-just-playing-it.html">
+            <a class="read-more" href="/blog/editing-the-music-not-just-playing-it/">
               Read the post
             </a>
           </article>
@@ -467,7 +491,7 @@
               <span>Development</span>
             </div>
             <h3>
-              <a href="/blog/making-playlists-stay.html">
+              <a href="/blog/making-playlists-stay/">
                 Making Playlists Stay
               </a>
             </h3>
@@ -475,7 +499,7 @@
               Fibich adds SwiftData-backed playlist persistence so names, order,
               selection, and playlist items can survive beyond one session.
             </p>
-            <a class="read-more" href="/blog/making-playlists-stay.html">
+            <a class="read-more" href="/blog/making-playlists-stay/">
               Read the post
             </a>
           </article>
@@ -486,7 +510,7 @@
               <span>Development</span>
             </div>
             <h3>
-              <a href="/blog/making-the-playlist-more-personal.html">
+              <a href="/blog/making-the-playlist-more-personal/">
                 Making the Playlist More Personal
               </a>
             </h3>
@@ -494,7 +518,7 @@
               Playlist metadata columns become configurable and draggable, while Show in
               Finder keeps Fibich connected to local files.
             </p>
-            <a class="read-more" href="/blog/making-the-playlist-more-personal.html">
+            <a class="read-more" href="/blog/making-the-playlist-more-personal/">
               Read the post
             </a>
           </article>
@@ -505,7 +529,7 @@
               <span>Development</span>
             </div>
             <h3>
-              <a href="/blog/from-drag-and-drop-to-now-playing.html">
+              <a href="/blog/from-drag-and-drop-to-now-playing/">
                 From Drag and Drop to Now Playing
               </a>
             </h3>
@@ -513,7 +537,7 @@
               Drag and drop, broader file support, visible durations, and macOS Now
               Playing integration make Fibich feel more native.
             </p>
-            <a class="read-more" href="/blog/from-drag-and-drop-to-now-playing.html">
+            <a class="read-more" href="/blog/from-drag-and-drop-to-now-playing/">
               Read the post
             </a>
           </article>
@@ -524,7 +548,7 @@
               <span>Development</span>
             </div>
             <h3>
-              <a href="/blog/more-than-one-playlist.html">
+              <a href="/blog/more-than-one-playlist/">
                 More Than One Playlist
               </a>
             </h3>
@@ -532,7 +556,7 @@
               Multiple playlist tabs turn Fibich from one listening queue into a small
               workspace for different sessions.
             </p>
-            <a class="read-more" href="/blog/more-than-one-playlist.html">
+            <a class="read-more" href="/blog/more-than-one-playlist/">
               Read the post
             </a>
           </article>
@@ -543,7 +567,7 @@
               <span>Development</span>
             </div>
             <h3>
-              <a href="/blog/opening-music-the-mac-way.html">
+              <a href="/blog/opening-music-the-mac-way/">
                 Opening Music the Mac Way
               </a>
             </h3>
@@ -551,7 +575,7 @@
               Fibich starts accepting music files opened from macOS, making Finder part
               of the listening flow.
             </p>
-            <a class="read-more" href="/blog/opening-music-the-mac-way.html">
+            <a class="read-more" href="/blog/opening-music-the-mac-way/">
               Read the post
             </a>
           </article>
@@ -562,7 +586,7 @@
               <span>Development</span>
             </div>
             <h3>
-              <a href="/blog/making-the-playlist-easier-to-read.html">
+              <a href="/blog/making-the-playlist-easier-to-read/">
                 Making the Playlist Easier to Read
               </a>
             </h3>
@@ -570,7 +594,7 @@
               Playlist columns become resizable and persistent, making the listening
               queue clearer and more comfortable to use.
             </p>
-            <a class="read-more" href="/blog/making-the-playlist-easier-to-read.html">
+            <a class="read-more" href="/blog/making-the-playlist-easier-to-read/">
               Read the post
             </a>
           </article>
@@ -581,7 +605,7 @@
               <span>Development</span>
             </div>
             <h3>
-              <a href="/blog/finding-music-once-the-library-grows.html">
+              <a href="/blog/finding-music-once-the-library-grows/">
                 Finding Music Once the Library Grows
               </a>
             </h3>
@@ -589,7 +613,7 @@
               Search and sorting arrive in the library browser, making larger local
               music collections easier to narrow down.
             </p>
-            <a class="read-more" href="/blog/finding-music-once-the-library-grows.html">
+            <a class="read-more" href="/blog/finding-music-once-the-library-grows/">
               Read the post
             </a>
           </article>
@@ -600,7 +624,7 @@
               <span>Development</span>
             </div>
             <h3>
-              <a href="/blog/cleaning-the-engine-room.html">
+              <a href="/blog/cleaning-the-engine-room/">
                 Cleaning the Engine Room
               </a>
             </h3>
@@ -608,7 +632,7 @@
               Fibich gets a cleaner foundation with SFBAudioEngine via Swift Package
               Manager and a refactor around library loading.
             </p>
-            <a class="read-more" href="/blog/cleaning-the-engine-room.html">
+            <a class="read-more" href="/blog/cleaning-the-engine-room/">
               Read the post
             </a>
           </article>
@@ -619,7 +643,7 @@
               <span>Development</span>
             </div>
             <h3>
-              <a href="/blog/making-the-library-remember.html">
+              <a href="/blog/making-the-library-remember/">
                 Making the Library Remember
               </a>
             </h3>
@@ -627,7 +651,7 @@
               Fibich is moving again, this time toward stronger persistence, clearer
               metadata, and a library that can remember its shape.
             </p>
-            <a class="read-more" href="/blog/making-the-library-remember.html">
+            <a class="read-more" href="/blog/making-the-library-remember/">
               Read the post
             </a>
           </article>
@@ -638,7 +662,7 @@
               <span>Development</span>
             </div>
             <h3>
-              <a href="/blog/the-playlist-starts-to-matter.html">
+              <a href="/blog/the-playlist-starts-to-matter/">
                 The Playlist Starts to Matter
               </a>
             </h3>
@@ -646,7 +670,7 @@
               Fibich is starting to feel less like a player for single tracks and more
               like a place to build a listening session.
             </p>
-            <a class="read-more" href="/blog/the-playlist-starts-to-matter.html">
+            <a class="read-more" href="/blog/the-playlist-starts-to-matter/">
               Read the post
             </a>
           </article>
@@ -657,7 +681,7 @@
               <span>Development</span>
             </div>
             <h3>
-              <a href="/blog/from-empty-window-to-first-playback.html">
+              <a href="/blog/from-empty-window-to-first-playback/">
                 From Empty Window to First Playback
               </a>
             </h3>
@@ -665,7 +689,7 @@
               Fibich crossed an important line: basic playback, progress, seeking, and
               volume control are now part of the app.
             </p>
-            <a class="read-more" href="/blog/from-empty-window-to-first-playback.html">
+            <a class="read-more" href="/blog/from-empty-window-to-first-playback/">
               Read the post
             </a>
           </article>
@@ -676,7 +700,7 @@
               <span>Development</span>
             </div>
             <h3>
-              <a href="/blog/why-build-another-macos-music-player.html">
+              <a href="/blog/why-build-another-macos-music-player/">
                 Why Build Another macOS Music Player?
               </a>
             </h3>
@@ -684,7 +708,7 @@
               Today I started building Fibich: a native macOS music player for people
               who still care about their own music files.
             </p>
-            <a class="read-more" href="/blog/why-build-another-macos-music-player.html">
+            <a class="read-more" href="/blog/why-build-another-macos-music-player/">
               Read the post
             </a>
           </article>

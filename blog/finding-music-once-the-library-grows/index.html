@@ -3,47 +3,60 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Why Build Another macOS Music Player? - Fibich</title>
+    <title>Finding Music Once the Library Grows - Fibich</title>
     <meta
       name="description"
-      content="Today I started building Fibich, a native macOS music player for people who still care about their own music files."
+      content="Fibich adds full-text library filtering and basic sorting so larger local music collections become easier to navigate."
     >
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="theme-color" content="#f7f8f5">
     <link
       rel="canonical"
-      href="https://fibich.app/blog/why-build-another-macos-music-player.html"
+      href="https://fibich.app/blog/finding-music-once-the-library-grows/"
     >
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Fibich">
-    <meta property="og:title" content="Why Build Another macOS Music Player?">
+    <meta property="og:title" content="Finding Music Once the Library Grows">
     <meta
       property="og:description"
-      content="Today I started building Fibich, a native macOS music player for people who still care about their own music files."
+      content="Fibich adds full-text library filtering and basic sorting so larger local music collections become easier to navigate."
     >
     <meta
       property="og:url"
-      content="https://fibich.app/blog/why-build-another-macos-music-player.html"
+      content="https://fibich.app/blog/finding-music-once-the-library-grows/"
     >
-    <meta property="article:published_time" content="2023-06-09">
+    <meta property="article:published_time" content="2025-11-25">
     <meta property="article:author" content="Antonin Charvat">
+    <meta
+      property="og:image"
+      content="https://fibich.app/assets/fibich_search.png"
+    >
+    <meta property="og:image:width" content="1455">
+    <meta property="og:image:height" content="996">
+    <meta property="og:image:alt" content="Early Fibich library search interface">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Why Build Another macOS Music Player?">
+    <meta name="twitter:title" content="Finding Music Once the Library Grows">
     <meta
       name="twitter:description"
-      content="Today I started building Fibich, a native macOS music player for people who still care about their own music files."
+      content="Fibich adds full-text library filtering and basic sorting so larger local music collections become easier to navigate."
     >
+    <meta
+      name="twitter:image"
+      content="https://fibich.app/assets/fibich_search.png"
+    >
+    <meta name="twitter:image:alt" content="Early Fibich library search interface">
 
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        "headline": "Why Build Another macOS Music Player?",
-        "datePublished": "2023-06-09",
-        "url": "https://fibich.app/blog/why-build-another-macos-music-player.html",
-        "description": "Today I started building Fibich, a native macOS music player for people who still care about their own music files.",
+        "headline": "Finding Music Once the Library Grows",
+        "datePublished": "2025-11-25",
+        "url": "https://fibich.app/blog/finding-music-once-the-library-grows/",
+        "description": "Fibich adds full-text library filtering and basic sorting so larger local music collections become easier to navigate.",
+        "image": "https://fibich.app/assets/fibich_search.png",
         "author": {
           "@type": "Person",
           "name": "Antonin Charvat",
@@ -66,7 +79,6 @@
         --surface: #ffffff;
         --accent: #d95c3b;
         --accent-2: #2f8c84;
-        --shadow: 0 24px 70px rgba(28, 32, 38, 0.11);
       }
 
       * {
@@ -159,8 +171,23 @@
       }
 
       .article-body {
-        margin-top: 46px;
         max-width: 740px;
+        margin-top: 46px;
+      }
+
+      .article-image {
+        width: min(640px, 100%);
+        margin: 38px 0 0;
+      }
+
+      .article-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 1px solid rgba(28, 32, 38, 0.12);
+        border-radius: 8px;
+        background: var(--surface);
+        box-shadow: 0 18px 48px rgba(28, 32, 38, 0.1);
       }
 
       .article-body p {
@@ -226,7 +253,6 @@
           padding-top: 42px;
         }
       }
-
     </style>
   </head>
   <body>
@@ -236,7 +262,7 @@
         <div class="nav-links">
           <a href="/">Home</a>
           <a href="/#features">Features</a>
-          <a href="/blog.html" aria-current="page">Blog</a>
+          <a href="/blog/" aria-current="page">Blog</a>
           <a href="/#newsletter">Updates</a>
           <span id="email">Contact</span>
         </div>
@@ -245,78 +271,98 @@
       <article class="article-shell">
         <header>
           <p class="eyebrow">
-            <time datetime="2023-06-09">June 9, 2023</time>
+            <time datetime="2025-11-25">November 25, 2025</time>
             <span>Development</span>
           </p>
-          <h1>Why Build Another macOS Music Player?</h1>
+          <h1>Finding Music Once the Library Grows</h1>
           <p class="intro">
-            Today I started building Fibich: a native macOS music player for people who
-            still care about their own music files.
+            Search and sorting arrive in the library browser, making larger local music
+            collections easier to navigate.
           </p>
         </header>
 
+        <figure class="article-image">
+          <img
+            src="/assets/fibich_search.png"
+            alt="Early Fibich library search interface"
+            width="1455"
+            height="996"
+            loading="lazy"
+          >
+        </figure>
+
         <div class="article-body">
-          <p>Today I started building Fibich.</p>
           <p>
-            The idea is simple, but it has been sitting in my head for a while: a native
-            macOS music player for people who still care about their own music files.
+            Today Fibich gets a feature that sounds ordinary until the library starts to
+            become real: search.
           </p>
           <p>
-            Most music apps today are built around streaming, subscriptions,
-            recommendations, and catalogs that live somewhere else. That is useful, of
-            course. But it does not fully serve the listener who has a carefully collected
-            local music library, lossless albums, unusual audio formats, archived
-            releases, live recordings, and folders arranged with intention.
-          </p>
-          <p>Fibich started from that place.</p>
-          <p>
-            The goal is not to build just another player with a play button and a
-            playlist. I want Fibich to become a focused hi-fi audio player for Mac: one
-            that can handle local music libraries, support a wide range of audio formats,
-            keep playlists durable, expose metadata clearly, and feel like a proper
-            native macOS app.
+            The library browser now has full-text filtering, along with basic sorting
+            controls. This is one of those updates where the visible result is simple:
+            type into a search field, narrow the library, change the order. But
+            underneath, it touches an important question for the app: how should Fibich
+            behave once the user's music collection is no longer small?
           </p>
           <p>
-            Right now, the project is still at the beginning. There is a codebase, an app
-            skeleton, and the first pieces of the foundation. But even at this stage, the
-            direction matters. If Fibich is going to be useful, it needs to respect the
-            way people actually store and listen to music.
-          </p>
-          <p>That means more than playback.</p>
-          <p>
-            A serious local music player needs to understand folders, tracks, albums,
-            artists, metadata, file formats, and playlists that should still be there
-            tomorrow. It needs to work well with macOS, not against it. It should feel
-            comfortable next to Finder, media keys, system playback controls, and the
-            habits Mac users already have.
+            A local hi-fi library can grow quickly. A few FLAC albums become a few
+            hundred tracks. Then come live recordings, archived releases, different
+            masters, folders sorted by artist, folders sorted by label, maybe classical
+            albums where filenames begin with movement numbers, or compilations where the
+            usual artist-album structure becomes less tidy.
           </p>
           <p>
-            It also needs to care about the less glamorous parts of music collections.
-            Tags are not always clean. Files move. Albums may come with artwork, CUE
-            sheets, or inconsistent metadata. Some collections are small and tidy; others
-            are large, old, and full of strange little details. A good player should not
-            fall apart the moment a library becomes real.
+            At that point, browsing alone is not enough. The app needs to help the user
+            get back to a specific album, artist, or track without forcing them to
+            manually open every folder.
           </p>
           <p>
-            That is the long-term ambition for Fibich: wide format support, durable
-            playlists, library organization, metadata tools, and macOS playback
-            integration in one native player.
+            Today's work adds a search field directly to the library browser. It also
+            adds a small sorting model, currently just ascending and descending, so the
+            library can start to respond to different browsing habits. This is not a huge
+            feature on paper, but it begins to make the library feel interactive rather
+            than static.
+          </p>
+          <p>The main obstacle is that Fibich's library is not just a flat list.</p>
+          <p>
+            The browser is built around expandable items, so filtering has to work with
+            structure. A simple list of tracks would be easier: take all rows, compare
+            text, hide what does not match. But a music library usually has hierarchy. If
+            a matching track belongs inside an album or folder, the app still needs to
+            keep enough context for the result to make sense. Search should not make the
+            library feel broken just because the matching item is nested.
           </p>
           <p>
-            I do not expect all of that to appear at once. The first step is simply to
-            give the project a shape and start moving. From here, I want to build in
-            public notes: what changed, what problem appeared, what became easier, what
-            still feels rough, and how each step brings Fibich closer to being a reliable
-            music player for local hi-fi collections.
+            Sorting has its own small traps too. Music filenames often start with numbers:
+            01, 02, 10, and so on. If those are treated only as plain text, the order can
+            feel wrong. So I have started adding small helpers for reading leading numbers
+            from strings. It is a tiny code-level detail, but it points toward a larger
+            goal: Fibich should sort music in a way that feels natural for albums, not
+            just alphabetically convenient for a computer.
           </p>
-          <p>Today is mostly the starting line.</p>
           <p>
-            But it is an important one. Fibich now exists, and the goal is clear: build a
-            Mac music player that treats your own music library as the main event.
+            There is also some ongoing work around refreshing the current library after
+            changes. Once the app can update stored library items, the interface needs to
+            reflect those changes cleanly. That means the browser cannot be only a passive
+            view. It has to stay connected to the persistence layer without becoming
+            tangled with it.
+          </p>
+          <p>
+            This is the balance I am trying to keep right now: add useful features, but
+            keep the structure clean enough that the next feature does not become painful.
+          </p>
+          <p>
+            Today, the result is practical. The library is easier to scan, easier to
+            narrow down, and a little closer to how a real macOS music player should
+            behave when handling a serious local audio collection.
+          </p>
+          <p>Search is not glamorous.</p>
+          <p>
+            But once your music library is large enough, it becomes one of the features
+            that decides whether the app feels calm or frustrating.
           </p>
         </div>
 
-        <a class="back-link" href="/blog.html">Back to all posts</a>
+        <a class="back-link" href="/blog/">Back to all posts</a>
 
         <footer class="article-footer">
           <span>

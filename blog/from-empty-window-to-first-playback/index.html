@@ -3,60 +3,60 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>The Playlist Starts to Matter - Fibich</title>
+    <title>From Empty Window to First Playback - Fibich</title>
     <meta
       name="description"
-      content="Fibich adds its first playlist implementation, beginning the shift from single-track playback toward longer listening sessions."
+      content="Fibich reaches its first playback milestone with basic audio playback, track progress, seeking, and volume control."
     >
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="theme-color" content="#f7f8f5">
     <link
       rel="canonical"
-      href="https://fibich.app/blog/the-playlist-starts-to-matter.html"
+      href="https://fibich.app/blog/from-empty-window-to-first-playback/"
     >
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Fibich">
-    <meta property="og:title" content="The Playlist Starts to Matter">
+    <meta property="og:title" content="From Empty Window to First Playback">
     <meta
       property="og:description"
-      content="Fibich adds its first playlist implementation, beginning the shift from single-track playback toward longer listening sessions."
+      content="Fibich reaches its first playback milestone with basic audio playback, track progress, seeking, and volume control."
     >
     <meta
       property="og:url"
-      content="https://fibich.app/blog/the-playlist-starts-to-matter.html"
+      content="https://fibich.app/blog/from-empty-window-to-first-playback/"
     >
-    <meta property="article:published_time" content="2023-07-19">
+    <meta property="article:published_time" content="2023-06-30">
     <meta property="article:author" content="Antonin Charvat">
     <meta
       property="og:image"
-      content="https://fibich.app/assets/fibich_playlist.png"
+      content="https://fibich.app/assets/fibich_hud.png"
     >
-    <meta property="og:image:width" content="2406">
-    <meta property="og:image:height" content="1485">
-    <meta property="og:image:alt" content="Early Fibich playlist interface">
+    <meta property="og:image:width" content="597">
+    <meta property="og:image:height" content="453">
+    <meta property="og:image:alt" content="Early Fibich playback HUD interface">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="The Playlist Starts to Matter">
+    <meta name="twitter:title" content="From Empty Window to First Playback">
     <meta
       name="twitter:description"
-      content="Fibich adds its first playlist implementation, beginning the shift from single-track playback toward longer listening sessions."
+      content="Fibich reaches its first playback milestone with basic audio playback, track progress, seeking, and volume control."
     >
     <meta
       name="twitter:image"
-      content="https://fibich.app/assets/fibich_playlist.png"
+      content="https://fibich.app/assets/fibich_hud.png"
     >
-    <meta name="twitter:image:alt" content="Early Fibich playlist interface">
+    <meta name="twitter:image:alt" content="Early Fibich playback HUD interface">
 
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        "headline": "The Playlist Starts to Matter",
-        "datePublished": "2023-07-19",
-        "url": "https://fibich.app/blog/the-playlist-starts-to-matter.html",
-        "description": "Fibich adds its first playlist implementation, beginning the shift from single-track playback toward longer listening sessions.",
-        "image": "https://fibich.app/assets/fibich_playlist.png",
+        "headline": "From Empty Window to First Playback",
+        "datePublished": "2023-06-30",
+        "url": "https://fibich.app/blog/from-empty-window-to-first-playback/",
+        "description": "Fibich reaches its first playback milestone with basic audio playback, track progress, seeking, and volume control.",
+        "image": "https://fibich.app/assets/fibich_hud.png",
         "author": {
           "@type": "Person",
           "name": "Antonin Charvat",
@@ -177,7 +177,7 @@
       }
 
       .article-image {
-        width: min(640px, 100%);
+        width: min(520px, 100%);
         margin: 38px 0 0;
       }
 
@@ -264,7 +264,7 @@
         <div class="nav-links">
           <a href="/">Home</a>
           <a href="/#features">Features</a>
-          <a href="/blog.html" aria-current="page">Blog</a>
+          <a href="/blog/" aria-current="page">Blog</a>
           <a href="/#newsletter">Updates</a>
           <span id="email">Contact</span>
         </div>
@@ -273,93 +273,83 @@
       <article class="article-shell">
         <header>
           <p class="eyebrow">
-            <time datetime="2023-07-19">July 19, 2023</time>
+            <time datetime="2023-06-30">June 30, 2023</time>
             <span>Development</span>
           </p>
-          <h1>The Playlist Starts to Matter</h1>
+          <h1>From Empty Window to First Playback</h1>
           <p class="intro">
-            Today Fibich is starting to feel less like a player for single tracks and
-            more like a place to build a listening session.
+            Today Fibich crossed an important line: it can play music.
           </p>
         </header>
 
         <figure class="article-image">
           <img
-            src="/assets/fibich_playlist.png"
-            alt="Early Fibich playlist interface"
-            width="2406"
-            height="1485"
+            src="/assets/fibich_hud.png"
+            alt="Early Fibich playback HUD interface"
+            width="597"
+            height="453"
             loading="lazy"
           >
         </figure>
 
         <div class="article-body">
+          <p>Today Fibich crossed an important line: it can play music.</p>
           <p>
-            Today Fibich is starting to feel less like a player for single tracks and more
-            like a place to build a listening session.
+            That sounds like the most obvious thing a music player should do, but getting
+            there changes the whole feeling of the project. Until now, Fibich has mostly
+            been a shape: a native macOS window, the beginning of a player interface, and
+            the first ideas around how a local music library should be represented. Now
+            there is sound coming out of it.
           </p>
           <p>
-            Recently, the first playlist implementation landed in the app. It is still
-            early, but it changes the rhythm of using Fibich. Instead of only selecting
-            something from the library and playing it, there is now a dedicated space
-            where tracks can gather, wait their turn, and become part of a longer flow.
-          </p>
-          <p>That matters for a local music player.</p>
-          <p>
-            A playlist is not just a list of songs. For people with their own music
-            libraries, it is often the bridge between a collection and an actual listening
-            mood. Maybe it is a few lossless albums for the evening. Maybe it is a folder
-            of live recordings. Maybe it is a set of tracks pulled from different artists,
-            formats, and years. The player needs to make that feel natural.
+            Recently, I started building the first real structure around the app. Albums,
+            artists, tracks, and library items are now becoming the basic vocabulary
+            Fibich uses to understand a music collection. That matters because the goal is
+            not to create a tiny utility that opens one audio file and forgets about it.
+            The goal is a proper macOS music player for local libraries, lossless albums,
+            carefully stored folders, and collections that deserve a bit more respect.
           </p>
           <p>
-            The library browser is now becoming one side of the experience, and the
-            playlist is becoming the other. The app can begin to answer a more useful
-            question: not only "what music do I have?" but "what do I want to listen to
-            now?"
+            The library setup is also starting to take shape. Fibich can now be pointed
+            toward a music location, generate a simple library, and let tracks become part
+            of the player experience. It is still early, but this is the beginning of
+            something important: the app is starting to connect files on disk with a
+            music-focused interface.
+          </p>
+          <p>Today's bigger step is playback itself.</p>
+          <p>
+            Fibich now has basic audio playback, track progress, seeking, and volume
+            control. These are small words for features that make a large difference. A
+            progress bar tells you the app knows where it is in the track. Seeking means
+            you can move through the music instead of just waiting. Volume control makes
+            the player feel immediate, like something you can actually use rather than
+            just look at.
           </p>
           <p>
-            Today's work also brings the first improvements around how playlist items are
-            shown. Metadata is starting to become more visible, which is important
-            because a hi-fi audio library quickly becomes difficult to navigate if every
-            track is treated like a plain filename. Track title, artist, album, and other
-            details are the language of a real music collection.
+            This is still a rough first version, but it is the first version that feels
+            alive.
           </p>
           <p>
-            This is one of those parts of the app where the goal becomes clearer through
-            use. Playback needs controls, of course. But once playback exists, the next
-            challenge is trust. Can I select music from my library? Can I see what is
-            queued? Can I understand what is in front of me? Can the app keep enough
-            context that I do not feel lost?
+            There is a lot ahead. Playlists need to become more durable. Metadata will
+            need proper attention. The library will need to handle real collections, not
+            only clean test folders. macOS integration will matter too: media keys, now
+            playing information, Finder workflows, and all the small details that make an
+            app feel native rather than merely present on the desktop.
           </p>
-          <p>Fibich is beginning to answer yes.</p>
+          <p>But today, the center is there.</p>
           <p>
-            There has also been some quiet restructuring under the surface. Some of the
-            library item data is being kept simpler now, with an eye toward future
-            persistence. That is not the most visible kind of progress, but it matters. If
-            playlists are going to become durable, and if the app is eventually going to
-            remember more of the user's music world, the data model needs to stay
-            practical.
+            Fibich is beginning to become what it is meant to be: a native hi-fi audio
+            player for macOS, focused on local music files, wide format support, library
+            organization, and a listening experience that respects the user's own
+            collection.
           </p>
           <p>
-            The current version is still only a beginning. Playlists will need more power:
-            better sorting, selection, deletion, persistence, drag and drop, and
-            eventually multiple playlists. But today the basic idea is alive inside the
-            app.
-          </p>
-          <p>
-            Fibich can play music, and now it can begin to hold a queue of music with more
-            intention.
-          </p>
-          <p>
-            That is a meaningful step toward the larger goal: a native macOS music player
-            for local hi-fi libraries, with wide audio format support, clear metadata,
-            library organization, and playlists that become part of the listening
-            experience rather than an afterthought.
+            The first sound is not the destination. But it is the point where the project
+            starts to feel real.
           </p>
         </div>
 
-        <a class="back-link" href="/blog.html">Back to all posts</a>
+        <a class="back-link" href="/blog/">Back to all posts</a>
 
         <footer class="article-footer">
           <span>
