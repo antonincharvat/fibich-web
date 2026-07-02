@@ -209,6 +209,42 @@
         line-height: 1.72;
       }
 
+      .article-cta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px 22px;
+        max-width: 740px;
+        margin-top: 44px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 22px;
+        background: rgba(255, 255, 255, 0.74);
+        box-shadow: 0 16px 40px rgba(28, 32, 38, 0.08);
+      }
+
+      .article-cta p {
+        max-width: 460px;
+        margin: 0;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.55;
+      }
+
+      .article-cta a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        border-radius: 8px;
+        padding: 0 16px;
+        background: var(--ink);
+        color: var(--surface);
+        font-size: 0.92rem;
+        font-weight: 800;
+      }
+
       .article-footer {
         display: flex;
         flex-wrap: wrap;
@@ -364,6 +400,11 @@
             experience rather than an afterthought.
           </p>
         </div>
+
+        <section class="article-cta" aria-label="Follow development updates">
+          <p>Get occasional notes on new builds, design decisions, and what is changing in Fibich.</p>
+          <a href="/#newsletter">Follow development updates</a>
+        </section>
 
         <a class="back-link" href="/blog/">Back to all posts</a>
 
