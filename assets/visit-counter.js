@@ -84,10 +84,13 @@
     });
   };
 
-  Promise.all([increment(counterName), increment(`${counterName}-${day}`)])
-    .then((responses) => {
-      if (responses.every((response) => response.ok)) {
+  increment(`${counterName}-${day}`)
+    .then((response) => {
+      if (response.ok) {
         storage.set(sessionKey, "true");
+        increment(counterName).catch(() => {
+          // The daily counter is the source of truth for stats.
+        });
       }
     })
     .catch(() => {

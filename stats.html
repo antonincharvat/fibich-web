@@ -330,7 +330,7 @@
         <div>
           <h1>Visit Stats</h1>
           <p class="lede">
-            CounterAPI totals for the public Fibich counters. This page is unlisted and not included in the sitemap.
+            Daily CounterAPI totals for the public Fibich counters. This page is unlisted and not included in the sitemap.
           </p>
         </div>
         <div class="controls">
@@ -348,7 +348,7 @@
         <div class="metric">
           <p class="metric-label">Total</p>
           <p class="metric-value" id="total">-</p>
-          <p class="metric-note">Lifetime visits</p>
+          <p class="metric-note" id="total-note">Tracked daily visits</p>
         </div>
         <div class="metric">
           <p class="metric-label">Today</p>
@@ -379,7 +379,7 @@
       <section class="panel" aria-label="Daily table">
         <div class="panel-head">
           <h2>Raw Counters</h2>
-          <a class="raw-link" id="total-link" href="#" target="_blank" rel="noopener noreferrer">Open total counter</a>
+          <a class="raw-link" id="total-link" href="#" target="_blank" rel="noopener noreferrer">Open legacy total counter</a>
         </div>
         <table>
           <thead>
@@ -398,6 +398,7 @@
     <script>
       const namespace = "antonincharvat";
       const counterName = "fibich";
+      const statsStartDate = "2026-07-01";
       const apiBase = "https://api.counterapi.dev/v1";
 
       const elements = {
@@ -416,6 +417,7 @@
         rows: document.getElementById("rows"),
         error: document.getElementById("error"),
         totalLink: document.getElementById("total-link"),
+        totalNote: document.getElementById("total-note"),
       };
 
       const counterUrl = (name) => {
@@ -438,14 +440,29 @@
 
       const recentDays = (count) => {
         const today = formatPragueDay(new Date());
-        const base = new Date(`${today}T12:00:00`);
 
         return Array.from({ length: count }, (_, index) => {
-          const date = new Date(base);
-          date.setDate(base.getDate() - (count - index - 1));
-
-          return formatPragueDay(date);
+          return addDays(today, -(count - index - 1));
         });
+      };
+
+      const addDays = (day, offset) => {
+        const date = new Date(`${day}T12:00:00Z`);
+        date.setUTCDate(date.getUTCDate() + offset);
+
+        return formatPragueDay(date);
+      };
+
+      const daysBetween = (start, end) => {
+        const days = [];
+        let day = start;
+
+        while (day <= end && days.length < 5000) {
+          days.push(day);
+          day = addDays(day, 1);
+        }
+
+        return days;
       };
 
       const getCounter = async (name) => {
@@ -527,6 +544,11 @@
         const range = Number(elements.range.value);
         const dates = recentDays(range);
         const today = dates[dates.length - 1];
+        const trackedDates = daysBetween(statsStartDate, today);
+        const requestedDates = Array.from(new Set([
+          ...trackedDates,
+          ...dates.filter((date) => date >= statsStartDate),
+        ]));
 
         elements.error.hidden = true;
         elements.chartStatus.textContent = "Loading...";
@@ -534,22 +556,34 @@
         elements.totalLink.href = counterUrl(counterName);
 
         try {
-          const [total, ...dailyCounters] = await Promise.all([
-            getCounter(counterName),
-            ...dates.map((date) => getCounter(`${counterName}-${date}`)),
-          ]);
+          const dailyCounters = await Promise.all(
+            requestedDates.map((date) => getCounter(`${counterName}-${date}`))
+          );
+          const countsByDate = new Map(
+            requestedDates.map((date, index) => [
+              date,
+              Number(dailyCounters[index].count) || 0,
+            ])
+          );
 
-          const days = dates.map((date, index) => ({
+          const trackedDays = trackedDates.map((date) => ({
             date,
             counter: `${counterName}-${date}`,
-            count: Number(dailyCounters[index].count) || 0,
+            count: countsByDate.get(date) || 0,
           }));
+          const days = dates.map((date) => ({
+            date,
+            counter: `${counterName}-${date}`,
+            count: countsByDate.get(date) || 0,
+          }));
+          const total = trackedDays.reduce((sum, day) => sum + day.count, 0);
           const rangeTotal = days.reduce((sum, day) => sum + day.count, 0);
           const best = days.reduce((winner, day) => {
             return day.count > winner.count ? day : winner;
           }, days[0]);
 
-          elements.total.textContent = Number(total.count) || 0;
+          elements.total.textContent = total;
+          elements.totalNote.textContent = `Since ${statsStartDate}`;
           elements.today.textContent = days[days.length - 1].count;
           elements.todayDate.textContent = today;
           elements.rangeTotal.textContent = rangeTotal;
