@@ -6,7 +6,7 @@
     <atom:link href="https://fibich.app/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Development notes, release updates, and behind-the-scenes writing for Fibich, a macOS music player.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 02 Jul 2026 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2026 00:00:00 +0200</lastBuildDate>
     <ttl>1440</ttl>
     <image>
       <url>https://fibich.app/assets/fibich-player-screenshot.png</url>
@@ -14,6 +14,14 @@
       <link>https://fibich.app/blog/</link>
     </image>
 
+    <item>
+      <title>Choosing Where the Music Plays</title>
+      <link>https://fibich.app/blog/choosing-where-the-music-plays/</link>
+      <guid isPermaLink="true">https://fibich.app/blog/choosing-where-the-music-plays/</guid>
+      <pubDate>Sun, 05 Jul 2026 00:00:00 +0200</pubDate>
+      <dc:creator>Antonin Charvat</dc:creator>
+      <description>Fibich improves playlist enqueueing and library drag and drop, then adds a persistent macOS audio output device picker.</description>
+    </item>
     <item>
       <title>Handling the Messy Edges of Real Music Libraries</title>
       <link>https://fibich.app/blog/messy-real-music-libraries/</link>

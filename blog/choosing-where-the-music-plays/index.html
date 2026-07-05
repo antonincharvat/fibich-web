@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Choosing Where the Music Plays - Fibich</title>
+    <meta
+      name="description"
+      content="Fibich improves playlist enqueueing and library drag and drop, then adds a persistent macOS audio output device picker."
+    >
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#f7f8f5">
+    <link
+      rel="canonical"
+      href="https://fibich.app/blog/choosing-where-the-music-plays/"
+    >
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Fibich Blog RSS Feed"
+      href="https://fibich.app/rss.xml"
+    >
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Fibich">
+    <meta property="og:title" content="Choosing Where the Music Plays">
+    <meta
+      property="og:description"
+      content="Fibich improves playlist enqueueing and library drag and drop, then adds a persistent macOS audio output device picker."
+    >
+    <meta
+      property="og:url"
+      content="https://fibich.app/blog/choosing-where-the-music-plays/"
+    >
+    <meta property="og:image" content="https://fibich.app/assets/fibich_audioOutput.png">
+    <meta property="og:image:width" content="1782">
+    <meta property="og:image:height" content="1426">
+    <meta property="og:image:alt" content="Fibich audio output device settings">
+    <meta property="article:published_time" content="2026-07-05">
+    <meta property="article:author" content="Antonin Charvat">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Choosing Where the Music Plays">
+    <meta
+      name="twitter:description"
+      content="Fibich improves playlist enqueueing and library drag and drop, then adds a persistent macOS audio output device picker."
+    >
+    <meta
+      name="twitter:image"
+      content="https://fibich.app/assets/fibich_audioOutput.png"
+    >
+    <meta name="twitter:image:alt" content="Fibich audio output device settings">
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Choosing Where the Music Plays",
+        "datePublished": "2026-07-05",
+        "url": "https://fibich.app/blog/choosing-where-the-music-plays/",
+        "description": "Fibich improves playlist enqueueing and library drag and drop, then adds a persistent macOS audio output device picker.",
+        "image": "https://fibich.app/assets/fibich_audioOutput.png",
+        "author": {
+          "@type": "Person",
+          "name": "Antonin Charvat",
+          "url": "https://www.linkedin.com/in/antonincharvat/"
+        },
+        "publisher": {
+          "@type": "Person",
+          "name": "Antonin Charvat",
+          "url": "https://www.linkedin.com/in/antonincharvat/"
+        }
+      }
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f8f5;
+        --ink: #1c2026;
+        --muted: #667078;
+        --line: #dde2e0;
+        --surface: #ffffff;
+        --accent: #d95c3b;
+        --accent-2: #2f8c84;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background:
+          linear-gradient(180deg, rgba(47, 140, 132, 0.11), transparent 270px),
+          var(--bg);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        min-height: 100vh;
+        overflow: hidden;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        width: min(1080px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 24px 0 10px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.35rem;
+        font-weight: 850;
+        letter-spacing: 0;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        color: var(--muted);
+        font-size: 0.93rem;
+        font-weight: 650;
+      }
+
+      .nav-links a[aria-current="page"] {
+        color: var(--ink);
+      }
+
+      .article-shell {
+        width: min(900px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 58px 0 86px;
+      }
+
+      .eyebrow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 12px;
+        margin: 0 0 16px;
+        color: var(--accent-2);
+        font-size: 0.9rem;
+        font-weight: 800;
+      }
+
+      h1 {
+        max-width: 820px;
+        margin: 0;
+        font-size: clamp(3rem, 7vw, 5.8rem);
+        line-height: 0.96;
+        letter-spacing: 0;
+      }
+
+      .intro {
+        max-width: 740px;
+        margin: 24px 0 0;
+        color: var(--muted);
+        font-size: clamp(1.06rem, 2vw, 1.22rem);
+        line-height: 1.65;
+      }
+
+      .article-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 12px;
+        margin: 18px 0 0;
+        color: var(--muted);
+        font-size: 0.94rem;
+        font-weight: 700;
+      }
+
+      .article-meta strong {
+        color: var(--ink);
+        font-weight: 850;
+      }
+
+      .article-meta .read-time {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .article-meta .read-time::before {
+        content: "";
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--accent-2);
+      }
+
+      .article-body {
+        max-width: 740px;
+        margin-top: 46px;
+      }
+
+      .article-image {
+        width: min(640px, 100%);
+        margin: 38px 0 0;
+      }
+
+      .article-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 1px solid rgba(28, 32, 38, 0.12);
+        border-radius: 8px;
+        background: var(--surface);
+        box-shadow: 0 18px 48px rgba(28, 32, 38, 0.1);
+      }
+
+      .article-body p {
+        margin: 0 0 22px;
+        color: var(--ink);
+        font-size: 1.08rem;
+        line-height: 1.78;
+      }
+
+      .article-body p:first-child {
+        font-size: 1.18rem;
+        line-height: 1.72;
+      }
+
+      .article-body a {
+        color: var(--accent);
+        font-weight: 750;
+        text-decoration: underline;
+        text-decoration-color: rgba(217, 92, 59, 0.45);
+        text-underline-offset: 3px;
+        text-decoration-thickness: 1px;
+      }
+
+      .article-cta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px 22px;
+        max-width: 740px;
+        margin-top: 44px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 22px;
+        background: rgba(255, 255, 255, 0.74);
+        box-shadow: 0 16px 40px rgba(28, 32, 38, 0.08);
+      }
+
+      .article-cta p {
+        max-width: 460px;
+        margin: 0;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.55;
+      }
+
+      .article-cta a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        border-radius: 8px;
+        padding: 0 16px;
+        background: var(--ink);
+        color: var(--surface);
+        font-size: 0.92rem;
+        font-weight: 800;
+      }
+
+      .article-footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 12px 22px;
+        margin-top: 54px;
+        border-top: 1px solid var(--line);
+        padding-top: 22px;
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      .article-footer a,
+      .back-link {
+        text-decoration: underline;
+        text-decoration-color: rgba(102, 112, 120, 0.45);
+        text-underline-offset: 3px;
+      }
+
+      .back-link {
+        display: inline-flex;
+        margin-top: 18px;
+        color: var(--accent);
+        font-size: 0.92rem;
+        font-weight: 750;
+        text-decoration-color: rgba(217, 92, 59, 0.55);
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+      }
+
+      @media (max-width: 760px) {
+        .nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 12px 16px;
+          font-size: 0.88rem;
+        }
+
+        .article-shell {
+          padding-top: 42px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <nav class="nav" aria-label="Article navigation">
+        <a class="brand" href="/">Fibich</a>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="/#features">Features</a>
+          <a href="/blog/" aria-current="page">Blog</a>
+          <a href="/#newsletter">Updates</a>
+          <span id="email">Contact</span>
+        </div>
+      </nav>
+
+      <article class="article-shell">
+        <header>
+          <p class="eyebrow">
+            <time datetime="2026-07-05">July 5, 2026</time>
+            <span>Development</span>
+          </p>
+          <h1>Choosing Where the Music Plays</h1>
+          <p class="intro">
+            Fibich makes library-to-playlist flow smoother and adds persistent macOS audio
+            output device selection.
+          </p>
+          <p class="article-meta">
+            <span><strong>By Antonin Charvat</strong>, creator of Fibich</span>
+            <span class="read-time">4 min read</span>
+          </p>
+        </header>
+
+        <figure class="article-image">
+          <img
+            src="/assets/fibich_audioOutput.png"
+            alt="Fibich audio output device settings"
+            width="1782"
+            height="1426"
+            loading="lazy"
+          >
+        </figure>
+
+        <div class="article-body">
+          <p>
+            This week Fibich became a little more deliberate about two everyday workflows:
+            getting music into playlists, and choosing where the sound should come out.
+          </p>
+          <p>
+            The playlist work started with a small context-menu improvement. A library
+            item can now be enqueued not only into the current playlist, but also into a
+            newly created playlist. That makes the library feel more useful as a starting
+            point. Sometimes I do not want to interrupt the current queue; I want to pick
+            an album or folder and immediately start a new listening space for it.
+          </p>
+          <p>
+            Drag and drop from the library also became more precise. Fibich can now
+            preserve ordering when library items are dragged into a playlist. This matters
+            more than it sounds. If I drag an album, I expect the tracks to land in the
+            right order. A music player should not make me repair the sequence manually
+            after every drop.
+          </p>
+          <p>
+            The code obstacle here is that the library and the playlist do not represent
+            music in exactly the same way. The library may be hierarchical: folders,
+            albums, tracks. The playlist is ordered and flat enough for playback. Dragging
+            from one world into the other needs a payload that keeps enough meaning: what
+            was dragged, where it came from, and how it should be inserted.
+          </p>
+          <p>
+            Underneath, I also bumped the minimum SFBAudioEngine version. That is not a
+            visible feature, but it matters for the playback foundation. Fibich depends on
+            the audio engine for wide format support and reliable playback behavior, so
+            keeping that layer current is part of keeping the whole app healthy.
+          </p>
+          <p>The biggest visible addition today is the audio output device picker.</p>
+          <p>
+            Fibich can now expose available output devices in settings, remember the
+            selected output, and route playback accordingly. This is a very natural
+            feature for a hi-fi player on macOS. Many listeners do not only use the
+            built-in speakers. They may use an external DAC, USB interface, headphones,
+            HDMI output, or another dedicated audio device.
+          </p>
+          <p>
+            The implementation has a few moving parts. The app needs to ask Core Audio for
+            available output devices, observe device changes, represent those devices in a
+            model, show them in settings, persist the user’s selection, and apply that
+            selection to playback. It also needs to behave sensibly when the selected
+            device is no longer available.
+          </p>
+          <p>
+            That last part is important. Audio devices are not static. A DAC can be
+            unplugged. Headphones can disappear. The system default output can change.
+            Fibich needs to treat output routing as living state, not a fixed preference
+            written once and forgotten.
+          </p>
+          <p>
+            I added tests around the output settings, selection storage, and routing
+            behavior too. That felt necessary because output routing is the kind of
+            feature where the happy path is easy, but the edge cases are what users
+            actually feel: missing devices, changing lists, remembered selections, and
+            fallback behavior.
+          </p>
+          <p>
+            There is also a small startup polish fix: the library should no longer briefly
+            flash as empty while the app is still loading. It is a tiny visual detail, but
+            it affects trust. If the app already knows about my library, I do not want to
+            see it disappear for a moment every time Fibich starts.
+          </p>
+          <p>So this week’s work is split between flow and control.</p>
+          <p>Flow: getting music from the library into playlists more naturally.</p>
+          <p>
+            Control: choosing the right audio output device and making that choice stick.
+          </p>
+          <p>
+            For a local macOS music player, both matter. The app should help me build the
+            listening queue I want, then send the sound to the hardware I actually use.
+          </p>
+        </div>
+
+        <section class="article-cta" aria-label="Follow development updates">
+          <p>Get occasional notes on new builds, design decisions, and what is changing in Fibich.</p>
+          <a href="/#newsletter">Follow development updates</a>
+        </section>
+
+        <a class="back-link" href="/blog/">Back to all posts</a>
+
+        <footer class="article-footer">
+          <span>
+            (C) 2026
+            <a
+              href="https://www.linkedin.com/in/antonincharvat/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Antonin Charvat</a>
+          </span>
+          <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Notice</a>
+          </div>
+        </footer>
+      </article>
+    </main>
+
+    <script>
+      const user = "antonincharvat";
+      const domain = "gmail";
+      const dotCom = ".com";
+      const address = `${user}@${domain}${dotCom}`;
+      const email = document.getElementById("email");
+      const link = document.createElement("a");
+
+      link.href = `mailto:${address}`;
+      link.textContent = "Contact";
+      email.replaceChildren(link);
+    </script>
+    <script src="/assets/visit-counter.js?v=20260705a" defer></script>
+  </body>
+</html>
