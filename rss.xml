@@ -6,7 +6,7 @@
     <atom:link href="https://fibich.app/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Development notes, release updates, and behind-the-scenes writing for Fibich, a macOS music player.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 05 Jul 2026 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 06 Jul 2026 00:00:00 +0200</lastBuildDate>
     <ttl>1440</ttl>
     <image>
       <url>https://fibich.app/assets/fibich-player-screenshot.png</url>
@@ -14,6 +14,14 @@
       <link>https://fibich.app/blog/</link>
     </image>
 
+    <item>
+      <title>Best Lossless Audio Formats in 2026</title>
+      <link>https://fibich.app/blog/best-lossless-audio-formats-2026/</link>
+      <guid isPermaLink="true">https://fibich.app/blog/best-lossless-audio-formats-2026/</guid>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0200</pubDate>
+      <dc:creator>Antonin Charvat</dc:creator>
+      <description>A practical guide to FLAC, ALAC, WAV, AIFF, WavPack, APE, DSD, and the perks of keeping a lossless music library.</description>
+    </item>
     <item>
       <title>Choosing Where the Music Plays</title>
       <link>https://fibich.app/blog/choosing-where-the-music-plays/</link>
