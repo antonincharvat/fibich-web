@@ -29,11 +29,11 @@
     <meta property="og:url" content="https://fibich.app/">
     <meta
       property="og:image"
-      content="https://fibich.app/assets/fibich-player-screenshot.png"
+      content="https://fibich.app/assets/fibich_appMock.png"
     >
-    <meta property="og:image:width" content="4064">
-    <meta property="og:image:height" content="2324">
-    <meta property="og:image:alt" content="Fibich music player interface on macOS">
+    <meta property="og:image:width" content="4340">
+    <meta property="og:image:height" content="2860">
+    <meta property="og:image:alt" content="Fibich music player shown on a laptop">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Fibich - Music Player for macOS">
@@ -43,9 +43,9 @@
     >
     <meta
       name="twitter:image"
-      content="https://fibich.app/assets/fibich-player-screenshot.png"
+      content="https://fibich.app/assets/fibich_appMock.png"
     >
-    <meta name="twitter:image:alt" content="Fibich music player interface on macOS">
+    <meta name="twitter:image:alt" content="Fibich music player shown on a laptop">
 
     <script type="application/ld+json">
       {
@@ -56,8 +56,8 @@
         "description": "Fibich is a simple, powerful music player for macOS focused on organizing your library and returning to your favorite tracks.",
         "applicationCategory": "MultimediaApplication",
         "operatingSystem": "macOS",
-        "image": "https://fibich.app/assets/fibich-player-screenshot.png",
-        "screenshot": "https://fibich.app/assets/fibich-player-screenshot.png",
+        "image": "https://fibich.app/assets/fibich_appMock.png",
+        "screenshot": "https://fibich.app/assets/fibich_appMock.png",
         "creator": {
           "@type": "Person",
           "name": "Antonin Charvat",
@@ -247,24 +247,30 @@
 
       .showcase {
         position: relative;
+        width: min(1180px, 100%);
         margin: 0 auto;
       }
 
-      .screenshot-frame {
-        width: 100%;
-        border: 1px solid rgba(28, 32, 38, 0.12);
-        border-radius: 18px;
-        background: var(--surface);
-        padding: 10px;
-        box-shadow: var(--shadow);
-        overflow: hidden;
-      }
-
-      .app-screenshot {
+      .product-render {
         display: block;
         width: 100%;
         height: auto;
-        border-radius: 12px;
+        animation: product-render-slide-in 3000ms cubic-bezier(0.2, 0.8, 0.2, 1) 260ms both;
+        filter: drop-shadow(0 34px 34px rgba(28, 32, 38, 0.16));
+        transform-origin: 50% 20%;
+        will-change: opacity, transform;
+      }
+
+      @keyframes product-render-slide-in {
+        from {
+          opacity: 0;
+          transform: translateY(-34px) scale(0.985);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
       }
 
       .footer-note {
@@ -444,9 +450,8 @@
           padding-top: 42px;
         }
 
-        .screenshot-frame {
-          border-radius: 14px;
-          padding: 6px;
+        .showcase {
+          width: min(100%, 720px);
         }
 
         .features {
@@ -463,8 +468,10 @@
           width: 100%;
         }
 
-        .app-screenshot {
-          border-radius: 10px;
+        .product-render {
+          width: calc(100% + 38px);
+          max-width: none;
+          margin-left: -19px;
         }
 
         .newsletter-form {
@@ -477,6 +484,19 @@
 
         .feature-card {
           padding: 18px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        .product-render {
+          animation: none;
+          opacity: 1;
+          transform: none;
+          will-change: auto;
         }
       }
     </style>
@@ -513,18 +533,16 @@
           </button>
         </div>
 
-        <div class="showcase" aria-label="Fibich app preview">
-          <div class="screenshot-frame">
-            <img
-              class="app-screenshot"
-              src="assets/fibich-player-screenshot.png"
-              alt="Fibich music player interface showing a music library on macOS"
-              width="4064"
-              height="2324"
-              loading="eager"
-              fetchpriority="high"
-            >
-          </div>
+        <div class="showcase" aria-label="Fibich app preview shown on a laptop">
+          <img
+            class="product-render"
+            src="assets/fibich_appMock.png"
+            alt="Fibich music player interface shown on a laptop"
+            width="4340"
+            height="2860"
+            loading="eager"
+            fetchpriority="high"
+          >
         </div>
 
         <section class="features" id="features" aria-labelledby="features-title">
