@@ -6,7 +6,7 @@
     <atom:link href="https://fibich.app/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Development notes, release updates, and behind-the-scenes writing for Fibich, a macOS music player.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 06 Jul 2026 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 13 Jul 2026 00:00:00 +0200</lastBuildDate>
     <ttl>1440</ttl>
     <image>
       <url>https://fibich.app/assets/fibich-player-screenshot.png</url>
@@ -14,6 +14,14 @@
       <link>https://fibich.app/blog/</link>
     </image>
 
+    <item>
+      <title>From Project Name to Shippable Player</title>
+      <link>https://fibich.app/blog/from-project-name-to-shippable-player/</link>
+      <guid isPermaLink="true">https://fibich.app/blog/from-project-name-to-shippable-player/</guid>
+      <pubDate>Mon, 13 Jul 2026 00:00:00 +0200</pubDate>
+      <dc:creator>Antonin Charvat</dc:creator>
+      <description>Fibich moves toward release readiness with project renaming, notarized builds, dependency cleanup, visual polish, ordered drops, and playlist search.</description>
+    </item>
     <item>
       <title>Best Lossless Audio Formats in 2026</title>
       <link>https://fibich.app/blog/best-lossless-audio-formats-2026/</link>
