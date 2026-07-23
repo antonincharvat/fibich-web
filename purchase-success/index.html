@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Thank You - Fibich</title>
+    <meta name="description" content="Thank you for purchasing Fibich for macOS.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#f7f8f5">
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f8f5;
+        --ink: #1c2026;
+        --muted: #667078;
+        --line: #dde2e0;
+        --surface: #ffffff;
+        --accent: #d95c3b;
+        --accent-2: #2f8c84;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        display: grid;
+        min-height: 100vh;
+        margin: 0;
+        background:
+          linear-gradient(180deg, rgba(47, 140, 132, 0.12), transparent 320px),
+          var(--bg);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        place-items: center;
+      }
+
+      main {
+        width: min(660px, calc(100% - 32px));
+        margin: 48px auto;
+      }
+
+      .brand {
+        display: inline-flex;
+        margin-bottom: 28px;
+        color: inherit;
+        font-size: 1.35rem;
+        font-weight: 850;
+        text-decoration: none;
+      }
+
+      .success-card {
+        border: 1px solid rgba(28, 32, 38, 0.12);
+        border-radius: 14px;
+        background: var(--surface);
+        padding: clamp(28px, 7vw, 54px);
+        box-shadow: 0 24px 70px rgba(28, 32, 38, 0.12);
+      }
+
+      .checkmark {
+        display: grid;
+        width: 54px;
+        height: 54px;
+        margin-bottom: 24px;
+        border-radius: 50%;
+        background: rgba(47, 140, 132, 0.13);
+        color: var(--accent-2);
+        font-size: 1.6rem;
+        font-weight: 900;
+        place-items: center;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2.3rem, 8vw, 4.3rem);
+        line-height: 0.98;
+        letter-spacing: -0.03em;
+      }
+
+      p {
+        margin: 20px 0 0;
+        color: var(--muted);
+        font-size: 1.04rem;
+        line-height: 1.65;
+      }
+
+      .important {
+        border-left: 3px solid var(--accent);
+        padding-left: 16px;
+        color: var(--ink);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 30px;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 46px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        background: var(--surface);
+        padding: 0 18px;
+        color: var(--ink);
+        font-weight: 750;
+        text-decoration: none;
+      }
+
+      .button.primary {
+        border-color: var(--ink);
+        background: var(--ink);
+        color: #ffffff;
+      }
+
+      .button:focus-visible {
+        outline: 3px solid rgba(47, 140, 132, 0.35);
+        outline-offset: 3px;
+      }
+
+      @media (max-width: 480px) {
+        .button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="brand" href="/">Fibich</a>
+      <section class="success-card" aria-labelledby="success-title">
+        <div class="checkmark" aria-hidden="true">&#10003;</div>
+        <h1 id="success-title">Thank you for purchasing Fibich.</h1>
+        <p>
+          Your checkout is complete. Your Fibich license is handled separately and may
+          take a little time to arrive.
+        </p>
+        <p class="important">
+          Please check the email address you used at checkout, including your spam or
+          junk folder. This page does not confirm that license delivery has completed.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="/">Return to Fibich</a>
+          <span id="email"><a class="button" href="/">Contact support</a></span>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const user = "antonincharvat";
+      const domain = "gmail";
+      const dotCom = ".com";
+      const address = `${user}@${domain}${dotCom}`;
+      const email = document.getElementById("email");
+      const link = document.createElement("a");
+
+      link.className = "button";
+      link.href = `mailto:${address}`;
+      link.textContent = "Contact support";
+      email.replaceChildren(link);
+    </script>
+  </body>
+</html>

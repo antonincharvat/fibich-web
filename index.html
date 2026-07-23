@@ -65,6 +65,8 @@
         }
       }
     </script>
+    <script src="https://cdn.paddle.com/paddle/v2/paddle.js" defer></script>
+    <script src="/assets/paddle-checkout.js?v=20260722a" defer></script>
     <style>
       :root {
         color-scheme: light;
@@ -384,6 +386,131 @@
         margin: 56px auto 0;
       }
 
+      .pricing {
+        width: min(680px, 100%);
+        margin: 72px auto 0;
+      }
+
+      .pricing-card {
+        overflow: hidden;
+        border: 1px solid rgba(28, 32, 38, 0.13);
+        border-radius: 14px;
+        background:
+          linear-gradient(145deg, rgba(47, 140, 132, 0.1), transparent 52%),
+          var(--surface);
+        padding: clamp(24px, 5vw, 42px);
+        box-shadow: 0 20px 60px rgba(28, 32, 38, 0.1);
+        text-align: left;
+      }
+
+      .pricing-badge {
+        display: inline-flex;
+        min-height: 30px;
+        align-items: center;
+        margin: 0 0 18px;
+        border-radius: 999px;
+        background: rgba(217, 92, 59, 0.12);
+        padding: 0 12px;
+        color: #a83f25;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+
+      .pricing-card h3 {
+        margin: 0;
+        font-size: clamp(1.6rem, 4vw, 2.3rem);
+        line-height: 1.1;
+      }
+
+      .pricing-price {
+        min-height: 1.1em;
+        margin: 20px 0 0;
+        font-size: clamp(2.5rem, 7vw, 4.5rem);
+        font-weight: 850;
+        line-height: 1;
+        letter-spacing: -0.035em;
+      }
+
+      .pricing-price[aria-busy="true"] {
+        color: var(--muted);
+        font-size: clamp(1.35rem, 4vw, 1.8rem);
+        letter-spacing: 0;
+      }
+
+      .pricing-price-note {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.55;
+      }
+
+      .license-includes {
+        display: grid;
+        gap: 10px;
+        margin: 26px 0;
+        padding: 0;
+        color: var(--muted);
+        list-style: none;
+      }
+
+      .license-includes li {
+        position: relative;
+        padding-left: 22px;
+        line-height: 1.5;
+      }
+
+      .license-includes li::before {
+        position: absolute;
+        top: 0.15em;
+        left: 0;
+        color: var(--accent-2);
+        content: "\2713";
+        font-weight: 900;
+      }
+
+      .purchase-button {
+        display: inline-flex;
+        width: 100%;
+        min-height: 52px;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        border-radius: 9px;
+        background: var(--ink);
+        padding: 0 22px;
+        color: #ffffff;
+        cursor: pointer;
+        font: inherit;
+        font-weight: 800;
+        transition: transform 150ms ease, box-shadow 150ms ease, opacity 150ms ease;
+      }
+
+      .purchase-button:hover:not(:disabled) {
+        box-shadow: 0 12px 28px rgba(28, 32, 38, 0.2);
+        transform: translateY(-1px);
+      }
+
+      .purchase-button:focus-visible {
+        outline: 3px solid rgba(47, 140, 132, 0.35);
+        outline-offset: 3px;
+      }
+
+      .purchase-button:disabled {
+        cursor: not-allowed;
+        opacity: 0.58;
+      }
+
+      .checkout-status {
+        min-height: 1.5em;
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 0.82rem;
+        line-height: 1.5;
+        text-align: center;
+      }
+
       .newsletter-form {
         min-width: 0;
         overflow: hidden;
@@ -458,6 +585,10 @@
           margin-top: 52px;
         }
 
+        .pricing {
+          margin-top: 52px;
+        }
+
         .feature-grid {
           grid-template-columns: 1fr;
         }
@@ -510,6 +641,7 @@
         <div class="nav-links">
           <a href="#preview">Preview</a>
           <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
           <a href="/blog/">Blog</a>
           <a href="#newsletter">Updates</a>
           <span id="email">Contact</span>
@@ -617,6 +749,41 @@
               </ul>
             </article>
           </div>
+        </section>
+
+        <section class="pricing" id="pricing" aria-labelledby="pricing-title">
+          <div class="section-heading">
+            <p class="product-label">Simple, perpetual license</p>
+            <h2 id="pricing-title">One purchase. Fibich is yours.</h2>
+            <p>
+              No subscription, trial, recurring payment, or confusing tiers.
+            </p>
+          </div>
+
+          <article class="pricing-card">
+            <p class="pricing-badge" id="paddle-offer-label">Introductory price</p>
+            <h3>Fibich for Mac</h3>
+            <p
+              class="pricing-price"
+              id="paddle-price"
+              aria-live="polite"
+              aria-busy="true"
+            >Loading your local price…</p>
+            <p class="pricing-price-note" id="paddle-price-note">
+              Paddle is checking the total for your location.
+            </p>
+            <ul class="license-includes">
+              <li>One perpetual Fibich license</li>
+              <li>One-time payment</li>
+              <li>Secure checkout handled by Paddle</li>
+            </ul>
+            <button class="purchase-button" id="paddle-checkout-button" type="button" disabled>
+              Preparing checkout…
+            </button>
+            <p class="checkout-status" id="paddle-checkout-status" role="status" aria-live="polite">
+              Sandbox test mode. No real payment will be taken.
+            </p>
+          </article>
         </section>
 
         <section class="newsletter" id="newsletter" aria-label="Newsletter signup">
