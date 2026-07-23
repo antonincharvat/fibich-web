@@ -21,22 +21,47 @@ function createElement(initialText = "") {
 
   return {
     disabled: false,
+    focusCalls: 0,
+    maxLength: -1,
+    reportValidityCalls: 0,
+    required: false,
     textContent: initialText,
+    validationMessage: "",
+    value: "",
     addEventListener(type, listener) {
       const typeListeners = listeners.get(type) || [];
       typeListeners.push(listener);
       listeners.set(type, typeListeners);
+    },
+    checkValidity() {
+      if (this.validationMessage) {
+        return false;
+      }
+      if (this.required && !this.value) {
+        return false;
+      }
+      return this.maxLength < 0 || this.value.length <= this.maxLength;
     },
     click() {
       for (const listener of listeners.get("click") || []) {
         listener();
       }
     },
+    focus() {
+      this.focusCalls += 1;
+    },
     getAttribute(name) {
       return attributes.get(name) ?? null;
     },
+    reportValidity() {
+      this.reportValidityCalls += 1;
+      return this.checkValidity();
+    },
     setAttribute(name, value) {
       attributes.set(name, String(value));
+    },
+    setCustomValidity(message) {
+      this.validationMessage = message;
     },
   };
 }
@@ -79,9 +104,12 @@ function runCheckoutScript({
     "paddle-price": createElement("Loading your local price…"),
     "paddle-price-note": createElement("Paddle is checking the total for your location."),
     "paddle-offer-label": createElement("Introductory price"),
+    "paddle-licensee-name": createElement(),
     "paddle-checkout-button": createElement("Preparing checkout…"),
     "paddle-checkout-status": createElement("Sandbox test mode. No real payment will be taken."),
   };
+  elements["paddle-licensee-name"].maxLength = 200;
+  elements["paddle-licensee-name"].required = true;
   elements["paddle-checkout-button"].disabled = true;
 
   const Paddle = paddleAvailable
@@ -183,11 +211,15 @@ test("opens one-page overlay checkout for the displayed launch price and quantit
   const { calls, elements } = runCheckoutScript();
   await finishInitialization();
 
+  elements["paddle-licensee-name"].value = "Fibich Test";
   elements["paddle-checkout-button"].click();
 
   assert.equal(calls.checkoutOpen.length, 1);
   assert.deepEqual(plain(calls.checkoutOpen[0]), {
     items: [{ priceId: LAUNCH_PRICE_ID, quantity: 1 }],
+    customData: {
+      licensee_name: "Fibich Test",
+    },
     settings: {
       displayMode: "overlay",
       variant: "one-page",
@@ -213,6 +245,7 @@ test("keeps checkout available with the USD fallback when price preview fails", 
   assert.equal(elements["paddle-checkout-button"].disabled, false);
   assert.equal(calls.warnings.length, 1);
 
+  elements["paddle-licensee-name"].value = "Fibich Test";
   elements["paddle-checkout-button"].click();
   assert.deepEqual(plain(calls.checkoutOpen[0].items), [
     { priceId: LAUNCH_PRICE_ID, quantity: 1 },
@@ -248,12 +281,54 @@ test("leaves checkout disabled when Paddle.js is unavailable", async () => {
   );
 });
 
+test("prevents checkout and reports native validation for an empty license name", async () => {
+  for (const invalidName of ["", "   \t  "]) {
+    const { calls, elements } = runCheckoutScript();
+    await finishInitialization();
+
+    const licenseeNameInput = elements["paddle-licensee-name"];
+    licenseeNameInput.value = invalidName;
+    elements["paddle-checkout-button"].click();
+
+    assert.equal(calls.checkoutOpen.length, 0);
+    assert.equal(
+      licenseeNameInput.validationMessage,
+      "Enter the name to show on your Fibich license.",
+    );
+    assert.equal(licenseeNameInput.reportValidityCalls, 1);
+    assert.equal(licenseeNameInput.focusCalls, 1);
+  }
+});
+
+test("trims a Unicode license name without changing its spelling", async () => {
+  const { calls, elements } = runCheckoutScript();
+  await finishInitialization();
+
+  elements["paddle-licensee-name"].value = "  Žofie Nováková  ";
+  elements["paddle-checkout-button"].click();
+
+  assert.equal(calls.checkoutOpen.length, 1);
+  assert.deepEqual(plain(calls.checkoutOpen[0]), {
+    items: [{ priceId: LAUNCH_PRICE_ID, quantity: 1 }],
+    customData: {
+      licensee_name: "Žofie Nováková",
+    },
+    settings: {
+      displayMode: "overlay",
+      variant: "one-page",
+      theme: "light",
+      successUrl: "http://localhost:8765/purchase-success/",
+    },
+  });
+});
+
 test("shows a retry message when Paddle cannot open checkout", async () => {
   const { calls, elements } = runCheckoutScript({
     checkoutOpenError: new Error("checkout unavailable"),
   });
   await finishInitialization();
 
+  elements["paddle-licensee-name"].value = "Fibich Test";
   elements["paddle-checkout-button"].click();
 
   assert.equal(calls.errors.length, 1);

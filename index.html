@@ -66,7 +66,7 @@
       }
     </script>
     <script src="https://cdn.paddle.com/paddle/v2/paddle.js" defer></script>
-    <script src="/assets/paddle-checkout.js?v=20260722a" defer></script>
+    <script src="/assets/paddle-checkout.js?v=20260723a" defer></script>
     <style>
       :root {
         color-scheme: light;
@@ -470,6 +470,42 @@
         font-weight: 900;
       }
 
+      .license-name-field {
+        display: grid;
+        gap: 8px;
+        margin: 0 0 22px;
+      }
+
+      .license-name-label {
+        color: var(--ink);
+        font-size: 0.94rem;
+        font-weight: 800;
+      }
+
+      .license-name-input {
+        width: 100%;
+        min-height: 48px;
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        background: var(--surface);
+        padding: 0 14px;
+        color: var(--ink);
+        font: inherit;
+      }
+
+      .license-name-input:focus-visible {
+        border-color: var(--accent-2);
+        outline: 3px solid rgba(47, 140, 132, 0.22);
+        outline-offset: 1px;
+      }
+
+      .license-name-help {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.84rem;
+        line-height: 1.5;
+      }
+
       .purchase-button {
         display: inline-flex;
         width: 100%;
@@ -777,6 +813,22 @@
               <li>One-time payment</li>
               <li>Secure checkout handled by Paddle</li>
             </ul>
+            <div class="license-name-field">
+              <label class="license-name-label" for="paddle-licensee-name">Name on license</label>
+              <input
+                class="license-name-input"
+                id="paddle-licensee-name"
+                name="licensee_name"
+                type="text"
+                autocomplete="name"
+                maxlength="200"
+                aria-describedby="paddle-licensee-name-help"
+                required
+              >
+              <p class="license-name-help" id="paddle-licensee-name-help">
+                This name will be shown in Fibich after activation.
+              </p>
+            </div>
             <button class="purchase-button" id="paddle-checkout-button" type="button" disabled>
               Preparing checkout…
             </button>

@@ -29,6 +29,7 @@
   const priceElement = document.getElementById("paddle-price");
   const priceNoteElement = document.getElementById("paddle-price-note");
   const offerLabelElement = document.getElementById("paddle-offer-label");
+  const licenseeNameInput = document.getElementById("paddle-licensee-name");
   const checkoutButton = document.getElementById("paddle-checkout-button");
   const checkoutStatus = document.getElementById("paddle-checkout-status");
 
@@ -37,6 +38,7 @@
     !priceElement ||
     !priceNoteElement ||
     !offerLabelElement ||
+    !licenseeNameInput ||
     !checkoutButton ||
     !checkoutStatus
   ) {
@@ -69,6 +71,26 @@
     }
 
     return new URL("/purchase-success/", window.location.origin).href;
+  }
+
+  function validatedLicenseeName() {
+    const licenseeName = licenseeNameInput.value.trim();
+    licenseeNameInput.setCustomValidity("");
+
+    if (!licenseeName) {
+      licenseeNameInput.setCustomValidity("Enter the name to show on your Fibich license.");
+      licenseeNameInput.reportValidity();
+      licenseeNameInput.focus();
+      return null;
+    }
+
+    if (!licenseeNameInput.checkValidity()) {
+      licenseeNameInput.reportValidity();
+      licenseeNameInput.focus();
+      return null;
+    }
+
+    return licenseeName;
   }
 
   async function initializeCheckout() {
@@ -131,10 +153,23 @@
     }
   }
 
+  licenseeNameInput.addEventListener("input", () => {
+    licenseeNameInput.setCustomValidity("");
+  });
+
   checkoutButton.addEventListener("click", () => {
+    const licenseeName = validatedLicenseeName();
+
+    if (licenseeName === null) {
+      return;
+    }
+
     try {
       window.Paddle.Checkout.open({
         items: [{ priceId: activeOffer.priceId, quantity: 1 }],
+        customData: {
+          licensee_name: licenseeName,
+        },
         settings: {
           displayMode: "overlay",
           variant: "one-page",
