@@ -5,8 +5,16 @@ const fs = require("node:fs");
 const path = require("node:path");
 const test = require("node:test");
 
+const DOWNLOAD_ROUTE =
+  "/get/fibich-macos-de5f5f4639b097e4a2dee91772419e4d/";
+const downloadPagePath = path.join(
+  __dirname,
+  "..",
+  ...DOWNLOAD_ROUTE.split("/").filter(Boolean),
+  "index.html",
+);
 const downloadPage = fs.readFileSync(
-  path.join(__dirname, "..", "download", "index.html"),
+  downloadPagePath,
   "utf8",
 );
 const successPage = fs.readFileSync(
@@ -32,13 +40,15 @@ test("keeps the download page out of search listings before launch", () => {
     downloadPage,
     /<meta name="robots" content="noindex, nofollow">/,
   );
+  assert.equal(
+    fs.existsSync(path.join(__dirname, "..", "download", "index.html")),
+    false,
+  );
 });
 
 test("links purchase success to download without claiming license delivery", () => {
-  assert.match(
-    successPage,
-    /<a class="button primary" href="\/download\/">Download Fibich<\/a>/,
-  );
+  assert.ok(successPage.includes(`href="${DOWNLOAD_ROUTE}"`));
+  assert.match(successPage, />Download Fibich<\/a>/);
   assert.match(successPage, /license is handled separately/i);
   assert.match(successPage, /does not confirm that license delivery has completed/i);
   assert.doesNotMatch(successPage, /license (?:has been|was) delivered/i);
