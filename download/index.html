@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Download Fibich for macOS</title>
+    <meta
+      name="description"
+      content="Download Fibich for macOS, install it in Applications, and activate your purchased license inside the app."
+    >
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#f7f8f5">
+    <link rel="canonical" href="https://fibich.app/download/">
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f8f5;
+        --ink: #1c2026;
+        --muted: #667078;
+        --line: #dde2e0;
+        --surface: #ffffff;
+        --accent: #d95c3b;
+        --accent-2: #2f8c84;
+        --shadow: 0 24px 70px rgba(28, 32, 38, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        background:
+          linear-gradient(180deg, rgba(47, 140, 132, 0.12), transparent 320px),
+          var(--bg);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+      }
+
+      main {
+        width: min(760px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 42px 0 64px;
+      }
+
+      .brand {
+        display: inline-flex;
+        margin-bottom: 28px;
+        color: inherit;
+        font-size: 1.35rem;
+        font-weight: 850;
+        text-decoration: none;
+      }
+
+      .download-card {
+        border: 1px solid rgba(28, 32, 38, 0.12);
+        border-radius: 14px;
+        background:
+          linear-gradient(145deg, rgba(47, 140, 132, 0.08), transparent 48%),
+          var(--surface);
+        padding: clamp(28px, 7vw, 56px);
+        box-shadow: var(--shadow);
+      }
+
+      .product-label {
+        margin: 0 0 16px;
+        color: var(--accent-2);
+        font-size: 0.9rem;
+        font-weight: 800;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2.8rem, 9vw, 5.4rem);
+        line-height: 0.94;
+        letter-spacing: -0.03em;
+      }
+
+      .lead {
+        max-width: 610px;
+        margin: 22px 0 0;
+        color: var(--muted);
+        font-size: clamp(1.03rem, 2vw, 1.18rem);
+        line-height: 1.65;
+      }
+
+      .download-button {
+        display: inline-flex;
+        min-height: 52px;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+        border: 0;
+        border-radius: 9px;
+        background: var(--ink);
+        padding: 0 24px;
+        color: #ffffff;
+        font-weight: 800;
+        text-decoration: none;
+        transition: box-shadow 150ms ease, transform 150ms ease;
+      }
+
+      .download-button:hover {
+        box-shadow: 0 12px 28px rgba(28, 32, 38, 0.2);
+        transform: translateY(-1px);
+      }
+
+      .download-button:focus-visible,
+      .footer-link:focus-visible {
+        outline: 3px solid rgba(47, 140, 132, 0.35);
+        outline-offset: 3px;
+      }
+
+      .requirements {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .steps {
+        display: grid;
+        gap: 14px;
+        margin: 34px 0 0;
+        padding: 0;
+        counter-reset: install-step;
+        list-style: none;
+      }
+
+      .steps li {
+        position: relative;
+        min-height: 52px;
+        border-top: 1px solid var(--line);
+        padding: 20px 0 0 48px;
+        color: var(--muted);
+        line-height: 1.6;
+        counter-increment: install-step;
+      }
+
+      .steps li::before {
+        position: absolute;
+        top: 18px;
+        left: 0;
+        display: grid;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: rgba(217, 92, 59, 0.12);
+        color: #a83f25;
+        content: counter(install-step);
+        font-size: 0.84rem;
+        font-weight: 850;
+        place-items: center;
+      }
+
+      .steps strong {
+        color: var(--ink);
+      }
+
+      .customer-note {
+        margin: 30px 0 0;
+        border-left: 3px solid var(--accent);
+        padding-left: 16px;
+        color: var(--ink);
+        line-height: 1.6;
+      }
+
+      .page-footer {
+        margin-top: 22px;
+        color: var(--muted);
+        font-size: 0.88rem;
+        text-align: center;
+      }
+
+      .footer-link {
+        color: inherit;
+        text-decoration: underline;
+        text-decoration-color: rgba(102, 112, 120, 0.45);
+        text-underline-offset: 3px;
+      }
+
+      @media (max-width: 480px) {
+        main {
+          padding-top: 28px;
+        }
+
+        .download-button {
+          width: 100%;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .download-button {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="brand" href="/">Fibich</a>
+      <section class="download-card" aria-labelledby="download-title">
+        <p class="product-label">Music player for macOS</p>
+        <h1 id="download-title">Download Fibich.</h1>
+        <p class="lead">
+          Get the latest release of Fibich for your Mac. Fibich requires macOS 15
+          or later.
+        </p>
+
+        <a
+          class="download-button"
+          href="/downloads/Fibich-1.0.1-2.dmg"
+          download
+        >Download Fibich</a>
+        <p class="requirements">Fibich 1.0.1 for macOS 15 or later.</p>
+
+        <ol class="steps" aria-label="Install Fibich">
+          <li>
+            <strong>Install.</strong> Open the downloaded DMG, then move Fibich to your
+            Applications folder.
+          </li>
+          <li>
+            <strong>Activate.</strong> Open Fibich and activate your purchased license
+            inside the app.
+          </li>
+        </ol>
+
+        <p class="customer-note">
+          Already a customer? You can use this page any time to reinstall Fibich.
+        </p>
+      </section>
+      <p class="page-footer"><a class="footer-link" href="/">Return to fibich.app</a></p>
+    </main>
+  </body>
+</html>
