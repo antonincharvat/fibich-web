@@ -8,6 +8,7 @@ const vm = require("node:vm");
 
 const PRODUCT_ID = "pro_01ky5k4hsfrn8zfvc55nf5tkha";
 const LAUNCH_PRICE_ID = "pri_01ky5kgaftp3bea23rtfkhmk0t";
+const SUCCESS_URL = "https://api.fibich.app/purchase-success/";
 const SCRIPT_PATH = path.join(__dirname, "..", "assets", "paddle-checkout.js");
 const SCRIPT_SOURCE = fs.readFileSync(SCRIPT_PATH, "utf8");
 
@@ -190,7 +191,7 @@ test("initializes Paddle sandbox and displays its formatted total unchanged", as
     displayMode: "overlay",
     variant: "one-page",
     theme: "light",
-    successUrl: "http://localhost:8765/purchase-success/",
+    successUrl: SUCCESS_URL,
   });
   assert.deepEqual(plain(calls.pricePreview), [
     {
@@ -224,7 +225,7 @@ test("opens one-page overlay checkout for the displayed launch price and quantit
       displayMode: "overlay",
       variant: "one-page",
       theme: "light",
-      successUrl: "http://localhost:8765/purchase-success/",
+      successUrl: SUCCESS_URL,
     },
   });
 });
@@ -317,7 +318,7 @@ test("trims a Unicode license name without changing its spelling", async () => {
       displayMode: "overlay",
       variant: "one-page",
       theme: "light",
-      successUrl: "http://localhost:8765/purchase-success/",
+      successUrl: SUCCESS_URL,
     },
   });
 });

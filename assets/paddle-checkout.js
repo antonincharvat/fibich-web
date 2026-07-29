@@ -23,6 +23,7 @@
     }),
   });
 
+  const PURCHASE_SUCCESS_URL = "https://api.fibich.app/purchase-success/";
   const CLIENT_TOKEN_PATTERN = /^test_[a-zA-Z0-9]{27}$/;
   const PRICE_PREVIEW_TIMEOUT_MS = 10000;
   const activeOffer = PADDLE_CONFIG.offers[PADDLE_CONFIG.activeOffer];
@@ -66,11 +67,7 @@
   }
 
   function checkoutSuccessUrl() {
-    if (window.location.protocol !== "http:" && window.location.protocol !== "https:") {
-      throw new Error("Paddle Checkout requires an HTTP or HTTPS page");
-    }
-
-    return new URL("/purchase-success/", window.location.origin).href;
+    return PURCHASE_SUCCESS_URL;
   }
 
   function validatedLicenseeName() {
