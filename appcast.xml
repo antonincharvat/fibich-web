@@ -1,6 +1,8 @@
-<?xml version="1.0" standalone="yes"?><!-- sparkle-sign-warning:
+<?xml version="1.0" standalone="yes"?>
+<!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+-->
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
     <channel>
         <title>Fibich</title>
         <item>
@@ -10,10 +12,11 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
             <sparkle:version>2</sparkle:version>
             <sparkle:shortVersionString>1.0.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://fibich.app/downloads/Fibich-1.0.1-2.dmg" length="11118240" type="application/octet-stream" sparkle:edSignature="2n2JGEHTwYOoldh/6SGfp85Dwrw3atsSlWRlD/CERi5MrmZWwZuekertXvvVWbeLxBblAwBJTw6GLv8qzUniDQ=="></enclosure>
+            <enclosure url="https://api.fibich.app/releases/a13bd495bd0132bacf0db59c17422c41/Fibich-1.0.1-2.dmg" length="11118240" type="application/octet-stream" sparkle:edSignature="2n2JGEHTwYOoldh/6SGfp85Dwrw3atsSlWRlD/CERi5MrmZWwZuekertXvvVWbeLxBblAwBJTw6GLv8qzUniDQ=="/>
         </item>
     </channel>
-</rss><!-- sparkle-signatures:
-edSignature: J30zLYql5Y2Y8+HHvmPyIe+b2CdfLsvmjw/s4G04/P1pRHlNpDSxUXb9LRQRxUOI/9qUaKRdjYiydtYy2dbIDw==
-length: 1051
+</rss>
+<!-- sparkle-signatures:
+edSignature: xH4mEU/bEhS0WSgOPeKt2Hze5ZGaNmOXJMj3D2a+qkQZ3lJwipdOmnx5XV6APgDoJRJFpFVd2DWYqmTTypfDCA==
+length: 1079
 -->
