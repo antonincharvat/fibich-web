@@ -444,6 +444,12 @@
         line-height: 1.55;
       }
 
+      .pricing-price-note a {
+        text-decoration: underline;
+        text-decoration-color: rgba(102, 112, 120, 0.45);
+        text-underline-offset: 3px;
+      }
+
       .license-includes {
         display: grid;
         gap: 10px;
@@ -790,16 +796,26 @@
             <p class="product-label">Purchases temporarily paused</p>
             <h2 id="pricing-title">Fibich sales will reopen soon.</h2>
             <p>
-              I’m finishing the automatic license delivery setup before accepting more orders.
+              I’m finishing the automatic license delivery setup before accepting more
+              orders. Each purchase will include one perpetual license for one Mac at a
+              time.
             </p>
           </div>
 
           <article class="pricing-card">
             <p class="pricing-badge">Checkout temporarily unavailable</p>
-            <h3>Thanks for your patience.</h3>
+            <h3>One license. One Mac at a time.</h3>
             <p class="pricing-price-note">
               No payment can be made from this page right now. Join the updates list below
               if you’d like to hear when purchasing opens.
+            </p>
+            <ul class="license-includes">
+              <li>One perpetual Fibich license for one Mac at a time</li>
+              <li>A separate license for each additional Mac</li>
+              <li>Reinstall on the same Mac or transfer after removing it from the previous Mac</li>
+            </ul>
+            <p class="pricing-price-note">
+              Read the <a href="/license.html">Fibich license-use details</a>.
             </p>
           </article>
         </section>
@@ -832,6 +848,7 @@
         </p>
         <div class="legal-links">
           <a href="/blog/">Blog</a>
+          <a href="/license.html">License Use</a>
           <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Notice</a>
         </div>
       </section>

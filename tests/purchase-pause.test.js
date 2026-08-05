@@ -13,6 +13,9 @@ const homepage = fs.readFileSync(
 test("keeps checkout unavailable while fulfillment setup is paused", () => {
   assert.match(homepage, /Purchases temporarily paused/);
   assert.match(homepage, /No payment can be made from this page right now\./);
+  assert.match(homepage, /One license\. One Mac at a time\./);
+  assert.match(homepage, /A separate license for each additional Mac/);
+  assert.match(homepage, /href="\/license\.html"/);
   assert.doesNotMatch(homepage, /cdn\.paddle\.com\/paddle\/v2\/paddle\.js/);
   assert.doesNotMatch(homepage, /assets\/paddle-checkout\.js/);
   assert.doesNotMatch(homepage, /id="paddle-licensee-name"/);

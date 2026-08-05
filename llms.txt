@@ -7,6 +7,7 @@ Fibich is currently in development and is not yet available to download.
 ## Official pages
 
 - Website: https://fibich.app/
+- License use: https://fibich.app/license.html
 - Product screenshot: https://fibich.app/assets/fibich-player-screenshot.png
 - Creator: Antonin Charvat, https://www.linkedin.com/in/antonincharvat/
 
@@ -16,3 +17,6 @@ Fibich is currently in development and is not yet available to download.
 - Category: Music player
 - Supported platform: macOS
 - Availability: In development
+- License: One perpetual license for one Mac at a time
+- Additional Macs: A separate license is required for each additional Mac
+- Transfers: Reinstallation on the same Mac is allowed, and a license may be moved after use on the previous Mac ends

@@ -54,7 +54,7 @@
 
   function setCheckoutReady() {
     checkoutButton.disabled = false;
-    checkoutButton.textContent = "Buy Fibich";
+    checkoutButton.textContent = "Buy one Mac license";
   }
 
   function previewWithTimeout(request) {

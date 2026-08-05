@@ -205,7 +205,7 @@ test("initializes Paddle sandbox and displays its formatted total unchanged", as
     "One-time total estimated by Paddle for your location.",
   );
   assert.equal(elements["paddle-checkout-button"].disabled, false);
-  assert.equal(elements["paddle-checkout-button"].textContent, "Buy Fibich");
+  assert.equal(elements["paddle-checkout-button"].textContent, "Buy one Mac license");
 });
 
 test("opens one-page overlay checkout for the displayed launch price and quantity", async () => {

@@ -133,6 +133,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://fibich.app/license.html</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://fibich.app/privacy.html</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>yearly</changefreq>
