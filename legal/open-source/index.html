@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Open-Source Software - Fibich</title>
+    <meta
+      name="description"
+      content="Open-source component inventory, license notices, and version-specific source materials for Fibich."
+    >
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#f7f8f5">
+    <link rel="canonical" href="https://fibich.app/legal/open-source/">
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f8f5;
+        --ink: #1c2026;
+        --muted: #667078;
+        --line: #dde2e0;
+        --surface: #ffffff;
+        --accent: #d95c3b;
+        --accent-2: #2f8c84;
+        --warning-bg: #fff7e8;
+        --warning-line: #db9b33;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background:
+          linear-gradient(180deg, rgba(47, 140, 132, 0.11), transparent 270px),
+          var(--bg);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration-color: rgba(217, 92, 59, 0.55);
+        text-underline-offset: 3px;
+      }
+
+      a:focus-visible,
+      [tabindex]:focus-visible {
+        border-radius: 3px;
+        outline: 3px solid rgba(47, 140, 132, 0.32);
+        outline-offset: 3px;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        width: min(980px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 24px 0;
+      }
+
+      .brand {
+        font-size: 1.35rem;
+        font-weight: 850;
+        text-decoration: none;
+      }
+
+      main {
+        width: min(980px, calc(100% - 32px));
+        margin: 22px auto 80px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.9);
+        padding: clamp(28px, 6vw, 64px);
+        box-shadow: 0 24px 70px rgba(28, 32, 38, 0.1);
+      }
+
+      h1 {
+        max-width: 850px;
+        margin: 0;
+        font-size: clamp(2.5rem, 7vw, 4.5rem);
+        line-height: 1;
+      }
+
+      h2 {
+        margin: 44px 0 12px;
+        font-size: 1.45rem;
+      }
+
+      h3 {
+        margin: 28px 0 8px;
+        font-size: 1.08rem;
+      }
+
+      p,
+      li,
+      th,
+      td {
+        font-size: 1rem;
+        line-height: 1.65;
+      }
+
+      p,
+      li,
+      td {
+        color: var(--muted);
+      }
+
+      strong,
+      th {
+        color: var(--ink);
+      }
+
+      code {
+        overflow-wrap: anywhere;
+        color: var(--ink);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.88em;
+      }
+
+      .updated {
+        margin: 14px 0 30px;
+        font-size: 0.9rem;
+      }
+
+      .summary {
+        border-left: 3px solid var(--accent-2);
+        padding-left: 18px;
+        color: var(--ink);
+        font-size: 1.08rem;
+      }
+
+      .notice-card,
+      .download-card {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--surface);
+        padding: 20px;
+      }
+
+      .notice-card {
+        margin-top: 28px;
+      }
+
+      .notice-card p,
+      .download-card p {
+        margin: 8px 0 0;
+      }
+
+      .notice-link,
+      .download-link {
+        color: var(--ink);
+        font-weight: 800;
+      }
+
+      .checksum {
+        overflow-wrap: anywhere;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.82rem;
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+        margin-top: 18px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--surface);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        background: rgba(47, 140, 132, 0.07);
+        font-size: 0.88rem;
+      }
+
+      tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .materials {
+        margin-top: 48px;
+        border-top: 3px solid var(--accent-2);
+        padding-top: 2px;
+      }
+
+      .download-grid {
+        display: grid;
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .status-blocker {
+        margin-top: 28px;
+        border: 1px solid var(--warning-line);
+        border-left-width: 5px;
+        border-radius: 12px;
+        background: var(--warning-bg);
+        padding: 20px;
+      }
+
+      .status-blocker h3 {
+        margin-top: 0;
+      }
+
+      .status-blocker p,
+      .status-blocker li {
+        color: #67502e;
+      }
+
+      ul,
+      ol {
+        padding-left: 22px;
+      }
+
+      .page-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 18px;
+        margin-top: 44px;
+        border-top: 1px solid var(--line);
+        padding-top: 22px;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 620px) {
+        main {
+          padding: 28px 20px 36px;
+        }
+
+        h1 {
+          font-size: clamp(2.35rem, 13vw, 3.4rem);
+        }
+
+        th,
+        td {
+          min-width: 150px;
+          padding: 10px 12px;
+          font-size: 0.92rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav" aria-label="Open-source legal navigation">
+      <a class="brand" href="/">Fibich</a>
+    </nav>
+
+    <main>
+      <h1>Open-Source Software</h1>
+      <p class="updated">Last updated: August 5, 2026</p>
+
+      <p class="summary">
+        Fibich includes open-source components created and maintained by other people
+        and organizations. Each component remains subject to its own license. Those
+        licenses do not ask Fibich users to pay fees or royalties.
+      </p>
+
+      <p>
+        The inventory and downloads below match the dependency revisions currently
+        resolved for Fibich 1.0.1. Nothing in Fibich’s own license limits the rights
+        granted by the open-source licenses.
+      </p>
+
+      <div class="notice-card">
+        <a class="notice-link" href="/legal/open-source/ThirdPartyNotices.txt">
+          Read or download the complete ThirdPartyNotices.txt
+        </a>
+        <p>
+          Full copyright notices and license texts, 407,855 bytes. SHA-256:
+        </p>
+        <p class="checksum">4d0f937db6b7dc933cd9e8aad65bd20b0f9a7b81cf4f081431d4bc7d520f6311</p>
+      </div>
+
+      <section aria-labelledby="inventory-title">
+        <h2 id="inventory-title">Resolved component inventory</h2>
+        <p>
+          This is a concise index. The complete notices file above is authoritative for
+          copyright statements, acknowledgments, and license text.
+        </p>
+
+        <div
+          class="table-wrap"
+          role="region"
+          aria-label="Resolved open-source components and licenses"
+          tabindex="0"
+        >
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Component</th>
+                <th scope="col">Resolved version</th>
+                <th scope="col">License</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>AVFAudioExtensions</td><td>0.5.1</td><td>MIT</td></tr>
+              <tr><td>CDUMB</td><td>2.0.3</td><td>DUMB permissive license and bundled notices</td></tr>
+              <tr><td>CSpeex</td><td>1.2.1</td><td>BSD-3-Clause</td></tr>
+              <tr><td>CXXAudioRingBuffer</td><td>0.1.1</td><td>MIT</td></tr>
+              <tr><td>CXXDispatchSemaphore</td><td>0.4.1</td><td>MIT</td></tr>
+              <tr><td>CXXMonkeysAudio</td><td>12.13.0</td><td>BSD-3-Clause</td></tr>
+              <tr><td>CXXRingBuffer</td><td>0.6.1</td><td>MIT</td></tr>
+              <tr><td>CXXTagLib</td><td>2.3.0</td><td>Mozilla Public License 1.1; bundled utfcpp is Boost 1.0</td></tr>
+              <tr><td>CXXUnfairLock</td><td>0.3.1</td><td>MIT</td></tr>
+              <tr><td>FLAC binary XCFramework package</td><td>0.2.0</td><td>BSD-3-Clause</td></tr>
+              <tr><td>LAME binary XCFramework package</td><td>0.1.2</td><td>GNU Library General Public License 2 or later</td></tr>
+              <tr><td>Musepack binary XCFramework package</td><td>0.1.2</td><td>BSD-3-Clause and LGPL-2.1-or-later</td></tr>
+              <tr><td>mpg123 binary XCFramework package</td><td>0.3.1</td><td>LGPL-2.1</td></tr>
+              <tr><td>Ogg binary XCFramework package</td><td>0.1.3</td><td>BSD-3-Clause</td></tr>
+              <tr><td>Opus binary XCFramework package</td><td>0.3.0</td><td>BSD-3-Clause</td></tr>
+              <tr><td>SFBAudioEngine</td><td>0.13.0</td><td>MIT and bundled third-party notices</td></tr>
+              <tr><td>libsndfile binary XCFramework package</td><td>0.1.2</td><td>LGPL-2.1-or-later</td></tr>
+              <tr><td>Sparkle</td><td>2.9.4</td><td>MIT-style license and bundled third-party notices</td></tr>
+              <tr><td>Swift Collections</td><td>1.6.0</td><td>Apache-2.0 with Swift Runtime Library Exception</td></tr>
+              <tr>
+                <td>SwiftTagLib</td>
+                <td><code>c2dc5436a4c82502d667dab57bb474a6743116ce</code></td>
+                <td>Mozilla Public License 2.0</td>
+              </tr>
+              <tr><td>TTA binary XCFramework package</td><td>0.1.2</td><td>LGPL-3.0</td></tr>
+              <tr><td>Vorbis binary XCFramework package</td><td>0.1.2</td><td>BSD-3-Clause</td></tr>
+              <tr><td>WavPack binary XCFramework package</td><td>0.2.0</td><td>BSD-3-Clause</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="materials" aria-labelledby="materials-title">
+        <h2 id="materials-title">Source code and replacement materials</h2>
+        <p>
+          These are stable, version-specific downloads. They preserve the exact source
+          revisions instead of relying on a moving upstream branch. The
+          <a href="/legal/open-source/source/SOURCE-CONTENTS.txt">source contents</a>
+          and <a href="/legal/open-source/source/SHA256SUMS">SHA-256 manifest</a>
+          document their provenance and integrity.
+        </p>
+
+        <div class="download-grid">
+          <div class="download-card">
+            <a
+              class="download-link"
+              href="/legal/open-source/source/Fibich-1.0.1-lgpl-corresponding-source.tar.gz"
+            >LGPL corresponding source and XCFramework build materials</a>
+            <p>
+              LAME 0.1.2, Musepack 0.1.2, mpg123 0.3.1, libsndfile 0.1.2, and
+              TTA 0.1.2. Includes exact component sources, package manifests, Xcode
+              projects, Makefiles, configuration, patches, the shared build script,
+              and libsndfile’s Ogg, FLAC, Opus, and Vorbis build dependencies.
+            </p>
+            <p class="checksum">SHA-256: fffe8ee42e5a29559e5f823505b977fdfb00de2ce17de5cb2b96789aee6a4fee</p>
+          </div>
+
+          <div class="download-card">
+            <a
+              class="download-link"
+              href="/legal/open-source/source/SwiftTagLib-c2dc5436a4c82502d667dab57bb474a6743116ce-source.tar.gz"
+            >SwiftTagLib MPL-2.0 source</a>
+            <p>Exact revision <code>c2dc5436a4c82502d667dab57bb474a6743116ce</code>.</p>
+            <p class="checksum">SHA-256: 85e5512688241dabe3e61aeb2a8745ee8eeecbeea6d8eb7e1df374045f524f9b</p>
+          </div>
+
+          <div class="download-card">
+            <a
+              class="download-link"
+              href="/legal/open-source/source/CXXTagLib-2.3.0-source.tar.gz"
+            >CXXTagLib MPL-1.1 source</a>
+            <p>Version 2.3.0, exact revision <code>b570acead5e27006cb41ab5ff7443c8797b3b8e5</code>.</p>
+            <p class="checksum">SHA-256: 05a9815efb2774ba40d4520c7261313e8c5b2b0c2dcdfac735a2d984052b8aa8</p>
+          </div>
+        </div>
+
+        <div class="status-blocker" role="note" aria-labelledby="replacement-status">
+          <h3 id="replacement-status">Modified-library replacement status</h3>
+          <p>
+            Fibich links the five LGPL components as separate bundled dynamic frameworks:
+            <code>lame.framework</code>, <code>mpc.framework</code>,
+            <code>mpg123.framework</code>, <code>sndfile.framework</code>, and
+            <code>tta-cpp.framework</code>. They are not statically linked into Fibich’s
+            main executable, so this page does not offer proprietary application object
+            files.
+          </p>
+          <p>
+            However, Fibich’s hardened app bundle and its nested frameworks are code
+            signed. Replacing a framework changes sealed bundle contents. A compatible
+            user-modified framework has not yet been rebuilt, substituted, signed, and
+            launch-tested with the distributed app. This page therefore does not claim
+            that modified-library replacement is currently usable.
+          </p>
+          <p>Before Fibich is publicly distributed, the release process must:</p>
+          <ol>
+            <li>build a compatible modified universal macOS framework from the materials above;</li>
+            <li>replace the matching framework in a copy of the release app and document the exact signing steps;</li>
+            <li>verify that the modified app launches and exercises the replaced library; and</li>
+            <li>publish the validated installation information required for the LGPL-3.0 TTA framework.</li>
+          </ol>
+          <p>
+            If that validation fails, the app’s packaging or signing configuration must
+            change before release. Website wording alone cannot complete this requirement.
+          </p>
+        </div>
+      </section>
+
+      <div class="page-links">
+        <a href="/">Return to Fibich</a>
+        <a href="/license.html">License Use</a>
+        <a href="/privacy.html">Privacy Notice</a>
+        <a href="/legal/open-source/ThirdPartyNotices.txt">Full third-party notices</a>
+      </div>
+    </main>
+
+    <script src="/assets/visit-counter.js?v=20260705a" defer></script>
+  </body>
+</html>

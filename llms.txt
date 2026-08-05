@@ -8,6 +8,9 @@ Fibich is currently in development and is not yet available to download.
 
 - Website: https://fibich.app/
 - License use: https://fibich.app/license.html
+- Open-source software: https://fibich.app/legal/open-source/
+- Complete third-party notices: https://fibich.app/legal/open-source/ThirdPartyNotices.txt
+- Version-specific source materials: https://fibich.app/legal/open-source/source/SOURCE-CONTENTS.txt
 - Product screenshot: https://fibich.app/assets/fibich-player-screenshot.png
 - Creator: Antonin Charvat, https://www.linkedin.com/in/antonincharvat/
 

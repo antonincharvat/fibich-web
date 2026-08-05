@@ -1,0 +1,88 @@
+FIBICH 1.0.1 OPEN-SOURCE SOURCE MATERIALS
+==========================================
+
+These files accompany the third-party components resolved for Fibich 1.0.1.
+They do not contain Fibich's proprietary source code.
+
+LGPL corresponding-source bundle
+--------------------------------
+
+File: Fibich-1.0.1-lgpl-corresponding-source.tar.gz
+
+The bundle contains the complete component source, Xcode projects, Makefiles,
+configuration, patches, shared XCFramework build script, required Ogg/FLAC/
+Opus/Vorbis build dependencies for libsndfile, and exact Swift Package
+binary-wrapper manifests used for these dynamically linked frameworks:
+
+- LAME binary XCFramework package 0.1.2 / LAME 3.100
+  License: GNU Library General Public License version 2 or later
+  Binary-package revision: 07703e040231d50f2e7f160c670f356f129a00e4
+- Musepack binary XCFramework package 0.1.2 / Musepack r475+
+  Encoder license: GNU Lesser General Public License 2.1 or later
+  Binary-package revision: de4b45fa64ed88467806c50217e9da7032a99d80
+- mpg123 binary XCFramework package 0.3.1 / mpg123 1.33.4
+  License: GNU Lesser General Public License 2.1
+  Binary-package revision: acc2c651cbd8fff8bc8cdeb4faf14b35ba81adee
+- libsndfile binary XCFramework package 0.1.2 / libsndfile 1.2.2
+  License: GNU Lesser General Public License 2.1 or later
+  Binary-package revision: 52f73460dc04ba789ad3007ad004faa328b732dd
+- TTA binary XCFramework package 0.1.2 / TTA 2.3
+  License: GNU Lesser General Public License 3.0
+  Binary-package revision: b68cf8a127936434cae93aa2c613d4b47eb34de4
+
+The libsndfile build links the following separately packaged permissive
+frameworks. Their exact source/build trees and binary-package manifests are
+included so that the shipped libsndfile framework can be rebuilt:
+
+- FLAC binary XCFramework package 0.2.0
+  Binary-package revision: 9005dc2cd455765fb6824eb215c9703429bbe8ff
+- Ogg binary XCFramework package 0.1.3
+  Binary-package revision: 48cbf24e7fb5d329b1f5e24cd2e5b048585ff770
+- Opus binary XCFramework package 0.3.0
+  Binary-package revision: 8e23828b9d88f0ff1ff2d7c4bcb65739a4bdeff8
+- Vorbis binary XCFramework package 0.1.2
+  Binary-package revision: 842020eabcebe410e698c68545d6597b2d232e51
+
+The LAME, Musepack, libsndfile, and TTA build trees are from
+sbooth/AudioXCFrameworks revision:
+
+ca0bf41fb01a612a9176ff480e3252cf91a2cbed
+
+The mpg123 1.33.4 build tree is from sbooth/AudioXCFrameworks revision:
+
+3d17c859b8af5e37ef9bde9b6402310f4980e77c
+
+Each component directory contains a Makefile that includes the archived
+xcframework.mk. From the matching AudioXCFrameworks directory, run:
+
+  make -C lame
+  make -C mpc
+  make -C mpg123
+  make -C ogg
+  make -C flac
+  make -C opus
+  make -C vorbis
+  make -C sndfile
+  make -C tta-cpp
+
+The generated XCFramework must be interface-compatible with the framework it
+replaces. Producing source and build output does not by itself prove that a
+modified framework can be installed in the signed Fibich app bundle. See the
+public open-source page for the current replacement-validation blocker.
+
+MPL source archives
+-------------------
+
+- SwiftTagLib-c2dc5436a4c82502d667dab57bb474a6743116ce-source.tar.gz
+  Exact source revision: c2dc5436a4c82502d667dab57bb474a6743116ce
+  License: Mozilla Public License 2.0
+- CXXTagLib-2.3.0-source.tar.gz
+  Exact source revision: b570acead5e27006cb41ab5ff7443c8797b3b8e5
+  License: Mozilla Public License 1.1; bundled utfcpp uses Boost 1.0
+
+Archive checksums
+-----------------
+
+See SHA256SUMS in this directory. Verify an archive before using it with:
+
+  shasum -a 256 -c SHA256SUMS
