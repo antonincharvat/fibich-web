@@ -6,7 +6,7 @@
     <atom:link href="https://fibich.app/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Development notes, release updates, and behind-the-scenes writing for Fibich, a macOS music player.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 13 Jul 2026 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 05 Aug 2026 00:00:00 +0200</lastBuildDate>
     <ttl>1440</ttl>
     <image>
       <url>https://fibich.app/assets/fibich_appMock.png</url>
@@ -14,6 +14,14 @@
       <link>https://fibich.app/blog/</link>
     </image>
 
+    <item>
+      <title>Getting Close to the Release Flow</title>
+      <link>https://fibich.app/blog/getting-close-to-the-release-flow/</link>
+      <guid isPermaLink="true">https://fibich.app/blog/getting-close-to-the-release-flow/</guid>
+      <pubDate>Wed, 05 Aug 2026 00:00:00 +0200</pubDate>
+      <dc:creator>Antonin Charvat</dc:creator>
+      <description>Fibich adds the first serious pieces for license verification, activation state, update checks, release preparation, and release polish.</description>
+    </item>
     <item>
       <title>From Project Name to Shippable Player</title>
       <link>https://fibich.app/blog/from-project-name-to-shippable-player/</link>

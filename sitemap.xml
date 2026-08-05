@@ -8,7 +8,7 @@
   </url>
   <url>
     <loc>https://fibich.app/blog/</loc>
-    <lastmod>2026-07-13</lastmod>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -129,6 +129,12 @@
   <url>
     <loc>https://fibich.app/blog/from-project-name-to-shippable-player/</loc>
     <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://fibich.app/blog/getting-close-to-the-release-flow/</loc>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

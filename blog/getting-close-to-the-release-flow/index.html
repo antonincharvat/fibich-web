@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Getting Close to the Release Flow - Fibich</title>
+    <meta
+      name="description"
+      content="Fibich adds the first serious pieces for license verification, activation state, update checks, release preparation, and release polish."
+    >
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#f7f8f5">
+    <link
+      rel="canonical"
+      href="https://fibich.app/blog/getting-close-to-the-release-flow/"
+    >
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Fibich Blog RSS Feed"
+      href="https://fibich.app/rss.xml"
+    >
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Fibich">
+    <meta property="og:title" content="Getting Close to the Release Flow">
+    <meta
+      property="og:description"
+      content="Fibich adds the first serious pieces for license verification, activation state, update checks, release preparation, and release polish."
+    >
+    <meta
+      property="og:url"
+      content="https://fibich.app/blog/getting-close-to-the-release-flow/"
+    >
+    <meta property="og:image" content="https://fibich.app/assets/fibich_license.png">
+    <meta property="og:image:width" content="582">
+    <meta property="og:image:height" content="389">
+    <meta property="og:image:alt" content="Fibich license activation interface">
+    <meta property="article:published_time" content="2026-08-05">
+    <meta property="article:author" content="Antonin Charvat">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Getting Close to the Release Flow">
+    <meta
+      name="twitter:description"
+      content="Fibich adds the first serious pieces for license verification, activation state, update checks, release preparation, and release polish."
+    >
+    <meta
+      name="twitter:image"
+      content="https://fibich.app/assets/fibich_license.png"
+    >
+    <meta name="twitter:image:alt" content="Fibich license activation interface">
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Getting Close to the Release Flow",
+        "datePublished": "2026-08-05",
+        "url": "https://fibich.app/blog/getting-close-to-the-release-flow/",
+        "image": "https://fibich.app/assets/fibich_license.png",
+        "description": "Fibich adds the first serious pieces for license verification, activation state, update checks, release preparation, and release polish.",
+        "author": {
+          "@type": "Person",
+          "name": "Antonin Charvat",
+          "url": "https://www.linkedin.com/in/antonincharvat/"
+        },
+        "publisher": {
+          "@type": "Person",
+          "name": "Antonin Charvat",
+          "url": "https://www.linkedin.com/in/antonincharvat/"
+        }
+      }
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f8f5;
+        --ink: #1c2026;
+        --muted: #667078;
+        --line: #dde2e0;
+        --surface: #ffffff;
+        --accent: #d95c3b;
+        --accent-2: #2f8c84;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background:
+          linear-gradient(180deg, rgba(47, 140, 132, 0.11), transparent 270px),
+          var(--bg);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        min-height: 100vh;
+        overflow: hidden;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        width: min(1080px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 24px 0 10px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.35rem;
+        font-weight: 850;
+        letter-spacing: 0;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        color: var(--muted);
+        font-size: 0.93rem;
+        font-weight: 650;
+      }
+
+      .nav-links a[aria-current="page"] {
+        color: var(--ink);
+      }
+
+      .article-shell {
+        width: min(900px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 58px 0 86px;
+      }
+
+      .eyebrow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 12px;
+        margin: 0 0 16px;
+        color: var(--accent-2);
+        font-size: 0.9rem;
+        font-weight: 800;
+      }
+
+      h1 {
+        max-width: 820px;
+        margin: 0;
+        font-size: clamp(3rem, 7vw, 5.8rem);
+        line-height: 0.96;
+        letter-spacing: 0;
+      }
+
+      .intro {
+        max-width: 740px;
+        margin: 24px 0 0;
+        color: var(--muted);
+        font-size: clamp(1.06rem, 2vw, 1.22rem);
+        line-height: 1.65;
+      }
+
+      .article-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 12px;
+        margin: 18px 0 0;
+        color: var(--muted);
+        font-size: 0.94rem;
+        font-weight: 700;
+      }
+
+      .article-meta strong {
+        color: var(--ink);
+        font-weight: 850;
+      }
+
+      .article-meta .read-time {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .article-meta .read-time::before {
+        content: "";
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--accent-2);
+      }
+
+      .article-image {
+        width: min(640px, 100%);
+        margin: 38px 0 0;
+      }
+
+      .article-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 1px solid rgba(28, 32, 38, 0.12);
+        border-radius: 8px;
+        background: var(--surface);
+        box-shadow: 0 18px 48px rgba(28, 32, 38, 0.1);
+      }
+
+      .article-body {
+        max-width: 740px;
+        margin-top: 46px;
+      }
+
+      .article-body p {
+        margin: 0 0 22px;
+        color: var(--ink);
+        font-size: 1.08rem;
+        line-height: 1.78;
+      }
+
+      .article-body p:first-child {
+        font-size: 1.18rem;
+        line-height: 1.72;
+      }
+
+      .article-body a {
+        color: var(--accent);
+        font-weight: 750;
+        text-decoration: underline;
+        text-decoration-color: rgba(217, 92, 59, 0.45);
+        text-underline-offset: 3px;
+        text-decoration-thickness: 1px;
+      }
+
+      .article-cta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px 22px;
+        max-width: 740px;
+        margin-top: 44px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 22px;
+        background: rgba(255, 255, 255, 0.74);
+        box-shadow: 0 16px 40px rgba(28, 32, 38, 0.08);
+      }
+
+      .article-cta p {
+        max-width: 460px;
+        margin: 0;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.55;
+      }
+
+      .article-cta a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        border-radius: 8px;
+        padding: 0 16px;
+        background: var(--ink);
+        color: var(--surface);
+        font-size: 0.92rem;
+        font-weight: 800;
+      }
+
+      .article-footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 12px 22px;
+        margin-top: 54px;
+        border-top: 1px solid var(--line);
+        padding-top: 22px;
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      .article-footer a,
+      .back-link {
+        text-decoration: underline;
+        text-decoration-color: rgba(102, 112, 120, 0.45);
+        text-underline-offset: 3px;
+      }
+
+      .back-link {
+        display: inline-flex;
+        margin-top: 18px;
+        color: var(--accent);
+        font-size: 0.92rem;
+        font-weight: 750;
+        text-decoration-color: rgba(217, 92, 59, 0.55);
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+      }
+
+      @media (max-width: 760px) {
+        .nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 12px 16px;
+          font-size: 0.88rem;
+        }
+
+        .article-shell {
+          padding-top: 42px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <nav class="nav" aria-label="Article navigation">
+        <a class="brand" href="/">Fibich</a>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="/#features">Features</a>
+          <a href="/blog/" aria-current="page">Blog</a>
+          <a href="/#newsletter">Updates</a>
+          <span id="email">Contact</span>
+        </div>
+      </nav>
+
+      <article class="article-shell">
+        <header>
+          <p class="eyebrow">
+            <time datetime="2026-08-05">August 5, 2026</time>
+            <span>Development</span>
+          </p>
+          <h1>Getting Close to the Release Flow</h1>
+          <p class="intro">
+            License verification, activation, update checks, and notarized packaging move
+            Fibich closer to a real release.
+          </p>
+          <p class="article-meta">
+            <span><strong>By Antonin Charvat</strong>, creator of Fibich</span>
+            <span class="read-time">5 min read</span>
+          </p>
+        </header>
+
+        <figure class="article-image">
+          <img
+            src="/assets/fibich_license.png"
+            alt="Fibich license activation interface"
+            width="582"
+            height="389"
+            loading="lazy"
+          >
+        </figure>
+
+        <div class="article-body">
+          <p>
+            Today’s progress is less about adding another playback feature and more about
+            something just as important: making Fibich ready to become a real released
+            app.
+          </p>
+          <p>
+            Recently I have been working through the licensing branch, and the shape of
+            the release flow is finally becoming visible. Fibich now has the first serious
+            pieces for license verification, activation state, update checks, release
+            preparation, and the user-facing polish around all of that.
+          </p>
+          <p>
+            The licensing work started with offline license verification. That is
+            important because a desktop music player should not feel helpless the moment
+            it cannot reach a server. After activation, the app needs to be able to verify
+            that a license is valid in a local, reliable way. The technical challenge is
+            trust: Fibich has to know that the license data was really issued by the
+            licensing system and was not simply edited by hand.
+          </p>
+          <p>
+            That led to a dedicated license model, error handling, a public-key
+            verification path, and test vectors to prove that the verifier behaves
+            correctly. This is one of those areas where tests matter a lot. A mistake in
+            playback may be annoying. A mistake in licensing can lock out a legitimate
+            user or accept something it should not.
+          </p>
+          <p>The next step was connecting that licensing state to the app itself.</p>
+          <p>
+            Fibich can now require activation and show the license owner once activated.
+            That changes licensing from a hidden backend concern into part of the user
+            experience. The app has to know whether it is activated, show the right screen
+            when it is not, keep the main interface from pretending everything is ready
+            too early, and still behave like a normal Mac app.
+          </p>
+          <p>
+            One small but important detail came from that: the app must still be able to
+            quit while unlicensed. It sounds obvious, but modal activation flows can
+            easily trap the user if they are not handled carefully. A licensing screen
+            should protect the app, not make the app feel hostile.
+          </p>
+          <p>
+            There is also work around the update flow now. Fibich has the foundation for
+            checking updates, verifying update metadata, preparing update feeds, and
+            connecting that to the release process. I do not want to make the blog too
+            much about the external services behind this, but the goal is clear: once
+            Fibich is released, users should have a safe path to future versions.
+          </p>
+          <p>
+            That connects to the notarized release workflow added recently. Signing,
+            notarization, stapling, verification, and packaging are not exciting product
+            features, but they are part of what makes a macOS app trustworthy. A native
+            Mac player should not only run on my machine. It should be deliverable to
+            another user in a form macOS accepts cleanly.
+          </p>
+          <p>
+            The build number and version were bumped as part of that process too, which
+            makes this feel less theoretical. Fibich is getting closer to a real versioned
+            release rather than just a development build.
+          </p>
+          <p>
+            This week also included cleanup that belongs to the same phase. Debug-facing
+            options are being removed from normal app menus, advanced descriptions are
+            being simplified, and the new About Fibich section gives the app a more
+            finished place for identity and version information. These are small details,
+            but release polish is made of small details.
+          </p>
+          <p>
+            The hard part of this whole licensing and release phase is that many systems
+            have to agree with each other.
+          </p>
+          <p>
+            The app has to understand license state. The license server has to issue
+            something the app can verify. The activation experience has to be clear.
+            Offline verification has to work. Updates have to be trusted. The release
+            package has to be signed and notarized. Settings and menus have to feel like
+            they belong in an app users can actually install.
+          </p>
+          <p>
+            None of that is as visible as CUE playback or playlist search, but it changes
+            what Fibich is becoming.
+          </p>
+          <p>
+            It is no longer only a capable local hi-fi music player. It is getting very
+            close to a complete working flow: install the app, activate it, use it,
+            receive updates, and keep listening.
+          </p>
+          <p>That is a big step toward release.</p>
+        </div>
+
+        <section class="article-cta" aria-label="Follow development updates">
+          <p>Get occasional notes on new builds, design decisions, and what is changing in Fibich.</p>
+          <a href="/#newsletter">Follow development updates</a>
+        </section>
+
+        <a class="back-link" href="/blog/">Back to all posts</a>
+
+        <footer class="article-footer">
+          <span>
+            (C) 2026
+            <a
+              href="https://www.linkedin.com/in/antonincharvat/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Antonin Charvat</a>
+          </span>
+          <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Notice</a>
+          </div>
+        </footer>
+      </article>
+    </main>
+
+    <script>
+      const user = "antonincharvat";
+      const domain = "gmail";
+      const dotCom = ".com";
+      const address = `${user}@${domain}${dotCom}`;
+      const email = document.getElementById("email");
+      const link = document.createElement("a");
+
+      link.href = `mailto:${address}`;
+      link.textContent = "Contact";
+      email.replaceChildren(link);
+    </script>
+    <script src="/assets/visit-counter.js?v=20260705a" defer></script>
+  </body>
+</html>
