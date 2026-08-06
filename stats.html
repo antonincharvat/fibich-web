@@ -399,8 +399,11 @@
     <script>
       const namespace = "antonincharvat";
       const counterName = "fibich";
-      const statsStartDate = "2026-07-01";
       const apiBase = "https://api.counterapi.dev/v1";
+      const cacheKey = `${counterName}:stats-cache:v3`;
+      const cacheMaxAgeMs = 10 * 60 * 1000;
+      const requestTimeoutMs = 7000;
+      const maxConcurrentRequests = 4;
 
       const elements = {
         range: document.getElementById("range"),
@@ -454,37 +457,149 @@
         return formatPragueDay(date);
       };
 
-      const daysBetween = (start, end) => {
-        const days = [];
-        let day = start;
+      const currentTime = () => Date.now();
 
-        while (day <= end && days.length < 5000) {
-          days.push(day);
-          day = addDays(day, 1);
+      const readCache = () => {
+        try {
+          const parsed = JSON.parse(window.localStorage.getItem(cacheKey));
+
+          if (parsed && parsed.counters && typeof parsed.counters === "object") {
+            return parsed;
+          }
+        } catch (_) {
+          // Stats should still load when local storage is unavailable.
         }
 
-        return days;
+        return { counters: {} };
       };
 
-      const getCounter = async (name) => {
-        const response = await fetch(counterUrl(name), {
-          method: "GET",
-          cache: "no-store",
+      const writeCache = (cache) => {
+        try {
+          window.localStorage.setItem(cacheKey, JSON.stringify(cache));
+        } catch (_) {
+          // Stats should still load when local storage is unavailable.
+        }
+      };
+
+      const cachedCounter = (cache, name) => {
+        const entry = cache.counters[name];
+
+        if (!entry || !Number.isFinite(entry.count)) {
+          return null;
+        }
+
+        return entry;
+      };
+
+      const saveCounter = (cache, name, count) => {
+        const cached = cachedCounter(cache, name);
+        const safeCount = Math.max(cached ? cached.count : 0, count);
+
+        cache.counters[name] = {
+          count: safeCount,
+          updatedAt: currentTime(),
+        };
+
+        return safeCount;
+      };
+
+      const fetchCounter = async (name) => {
+        const controller = new AbortController();
+        const timeout = window.setTimeout(() => controller.abort(), requestTimeoutMs);
+
+        try {
+          const response = await fetch(counterUrl(name), {
+            method: "GET",
+            cache: "reload",
+            signal: controller.signal,
+          });
+
+          if (response.status === 400 || response.status === 404) {
+            return { name, count: 0, missing: true };
+          }
+
+          if (!response.ok) {
+            throw new Error(`CounterAPI returned ${response.status} for ${name}`);
+          }
+
+          const data = await response.json();
+
+          return { name, count: Number(data.count) || 0 };
+        } finally {
+          window.clearTimeout(timeout);
+        }
+      };
+
+      const getCounter = async (cache, name) => {
+        const cached = cachedCounter(cache, name);
+
+        if (cached && currentTime() - cached.updatedAt < cacheMaxAgeMs) {
+          return {
+            name,
+            count: cached.count,
+            cached: true,
+          };
+        }
+
+        try {
+          const fresh = await fetchCounter(name);
+          const count = saveCounter(cache, name, fresh.count);
+
+          return {
+            name,
+            count,
+            fresh: true,
+            missing: fresh.missing,
+            staleResponse: count > fresh.count,
+          };
+        } catch (error) {
+          if (cached) {
+            return {
+              name,
+              count: cached.count,
+              cached: true,
+              error,
+            };
+          }
+
+          return {
+            name,
+            count: null,
+            error,
+          };
+        }
+      };
+
+      const mapWithConcurrency = async (items, limit, mapper) => {
+        const results = new Array(items.length);
+        let index = 0;
+
+        const workers = Array.from({ length: Math.min(limit, items.length) }, async () => {
+          while (index < items.length) {
+            const current = index;
+            index += 1;
+            results[current] = await mapper(items[current], current);
+          }
         });
 
-        if (response.status === 400 || response.status === 404) {
-          return { name, count: 0, missing: true };
-        }
+        await Promise.all(workers);
 
-        if (!response.ok) {
-          throw new Error(`CounterAPI returned ${response.status} for ${name}`);
-        }
+        return results;
+      };
 
-        return response.json();
+      const isKnownCount = (value) => Number.isFinite(value);
+
+      const sumKnownCounts = (days) => {
+        return days.reduce((sum, day) => {
+          return sum + (isKnownCount(day.count) ? day.count : 0);
+        }, 0);
       };
 
       const renderChart = (days) => {
-        const max = Math.max(1, ...days.map((day) => day.count));
+        const max = Math.max(
+          1,
+          ...days.map((day) => (isKnownCount(day.count) ? day.count : 0))
+        );
 
         elements.chart.style.setProperty("--days", days.length);
         elements.chart.replaceChildren(
@@ -501,11 +616,15 @@
             count.className = "bar-count";
             date.className = "bar-date";
 
-            bar.style.height = `${Math.max(2, (day.count / max) * 100)}%`;
-            count.textContent = day.count;
+            const knownCount = isKnownCount(day.count) ? day.count : 0;
+
+            bar.style.height = `${Math.max(2, (knownCount / max) * 100)}%`;
+            count.textContent = isKnownCount(day.count) ? day.count : "-";
             date.textContent = day.date.slice(5);
 
-            track.title = `${day.date}: ${day.count}`;
+            track.title = isKnownCount(day.count)
+              ? `${day.date}: ${day.count}`
+              : `${day.date}: unavailable`;
             track.append(bar);
             wrap.append(track, count, date);
 
@@ -527,7 +646,7 @@
             date.textContent = day.date;
             counter.textContent = day.counter;
             visits.className = "count";
-            visits.textContent = day.count;
+            visits.textContent = isKnownCount(day.count) ? day.count : "-";
             link.className = "raw-link";
             link.href = counterUrl(day.counter);
             link.target = "_blank";
@@ -543,78 +662,79 @@
 
       const loadStats = async () => {
         const range = Number(elements.range.value);
+        const cache = readCache();
         const dates = recentDays(range);
         const today = dates[dates.length - 1];
-        const trackedDates = daysBetween(statsStartDate, today);
-        const requestedDates = Array.from(new Set([
-          ...trackedDates,
-          ...dates.filter((date) => date >= statsStartDate),
-        ]));
 
         elements.error.hidden = true;
         elements.chartStatus.textContent = "Loading...";
         elements.refresh.disabled = true;
         elements.totalLink.href = counterUrl(counterName);
 
-        try {
-          const dailyCounters = await Promise.all(
-            requestedDates.map((date) => getCounter(`${counterName}-${date}`))
-          );
-          const countsByDate = new Map(
-            requestedDates.map((date, index) => [
-              date,
-              Number(dailyCounters[index].count) || 0,
-            ])
-          );
+        const [totalCounter, dailyCounters] = await Promise.all([
+          getCounter(cache, counterName),
+          mapWithConcurrency(dates, maxConcurrentRequests, (date) => {
+            return getCounter(cache, `${counterName}-${date}`);
+          }),
+        ]);
 
-          const trackedDays = trackedDates.map((date) => ({
-            date,
-            counter: `${counterName}-${date}`,
-            count: countsByDate.get(date) || 0,
-          }));
-          const days = dates.map((date) => ({
-            date,
-            counter: `${counterName}-${date}`,
-            count: countsByDate.get(date) || 0,
-          }));
-          const total = trackedDays.reduce((sum, day) => sum + day.count, 0);
-          const rangeTotal = days.reduce((sum, day) => sum + day.count, 0);
-          const best = days.reduce((winner, day) => {
-            return day.count > winner.count ? day : winner;
-          }, days[0]);
+        writeCache(cache);
 
-          elements.total.textContent = total;
-          elements.totalNote.textContent = `Since ${statsStartDate}`;
-          elements.today.textContent = days[days.length - 1].count;
-          elements.todayDate.textContent = today;
-          elements.rangeTotal.textContent = rangeTotal;
-          elements.rangeNote.textContent = `Last ${range} days`;
-          elements.bestDay.textContent = best.count;
-          elements.bestDayDate.textContent = best.date;
-          elements.updated.textContent = `Updated ${new Date().toLocaleString()}`;
-          elements.chartStatus.textContent = `${range} days`;
+        const days = dates.map((date, index) => ({
+          date,
+          counter: `${counterName}-${date}`,
+          count: dailyCounters[index].count,
+        }));
+        const rangeTotal = sumKnownCounts(days);
+        const rangeHasUnknown = days.some((day) => !isKnownCount(day.count));
+        const knownDays = days.filter((day) => isKnownCount(day.count));
+        const best = knownDays.reduce((winner, day) => {
+          return !winner || day.count > winner.count ? day : winner;
+        }, null);
+        const totalCandidates = [
+          isKnownCount(totalCounter.count) ? totalCounter.count : null,
+          knownDays.length ? rangeTotal : null,
+        ].filter(isKnownCount);
+        const total = totalCandidates.length ? Math.max(...totalCandidates) : null;
+        const allCounters = [totalCounter, ...dailyCounters];
+        const problemCount = allCounters.filter((counter) => counter.error).length;
+        const cachedCount = allCounters.filter((counter) => counter.cached).length;
+        const staleCount = allCounters.filter((counter) => counter.staleResponse).length;
+        const currentDate = new Date().toLocaleString();
 
-          renderChart(days);
-          renderRows(days);
-        } catch (error) {
-          elements.chartStatus.textContent = "Could not load";
+        elements.total.textContent = isKnownCount(total) ? total : "-";
+        elements.totalNote.textContent =
+          isKnownCount(totalCounter.count) && totalCounter.count >= rangeTotal
+            ? "Lifetime counter"
+            : `At least last ${range} days`;
+        elements.today.textContent = isKnownCount(days[days.length - 1].count)
+          ? days[days.length - 1].count
+          : "-";
+        elements.todayDate.textContent = today;
+        elements.rangeTotal.textContent =
+          rangeHasUnknown && !knownDays.length
+            ? "-"
+            : rangeHasUnknown
+              ? `${rangeTotal}+`
+              : rangeTotal;
+        elements.rangeNote.textContent = `Last ${range} days`;
+        elements.bestDay.textContent = best ? best.count : "-";
+        elements.bestDayDate.textContent = best ? best.date : "Unavailable";
+        elements.updated.textContent = cachedCount
+          ? `Updated ${currentDate} with saved values`
+          : `Updated ${currentDate}`;
+        elements.chartStatus.textContent = problemCount ? `${range} days, partial` : `${range} days`;
+
+        if (problemCount || staleCount) {
           elements.error.hidden = false;
-          elements.error.textContent =
-            "Could not read CounterAPI from this browser. Use the raw links below, or try refreshing.";
-          elements.updated.textContent = "Stats unavailable";
-          renderChart(dates.map((date) => ({
-            date,
-            counter: `${counterName}-${date}`,
-            count: 0,
-          })));
-          renderRows(dates.map((date) => ({
-            date,
-            counter: `${counterName}-${date}`,
-            count: "-",
-          })));
-        } finally {
-          elements.refresh.disabled = false;
+          elements.error.textContent = problemCount
+            ? "Some CounterAPI requests failed or timed out. Saved values are used where available; missing values are marked with '-'."
+            : "CounterAPI returned older values for some counters. The page kept the last higher saved values.";
         }
+
+        renderChart(days);
+        renderRows(days);
+        elements.refresh.disabled = false;
       };
 
       elements.range.addEventListener("change", loadStats);
