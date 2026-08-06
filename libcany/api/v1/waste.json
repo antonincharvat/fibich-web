@@ -1,0 +1,393 @@
+{
+    "city": "Libčany",
+    "year": "2026",
+    "schedule": [
+        {
+            "date": "2026-01-01",
+            "types": [
+                "paper"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-01-06",
+            "types": [
+                "common"
+            ],
+            "premium": true
+        },
+        {
+            "date": "2026-01-13",
+            "types": [
+                "common"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-01-20",
+            "types": [
+                "common",
+                "plastic"
+            ],
+            "premium": true
+        },
+        {
+            "date": "2026-01-27",
+            "types": [
+                "common"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-02-03",
+            "types": [
+                "common"
+            ],
+            "premium": true
+        },
+        {
+            "date": "2026-02-05",
+            "types": [
+                "paper"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-02-10",
+            "types": [
+                "common"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-02-17",
+            "types": [
+                "common",
+                "plastic"
+            ],
+            "premium": true
+        },
+        {
+            "date": "2026-02-24",
+            "types": [
+                "common"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-03-03",
+            "types": [
+                "common"
+            ],
+            "premium": true
+        },
+        {
+            "date": "2026-03-05",
+            "types": [
+                "paper"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-03-10",
+            "types": [
+                "common"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-03-17",
+            "types": [
+                "common",
+                "plastic"
+            ],
+            "premium": true
+        },
+        {
+            "date": "2026-03-24",
+            "types": [
+                "common"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-03-31",
+            "types": [
+                "common"
+            ],
+            "premium": true
+        },
+        {
+            "date": "2026-04-02",
+            "types": [
+                "paper"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-04-07",
+            "types": [
+                "common"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-04-14",
+            "types": [
+                "common"
+            ],
+            "premium": true
+        },
+        {
+            "date": "2026-04-21",
+            "types": [
+                "common",
+                "plastic"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-05-05",
+            "types": [
+                "common"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-05-07",
+            "types": [
+                "paper"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-05-19",
+            "types": [
+                "common",
+                "plastic"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-06-02",
+            "types": [
+                "common"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-06-04",
+            "types": [
+                "paper"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-06-16",
+            "types": [
+                "common",
+                "plastic"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-06-30",
+            "types": [
+                "common"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-07-02",
+            "types": [
+                "paper"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-07-14",
+            "types": [
+                "common"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-07-21",
+            "types": [
+                "plastic"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-07-28",
+            "types": [
+                "common"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-08-06",
+            "types": [
+                "paper"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-08-11",
+            "types": [
+                "common"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-08-18",
+            "types": [
+                "plastic"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-08-25",
+            "types": [
+                "common"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-09-03",
+            "types": [
+                "paper"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-09-08",
+            "types": [
+                "common"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-09-15",
+            "types": [
+                "plastic"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-09-22",
+            "types": [
+                "common"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-10-01",
+            "types": [
+                "paper"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-10-06",
+            "types": [
+                "common"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-10-20",
+            "types": [
+                "common",
+                "plastic"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-10-27",
+            "types": [
+                "common"
+            ],
+            "premium": true
+        },
+        {
+            "date": "2026-11-03",
+            "types": [
+                "common"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-11-05",
+            "types": [
+                "paper"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-11-10",
+            "types": [
+                "common"
+            ],
+            "premium": true
+        },
+        {
+            "date": "2026-11-17",
+            "types": [
+                "common",
+                "plastic"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-11-24",
+            "types": [
+                "common"
+            ],
+            "premium": true
+        },
+        {
+            "date": "2026-12-01",
+            "types": [
+                "common"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-12-03",
+            "types": [
+                "paper"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-12-08",
+            "types": [
+                "common"
+            ],
+            "premium": true
+        },
+        {
+            "date": "2026-12-15",
+            "types": [
+                "common",
+                "plastic"
+            ],
+            "premium": false
+        },
+        {
+            "date": "2026-12-22",
+            "types": [
+                "common"
+            ],
+            "premium": true
+        },
+        {
+            "date": "2026-12-29",
+            "types": [
+                "common"
+            ],
+            "premium": false
+        }
+    ]
+}

@@ -1,0 +1,422 @@
+{
+    "city": "Libčany",
+    "facts": [
+        {
+            "id": 1,
+            "title": "První zmínka o obci",
+            "text": "Libčany jsou písemně doloženy již ve 14. století jako zemědělská obec v úrodné oblasti Polabí.",
+            "category": "history",
+            "year": 1300,
+            "highlight": true
+        },
+        {
+            "id": 2,
+            "title": "Kostel Nanebevzetí Panny Marie",
+            "text": "Dominantou obce je kostel Nanebevzetí Panny Marie s gotickým základem a pozdějšími barokními úpravami.",
+            "category": "monuments",
+            "highlight": true
+        },
+        {
+            "id": 3,
+            "title": "Historická zvonice",
+            "text": "Vedle kostela stojí samostatná dřevěná zvonice, která patří mezi cenné ukázky venkovské sakrální architektury.",
+            "category": "monuments",
+            "highlight": true
+        },
+        {
+            "id": 4,
+            "title": "Ochotnické divadlo",
+            "text": "Ochotnický divadelní spolek působí v Libčanech již od roku 1868 a výrazně ovlivnil kulturní život obce.",
+            "category": "culture",
+            "year": 1868,
+            "highlight": true
+        },
+        {
+            "id": 5,
+            "title": "Vojenské letiště za 2. světové války",
+            "text": "Na konci druhé světové války vzniklo u Libčan polní vojenské letiště, kde pracovali italští váleční zajatci.",
+            "category": "history",
+            "year": 1944,
+            "highlight": true
+        },
+        {
+            "id": 6,
+            "title": "Pomoc zajatcům",
+            "text": "Místní obyvatelé během války tajně pomáhali italským zajatcům potravinami, čímž riskovali vlastní bezpečí.",
+            "category": "history"
+        },
+        {
+            "id": 7,
+            "title": "Partnerská obec ve Francii",
+            "text": "Libčany udržují partnerské vztahy s francouzskou obcí Le Mêle-sur-Sarthe a pravidelně probíhají kulturní výměny.",
+            "category": "present"
+        },
+        {
+            "id": 8,
+            "title": "Česenkovy Libčany",
+            "text": "Oblíbená komunitní akce spojující sport, kulturu a setkávání obyvatel patří mezi moderní tradice obce.",
+            "category": "traditions",
+            "highlight": true
+        },
+        {
+            "id": 9,
+            "title": "Zemědělská tradice",
+            "text": "Díky úrodné polabské půdě bylo zemědělství po staletí hlavním zdrojem obživy místních obyvatel.",
+            "category": "history"
+        },
+        {
+            "id": 10,
+            "title": "Rybníky a vodní hospodářství",
+            "text": "Historicky důležitou roli hrály rybníky a vodní toky, které sloužily hospodářství i zásobování obce vodou.",
+            "category": "nature"
+        },
+        {
+            "id": 11,
+            "title": "Blízkost Hradce Králové",
+            "text": "Libčany leží jen několik kilometrů jihozápadně od Hradce Králové, což obci historicky přinášelo obchodní i kulturní kontakty s významným městem regionu.",
+            "category": "geography"
+        },
+        {
+            "id": 12,
+            "title": "Polabská krajina",
+            "text": "Okolí obce tvoří typická polabská krajina s rovinatým terénem, úrodnými poli a menšími vodními toky.",
+            "category": "nature"
+        },
+        {
+            "id": 13,
+            "title": "Cesty mezi obcemi",
+            "text": "Libčany byly již ve středověku propojeny s okolními obcemi sítí polních cest, které sloužily zemědělcům i obchodníkům.",
+            "category": "history"
+        },
+        {
+            "id": 14,
+            "title": "Sbor dobrovolných hasičů",
+            "text": "Dobrovolní hasiči patří k nejvýznamnějším spolkům v obci a podílejí se nejen na ochraně před požáry, ale i na společenském životě.",
+            "category": "culture"
+        },
+        {
+            "id": 15,
+            "title": "Tradiční poutě",
+            "text": "S kostelem Nanebevzetí Panny Marie jsou spojeny tradiční poutní slavnosti, které se v obci konají po generace.",
+            "category": "traditions"
+        },
+        {
+            "id": 16,
+            "title": "Polabská zemědělská oblast",
+            "text": "Region kolem Libčan patří mezi nejúrodnější oblasti východních Čech, kde se pěstuje obilí, cukrovka i řepka.",
+            "category": "nature"
+        },
+        {
+            "id": 17,
+            "title": "Historické statky",
+            "text": "V obci se dochovalo několik starších zemědělských usedlostí s typickým uzavřeným dvorem.",
+            "category": "monuments"
+        },
+        {
+            "id": 18,
+            "title": "Kulturní sál",
+            "text": "Místní kulturní sál slouží pro divadelní představení, plesy a další společenské akce.",
+            "category": "culture"
+        },
+        {
+            "id": 19,
+            "title": "Cyklotrasy v okolí",
+            "text": "Okolí Libčan je oblíbené mezi cyklisty díky rovinatému terénu a síti cyklotras vedoucích směrem k Hradci Králové i k řece Labi.",
+            "category": "nature"
+        },
+        {
+            "id": 20,
+            "title": "Polní kapličky",
+            "text": "V krajině kolem obce se nachází drobné sakrální památky jako kapličky a křížky připomínající historickou zbožnost místních obyvatel.",
+            "category": "monuments"
+        },
+        {
+            "id": 22,
+            "title": "Školství v obci",
+            "text": "Libčany mají dlouhou tradici základního školství, které slouží nejen místním dětem, ale i žákům z okolních obcí.",
+            "category": "present"
+        },
+        {
+            "id": 23,
+            "title": "Historické studny",
+            "text": "Před zavedením moderního vodovodu byla voda čerpána z obecních i soukromých studní.",
+            "category": "history"
+        },
+        {
+            "id": 24,
+            "title": "Zimní krajina Polabí",
+            "text": "V zimě se okolní pole a cesty často stávají místem pro běžkaře a zimní procházky.",
+            "category": "nature"
+        },
+        {
+            "id": 27,
+            "title": "Blízkost řeky Labe",
+            "text": "Nedaleko obce protéká řeka Labe, která byla historicky důležitou dopravní i hospodářskou tepnou regionu.",
+            "category": "nature"
+        },
+        {
+            "id": 28,
+            "title": "Sportovní hřiště",
+            "text": "V obci se nachází sportovní areál využívaný pro fotbal, tréninky mládeže i komunitní akce.",
+            "category": "present"
+        },
+        {
+            "id": 29,
+            "title": "Místní spolky",
+            "text": "Spolkový život je v Libčanech velmi aktivní a zahrnuje kulturní, sportovní i dobrovolnické organizace.",
+            "category": "culture"
+        },
+        {
+            "id": 30,
+            "title": "Zemědělské stroje",
+            "text": "Moderní zemědělství v okolí obce využívá rozsáhlé plochy polí a moderní techniku.",
+            "category": "present"
+        },
+        {
+            "id": 31,
+            "title": "Podzimní sklizeň",
+            "text": "Podzimní sklizeň je pro místní krajinu charakteristická a patří k tradičním rytmům života na venkově.",
+            "category": "nature"
+        },
+        {
+            "id": 32,
+            "title": "Blízké lesy",
+            "text": "V okolí obce se nachází menší lesní porosty vhodné pro rekreaci, houbaření i procházky.",
+            "category": "nature"
+        },
+        {
+            "id": 34,
+            "title": "Letní slavnosti",
+            "text": "V letních měsících se v obci konají venkovní kulturní akce a koncerty.",
+            "category": "culture"
+        },
+        {
+            "id": 35,
+            "title": "Zemědělské dvory",
+            "text": "Historické zemědělské dvory byly centrem hospodářského života obce po staletí.",
+            "category": "history"
+        },
+        {
+            "id": 36,
+            "title": "Tradiční venkovská architektura",
+            "text": "Starší domy v obci nesou prvky typické východočeské venkovské architektury.",
+            "category": "monuments"
+        },
+        {
+            "id": 37,
+            "title": "Polabské mlhy",
+            "text": "Na podzim jsou v okolí obce časté mlhy typické pro nížinnou polabskou krajinu.",
+            "category": "nature"
+        },
+        {
+            "id": 41,
+            "title": "Blízkost Nechanic",
+            "text": "Nedaleko Libčan leží město Nechanice známé zámkem Hrádek u Nechanic.",
+            "category": "geography"
+        },
+        {
+            "id": 42,
+            "title": "Východočeská rovina",
+            "text": "Region je charakteristický otevřenou krajinou s dalekými výhledy.",
+            "category": "nature"
+        },
+        {
+            "id": 44,
+            "title": "Místní kronika",
+            "text": "Historii obce zachycuje obecní kronika vedená kronikáři po několik generací.",
+            "category": "history"
+        },
+        {
+            "id": 45,
+            "title": "Dobrovolnictví",
+            "text": "Dobrovolnická činnost místních obyvatel je důležitou součástí života obce.",
+            "category": "culture"
+        },
+        {
+            "id": 46,
+            "title": "Zemědělské krajinné prvky",
+            "text": "Krajinu doplňují remízky, stromořadí a menší vodní plochy.",
+            "category": "nature"
+        },
+        {
+            "id": 48,
+            "title": "Dětská hřiště",
+            "text": "Pro rodiny s dětmi jsou v obci vybudována moderní dětská hřiště.",
+            "category": "present"
+        },
+        {
+            "id": 50,
+            "title": "Východočeské tradice",
+            "text": "Libčany jsou součástí regionu s bohatými lidovými tradicemi východních Čech.",
+            "category": "culture"
+        },
+        {
+            "id": 57,
+            "title": "Historie zemědělských družstev",
+            "text": "Ve druhé polovině 20. století zde působila zemědělská družstva typická pro český venkov.",
+            "category": "history"
+        },
+        {
+            "id": 61,
+            "title": "Bitva u Hradce Králové",
+            "text": "Nedaleko Libčan se roku 1866 odehrála slavná bitva u Hradce Králové mezi rakouskou a pruskou armádou, která patří k největším bitvám na území Česka.",
+            "category": "history",
+            "year": 1866,
+            "highlight": true
+        },
+        {
+            "id": 62,
+            "title": "Hrádek u Nechanic",
+            "text": "Asi 10 kilometrů od Libčan se nachází romantický novogotický zámek Hrádek u Nechanic, jedna z významných památek regionu.",
+            "category": "monuments",
+            "highlight": true
+        },
+        {
+            "id": 64,
+            "title": "Rakousko-uherské období",
+            "text": "V 19. století byly Libčany součástí Rakouského císařství a později Rakousko-Uherska.",
+            "category": "history",
+            "year": 1867
+        },
+        {
+            "id": 71,
+            "title": "Středověká kolonizace Polabí",
+            "text": "Region kolem Libčan byl intenzivně osidlován během středověké kolonizace úrodného Polabí.",
+            "category": "history"
+        },
+        {
+            "id": 73,
+            "title": "Význam cukrové řepy",
+            "text": "V 19. století se v regionu začala ve velkém pěstovat cukrová řepa, která byla důležitou plodinou východních Čech.",
+            "category": "history"
+        },
+        {
+            "id": 77,
+            "title": "Vznik okresního uspořádání",
+            "text": "V moderní správní organizaci patří Libčany do okresu Hradec Králové v Královéhradeckém kraji.",
+            "category": "present"
+        },
+        {
+            "id": 88,
+            "title": "Blízkost Pardubického kraje",
+            "text": "Libčany leží nedaleko hranice s Pardubickým krajem, což historicky podporovalo regionální kontakty.",
+            "category": "geography"
+        },
+        {
+            "id": 91,
+            "title": "Pravěké osídlení oblasti",
+            "text": "Archeologické nálezy kostrových hrobů z únětické kultury dokazují, že okolí Libčan bylo osídleno již v pravěku.",
+            "category": "history",
+            "highlight": true
+        },
+        {
+            "id": 92,
+            "title": "První písemná zmínka",
+            "text": "Nejstarší dochovaný písemný záznam o existenci Libčan pochází z roku 1073.",
+            "category": "history",
+            "year": 1073,
+            "highlight": true
+        },
+        {
+            "id": 93,
+            "title": "Majetek opatovického kláštera",
+            "text": "Ve středověku patřily Libčany opatovickému benediktinskému klášteru, který vlastnil rozsáhlé pozemky v Polabí.",
+            "category": "history"
+        },
+        {
+            "id": 94,
+            "title": "Záznamy v klášterních archivech",
+            "text": "Libčany jsou v archivech opatovického kláštera zmiňovány například v letech 1251, 1352 a 1374.",
+            "category": "history"
+        },
+        {
+            "id": 95,
+            "title": "Tvrz Turyně",
+            "text": "Uprostřed obce stávala na ostrůvku rybníka tvrz Turyně, kde sídlili páni na Libčanech.",
+            "category": "monuments",
+            "highlight": true
+        },
+        {
+            "id": 96,
+            "title": "Druhá libčanská tvrz",
+            "text": "Další tvrz byla postavena na místě, kde později vznikl libčanský zámek, dnes zde stojí budova základní školy.",
+            "category": "history"
+        },
+        {
+            "id": 97,
+            "title": "Renesanční zámek",
+            "text": "Na místě původní tvrze vznikl v 16. století renesanční zámek, který byl později přestavován.",
+            "category": "monuments"
+        },
+        {
+            "id": 98,
+            "title": "Sedlácké povstání roku 1775",
+            "text": "Během velkého selského povstání v roce 1775 byl libčanský zámek poškozen a zpustošen.",
+            "category": "history",
+            "year": 1775
+        },
+        {
+            "id": 99,
+            "title": "Pověst o vzniku obce",
+            "text": "Podle lidové pověsti pomohl ptáčník jménem Libčan knížeti Břetislavovi najít cestu z lesů, a podle něj měla být obec pojmenována.",
+            "category": "culture",
+            "highlight": true
+        },
+        {
+            "id": 101,
+            "title": "Libčany jako centrum okolních vsí",
+            "text": "Díky kostelu a farnosti byly Libčany historicky duchovním centrem okolních menších obcí.",
+            "category": "history"
+        },
+        {
+            "id": 102,
+            "title": "Obec a místní část Želí",
+            "text": "Dnešní obec Libčany se skládá ze dvou částí – Libčany a Želí.",
+            "category": "geography"
+        },
+        {
+            "id": 103,
+            "title": "Libčany jako „Český Betlém“",
+            "text": "Malíř Mikoláš Aleš údajně nazval Libčany díky jejich malebné poloze mezi sady a lesy „Český Betlém“.",
+            "category": "culture",
+            "highlight": true
+        },
+        {
+            "id": 104,
+            "title": "Libčanský potok",
+            "text": "Severně od obce pramení Libčanský potok, který je v obci zadržován v několika rybnících.",
+            "category": "nature"
+        },
+        {
+            "id": 105,
+            "title": "Rybníky Brigádník a Kočár",
+            "text": "Mezi místní vodní plochy patří rybníky Brigádník a Kočár.",
+            "category": "nature"
+        },
+        {
+            "id": 106,
+            "title": "Kopec Kavkaz",
+            "text": "Nedaleko obce se nachází kopec Kavkaz s výškou přibližně 284 metrů nad mořem.",
+            "category": "geography"
+        },
+        {
+            "id": 107,
+            "title": "Kozí kopec",
+            "text": "Dalším výrazným bodem v krajině je Kozí kopec, který dosahuje výšky přibližně 286 metrů.",
+            "category": "geography"
+        },
+        {
+            "id": 109,
+            "title": "Sochař Matyáš Bernard Braun",
+            "text": "V kostele Nanebevzetí Panny Marie se nachází umělecká díla spojená se známým barokním sochařem Matyášem Bernardem Braunem.",
+            "category": "monuments",
+            "highlight": true
+        },
+        {
+            "id": 110,
+            "title": "Hrob Matěje Chvojky",
+            "text": "Na libčanském hřbitově byl roku 1791 pohřben vůdce selského povstání Matěj Chvojka.",
+            "category": "history"
+        }
+    ]
+}

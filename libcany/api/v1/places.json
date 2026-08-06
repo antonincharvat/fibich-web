@@ -1,0 +1,215 @@
+[
+  {
+    "id": "urad_libcany",
+    "name": "Obecní úřad Libčany",
+    "subtitle": "Libčany 80",
+    "latitude": 50.1907628,
+    "longitude": 15.6930056,
+    "category": "office"
+  },
+  {
+    "id": "posta_libcany",
+    "name": "Pošta Libčany",
+    "subtitle": "Libčany 80",
+    "latitude": 50.1907317,
+    "longitude": 15.6931622,
+    "category": "office"
+  },
+  {
+    "id": "fotbal_libcany",
+    "name": "Fotbalové hřiště Libčany",
+    "subtitle": "Libčany",
+    "latitude": 50.1941539,
+    "longitude": 15.6991025,
+    "category": "sport"
+  },
+  {
+    "id": "detske_hriste",
+    "name": "Dětské hřiště u rybníka",
+    "subtitle": "Houpačky a prolézačky",
+    "latitude": 50.1957361,
+    "longitude": 15.6951856,
+    "category": "playground"
+  },
+  {
+    "id": "detske_hriste2",
+    "name": "Dětské hřiště Libčany",
+    "subtitle": "Houpačky a prolézačky",
+    "latitude": 50.1917922,
+    "longitude": 15.6929783,
+    "category": "playground"
+  },
+  {
+    "id": "detske_hriste3",
+    "name": "Dětské hřiště U Studánky",
+    "subtitle": "Houpačky a prolézačky",
+    "latitude": 50.1930239,
+    "longitude": 15.7035544,
+    "category": "playground"
+  },
+  {
+    "id": "parkovani_centrum",
+    "name": "Parkoviště u centra",
+    "subtitle": "Libčany",
+    "latitude": 50.1909147,
+    "longitude": 15.6923419,
+    "category": "parking"
+  },
+  {
+    "id": "rybnik_brigadnik",
+    "name": "Rybník Brigádník",
+    "subtitle": "Relax a procházky",
+    "latitude": 50.1961597,
+    "longitude": 15.6960928,
+    "category": "nature"
+  },
+  {
+    "id": "rybnik_kocar",
+    "name": "Rybník Kočár",
+    "subtitle": "Relax a procházky",
+    "latitude": 50.1937028,
+    "longitude": 15.6923853,
+    "category": "nature"
+  },
+  {
+    "id": "tovarni_park",
+    "name": "Tovární park",
+    "subtitle": "Relax a procházky",
+    "latitude": 50.1933067,
+    "longitude": 15.6915761,
+    "category": "nature"
+  },
+  {
+    "id": "hospoda_libcany",
+    "name": "Obecní hostinec U Bohouše",
+    "subtitle": "Občerstvení",
+    "latitude": 50.1911336,
+    "longitude": 15.6943092,
+    "category": "restaurant"
+  },
+  {
+    "id": "jidelna_libcany",
+    "name": "Jídelna Gastrom",
+    "subtitle": "Občerstvení",
+    "latitude": 50.1910042,
+    "longitude": 15.6920203,
+    "category": "restaurant"
+  },
+  {
+    "id": "kostel_libcany",
+    "name": "Kostel Nanebevzetí Panny Marie",
+    "subtitle": "Kostel",
+    "latitude": 50.1918308,
+    "longitude": 15.6949850,
+    "category": "landmark"
+  },
+  {
+    "id": "zamek_hradek",
+    "name": "Zámek Hrádek u Nechanic",
+    "subtitle": "Státní zámek",
+    "latitude": 50.2235,
+    "longitude": 15.667167,
+    "category": "landmark"
+  },
+  {
+    "id": "kuneticka_hora",
+    "name": "Kunětická hora",
+    "subtitle": "Hrad a výhled",
+    "latitude": 50.0801214,
+    "longitude": 15.8126944,
+    "category": "landmark"
+  },
+  {
+    "id": "krizova_cesta",
+    "name": "Křížová cesta Libčany",
+    "subtitle": "Památné místo",
+    "latitude": 50.1912819,
+    "longitude": 15.6947761,
+    "category": "landmark"
+  },
+  {
+    "id": "rozhledna_chlum",
+    "name": "Rozhledna Chlum",
+    "subtitle": "Výhled na okolí",
+    "latitude": 50.2785739,
+    "longitude": 15.7400486,
+    "category": "viewpoint"
+  },
+  {
+    "id": "muzeum_bednarstvi",
+    "name": "Muzeum bednářství",
+    "subtitle": "Praskačka",
+    "latitude": 50.1764236,
+    "longitude": 15.7425947,
+    "category": "museum"
+  },
+  {
+    "id": "restaurace_hradek",
+    "name": "Hostinec Na Kopečku",
+    "subtitle": "Hrádek u Nechanic",
+    "latitude": 50.2198261,
+    "longitude": 15.6765625,
+    "category": "restaurant"
+  },
+  {
+    "id": "obchod_hruska",
+    "name": "Obchod Hruška",
+    "subtitle": "Smíšené zboží",
+    "latitude": 50.1906544,
+    "longitude": 15.6961906,
+    "category": "store"
+  },
+  {
+    "id": "obchod_plus",
+    "name": "Obchod Mini Market",
+    "subtitle": "Smíšené zboží",
+    "latitude": 50.1911336,
+    "longitude": 15.6913753,
+    "category": "store"
+  },
+  {
+    "id": "waste_bio_1",
+    "name": "Bioodpad",
+    "subtitle": "U jižní části obce",
+    "latitude": 50.188561,
+    "longitude": 15.69206,
+    "category": "waste",
+    "wasteTypes": ["bio"]
+  },
+  {
+    "id": "waste_hasicarna",
+    "name": "Kontejnery u hasičárny",
+    "subtitle": "Kovy, sklo, drobný elektroodpad, jedlé oleje a tuky",
+    "latitude": 50.191783,
+    "longitude": 15.692415,
+    "category": "waste",
+    "wasteTypes": ["metal", "glass", "electro", "oil"]
+  },
+  {
+    "id": "waste_hruska",
+    "name": "Kontejnery U hrušky",
+    "subtitle": "Kovy, sklo, textil",
+    "latitude": 50.190793,
+    "longitude": 15.69582,
+    "category": "waste",
+    "wasteTypes": ["metal", "glass", "textile"]
+  },
+  {
+    "id": "waste_bio_2",
+    "name": "Bioodpad",
+    "subtitle": "Východ obce",
+    "latitude": 50.188293,
+    "longitude": 15.698759,
+    "category": "waste",
+    "wasteTypes": ["bio"]
+  },
+  {
+    "id": "waste_bio_3",
+    "name": "Bioodpad",
+    "subtitle": "U rybníka",
+    "latitude": 50.194298,
+    "longitude": 15.695859,
+    "category": "waste",
+    "wasteTypes": ["bio"]
+  }
+]

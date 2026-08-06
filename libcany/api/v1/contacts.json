@@ -1,0 +1,231 @@
+[
+    {
+        "ID": 10001,
+            "Data": {
+              "Nadpis": "Mudr. Petr Šubrt",
+              "Obsah": "",
+              "Kategorie": 246,
+              "Poradi": 10
+            },
+            "Detail": {
+              "Telefon": "+420 777 018 362",
+              "Email": "ordinace@petrsubrt.cz",
+              "Role": "lékař",
+              "Instituce": "Praktický lékař pro dospělé"
+            }
+    },
+    {
+        "ID": 10002,
+            "Data": {
+              "Nadpis": "Martin Černohorský",
+              "Obsah": "Elektroinstalace, voda, odpady, zednické práce, obklady, podlahářské práce, truhlářské práce",
+              "Kategorie": 246,
+              "Poradi": 20
+            },
+            "Detail": {
+              "Telefon": "+420 737 555 576",
+              "Email": "cernohorskymarty@gmail.com",
+              "Role": "řemeslník",
+              "Instituce": "Řemeslné práce"
+            }
+    },
+    {
+        "ID": 10003,
+            "Data": {
+              "Nadpis": "Petr Veselka",
+              "Obsah": "",
+              "Kategorie": 246,
+              "Poradi": 30
+            },
+            "Detail": {
+              "Telefon": "+420 724 074 200",
+              "Role": "hostinský",
+              "Instituce": "Hostinec U Bohouše"
+            }
+    },
+    {
+        "ID": 10004,
+            "Data": {
+              "Nadpis": "Petr Rychnovský",
+              "Obsah": "",
+              "Kategorie": 246,
+              "Poradi": 130
+            },
+            "Detail": {
+              "Telefon": "+420 736 654 279",
+              "Email": "info@vseumime.cz",
+              "Role": "majitel",
+              "Instituce": "Párty vybavení"
+            }
+    },
+    {
+        "ID": 10005,
+            "Data": {
+              "Nadpis": "Ing. Roman Plas",
+              "Obsah": "",
+              "Kategorie": 246,
+              "Poradi": 120
+            },
+            "Detail": {
+              "Telefon": "+420 602 116 025",
+              "Email": "poctivygrund@seznam.cz",
+              "Role": "majitel",
+              "Instituce": "Poctivý grund (sušené maso)"
+            }
+    },
+    {
+        "ID": 10006,
+            "Data": {
+              "Nadpis": "Jiří Vejběra",
+              "Obsah": "",
+              "Kategorie": 246,
+              "Poradi": 80
+            },
+            "Detail": {
+              "Telefon": "+420 776 807 009",
+              "Role": "automechanik",
+              "Instituce": "Autoservis, autodoprava"
+            }
+    },
+    {
+        "ID": 10007,
+            "Data": {
+              "Nadpis": "Mgr. Lenka Šlechtová",
+              "Obsah": "",
+              "Kategorie": 218,
+              "Poradi": 40
+            },
+            "Detail": {
+              "Telefon": "+420 495 585 188",
+              "Email": "l.slechtova@zslibcany.cz",
+              "Role": "ředitelka",
+              "Instituce": "Základní škola Libčany"
+            }
+    },
+    {
+        "ID": 10008,
+            "Data": {
+              "Nadpis": "Mgr. Lenka Šlechtová",
+              "Obsah": "",
+              "Kategorie": 218,
+              "Poradi": 50
+            },
+            "Detail": {
+              "Telefon": "+420 495 585 217",
+              "Email": "l.slechtova@zslibcany.cz",
+              "Role": "ředitelka",
+              "Instituce": "Mateřská škola Libčany"
+            }
+    },
+    {
+        "ID": 10009,
+            "Data": {
+              "Nadpis": "Adéla Svobodová",
+              "Obsah": "",
+              "Kategorie": 218,
+              "Poradi": 60
+            },
+            "Detail": {
+              "Telefon": "+420 775 391 114",
+              "Email": "svobodova272@seznam.cz",
+              "Role": "vedoucí",
+              "Instituce": "Školní jídelna"
+            }
+    },
+    {
+        "ID": 10010,
+            "Data": {
+              "Nadpis": "Adéla Čížková",
+              "Obsah": "",
+              "Kategorie": 246,
+              "Poradi": 100
+            },
+            "Detail": {
+              "Telefon": "+420 495 585 391",
+              "Email": "info@gastromlibcany.cz",
+              "Role": "majitelka",
+              "Instituce": "Jídelna Gastrom"
+            }
+    },
+    {
+        "ID": 10011,
+            "Data": {
+              "Nadpis": "Dušan Malinský",
+              "Obsah": "",
+              "Kategorie": 246,
+              "Poradi": 70
+            },
+            "Detail": {
+              "Telefon": "+420 728 888 463",
+              "Role": "obkladač",
+              "Instituce": "Obklady a dlažby"
+            }
+    },
+    {
+        "ID": 10012,
+            "Data": {
+              "Nadpis": "Luboš Kulhánek",
+              "Obsah": "",
+              "Kategorie": 246,
+              "Poradi": 90
+            },
+            "Detail": {
+              "Telefon": "+420 775 151 735",
+              "Role": "automechanik",
+              "Instituce": "Servis vozů BMW"
+            }
+    },
+    {
+        "ID": 10013,
+            "Data": {
+              "Nadpis": "František Vanický",
+              "Obsah": "Zajištění masa na gril pro vaši oslavu.",
+              "Kategorie": 246,
+              "Poradi": 110
+            },
+            "Detail": {
+              "Telefon": "+420 604 375 236",
+              "Role": "catering",
+              "Instituce": "Hájenka Radostov"
+            }
+    },
+    {
+        "ID": 10014,
+            "Data": {
+              "Nadpis": "155",
+              "Obsah": "",
+              "Kategorie": 112,
+              "Poradi": 10
+            },
+            "Detail": {
+              "Telefon": "155",
+              "Instituce": "Záchranná služba"
+            }
+    },
+    {
+        "ID": 10015,
+            "Data": {
+              "Nadpis": "158",
+              "Obsah": "",
+              "Kategorie": 112,
+              "Poradi": 20
+            },
+            "Detail": {
+              "Telefon": "158",
+              "Instituce": "Policie"
+            }
+    },
+    {
+        "ID": 10016,
+            "Data": {
+              "Nadpis": "150",
+              "Obsah": "",
+              "Kategorie": 112,
+              "Poradi": 30
+            },
+            "Detail": {
+              "Telefon": "150",
+              "Instituce": "Hasiči"
+            }
+    }
+]
