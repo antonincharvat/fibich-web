@@ -159,6 +159,25 @@
         font-size: 0.9rem;
       }
 
+      .notice {
+        margin: 0 0 18px;
+        border: 1px solid rgba(217, 92, 59, 0.28);
+        border-radius: 8px;
+        background: rgba(217, 92, 59, 0.08);
+        padding: 16px 18px;
+        color: var(--ink);
+      }
+
+      .notice h2 {
+        margin: 0 0 6px;
+        color: var(--danger);
+      }
+
+      .notice p {
+        margin: 0;
+        color: var(--muted);
+      }
+
       .panel {
         border: 1px solid var(--line);
         border-radius: 8px;
@@ -345,6 +364,13 @@
         </div>
       </section>
 
+      <section class="notice" aria-labelledby="counter-status-title">
+        <h2 id="counter-status-title">Counter paused since 2026-08-07</h2>
+        <p>
+          CounterAPI v1 was retired on 2026-08-07. The old public browser counters no longer accept reads or writes, so new daily data is unavailable until Fibich moves to a secure v2 proxy or another analytics provider.
+        </p>
+      </section>
+
       <section class="metrics" aria-label="Visit summary">
         <div class="metric">
           <p class="metric-label">Total</p>
@@ -400,6 +426,7 @@
       const namespace = "antonincharvat";
       const counterName = "fibich";
       const apiBase = "https://api.counterapi.dev/v1";
+      const shutdownDate = "2026-08-07";
       const cacheKey = `${counterName}:stats-cache:v3`;
       const cacheMaxAgeMs = 10 * 60 * 1000;
       const requestTimeoutMs = 7000;
@@ -516,6 +543,12 @@
 
           if (response.status === 400 || response.status === 404) {
             return { name, count: 0, missing: true };
+          }
+
+          if (response.status === 410) {
+            const error = new Error("CounterAPI v1 is retired");
+            error.deprecated = true;
+            throw error;
           }
 
           if (!response.ok) {
@@ -698,13 +731,16 @@
         const total = totalCandidates.length ? Math.max(...totalCandidates) : null;
         const allCounters = [totalCounter, ...dailyCounters];
         const problemCount = allCounters.filter((counter) => counter.error).length;
+        const deprecatedCount = allCounters.filter((counter) => counter.error?.deprecated).length;
         const cachedCount = allCounters.filter((counter) => counter.cached).length;
         const staleCount = allCounters.filter((counter) => counter.staleResponse).length;
         const currentDate = new Date().toLocaleString();
 
         elements.total.textContent = isKnownCount(total) ? total : "-";
         elements.totalNote.textContent =
-          isKnownCount(totalCounter.count) && totalCounter.count >= rangeTotal
+          deprecatedCount
+            ? `Paused since ${shutdownDate}`
+            : isKnownCount(totalCounter.count) && totalCounter.count >= rangeTotal
             ? "Lifetime counter"
             : `At least last ${range} days`;
         elements.today.textContent = isKnownCount(days[days.length - 1].count)
@@ -723,11 +759,17 @@
         elements.updated.textContent = cachedCount
           ? `Updated ${currentDate} with saved values`
           : `Updated ${currentDate}`;
-        elements.chartStatus.textContent = problemCount ? `${range} days, partial` : `${range} days`;
+        elements.chartStatus.textContent = deprecatedCount
+          ? "CounterAPI v1 retired"
+          : problemCount
+            ? `${range} days, partial`
+            : `${range} days`;
 
         if (problemCount || staleCount) {
           elements.error.hidden = false;
-          elements.error.textContent = problemCount
+          elements.error.textContent = deprecatedCount
+            ? `CounterAPI v1 stopped working on ${shutdownDate}. Saved values may still appear, but no new visits can be counted until the integration is migrated.`
+            : problemCount
             ? "Some CounterAPI requests failed or timed out. Saved values are used where available; missing values are marked with '-'."
             : "CounterAPI returned older values for some counters. The page kept the last higher saved values.";
         }

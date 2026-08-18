@@ -9,6 +9,12 @@
     return;
   }
 
+  const counterApiV1Retired = true;
+
+  if (counterApiV1Retired) {
+    return;
+  }
+
   const namespace = "antonincharvat";
   const counterName = "fibich";
   const formatDay = () => {

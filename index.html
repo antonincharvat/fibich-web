@@ -380,6 +380,126 @@
         content: "";
       }
 
+      .roadmap {
+        width: min(1080px, 100%);
+        margin: 72px auto 0;
+        text-align: left;
+      }
+
+      .roadmap-foundation {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin: 0 0 20px;
+        border: 1px solid rgba(47, 140, 132, 0.22);
+        border-radius: 10px;
+        background: rgba(47, 140, 132, 0.08);
+        padding: 16px 18px;
+        color: var(--muted);
+        font-size: 0.93rem;
+        line-height: 1.55;
+        text-align: left;
+      }
+
+      .roadmap-foundation::before {
+        flex: 0 0 auto;
+        width: 12px;
+        height: 12px;
+        border: 3px solid rgba(47, 140, 132, 0.28);
+        border-radius: 50%;
+        background: var(--accent-2);
+        content: "";
+      }
+
+      .roadmap-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .roadmap-card {
+        display: flex;
+        min-width: 0;
+        flex-direction: column;
+        border: 1px solid rgba(28, 32, 38, 0.11);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.78);
+        padding: clamp(20px, 3vw, 26px);
+        box-shadow: 0 14px 40px rgba(28, 32, 38, 0.07);
+      }
+
+      .roadmap-stage {
+        align-self: flex-start;
+        margin: 0 0 16px;
+        border-radius: 999px;
+        background: rgba(47, 140, 132, 0.12);
+        padding: 6px 10px;
+        color: #246f69;
+        font-size: 0.72rem;
+        font-weight: 850;
+        letter-spacing: 0.055em;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .roadmap-card[data-stage="planned"] .roadmap-stage {
+        background: rgba(217, 92, 59, 0.12);
+        color: #a83f25;
+      }
+
+      .roadmap-card h3 {
+        margin: 0 0 10px;
+        font-size: 1.16rem;
+        line-height: 1.25;
+      }
+
+      .roadmap-card > p:not(.roadmap-stage) {
+        margin: 0 0 18px;
+        color: var(--muted);
+        font-size: 0.93rem;
+        line-height: 1.55;
+      }
+
+      .roadmap-card ul {
+        display: grid;
+        gap: 10px;
+        margin: auto 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .roadmap-card li {
+        position: relative;
+        padding-left: 18px;
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .roadmap-card li::before {
+        position: absolute;
+        top: 0.68em;
+        left: 0;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent-2);
+        content: "";
+      }
+
+      .roadmap-card[data-stage="planned"] li::before {
+        background: var(--accent);
+      }
+
+      .roadmap-note {
+        max-width: 760px;
+        margin: 22px auto 0;
+        color: var(--muted);
+        font-size: 0.86rem;
+        line-height: 1.6;
+        text-align: center;
+      }
+
       .newsletter {
         width: min(640px, 100%);
         margin: 56px auto 0;
@@ -626,12 +746,23 @@
           margin-top: 52px;
         }
 
+        .roadmap {
+          margin-top: 52px;
+        }
+
         .pricing {
           margin-top: 52px;
         }
 
-        .feature-grid {
+        .feature-grid,
+        .roadmap-grid {
           grid-template-columns: 1fr;
+        }
+      }
+
+      @media (min-width: 741px) and (max-width: 980px) {
+        .roadmap-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
       }
 
@@ -682,6 +813,7 @@
         <div class="nav-links">
           <a href="#preview">Preview</a>
           <a href="#features">Features</a>
+          <a href="#roadmap">Roadmap</a>
           <a href="#pricing">Pricing</a>
           <a href="/blog/">Blog</a>
           <a href="#newsletter">Updates</a>
@@ -792,6 +924,63 @@
           </div>
         </section>
 
+        <section class="roadmap" id="roadmap" aria-labelledby="roadmap-title">
+          <div class="section-heading">
+            <p class="product-label">Product direction</p>
+            <h2 id="roadmap-title">What Fibich is growing into.</h2>
+            <p>
+              The roadmap is intentionally small: practical improvements that build on
+              working parts of Fibich and do not require reshaping the player. Priorities
+              are grouped by direction rather than promised delivery dates.
+            </p>
+          </div>
+
+          <p class="roadmap-foundation">
+            The focus is on useful additions that fit naturally into Fibich’s existing
+            local-library workflow.
+          </p>
+
+          <div class="roadmap-grid">
+            <article class="roadmap-card" data-stage="focus">
+              <p class="roadmap-stage">In focus</p>
+              <h3>Convert and export</h3>
+              <p>Create portable copies while keeping the original library untouched.</p>
+              <ul>
+                <li>Convert selected files, including FLAC to MP3 or AAC/M4A and WAV, AIFF, or ALAC to FLAC.</li>
+                <li>Begin with a small set of quality presets and a destination folder.</li>
+                <li>Keep originals untouched and carry over common tags and artwork where supported.</li>
+              </ul>
+            </article>
+
+            <article class="roadmap-card" data-stage="planned">
+              <p class="roadmap-stage">Planned</p>
+              <h3>Playlist portability</h3>
+              <p>Move listening plans between Fibich, folders, and other players.</p>
+              <ul>
+                <li>Import and export common playlist formats such as M3U and M3U8.</li>
+                <li>Clearly report files that cannot be found or imported.</li>
+                <li>Export a playlist with optional converted copies in a chosen folder.</li>
+              </ul>
+            </article>
+
+            <article class="roadmap-card" data-stage="planned">
+              <p class="roadmap-stage">Planned</p>
+              <h3>Simple library checks</h3>
+              <p>Highlight common catalog problems without changing files automatically.</p>
+              <ul>
+                <li>Flag missing common tags and unavailable artwork.</li>
+                <li>Surface potential duplicates using existing file and metadata information.</li>
+                <li>Let the listener review every result before taking action.</li>
+              </ul>
+            </article>
+          </div>
+
+          <p class="roadmap-note">
+            This is a statement of direction, not a fixed release schedule. Priorities may
+            change as features are tested and Fibich users share what matters most.
+          </p>
+        </section>
+
         <section class="pricing" id="pricing" aria-labelledby="pricing-title">
           <div class="section-heading">
             <p class="product-label">Purchases temporarily paused</p>
@@ -868,6 +1057,6 @@
       link.textContent = "Contact";
       email.replaceChildren(link);
     </script>
-    <script src="/assets/visit-counter.js?v=20260705a" defer></script>
+    <script src="/assets/visit-counter.js?v=20260811a" defer></script>
   </body>
 </html>
