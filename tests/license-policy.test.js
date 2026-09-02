@@ -27,6 +27,17 @@ test("publishes consistent reinstall and transfer rules", () => {
   assert.match(licensePage, /does not expire/);
 });
 
+test("states the refund and payment-reversal termination terms", () => {
+  assert.match(
+    licensePage,
+    /A full refund or successful payment reversal terminates the license/,
+  );
+  assert.match(licensePage, /must stop using Fibich and delete the key/);
+  assert.match(licensePage, /pending or rejected refund request does not terminate/);
+  assert.match(licensePage, /chargeback is successfully reversed, the license is restored/);
+  assert.match(licensePage, /not eligible for a license reissue or customer support/);
+});
+
 test("makes the license-use page discoverable", () => {
   assert.match(sitemap, /https:\/\/fibich\.app\/license\.html/);
   assert.match(llms, /License use: https:\/\/fibich\.app\/license\.html/);

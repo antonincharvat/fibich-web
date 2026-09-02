@@ -23,3 +23,5 @@ Fibich is currently in development and is not yet available to download.
 - License: One perpetual license for one Mac at a time
 - Additional Macs: A separate license is required for each additional Mac
 - Transfers: Reinstallation on the same Mac is allowed, and a license may be moved after use on the previous Mac ends
+- Refunds and payment reversals: A full refund or successful payment reversal terminates the license; the customer must stop using Fibich and delete the key
+- Chargeback reversals: A successful chargeback reversal restores the license unless another terminating adjustment still applies
