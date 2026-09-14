@@ -13,6 +13,8 @@ const homepage = fs.readFileSync(
 test("keeps checkout unavailable while fulfillment setup is paused", () => {
   assert.match(homepage, /Purchases temporarily paused/);
   assert.match(homepage, /No payment can be made from this page right now\./);
+  assert.match(homepage, /USD 9\.99/);
+  assert.match(homepage, /Introductory one-time price\./);
   assert.match(homepage, /One license\. One Mac at a time\./);
   assert.match(homepage, /A separate license for each additional Mac/);
   assert.match(homepage, /href="\/license\.html"/);
