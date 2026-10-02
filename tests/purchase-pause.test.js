@@ -9,6 +9,14 @@ const homepage = fs.readFileSync(
   path.join(__dirname, "..", "index.html"),
   "utf8",
 );
+const checkoutPage = fs.readFileSync(
+  path.join(__dirname, "..", "checkout.html"),
+  "utf8",
+);
+const sitemap = fs.readFileSync(
+  path.join(__dirname, "..", "sitemap.xml"),
+  "utf8",
+);
 
 test("keeps checkout unavailable while fulfillment setup is paused", () => {
   assert.match(homepage, /Purchases temporarily paused/);
@@ -22,4 +30,17 @@ test("keeps checkout unavailable while fulfillment setup is paused", () => {
   assert.doesNotMatch(homepage, /assets\/paddle-checkout\.js/);
   assert.doesNotMatch(homepage, /id="paddle-licensee-name"/);
   assert.doesNotMatch(homepage, /id="paddle-checkout-button"/);
+  assert.doesNotMatch(homepage, /href="\/checkout\.html"/);
+});
+
+test("keeps the controlled live checkout unlinked and out of search indexes", () => {
+  assert.match(checkoutPage, /name="robots" content="noindex, nofollow, noarchive"/);
+  assert.match(checkoutPage, /cdn\.paddle\.com\/paddle\/v2\/paddle\.js/);
+  assert.match(checkoutPage, /assets\/paddle-checkout\.js/);
+  assert.match(checkoutPage, /id="paddle-licensee-name"/);
+  assert.match(checkoutPage, /id="paddle-checkout-button"/);
+  assert.match(checkoutPage, /This is the live checkout/);
+  assert.match(checkoutPage, /href="\/license\.html"/);
+  assert.match(checkoutPage, /href="\/privacy\.html"/);
+  assert.doesNotMatch(sitemap, /checkout\.html/);
 });

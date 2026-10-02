@@ -6,8 +6,8 @@ const path = require("node:path");
 const test = require("node:test");
 const vm = require("node:vm");
 
-const PRODUCT_ID = "pro_01ky5k4hsfrn8zfvc55nf5tkha";
-const LAUNCH_PRICE_ID = "pri_01ky5kgaftp3bea23rtfkhmk0t";
+const PRODUCT_ID = "pro_01m1k5fyjb95brwv7mb4nj2j0b";
+const LAUNCH_PRICE_ID = "pri_01m1k5fyr059k1vsxhxr04mft7";
 const SUCCESS_URL = "https://api.fibich.app/purchase-success/";
 const SCRIPT_PATH = path.join(__dirname, "..", "assets", "paddle-checkout.js");
 const SCRIPT_SOURCE = fs.readFileSync(SCRIPT_PATH, "utf8");
@@ -176,7 +176,7 @@ async function finishInitialization() {
   await new Promise((resolve) => setImmediate(resolve));
 }
 
-test("initializes Paddle sandbox and displays its formatted total unchanged", async () => {
+test("initializes Paddle production and displays its formatted total unchanged", async () => {
   const localizedTotal = "1 234,56 Kč";
   const { calls, elements } = runCheckoutScript({
     pricePreviewResult: previewResult({ formattedTotal: localizedTotal }),
@@ -184,9 +184,9 @@ test("initializes Paddle sandbox and displays its formatted total unchanged", as
 
   await finishInitialization();
 
-  assert.deepEqual(calls.environment, ["sandbox"]);
+  assert.deepEqual(calls.environment, ["production"]);
   assert.equal(calls.initialize.length, 1);
-  assert.match(calls.initialize[0].token, /^test_[a-zA-Z0-9]{27}$/);
+  assert.match(calls.initialize[0].token, /^live_[a-zA-Z0-9]{27}$/);
   assert.deepEqual(plain(calls.initialize[0].checkout.settings), {
     displayMode: "overlay",
     variant: "one-page",

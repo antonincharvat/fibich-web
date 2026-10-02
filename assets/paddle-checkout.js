@@ -2,21 +2,20 @@
   "use strict";
 
   const PADDLE_CONFIG = Object.freeze({
-    environment: "sandbox",
-    // Create this public token in Paddle sandbox, then replace only this value.
-    clientToken: "test_4f7e660052d9c21e9791b5952f0",
-    productId: "pro_01ky5k4hsfrn8zfvc55nf5tkha",
+    environment: "production",
+    clientToken: "live_082b7b5e2989c068eac719548ef",
+    productId: "pro_01m1k5fyjb95brwv7mb4nj2j0b",
     // After the three-week launch offer, change this to "regular" and archive
     // the introductory price in Paddle. No pricing dates are guessed here.
     activeOffer: "introductory",
     offers: Object.freeze({
       introductory: Object.freeze({
-        priceId: "pri_01ky5kgaftp3bea23rtfkhmk0t",
+        priceId: "pri_01m1k5fyr059k1vsxhxr04mft7",
         fallbackPrice: "USD 9.99",
         label: "Introductory price",
       }),
       regular: Object.freeze({
-        priceId: "pri_01ky5khqsbej19z5y1cwf9tkg6",
+        priceId: "pri_01m1k5fyxw5711sjbck0924b8t",
         fallbackPrice: "USD 19.99",
         label: "Perpetual license",
       }),
@@ -24,7 +23,7 @@
   });
 
   const PURCHASE_SUCCESS_URL = "https://api.fibich.app/purchase-success/";
-  const CLIENT_TOKEN_PATTERN = /^test_[a-zA-Z0-9]{27}$/;
+  const CLIENT_TOKEN_PATTERN = /^live_[a-zA-Z0-9]{27}$/;
   const PRICE_PREVIEW_TIMEOUT_MS = 10000;
   const activeOffer = PADDLE_CONFIG.offers[PADDLE_CONFIG.activeOffer];
   const priceElement = document.getElementById("paddle-price");

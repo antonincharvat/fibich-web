@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Purchase Fibich</title>
+    <meta name="description" content="Purchase one perpetual Fibich license for one Mac at a time.">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta name="referrer" content="no-referrer">
+    <meta name="theme-color" content="#f7f8f5">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <script defer src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+    <script defer src="/assets/paddle-checkout.js"></script>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f8f5;
+        --ink: #1c2026;
+        --muted: #667078;
+        --line: #dde2e0;
+        --surface: #ffffff;
+        --accent: #d95c3b;
+        --accent-2: #2f8c84;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        background:
+          linear-gradient(180deg, rgba(47, 140, 132, 0.11), transparent 270px),
+          var(--bg);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page {
+        width: min(680px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 64px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: inherit;
+        font-size: 1.25rem;
+        font-weight: 850;
+        text-decoration: none;
+      }
+
+      .mark {
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+      }
+
+      .mark::before {
+        width: 14px;
+        height: 16px;
+        border-radius: 2px 9px 9px 2px;
+        background: var(--accent);
+        clip-path: polygon(0 0, 100% 50%, 0 100%);
+        content: "";
+      }
+
+      main {
+        margin-top: 42px;
+      }
+
+      .eyebrow {
+        margin: 0 0 10px;
+        color: var(--accent-2);
+        font-size: 0.82rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2.2rem, 8vw, 4rem);
+        letter-spacing: -0.055em;
+        line-height: 0.98;
+      }
+
+      .intro {
+        max-width: 580px;
+        margin: 18px 0 30px;
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.65;
+      }
+
+      .card {
+        padding: clamp(24px, 6vw, 42px);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        background: var(--surface);
+        box-shadow: 0 24px 70px rgba(28, 32, 38, 0.12);
+      }
+
+      .offer-label {
+        margin: 0;
+        color: var(--accent-2);
+        font-size: 0.82rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .price {
+        margin: 8px 0 0;
+        font-size: clamp(2.4rem, 9vw, 4.5rem);
+        font-weight: 850;
+        letter-spacing: -0.06em;
+      }
+
+      .price-note,
+      .policy,
+      .status {
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .includes {
+        margin: 24px 0;
+        padding-left: 20px;
+        line-height: 1.75;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 750;
+      }
+
+      input {
+        width: 100%;
+        min-height: 48px;
+        padding: 12px 14px;
+        border: 1px solid #cbd3d0;
+        border-radius: 10px;
+        background: #fff;
+        color: var(--ink);
+        font: inherit;
+      }
+
+      input:focus {
+        outline: 3px solid rgba(47, 140, 132, 0.2);
+        border-color: var(--accent-2);
+      }
+
+      button {
+        width: 100%;
+        min-height: 50px;
+        margin-top: 18px;
+        padding: 12px 18px;
+        border: 0;
+        border-radius: 10px;
+        background: var(--accent);
+        color: #fff;
+        cursor: pointer;
+        font: inherit;
+        font-weight: 800;
+      }
+
+      button:disabled {
+        cursor: wait;
+        opacity: 0.55;
+      }
+
+      .status {
+        margin: 12px 0 0;
+        font-size: 0.9rem;
+      }
+
+      .policy {
+        margin: 24px 0 0;
+        font-size: 0.88rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <a class="brand" href="/" aria-label="Fibich home">
+        <span class="mark" aria-hidden="true"></span>
+        <span>Fibich</span>
+      </a>
+
+      <main>
+        <p class="eyebrow">Secure checkout by Paddle</p>
+        <h1>Purchase Fibich.</h1>
+        <p class="intro">
+          One perpetual license for one Mac at a time. This is the live checkout:
+          completing payment will charge the total shown by Paddle.
+        </p>
+
+        <section class="card" aria-labelledby="checkout-title">
+          <p class="offer-label" id="paddle-offer-label">Introductory price</p>
+          <h2 id="checkout-title" class="price">
+            <span id="paddle-price" aria-busy="true">Loading your local price…</span>
+          </h2>
+          <p class="price-note" id="paddle-price-note">
+            Paddle is checking the total for your location.
+          </p>
+
+          <ul class="includes">
+            <li>One perpetual Fibich license</li>
+            <li>Use on one Mac at a time</li>
+            <li>License delivered by email after payment</li>
+          </ul>
+
+          <label for="paddle-licensee-name">Name to show on the license</label>
+          <input
+            id="paddle-licensee-name"
+            name="licensee_name"
+            type="text"
+            autocomplete="name"
+            maxlength="200"
+            required
+          >
+
+          <button id="paddle-checkout-button" type="button" disabled>
+            Preparing checkout…
+          </button>
+          <p class="status" id="paddle-checkout-status" aria-live="polite">
+            Live checkout. Completing payment will charge your selected payment method.
+          </p>
+
+          <p class="policy">
+            By purchasing, you agree to the
+            <a href="/license.html" target="_blank" rel="noopener noreferrer">license-use and refund terms</a>
+            and acknowledge the
+            <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Notice</a>.
+          </p>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
