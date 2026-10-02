@@ -242,11 +242,12 @@
         is the legitimate interest in operating a reliable and secure website.
       </p>
       <p>
-        The website uses CounterAPI to maintain simple anonymous visit counters,
-        including daily totals. A session storage flag is kept in your browser for the
-        current day so the same browser session is not counted repeatedly. The legal
-        basis is the legitimate interest in understanding basic website usage without
-        using tracking cookies or profiling visitors.
+        The website uses GoatCounter to measure page views and basic website usage.
+        GoatCounter collects aggregate statistics such as visited pages, referrers,
+        browser type, and approximate location. It does not use tracking cookies or
+        browser storage and does not store IP addresses. See
+        <a href="https://www.goatcounter.com/help/privacy" target="_blank" rel="noopener noreferrer">GoatCounter's privacy policy</a>
+        for details.
       </p>
 
       <h2>Changes to this notice</h2>
@@ -274,6 +275,7 @@
       link.textContent = address;
       email.replaceChildren(link);
     </script>
-    <script src="/assets/visit-counter.js?v=20260811a" defer></script>
+    <script data-goatcounter="https://fibich.goatcounter.com/count"
+            async src="https://gc.zgo.at/count.js"></script>
   </body>
 </html>
