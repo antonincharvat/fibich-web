@@ -232,6 +232,7 @@
         font-family: inherit;
         font-size: 0.95rem;
         font-weight: 750;
+        text-decoration: none;
         box-shadow: 0 8px 24px rgba(28, 32, 38, 0.07);
       }
 
@@ -645,6 +646,7 @@
         cursor: pointer;
         font: inherit;
         font-weight: 800;
+        text-decoration: none;
         transition: transform 150ms ease, box-shadow 150ms ease, opacity 150ms ease;
       }
 
@@ -833,9 +835,7 @@
         </div>
 
         <div class="platforms" aria-label="Fibich availability">
-          <button class="platform primary" type="button" disabled title="Coming soon">
-            Download for Mac
-          </button>
+          <a class="platform primary" href="/checkout.html">Buy Fibich for Mac</a>
         </div>
 
         <div class="showcase" aria-label="Fibich app preview shown on a laptop">
@@ -985,34 +985,33 @@
 
         <section class="pricing" id="pricing" aria-labelledby="pricing-title">
           <div class="section-heading">
-            <p class="product-label">Purchases temporarily paused</p>
-            <h2 id="pricing-title">Fibich sales will reopen soon.</h2>
+            <p class="product-label">Available now for macOS</p>
+            <h2 id="pricing-title">Purchase Fibich.</h2>
             <p>
-              I’m finishing the automatic license delivery setup before accepting more
-              orders. Each purchase will include one perpetual license for one Mac at a
-              time.
+              Get one perpetual license for one Mac at a time, delivered by email after
+              secure checkout.
             </p>
           </div>
 
           <article class="pricing-card">
-            <p class="pricing-badge">Checkout temporarily unavailable</p>
+            <p class="pricing-badge">Introductory launch price</p>
             <h3>One license. One Mac at a time.</h3>
             <p class="pricing-price">USD 9.99</p>
             <p class="pricing-price-note">
               Introductory one-time price. Paddle will confirm the final localized total
               and any applicable taxes at checkout.
             </p>
-            <p class="pricing-price-note">
-              No payment can be made from this page right now. Join the updates list below
-              if you’d like to hear when purchasing opens.
-            </p>
             <ul class="license-includes">
               <li>One perpetual Fibich license for one Mac at a time</li>
               <li>A separate license for each additional Mac</li>
               <li>Reinstall on the same Mac or transfer after removing it from the previous Mac</li>
+              <li>Requires macOS 15 or later</li>
             </ul>
+            <a class="purchase-button" href="/checkout.html">Buy one Mac license</a>
+            <p class="checkout-status">Secure checkout and payment processing by Paddle.</p>
             <p class="pricing-price-note">
-              Read the <a href="/license.html">Fibich license-use details</a>.
+              Read the <a href="/license.html">license-use details</a> and
+              <a href="/privacy.html">Privacy Notice</a> before purchase.
             </p>
           </article>
         </section>
@@ -1034,7 +1033,7 @@
           </p>
         </section>
 
-        <p class="footer-note">Fibich is currently in development. More information is coming soon.</p>
+        <p class="footer-note">Fibich 1.0.1 is available for macOS 15 and later.</p>
         <p class="copyright">
           (C) 2026
           <a
