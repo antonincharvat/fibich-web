@@ -6,7 +6,7 @@
     <atom:link href="https://fibich.app/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Development notes, release updates, and behind-the-scenes writing for Fibich, a macOS music player.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 18 Aug 2026 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 00:00:00 +0200</lastBuildDate>
     <ttl>1440</ttl>
     <image>
       <url>https://fibich.app/assets/fibich_appMock.png</url>
@@ -14,6 +14,14 @@
       <link>https://fibich.app/blog/</link>
     </image>
 
+    <item>
+      <title>Fibich Is Here: A Native macOS Music Player for Your Library</title>
+      <link>https://fibich.app/blog/fibich-is-here/</link>
+      <guid isPermaLink="true">https://fibich.app/blog/fibich-is-here/</guid>
+      <pubDate>Fri, 02 Oct 2026 00:00:00 +0200</pubDate>
+      <dc:creator>Antonin Charvat</dc:creator>
+      <description>Fibich is now available for macOS, with local music playback, durable playlists, metadata editing, and optional sample-rate matching.</description>
+    </item>
     <item>
       <title>Making File Opening Feel Native</title>
       <link>https://fibich.app/blog/making-file-opening-feel-native/</link>

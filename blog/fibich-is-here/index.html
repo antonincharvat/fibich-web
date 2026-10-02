@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fibich Is Here: A Native macOS Music Player for Your Library - Fibich</title>
+    <meta
+      name="description"
+      content="Fibich is now available for macOS: a native player for local music libraries, with durable playlists, metadata editing, CUE support, and optional sample-rate matching."
+    >
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#f7f8f5">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link
+      rel="canonical"
+      href="https://fibich.app/blog/fibich-is-here/"
+    >
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Fibich Blog RSS Feed"
+      href="https://fibich.app/rss.xml"
+    >
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Fibich">
+    <meta property="og:title" content="Fibich Is Here: A Native macOS Music Player for Your Library">
+    <meta
+      property="og:description"
+      content="Fibich is now available for macOS: a native player for local music libraries, with durable playlists, metadata editing, CUE support, and optional sample-rate matching."
+    >
+    <meta
+      property="og:url"
+      content="https://fibich.app/blog/fibich-is-here/"
+    >
+    <meta property="article:published_time" content="2026-10-02">
+    <meta property="og:image" content="https://fibich.app/assets/fibich_appMock-dark.png">
+    <meta property="og:image:width" content="4340">
+    <meta property="og:image:height" content="2860">
+    <meta property="og:image:alt" content="Fibich in dark mode on a MacBook, showing a music library, playlists, metadata, and album artwork">
+    <meta property="article:author" content="Antonin Charvat">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Fibich Is Here: A Native macOS Music Player for Your Library">
+    <meta
+      name="twitter:description"
+      content="Fibich is now available for macOS: a native player for local music libraries, with durable playlists, metadata editing, CUE support, and optional sample-rate matching."
+    >
+    <meta name="twitter:image" content="https://fibich.app/assets/fibich_appMock-dark.png">
+    <meta name="twitter:image:alt" content="Fibich in dark mode on a MacBook, showing a music library, playlists, metadata, and album artwork">
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Fibich Is Here: A Native macOS Music Player for Your Library",
+        "datePublished": "2026-10-02",
+        "url": "https://fibich.app/blog/fibich-is-here/",
+        "image": "https://fibich.app/assets/fibich_appMock-dark.png",
+        "description": "Fibich is now available for macOS: a native player for local music libraries, with durable playlists, metadata editing, CUE support, and optional sample-rate matching.",
+        "author": {
+          "@type": "Person",
+          "name": "Antonin Charvat",
+          "url": "https://www.linkedin.com/in/antonincharvat/"
+        },
+        "publisher": {
+          "@type": "Person",
+          "name": "Antonin Charvat",
+          "url": "https://www.linkedin.com/in/antonincharvat/"
+        }
+      }
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f8f5;
+        --ink: #1c2026;
+        --muted: #667078;
+        --line: #dde2e0;
+        --surface: #ffffff;
+        --accent: #d95c3b;
+        --accent-2: #2f8c84;
+        --shadow: 0 24px 70px rgba(28, 32, 38, 0.11);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background:
+          linear-gradient(180deg, rgba(47, 140, 132, 0.11), transparent 270px),
+          var(--bg);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        min-height: 100vh;
+        overflow: hidden;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        width: min(1080px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 24px 0 10px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.35rem;
+        font-weight: 850;
+        letter-spacing: 0;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        color: var(--muted);
+        font-size: 0.93rem;
+        font-weight: 650;
+      }
+
+      .nav-links a[aria-current="page"] {
+        color: var(--ink);
+      }
+
+      .article-shell {
+        width: min(900px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 58px 0 86px;
+      }
+
+      .eyebrow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 12px;
+        margin: 0 0 16px;
+        color: var(--accent-2);
+        font-size: 0.9rem;
+        font-weight: 800;
+      }
+
+      h1 {
+        max-width: 820px;
+        margin: 0;
+        font-size: 3rem;
+        line-height: 1.1;
+        letter-spacing: 0;
+      }
+
+      .intro {
+        max-width: 740px;
+        margin: 24px 0 0;
+        color: var(--muted);
+        font-size: clamp(1.06rem, 2vw, 1.22rem);
+        line-height: 1.65;
+      }
+
+      .article-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 12px;
+        margin: 18px 0 0;
+        color: var(--muted);
+        font-size: 0.94rem;
+        font-weight: 700;
+      }
+
+      .article-meta strong {
+        color: var(--ink);
+        font-weight: 850;
+      }
+
+      .article-meta .read-time {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .article-meta .read-time::before {
+        content: "";
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--accent-2);
+      }
+
+      .article-image {
+        width: min(740px, 100%);
+        margin: 38px 0 0;
+      }
+
+      .article-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .article-body {
+        margin-top: 46px;
+        max-width: 740px;
+      }
+
+      .article-body p {
+        margin: 0 0 22px;
+        color: var(--ink);
+        font-size: 1.08rem;
+        line-height: 1.78;
+      }
+
+      .article-body p:first-child {
+        font-size: 1.18rem;
+        line-height: 1.72;
+      }
+
+      .article-body a {
+        color: var(--accent);
+        font-weight: 750;
+        text-decoration: underline;
+        text-decoration-color: rgba(217, 92, 59, 0.45);
+        text-underline-offset: 3px;
+        text-decoration-thickness: 1px;
+      }
+
+      .article-cta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px 22px;
+        max-width: 740px;
+        margin-top: 44px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 22px;
+        background: rgba(255, 255, 255, 0.74);
+        box-shadow: 0 16px 40px rgba(28, 32, 38, 0.08);
+      }
+
+      .article-cta p {
+        max-width: 460px;
+        margin: 0;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.55;
+      }
+
+      .article-cta a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        border-radius: 8px;
+        padding: 0 16px;
+        background: var(--ink);
+        color: var(--surface);
+        font-size: 0.92rem;
+        font-weight: 800;
+      }
+
+      .article-footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 12px 22px;
+        margin-top: 54px;
+        border-top: 1px solid var(--line);
+        padding-top: 22px;
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      .article-footer a,
+      .back-link {
+        text-decoration: underline;
+        text-decoration-color: rgba(102, 112, 120, 0.45);
+        text-underline-offset: 3px;
+      }
+
+      .back-link {
+        display: inline-flex;
+        margin-top: 18px;
+        color: var(--accent);
+        font-size: 0.92rem;
+        font-weight: 750;
+        text-decoration-color: rgba(217, 92, 59, 0.55);
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+      }
+
+      @media (max-width: 760px) {
+        .nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 12px 16px;
+          font-size: 0.88rem;
+        }
+
+        .article-shell {
+          padding-top: 42px;
+        }
+
+        h1 {
+          font-size: 2.2rem;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <nav class="nav" aria-label="Article navigation">
+        <a class="brand" href="/">Fibich</a>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="/#features">Features</a>
+          <a href="/blog/" aria-current="page">Blog</a>
+          <a href="/#newsletter">Updates</a>
+          <span id="email">Contact</span>
+        </div>
+      </nav>
+
+      <article class="article-shell">
+        <header>
+          <p class="eyebrow">
+            <time datetime="2026-10-02">October 2, 2026</time>
+            <span>Release</span>
+          </p>
+          <h1>Fibich Is Here: A Native macOS Music Player for Your Library</h1>
+          <p class="intro">
+            Fibich is now available for macOS, bringing local music playback, library
+            organization, and metadata editing together in one native player.
+          </p>
+          <p class="article-meta">
+            <span><strong>By Antonin Charvat</strong>, creator of Fibich</span>
+            <span class="read-time">4 min read</span>
+          </p>
+        </header>
+
+        <figure class="article-image">
+          <img
+            src="/assets/fibich_appMock-dark.png"
+            alt="Fibich in dark mode on a MacBook, showing a music library, playlists, metadata, and album artwork"
+            width="4340"
+            height="2860"
+            loading="lazy"
+          >
+        </figure>
+
+        <div class="article-body">
+          <p>
+            Today I&rsquo;m happy to share something I&rsquo;ve been working toward for a
+            long time: <strong>Fibich is now available for macOS.</strong>
+          </p>
+          <p>
+            What started as a personal project has become a player you can bring into your
+            own listening routine. Getting to this point has taken longer than I first
+            imagined, with pauses for other projects and plenty of small problems that turned
+            out to deserve serious attention. It feels good to finally open the door.
+          </p>
+          <p>
+            Fibich is built for people who keep their own music collections. Albums collected
+            over the years, carefully named folders, lossless recordings, and playlists worth
+            returning to. I wanted a native Mac app that could bring playback, library
+            organization, and metadata editing together in one comfortable place.
+          </p>
+          <p>
+            The released player supports FLAC, ALAC, WAV, AIFF, MP3, Opus, Ogg, and many
+            other audio formats. You can browse your local music library, search for a
+            recording, and build multiple playlists that remain there when you close and
+            reopen the app. Opening music directly from Finder fits into that same workflow.
+          </p>
+          <p>
+            Metadata tools let you correct tags and organize the information behind your
+            collection. Album artwork, audio properties, and configurable playlist columns
+            help make recordings easier to recognize and compare. Media keys, macOS Now
+            Playing controls, and menu-bar playback controls keep the music within reach
+            while you work elsewhere.
+          </p>
+          <p>
+            The final stretch has brought some particularly useful improvements to playback
+            itself.
+          </p>
+          <p>
+            One challenge was getting the handoff between tracks right. An audio engine can
+            finish decoding a file before the last samples have actually reached your
+            speakers. That distinction matters when preparing the next track, updating the
+            playback display, and handling transitions. Recently, I&rsquo;ve been tightening
+            that coordination so the player follows what is being heard more accurately.
+          </p>
+          <p>
+            CUE sheets needed similar care. Several tracks can share one underlying audio
+            file, but each still needs its own position and boundaries. Seeking within a
+            movement should make sense within that movement, and playback should respect
+            where it ends.
+          </p>
+          <p>
+            There was also a subtle playlist problem: changing the playlist could leave an
+            already prepared track waiting in the playback queue. Fixing that means the next
+            track follows your current choices more reliably.
+          </p>
+          <p>
+            For listeners using an external DAC or another audio output, Fibich now also
+            offers optional sample-rate matching. When the selected device supports the
+            recording&rsquo;s sample rate, the player can request that rate automatically. It
+            is a useful addition for collections that mix standard and high-resolution audio,
+            with the device&rsquo;s capabilities determining what is possible.
+          </p>
+          <p>
+            Making Fibich available has also meant finishing the practical work around the
+            player: installation, license delivery, offline activation, and built-in updates.
+            Once activated, Fibich can verify its license locally, so listening does not
+            depend on a continuous connection to a licensing server.
+          </p>
+          <p>
+            There is a personal reason behind the name, too. Zden&#283;k Fibich&rsquo;s music
+            means a great deal to me. Naming the player after him, and basing its icon on his
+            likeness, is my small tribute to a composer whose work I love. Seeing that name
+            on a finished app makes today especially meaningful.
+          </p>
+          <p>
+            Fibich is available for <strong>macOS 15 and later</strong>, with an
+            <strong>introductory one-time price of USD 9.99</strong> for a perpetual license
+            covering one Mac at a time. Checkout confirms the final localized total.
+          </p>
+          <p>
+            You can <a href="https://fibich.app/checkout.html">buy Fibich here</a>.
+          </p>
+          <p>
+            I&rsquo;m looking forward to hearing what you play with it, how it fits your
+            collection, and where it still needs attention. Thank you for following the
+            development so far. Today, Fibich gets to become part of someone else&rsquo;s
+            listening routine.
+          </p>
+        </div>
+
+        <section class="article-cta" aria-label="Follow development updates">
+          <p>Get occasional notes on new builds, design decisions, and what is changing in Fibich.</p>
+          <a href="/#newsletter">Follow development updates</a>
+        </section>
+
+        <a class="back-link" href="/blog/">Back to all posts</a>
+
+        <footer class="article-footer">
+          <span>
+            (C) 2026
+            <a
+              href="https://www.linkedin.com/in/antonincharvat/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Antonin Charvat</a>
+          </span>
+          <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Notice</a>
+          </div>
+        </footer>
+      </article>
+    </main>
+
+    <script>
+      const user = "antonincharvat";
+      const domain = "gmail";
+      const dotCom = ".com";
+      const address = `${user}@${domain}${dotCom}`;
+      const email = document.getElementById("email");
+      const link = document.createElement("a");
+
+      link.href = `mailto:${address}`;
+      link.textContent = "Contact";
+      email.replaceChildren(link);
+    </script>
+    <script data-goatcounter="https://fibich.goatcounter.com/count"
+            async src="https://gc.zgo.at/count.js"></script>
+  </body>
+</html>
