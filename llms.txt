@@ -2,12 +2,11 @@
 
 > Fibich is a simple, powerful music player for macOS focused on organizing a music library and returning to favorite tracks.
 
-Fibich 1.0.1 is available to purchase for Macs running macOS 15 or later.
+Fibich purchases are temporarily paused while a technical issue is investigated.
 
 ## Official pages
 
 - Website: https://fibich.app/
-- Purchase: https://fibich.app/checkout.html
 - License use: https://fibich.app/license.html
 - Privacy notice: https://fibich.app/privacy.html
 - Open-source software: https://fibich.app/legal/open-source/
@@ -21,7 +20,7 @@ Fibich 1.0.1 is available to purchase for Macs running macOS 15 or later.
 - Product name: Fibich
 - Category: Music player
 - Supported platform: macOS 15 or later
-- Availability: Available for purchase
+- Availability: Purchases temporarily paused
 - License: One perpetual license for one Mac at a time
 - Additional Macs: A separate license is required for each additional Mac
 - Transfers: Reinstallation on the same Mac is allowed, and a license may be moved after use on the previous Mac ends
