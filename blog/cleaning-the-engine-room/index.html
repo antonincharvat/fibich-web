@@ -6,7 +6,7 @@
     <title>Cleaning the Engine Room - Fibich</title>
     <meta
       name="description"
-      content="Fibich moves SFBAudioEngine into Swift Package Manager and refactors library loading for a cleaner foundation."
+      content="Fibich adopts SFBAudioEngine through Swift Package Manager and separates library scanning, persistence, and loading."
     >
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="theme-color" content="#f7f8f5">
@@ -28,7 +28,7 @@
     <meta property="og:title" content="Cleaning the Engine Room">
     <meta
       property="og:description"
-      content="Fibich moves SFBAudioEngine into Swift Package Manager and refactors library loading for a cleaner foundation."
+      content="Fibich adopts SFBAudioEngine through Swift Package Manager and separates library scanning, persistence, and loading."
     >
     <meta
       property="og:url"
@@ -47,7 +47,7 @@
     <meta name="twitter:title" content="Cleaning the Engine Room">
     <meta
       name="twitter:description"
-      content="Fibich moves SFBAudioEngine into Swift Package Manager and refactors library loading for a cleaner foundation."
+      content="Fibich adopts SFBAudioEngine through Swift Package Manager and separates library scanning, persistence, and loading."
     >
     <meta
       name="twitter:image"
@@ -62,7 +62,7 @@
         "headline": "Cleaning the Engine Room",
         "datePublished": "2025-11-19",
         "url": "https://fibich.app/blog/cleaning-the-engine-room/",
-        "description": "Fibich moves SFBAudioEngine into Swift Package Manager and refactors library loading for a cleaner foundation.",
+        "description": "Fibich adopts SFBAudioEngine through Swift Package Manager and separates library scanning, persistence, and loading.",
         "image": "https://fibich.app/assets/fibich_loading.png",
         "author": {
           "@type": "Person",
@@ -384,7 +384,7 @@
           </p>
           <p>
             Recently I picked the project back up and started by dealing with some
-            technical weight that had quietly accumulated. The biggest change is that the
+            technical weight that had accumulated. The biggest change is that the
             audio engine dependencies are no longer embedded directly in the project as
             bundled frameworks. Fibich now uses the SFBAudioEngine package through Swift
             Package Manager.
@@ -399,9 +399,9 @@
             to break.
           </p>
           <p>
-            Moving this into package management makes the app cleaner and more
-            maintainable. It is the kind of change users may never notice directly, but it
-            gives the project better footing for wide audio format support later.
+            Package management makes dependency updates repeatable and removes bundled
+            binary frameworks from the repository. It also makes future audio-engine
+            updates easier to track.
           </p>
           <p>The other big piece today is a refactor around library loading.</p>
           <p>
@@ -412,12 +412,12 @@
             metadata, and may need to process a lot of tracks.
           </p>
           <p>
-            So today I started separating those responsibilities more clearly. There is
+            So today I separated those responsibilities. There is
             now a dedicated path for generating the library, fetching stored items, and
             coordinating persistence. Some of the work has also moved toward Swift's
             async/await model, which is a better fit for operations that take time.
           </p>
-          <p>The practical goal is simple: Fibich should not feel stuck while it is thinking.</p>
+          <p>The interface should remain responsive while Fibich scans the library.</p>
           <p>
             Scanning a music library is very different from updating a label on screen.
             The app needs to do real work, but the interface should remain calm and
@@ -432,18 +432,15 @@
             ready at the same time, and the app should not pretend it is.
           </p>
           <p>
-            This is the kind of progress that feels quiet, but important. Fibich is
-            becoming less of a prototype and more of an application with parts that know
-            their jobs: playback, library generation, persistence, player state, and
-            interface.
+            Fibich now has separate components for playback, library generation,
+            persistence, player state, and the interface.
           </p>
           <p>
             There is still plenty to do. The library needs
             <a href="/blog/finding-music-once-the-library-grows/">better browsing, sorting,
             and filtering</a>. Playlists need to become more capable.
             <a href="/blog/editing-the-music-not-just-playing-it/">Metadata still deserves
-            much deeper tools</a>. But today's work clears the path for those features to
-            be built without fighting the foundation every time.
+            much deeper tools</a>. Today's work makes those changes easier to build.
           </p>
           <p>A good music player should feel simple on the surface.</p>
           <p>Underneath, Fibich now has a cleaner engine room.</p>

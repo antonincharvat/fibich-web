@@ -377,8 +377,8 @@
 
         <div class="article-body">
           <p>
-            This week Fibich became a little more deliberate about two everyday workflows:
-            getting music into playlists, and choosing where the sound should come out.
+            This week Fibich improves two everyday workflows: adding music to playlists
+            and choosing an audio output.
           </p>
           <p>
             The playlist work started with a small context-menu improvement. A library
@@ -389,8 +389,8 @@
           </p>
           <p>
             Drag and drop from the library also became more precise. Fibich can now
-            preserve ordering when library items are dragged into a playlist. This matters
-            more than it sounds. If I drag an album, I expect the tracks to land in the
+            preserve ordering when library items are dragged into a playlist. If I drag
+            an album, I expect the tracks to land in the
             right order. A music player should not make me repair the sequence manually
             after every drop.
           </p>
@@ -402,10 +402,9 @@
             was dragged, where it came from, and how it should be inserted.
           </p>
           <p>
-            Underneath, I also bumped the minimum SFBAudioEngine version. That is not a
-            visible feature, but it matters for the playback foundation. Fibich depends on
-            the audio engine for wide format support and reliable playback behavior, so
-            keeping that layer current is part of keeping the whole app healthy.
+            I also raised the minimum SFBAudioEngine version. Fibich depends on the engine
+            for wide format support and playback, so this update keeps that dependency
+            current.
           </p>
           <p>The biggest visible addition today is the audio output device picker.</p>
           <p>
@@ -431,8 +430,8 @@
           <p>
             I added tests around the output settings, selection storage, and routing
             behavior too. That felt necessary because output routing is the kind of
-            feature where the happy path is easy, but the edge cases are what users
-            actually feel: missing devices, changing lists, remembered selections, and
+            feature where the happy path is easy, but the edge cases matter most: missing
+            devices, changing lists, remembered selections, and
             fallback behavior.
           </p>
           <p>
@@ -441,14 +440,13 @@
             it affects trust. If the app already knows about my library, I do not want to
             see it disappear for a moment every time Fibich starts.
           </p>
-          <p>So this week’s work is split between flow and control.</p>
-          <p>Flow: getting music from the library into playlists more naturally.</p>
           <p>
-            Control: choosing the right audio output device and making that choice stick.
+            The result is a smoother path from the library to a playlist, plus persistent
+            control over the audio output device.
           </p>
           <p>
             For a local macOS music player, both matter. The app should help me build the
-            listening queue I want, then send the sound to the hardware I actually use.
+            listening queue I want, then send the sound to the hardware I use.
           </p>
         </div>
 

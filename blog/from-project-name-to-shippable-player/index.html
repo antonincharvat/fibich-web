@@ -381,7 +381,7 @@
             an app that is preparing to leave the workshop.
           </p>
           <p>
-            The biggest symbolic change is simple: the app is now actually named
+            The biggest symbolic change is that the app is now named
             <strong>Fibich</strong> in the project. Until now, a lot of the codebase still
             carried the older HiFiPlayer name. Renaming an app properly is not glamorous,
             but it matters. Names appear in schemes, project files, source folders,
@@ -402,10 +402,10 @@
             make the app feel less rough.
           </p>
           <p>
-            Under the hood, SwiftTagLib moved from a local dependency to a remote package.
+            SwiftTagLib also moved from a local dependency to a remote package.
             That is another step toward a cleaner build and release story. Local
             dependencies are useful during development, but a distributable app benefits
-            from dependencies that can be resolved clearly and repeatably.
+            from dependencies that resolve to recorded versions.
           </p>
           <p>
             The biggest release-oriented step is the new Developer ID notarized release
@@ -435,7 +435,7 @@
             model, a search worker, and a visible search field. More importantly, playback
             navigation now understands filtered results. That is the tricky part.
             Searching a playlist should not only hide rows visually; it also changes how
-            “next” and “previous” feel while the filter is active.
+            "next" and "previous" work while the filter is active.
           </p>
           <p>
             The app needs to keep two ideas in balance: the real playlist order and the
@@ -450,7 +450,7 @@
             results, changing filters, current track visibility, selection, and playback
             state all intersect.
           </p>
-          <p>So this week’s progress has two sides.</p>
+          <p>This week's progress covers release work and playlist usability.</p>
           <p>
             One side is product readiness: the Fibich name, release workflow, dependency
             cleanup, icon compatibility, and visual polish.
@@ -460,9 +460,8 @@
             tables, and full-text playlist search that works with playback navigation.
           </p>
           <p>
-            That feels like a good step for this phase of the app. Fibich is not only
-            gaining features now. It is starting to behave like something that can be
-            packaged, trusted, searched, and used seriously.
+            Fibich can now be packaged and notarized, while playlist search makes large
+            listening sessions easier to navigate.
           </p>
         </div>
 

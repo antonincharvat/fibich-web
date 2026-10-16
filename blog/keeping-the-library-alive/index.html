@@ -380,8 +380,8 @@
 
         <div class="article-body">
           <p>
-            This week Fibich moved from “the library can be generated” toward something
-            more useful: the library can start reacting when music files change on disk.
+            This week Fibich moved from "the library can be generated" to a library that
+            reacts when music files change on disk.
           </p>
           <p>
             That is a big shift for a local music player. A real music folder is not
@@ -393,9 +393,8 @@
           </p>
           <p>Before getting there, I cleaned up some related pieces.</p>
           <p>
-            The app now has its first proper icon, which is a small but satisfying step.
-            Fibich is starting to feel less like a development window and more like an
-            actual Mac app.
+            The app now has its first proper icon, replacing the generic development
+            artwork.
           </p>
           <p>
             The name Fibich comes from Zdeněk Fibich, the Czech composer. The app icon is
@@ -404,7 +403,7 @@
           </p>
           <p>
             There is a personal reason for the name too: I have a real love for Fibich’s
-            music. Using his name is not only a branding choice, but also a small tribute.
+            music. Using his name is a small personal tribute.
             It feels right for a music player built with care for local collections,
             listening habits, and the emotional weight music can carry.
           </p>
@@ -446,12 +445,12 @@
             Today’s work adds filesystem observation, debouncing, change filtering,
             reconciliation, and a small sync activity bar. In plain English: Fibich can
             watch the selected library location, notice changes, wait briefly so it does
-            not overreact to noisy file events, decide what actually matters, and then
+            not overreact to noisy file events, decide which changes matter, and then
             update the library.
           </p>
           <p>The hard part is avoiding chaos.</p>
           <p>
-            File systems do not politely say, “one album was renamed.” They emit events.
+            File systems do not report "one album was renamed." They emit events.
             Sometimes several. Sometimes too many. Sometimes a save operation looks like a
             delete and recreate. The app has to turn that stream into useful library
             changes without breaking playlists or making the interface flicker.
@@ -468,10 +467,10 @@
             part of the story. Moving, deleting, renaming, and regenerating tracks can
             create subtle bugs if identity is not handled carefully.
           </p>
-          <p>The result is a major step for Fibich’s library.</p>
+          <p>The result changes how Fibich's library stays current.</p>
           <p>
-            It is no longer just a snapshot of a folder from one moment in time. It is
-            beginning to behave like a living connection to the user’s music collection.
+            It is no longer a one-time folder snapshot. It now follows changes in the
+            user's music collection.
           </p>
           <p>
             For a native macOS hi-fi player, that feels essential. Local libraries change.

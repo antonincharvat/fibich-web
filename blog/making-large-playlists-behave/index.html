@@ -411,10 +411,10 @@
             needs to refresh, the app starts feeling heavy.
           </p>
           <p>
-            This week I began isolating those concerns more clearly. Playlist playback
+            This week I separated those concerns. Playlist playback
             state, selection state, scroll requests, table sections, and presentation
             snapshots are now more separate concepts. That gives the app a better chance
-            of updating only what actually changed.
+            of updating only what changed.
           </p>
           <p>
             A large part of this work was about switching between big playlists. If two
@@ -446,21 +446,21 @@
           <p>The biggest reliability fix this week was around realtime track moves.</p>
           <p>
             When files move on disk, Fibich now works harder to preserve track identity,
-            refresh playlist grouping, avoid “missing path” ghosts, and repair stale or
+            refresh playlist grouping, avoid "missing path" ghosts, and repair stale or
             duplicate catalog records from older versions. This is exactly the kind of
             <a href="/blog/messy-real-music-libraries/">edge case</a> that separates a
             simple file browser from a durable music library.
           </p>
           <p>A user should be able to reorganize folders without the app losing its mind.</p>
           <p>
-            That is the deeper goal of this week’s work: make Fibich more resilient. Large
+            The goal of this week's work is resilience. Large
             playlists should switch quickly. Metadata edits should stay synchronized.
             Search should not freeze. Layout should hold together. Moved files should not
             break the library.
           </p>
           <p>
-            None of this is as visible as adding a new button, but it changes how
-            trustworthy the app feels.
+            These changes are less visible than a new button, but they make the app more
+            reliable.
           </p>
           <p>
             A hi-fi music player is not only about audio quality or format support. It

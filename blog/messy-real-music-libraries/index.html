@@ -387,7 +387,7 @@
             player starts meeting real collections.
           </p>
           <p>
-            The obvious features are already there in some form: playback, playlists,
+            The main features are already present in some form: playback, playlists,
             metadata, <a href="/blog/keeping-the-library-alive/">library sync</a>,
             search, artwork, settings, and macOS controls. But real local music libraries
             are full of less obvious situations. Albums arrive as folders. Tracks come
@@ -412,7 +412,7 @@
           </p>
           <p>
             There was also work on album sorting. Playlist albums now sort by metadata
-            album name, not just by the surrounding folder or raw file structure. This is
+            album name rather than only the surrounding folder or file structure. This is
             a small detail, but it matters because music organization is rarely perfectly
             aligned. The folder name, file name, and embedded album tag may not all say
             the same thing. When the metadata is available, Fibich should use the musical
@@ -422,7 +422,7 @@
             A particularly annoying playback issue appeared with MP3 files that contain
             padded ID3 tags. These are the kinds of bugs that remind me why audio apps
             become complicated. The file looks like an MP3. It is an MP3. But the metadata
-            layout can shift where playback should actually begin, and a player needs to
+            layout can shift where playback should begin, and a player needs to
             account for that. This week includes a fix for that case, so padded ID3 tags
             should no longer break MP3 playback in the same way.
           </p>
@@ -453,26 +453,23 @@
             they are not.
           </p>
           <p>
-            This week also adds a simple but useful library action: enqueueing a library
-            item to the current playlist from the context menu. That rounds out the
-            workflow nicely. Browse the library, find something, send it to the current
-            playlist, keep listening.
+            This week also adds a library action for sending an item to the current
+            playlist from the context menu. You can browse the library, find something,
+            and enqueue it without interrupting playback.
           </p>
           <p>
-            Taken together, this is not one single clean feature. It is a collection of
-            practical fixes and improvements around real listening behavior: better
+            Taken together, the work addresses several real listening workflows: better
             folder drops, persistent external tracks, smarter album sorting, MP3 edge-case
             repair, CUE sheet playback, and faster queueing from the library.
           </p>
-          <p>That feels like a good place for the current development story to land.</p>
+          <p>This closes the current chapter of the development story.</p>
           <p>
             Fibich started as an idea for a native macOS music player focused on local
             files. Now it is dealing with the details that make local files interesting:
             metadata, folders, playlists, moved tracks, unusual formats, external music,
             and album structures that do not fit the simplest model.
           </p>
-          <p>A hi-fi player should not only work when the collection is tidy.</p>
-          <p>It should become useful exactly when the collection is real.</p>
+          <p>A hi-fi player should work even when the collection is untidy.</p>
         </div>
 
         <section class="article-cta" aria-label="Follow development updates">

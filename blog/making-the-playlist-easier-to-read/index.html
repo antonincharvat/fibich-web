@@ -379,12 +379,12 @@
 
         <div class="article-body">
           <p>
-            Today I spent time on one of those features that looks small from the outside,
-            but changes how the whole app feels during use: the playlist header.
+            Today I worked on the playlist header, a small control that determines how
+            much information the queue can show.
           </p>
           <p>
             Fibich already has a playlist, but a playlist only becomes comfortable once it
-            can carry real information clearly. Track names alone are not enough. A useful
+            can carry useful information. Track names alone are not enough. A useful
             music player needs room for title, artist, album, duration, maybe
             format-related details later, and the user should not feel trapped by whatever
             column width the app happens to choose.
@@ -396,8 +396,7 @@
             of resetting it every time.
           </p>
           <p>
-            This is a small promise, but an important one: if the user adjusts the
-            interface, Fibich should respect that choice.
+            When the user adjusts the interface, Fibich should remember the choice.
           </p>
           <p>
             There was also a bit of cleanup around playlist sorting. Some of the sorting
@@ -407,16 +406,14 @@
             a moment and awkward later.
           </p>
           <p>
-            So today's work separates the concepts a little more clearly. The library
-            expandable list is now treated as its own thing, and playlist sorting has room
-            to grow in the direction the playlist actually needs. This is one of those
-            code-level obstacles that appears only after a feature starts becoming real:
-            the first version can share too much, because everything looks similar early
-            on. Later, the differences become obvious.
+            Today's work separates the two concepts. The expandable library list now has
+            its own implementation, and playlist sorting can follow the needs of an
+            ordered queue. The first version shared too much code because both views
+            initially looked alike. Their different jobs became clear as they grew.
           </p>
           <p>
-            A playlist row is not just a library row in another place. It has a different
-            role. It represents playback order, selection, future queue actions, and
+            A playlist row has a different role from a library row. It represents
+            playback order, selection, future queue actions, and
             eventually more advanced behavior like
             <a href="/blog/making-the-playlist-more-personal/">reordering</a> or
             <a href="/blog/more-than-one-playlist/">multiple playlist management</a>.
@@ -429,16 +426,15 @@
             between two views of music: the library as stored on disk, and the playlist as
             chosen for listening.
           </p>
-          <p>The result today is not dramatic, but it is very practical.</p>
+          <p>The result is practical.</p>
           <p>
             The playlist is becoming more readable. The columns can breathe. The app
             remembers user adjustments. And the code is a little less confused about the
             difference between browsing a music library and managing a listening queue.
           </p>
           <p>
-            This is the kind of progress I want Fibich to keep making: not only adding
-            features, but making the everyday music-listening flow feel calmer and more
-            deliberate.
+            I want Fibich to keep improving the everyday listening workflow as its feature
+            set grows.
           </p>
         </div>
 

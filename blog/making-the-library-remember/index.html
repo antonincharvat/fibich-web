@@ -358,8 +358,7 @@
           </p>
           <h1>Making the Library Remember</h1>
           <p class="intro">
-            Fibich is moving again, with a stronger foundation for remembering the user's
-            music library.
+            Fibich is moving again, with SwiftData persistence for the music library.
           </p>
           <p class="article-meta">
             <span><strong>By Antonin Charvat</strong>, creator of Fibich</span>
@@ -383,8 +382,8 @@
             The project has been quiet for a while, mostly because other work needed
             attention and this app had to stay aside for a bit. That pause was useful in
             its own way. Coming back to Fibich now makes the next priority clearer:
-            before adding more visible features, the app needs a stronger foundation for
-            remembering the user's music library.
+            before adding more visible features, the app needs to remember the user's
+            music library reliably.
           </p>
           <p>
             A music player becomes much more useful once it can remember the shape of your
@@ -393,10 +392,9 @@
             rebuild that picture when it opens again.
           </p>
           <p>
-            Recently, I have been working on the foundation for that. Fibich now has its
-            first deeper persistence layer, using SwiftData, and the library model has
-            been reshaped around it. That is a fairly technical sentence, but the
-            user-facing goal is simple: the app should become more durable.
+            Fibich now has its first persistence layer, built with SwiftData, and a
+            library model designed around stored records. The user-facing result is that
+            the library can survive beyond the current session.
           </p>
           <p>
             A local music library is not temporary. People spend years building these
@@ -405,7 +403,7 @@
             hi-fi audio player for macOS should treat that library as something stable and
             valuable, not as a list that disappears whenever the app restarts.
           </p>
-          <p>Metadata is also starting to become a more central part of Fibich.</p>
+          <p>Metadata now has a more central role in Fibich.</p>
           <p>
             This matters because filenames are never enough. A real music collection needs
             track titles, artists, albums, durations, formats, and eventually much more.
@@ -416,16 +414,12 @@
           <p>
             Today's work introduces a clearer place for metadata in the app and begins
             separating the responsibilities inside the codebase. The library browser,
-            playlist, player, file access, and data coordination are starting to become
-            more distinct from each other. The benefit should be felt later as Fibich
-            grows: new features will have a stronger foundation instead of everything
-            being tied to one fragile center.
+            playlist, player, file access, and data coordination now have clearer
+            boundaries. New features will not all depend on one central component.
           </p>
           <p>
-            There is also a small but meaningful shift in the interface. The library
-            browser is becoming its own part of the app, and the metadata view is
-            beginning to appear as a real companion to playback. That makes Fibich feel
-            more like a music library tool, not only a player window.
+            The interface now gives the library browser its own area and places metadata
+            beside playback. Fibich can work as a library tool as well as a player.
           </p>
           <p>
             This is still early work. The app does not yet have every library feature I

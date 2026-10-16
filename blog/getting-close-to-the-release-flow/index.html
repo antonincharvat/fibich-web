@@ -377,9 +377,8 @@
 
         <div class="article-body">
           <p>
-            Today’s progress is less about adding another playback feature and more about
-            something just as important: making Fibich ready to become a real released
-            app.
+            Today's work prepares Fibich for release rather than adding another playback
+            feature.
           </p>
           <p>
             Recently I have been working through the licensing branch, and the shape of
@@ -392,8 +391,8 @@
             important because a desktop music player should not feel helpless the moment
             it cannot reach a server. After activation, the app needs to be able to verify
             that a license is valid in a local, reliable way. The technical challenge is
-            trust: Fibich has to know that the license data was really issued by the
-            licensing system and was not simply edited by hand.
+            trust. Fibich has to know that the licensing system issued the data and that
+            nobody edited it by hand.
           </p>
           <p>
             That led to a dedicated license model, error handling, a public-key
@@ -417,16 +416,14 @@
             should protect the app, not make the app feel hostile.
           </p>
           <p>
-            There is also work around the update flow now. Fibich has the foundation for
-            checking updates, verifying update metadata, preparing update feeds, and
-            connecting that to the release process. I do not want to make the blog too
-            much about the external services behind this, but the goal is clear: once
-            Fibich is released, users should have a safe path to future versions.
+            Fibich can now check for updates, verify update metadata, prepare update feeds,
+            and connect them to the release process. Users will have a verified path to
+            future versions after release.
           </p>
           <p>
             That connects to the notarized release workflow added recently. Signing,
             notarization, stapling, verification, and packaging are not exciting product
-            features, but they are part of what makes a macOS app trustworthy. A native
+            features, but they help macOS verify the app. A native
             Mac player should not only run on my machine. It should be deliverable to
             another user in a form macOS accepts cleanly.
           </p>
@@ -451,16 +448,15 @@
             something the app can verify. The activation experience has to be clear.
             Offline verification has to work. Updates have to be trusted. The release
             package has to be signed and notarized. Settings and menus have to feel like
-            they belong in an app users can actually install.
+            they belong in an installable app.
           </p>
           <p>
             None of that is as visible as CUE playback or playlist search, but it changes
             what Fibich is becoming.
           </p>
           <p>
-            It is no longer only a capable local hi-fi music player. It is getting very
-            close to a complete working flow: install the app, activate it, use it,
-            receive updates, and keep listening.
+            The pieces now form a nearly complete flow: install the app, activate it, use
+            it, receive updates, and keep listening.
           </p>
           <p>That is a big step toward release.</p>
         </div>

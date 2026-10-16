@@ -416,7 +416,7 @@
           <p>
             A few playback controls were added as well: playlist navigation,
             stop-after-current, and automatic scrolling to keep the playing track visible.
-            These are small listening-flow features, but they make a difference. When a
+            These controls improve long listening sessions. When a
             playlist is long, losing the current track is annoying. When an album is
             ending, stop-after-current can be exactly what you want. These are the kinds
             of controls that make a music player feel attentive.
@@ -440,7 +440,7 @@
           <p>
             One code-level lesson here is that playback state updates are contagious. If
             the timeline moves every fraction of a second, or volume changes trigger too
-            much view work, unrelated parts of the app can end up refreshing more than
+            much view work, unrelated parts of the app can refresh more than
             they should. Splitting the HUD timeline and volume controls into their own
             view models helps keep frequent updates contained.
           </p>
@@ -453,13 +453,13 @@
             messy.
           </p>
           <p>
-            So this week’s work is not one single headline feature. It is a layer of
-            daily-use improvements: cleaner controls, a menu bar player, settings,
-            artwork, better scrolling, better performance, and more careful metadata text.
+            This week's work brings cleaner controls, a menu bar player, settings,
+            artwork, better scrolling, performance work, and improved metadata text
+            repair.
           </p>
           <p>
-            A music player does not become good only by supporting more formats. It
-            becomes good by feeling steady during ordinary listening.
+            Format support is not enough. A music player also has to remain responsive
+            during ordinary listening.
           </p>
           <p>That is what Fibich is moving toward now.</p>
         </div>

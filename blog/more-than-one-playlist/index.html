@@ -397,9 +397,8 @@
             each playlist can become its own object with its own name, items, and state.
           </p>
           <p>
-            Today also adds playlist renaming. This is small, but it makes the feature
-            feel personal. "Playlist 1" is a placeholder. A named playlist is something
-            the user can recognize and come back to.
+            Today also adds playlist renaming. "Playlist 1" is a placeholder. A name
+            gives the user something recognizable to return to.
           </p>
           <p>
             There was a UI challenge here too. Playlist tabs need to feel compact,
@@ -416,26 +415,25 @@
             switching context.
           </p>
           <p>
-            So today includes a first fix for that scroll behavior. It is a tiny detail,
-            but it belongs to the same larger idea: Fibich should remember enough of what
-            the user is doing to feel steady.
+            Today's fix preserves the scroll position when switching playlists. Fibich
+            should remember where the user was working.
           </p>
           <p>
             On the code side, this is another step away from "one player, one list"
             thinking. The player now has to care about the selected playlist, the playlist
             collection, tab interactions, rename state, and how all of that connects to
             playback. That adds complexity, but it is the right kind of complexity because
-            it matches how people actually use music.
+            it matches how people use music.
           </p>
           <p>
             The result today is that Fibich feels less like a simple queue and more like a
             place where different listening sessions can coexist.
           </p>
           <p>
-            That is a meaningful step toward
+            This supports
             <a href="/blog/making-playlists-stay/">durable playlists</a> and better
-            library organization. A hi-fi music player should not only play files well.
-            It should help keep listening contexts organized without getting in the way.
+            library organization. A hi-fi player should play files well and keep
+            different listening sessions organized.
           </p>
         </div>
 

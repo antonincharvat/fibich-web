@@ -383,11 +383,10 @@
             become real: search.
           </p>
           <p>
-            The library browser now has full-text filtering, along with basic sorting
-            controls. This is one of those updates where the visible result is simple:
-            type into a search field, narrow the library, change the order. But
-            underneath, it touches an important question for the app: how should Fibich
-            behave once the user's music collection is no longer small?
+            The library browser now has full-text filtering and basic sorting controls.
+            Type into the search field to narrow the library, then choose its order. The
+            change addresses a practical question: how should Fibich behave once a music
+            collection is no longer small?
           </p>
           <p>
             A local hi-fi library can grow quickly. A few FLAC albums become a few
@@ -408,7 +407,7 @@
             feature on paper, but it begins to make the library feel interactive rather
             than static.
           </p>
-          <p>The main obstacle is that Fibich's library is not just a flat list.</p>
+          <p>The main obstacle is Fibich's hierarchical library.</p>
           <p>
             The browser is built around expandable items, so filtering has to work with
             structure. A simple list of tracks would be easier: take all rows, compare
@@ -433,18 +432,16 @@
             the persistence layer</a> without becoming tangled with it.
           </p>
           <p>
-            This is the balance I am trying to keep right now: add useful features, but
-            keep the structure clean enough that the next feature does not become painful.
+            I am adding useful features while keeping the code easy to extend.
           </p>
           <p>
             Today, the result is practical. The library is easier to scan, easier to
             narrow down, and a little closer to how a real macOS music player should
             behave when handling a serious local audio collection.
           </p>
-          <p>Search is not glamorous.</p>
           <p>
-            But once your music library is large enough, it becomes one of the features
-            that decides whether the app feels calm or frustrating.
+            Once a library grows large, search determines how quickly you can return to a
+            specific album, artist, or track.
           </p>
         </div>
 

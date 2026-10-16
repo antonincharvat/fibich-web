@@ -389,13 +389,12 @@
             Recently, the app gained
             <a href="/blog/more-than-one-playlist/">multiple playlists</a>, playlist tabs,
             renaming, adjustable headers, and better playlist interaction. That made the
-            playlist area feel much more useful, but there was still a missing piece. If a
-            playlist disappears when the app closes, it is not really a playlist yet. It is
-            only a temporary queue.
+            playlist area more useful, but one piece was missing. If a playlist disappears
+            when the app closes, it is only a temporary queue.
           </p>
           <p>So today's work focuses on making playlists durable with SwiftData.</p>
           <p>
-            This touches more than just saving an array of tracks. Fibich now needs to
+            Persistence requires more than saving an array of tracks. Fibich needs to
             remember playlist names, playlist items, playlist order, the selected
             playlist, and enough identity information to connect stored playlist entries
             back to real library items and files. That is where the code becomes more
@@ -423,8 +422,8 @@
             later reopens the app, Fibich needs to know which playlist is which. If two
             items have the same title, that is not enough. If a track moves in the UI, the
             app needs to know whether it is the same item in a new position or a different
-            item entirely. Durable playlists require stable identifiers, not just visible
-            text.
+            item entirely. Durable playlists require stable identifiers rather than
+            visible text alone.
           </p>
           <p>
             The interface also gets a small but important addition: an add-tab view for
@@ -432,19 +431,17 @@
             create new listening spaces instead of only working with what already exists.
           </p>
           <p>
-            This is the kind of update that changes the app's trust level. A temporary
-            queue is useful for quick listening. A persisted playlist is something the
-            user can invest in. They can build an album sequence, a test list, a mood, or
-            a long listening session and expect it to still be there next time.
+            A temporary queue works for quick listening. A persisted playlist can hold an
+            album sequence, a test list, a mood, or a long session and still be there next
+            time.
           </p>
           <p>
             That expectation is basic for a serious music player, but getting it right
             takes care.
           </p>
           <p>
-            Today Fibich feels closer to becoming a real home for local music listening:
-            not only playback, not only library browsing, but durable playlists that can
-            survive beyond the current session.
+            Fibich now combines playback and library browsing with playlists that survive
+            beyond the current session.
           </p>
         </div>
 

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Editing the Music, Not Just Playing It - Fibich</title>
+    <title>Editing the Music Itself - Fibich</title>
     <meta
       name="description"
       content="Fibich gains metadata editing with drafts, validation, read/write storage, tests, and a more focused sheet-based editor."
@@ -25,7 +25,7 @@
 
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Fibich">
-    <meta property="og:title" content="Editing the Music, Not Just Playing It">
+    <meta property="og:title" content="Editing the Music Itself">
     <meta
       property="og:description"
       content="Fibich gains metadata editing with drafts, validation, read/write storage, tests, and a more focused sheet-based editor."
@@ -48,7 +48,7 @@
     <meta property="article:author" content="Antonin Charvat">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Editing the Music, Not Just Playing It">
+    <meta name="twitter:title" content="Editing the Music Itself">
     <meta
       name="twitter:description"
       content="Fibich gains metadata editing with drafts, validation, read/write storage, tests, and a more focused sheet-based editor."
@@ -66,7 +66,7 @@
       {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        "headline": "Editing the Music, Not Just Playing It",
+        "headline": "Editing the Music Itself",
         "datePublished": "2026-05-19",
         "url": "https://fibich.app/blog/editing-the-music-not-just-playing-it/",
         "description": "Fibich gains metadata editing with drafts, validation, read/write storage, tests, and a more focused sheet-based editor.",
@@ -363,7 +363,7 @@
             <time datetime="2026-05-19">May 19, 2026</time>
             <span>Development</span>
           </p>
-          <h1>Editing the Music, Not Just Playing It</h1>
+          <h1>Editing the Music Itself</h1>
           <p class="intro">
             Metadata editing brings Fibich closer to being a serious local music library
             tool.
@@ -400,7 +400,7 @@
             But for a local hi-fi collection, reading metadata is only half of the story.
             Tags are often incomplete, inconsistent, or just wrong. A downloaded album may
             have missing track numbers. A live recording may have no album artist. Older
-            files may carry strange values. Sometimes the user simply wants to clean up
+            files may carry strange values. Sometimes the user wants to clean up
             their own library.
           </p>
           <p>So this week Fibich gains a metadata editor.</p>
@@ -409,7 +409,7 @@
             the actual audio file. A mistake here is more serious than a wrong label in
             the interface. The app needs a draft state, validation, saving logic, and a
             clear boundary between what the user is currently editing and what has
-            actually been written back to the file.
+            been written back to the file.
           </p>
           <p>
             That is why I added a dedicated metadata edit draft and an audio metadata
@@ -444,11 +444,10 @@
             keeps the interaction from feeling clumsy.
           </p>
           <p>
-            One more quiet but meaningful step arrived this week: localization support,
-            starting with English and Spanish. That may seem separate from metadata, but
-            it belongs to the same kind of maturity. Once the app has more dialogs,
-            labels, validation messages, and editing flows, text needs to be organized
-            properly instead of scattered everywhere.
+            This week also adds localization support, starting with English and Spanish.
+            As the app gains dialogs, validation messages, and editing flows, its text
+            needs to live in a translation system instead of being scattered through the
+            code.
           </p>
           <p>
             This week's progress makes Fibich feel less like only a player and more like
@@ -459,9 +458,8 @@
             helping the user improve the information stored inside the music itself.
           </p>
           <p>
-            For a local macOS music player, that matters. A well-kept music library is
-            not just files on disk. It is files plus meaningful metadata, and Fibich is
-            starting to treat that metadata as something the user can actually work with.
+            A well-kept music library includes both files and accurate metadata. Fibich
+            now lets the user work with both.
           </p>
         </div>
 
