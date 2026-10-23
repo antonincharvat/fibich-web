@@ -3,12 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fibich purchases temporarily paused</title>
-    <meta name="description" content="Fibich purchases are temporarily paused while a few details are polished.">
+    <title>Purchase Fibich</title>
+    <meta name="description" content="Purchase one perpetual Fibich license for one Mac at a time.">
     <meta name="robots" content="noindex, nofollow, noarchive">
     <meta name="referrer" content="no-referrer">
     <meta name="theme-color" content="#f7f8f5">
     <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <script defer src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+    <script defer src="/assets/paddle-checkout.js"></script>
     <style>
       :root {
         color-scheme: light;
@@ -201,20 +203,20 @@
       </a>
 
       <main>
-        <p class="eyebrow">Purchases temporarily paused</p>
-        <h1>Fibich is not available to buy right now.</h1>
+        <p class="eyebrow">Secure checkout by Paddle</p>
+        <h1>Purchase Fibich.</h1>
         <p class="intro">
-          I’m polishing a few details before accepting more orders. No payment can be made
-          from this page.
+          Buy one perpetual license for one Mac at a time. This is the live checkout.
+          Paddle will charge the total shown when you complete payment.
         </p>
 
         <section class="card" aria-labelledby="checkout-title">
-          <p class="offer-label">Checkout unavailable</p>
+          <p class="offer-label" id="paddle-offer-label">Introductory price</p>
           <h2 id="checkout-title" class="price">
-            Sales paused
+            <span id="paddle-price" aria-busy="true">Loading your local price…</span>
           </h2>
-          <p class="price-note">
-            Please check back later for an update.
+          <p class="price-note" id="paddle-price-note">
+            Paddle is checking the total for your location.
           </p>
 
           <ul class="includes">
@@ -224,11 +226,28 @@
             <li>Requires macOS 15 or later</li>
           </ul>
 
-          <p class="status" aria-live="polite">Checkout is disabled.</p>
+          <label for="paddle-licensee-name">Name to show on the license</label>
+          <input
+            id="paddle-licensee-name"
+            name="licensee_name"
+            type="text"
+            autocomplete="name"
+            maxlength="200"
+            required
+          >
+
+          <button id="paddle-checkout-button" type="button" disabled>
+            Preparing checkout…
+          </button>
+          <p class="status" id="paddle-checkout-status" aria-live="polite">
+            Paddle will charge your selected payment method when you complete checkout.
+          </p>
 
           <p class="policy">
-            <a href="/">Return to the Fibich website</a> or join the updates list there to
-            hear when purchasing reopens.
+            By purchasing, you agree to the
+            <a href="/license.html" target="_blank" rel="noopener noreferrer">license-use and refund terms</a>
+            and acknowledge the
+            <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Notice</a>.
           </p>
         </section>
       </main>

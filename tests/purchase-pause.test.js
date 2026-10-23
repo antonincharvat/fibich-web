@@ -22,10 +22,9 @@ const privacyPage = fs.readFileSync(
   "utf8",
 );
 
-test("keeps purchases paused on the homepage", () => {
-  assert.match(homepage, /Purchases temporarily paused/);
-  assert.match(homepage, /Fibich sales are temporarily paused\./);
-  assert.match(homepage, /No payment can be\s+made from this website right now\./);
+test("publishes the tested checkout from the homepage", () => {
+  assert.match(homepage, /Available now for macOS/);
+  assert.match(homepage, /Purchase Fibich\./);
   assert.match(homepage, /USD 9\.99/);
   assert.match(homepage, /Introductory one-time price\./);
   assert.match(homepage, /One license\. One Mac at a time\./);
@@ -33,22 +32,23 @@ test("keeps purchases paused on the homepage", () => {
   assert.match(homepage, /Requires macOS 15 or later/);
   assert.match(homepage, /href="\/license\.html"/);
   assert.match(homepage, /href="\/privacy\.html"/);
-  assert.doesNotMatch(homepage, /href="\/checkout\.html"/);
+  assert.match(homepage, /href="\/checkout\.html"/);
   assert.doesNotMatch(homepage, /cdn\.paddle\.com\/paddle\/v2\/paddle\.js/);
   assert.doesNotMatch(homepage, /assets\/paddle-checkout\.js/);
   assert.doesNotMatch(homepage, /id="paddle-licensee-name"/);
   assert.doesNotMatch(homepage, /id="paddle-checkout-button"/);
 });
 
-test("disables the direct checkout page and keeps it out of search indexes", () => {
+test("keeps the live checkout isolated and out of search indexes", () => {
   assert.match(checkoutPage, /name="robots" content="noindex, nofollow, noarchive"/);
-  assert.doesNotMatch(checkoutPage, /cdn\.paddle\.com\/paddle\/v2\/paddle\.js/);
-  assert.doesNotMatch(checkoutPage, /assets\/paddle-checkout\.js/);
-  assert.doesNotMatch(checkoutPage, /id="paddle-licensee-name"/);
-  assert.doesNotMatch(checkoutPage, /id="paddle-checkout-button"/);
-  assert.match(checkoutPage, /No payment can be made\s+from this page\./);
-  assert.match(checkoutPage, /Checkout is disabled\./);
+  assert.match(checkoutPage, /cdn\.paddle\.com\/paddle\/v2\/paddle\.js/);
+  assert.match(checkoutPage, /assets\/paddle-checkout\.js/);
+  assert.match(checkoutPage, /id="paddle-licensee-name"/);
+  assert.match(checkoutPage, /id="paddle-checkout-button"/);
+  assert.match(checkoutPage, /This is the live checkout/);
   assert.match(checkoutPage, /Requires macOS 15 or later/);
+  assert.match(checkoutPage, /href="\/license\.html"/);
+  assert.match(checkoutPage, /href="\/privacy\.html"/);
   assert.doesNotMatch(sitemap, /checkout\.html/);
 });
 
