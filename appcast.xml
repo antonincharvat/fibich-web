@@ -7,6 +7,15 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
         <title>Fibich</title>
         <item>
             <title>1.0.1</title>
+            <pubDate>Fri, 23 Oct 2026 20:46:24 +0200</pubDate>
+            <link>https://fibich.app</link>
+            <sparkle:version>4</sparkle:version>
+            <sparkle:shortVersionString>1.0.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://api.fibich.app/releases/9f17a003f0bc6b0577f2b727b1df0f10/Fibich-1.0.1-4.dmg" length="13402549" type="application/octet-stream" sparkle:edSignature="6Bz9aIglUgsnRH8kVjks6TwMG4kHkEJd9xmJUPUtuSD0zqFjD5acb/5x/prsIJ7TDrcT3qXoBwM9YbVijxBvBQ=="/>
+        </item>
+        <item>
+            <title>1.0.1</title>
             <pubDate>Wed, 30 Sep 2026 20:46:24 +0200</pubDate>
             <link>https://fibich.app</link>
             <sparkle:version>3</sparkle:version>
@@ -26,6 +35,6 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: IyWnIh/Wr6adfi+JzAXgR3R0vV1vDJZuKrG4fa4cUgshZ81lsCdbZfF+h5iQ4hkOguyDIqBofiwRiil9OzEXDQ==
-length: 1728
+edSignature: wqTWjHfzADKTPphtaE7oIjZccFFoymw9f8qcU+z0ByltMbp62qUg4wtQWEKF8pJBcClMK3RJeqdIJrcqel9TBw==
+length: 2377
 -->
